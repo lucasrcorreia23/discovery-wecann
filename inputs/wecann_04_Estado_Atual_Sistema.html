@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doc 04 v3 · Arquitetura de Dados Atena + Gaps UX · Brief Atom6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1E3A8A;
+    --navy-deep: #0F1E4A;
+    --teal: #0F6E56;
+    --teal-soft: #E6F2EE;
+    --teal-line: #B8DDD0;
+    --purple: #6B21A8;
+    --purple-soft: #F3EAFB;
+    --cream: #FAF7F2;
+    --cream-deep: #F4EFE6;
+    --ink: #1A1A1A;
+    --ink-soft: #3D3D3D;
+    --ink-mute: #6B6B6B;
+    --line: #E5E0D6;
+    --line-soft: #EFEAE0;
+    --amber: #B45309;
+    --rose: #BE185D;
+    --rose-soft: #FDF2F8;
+    --good: #0F6E56;
+    --warn: #B45309;
+    --bad: #BE185D;
+    --ocre: #B8956F;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream); color: var(--ink);
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1040px; margin: 0 auto; padding: 60px 48px 80px; }
+
+  /* HERO */
+  .hero { border-bottom: 1px solid var(--line); padding-bottom: 48px; margin-bottom: 56px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); font-weight: 600; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 56px;
+    line-height: 1.05; letter-spacing: -0.02em; color: var(--navy-deep); margin-bottom: 16px;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); font-weight: 500; }
+  .hero .lede {
+    font-family: 'Fraunces', serif; font-size: 22px; line-height: 1.45;
+    color: var(--ink-soft); font-weight: 400; max-width: 800px;
+  }
+  .meta-row {
+    display: flex; gap: 32px; margin-top: 32px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-mute); letter-spacing: 0.05em; flex-wrap: wrap;
+  }
+  .meta-row span strong { color: var(--ink); font-weight: 600; }
+
+  section { margin-bottom: 64px; }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--teal); letter-spacing: 0.15em; margin-bottom: 8px; font-weight: 600;
+  }
+  h2 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 34px;
+    line-height: 1.15; letter-spacing: -0.015em; color: var(--navy-deep); margin-bottom: 16px;
+  }
+  h3 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px;
+    line-height: 1.25; color: var(--navy); margin: 36px 0 14px;
+  }
+  p.intro {
+    font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.5;
+    color: var(--ink-soft); margin-bottom: 24px;
+  }
+  p { color: var(--ink-soft); margin-bottom: 14px; }
+  p strong { color: var(--navy-deep); font-weight: 600; }
+
+  /* PART HEADERS */
+  .part-header {
+    background: var(--navy-deep); color: white;
+    border-radius: 10px; padding: 32px 40px;
+    margin-bottom: 32px;
+  }
+  .part-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: #7DD3C0; letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 8px; font-weight: 600;
+  }
+  .part-header h2 {
+    color: white; margin: 0 0 8px; font-size: 32px;
+  }
+  .part-header p {
+    color: rgba(255,255,255,0.85); margin: 0;
+    font-family: 'Fraunces', serif; font-size: 17px; font-style: italic;
+  }
+
+  /* INTRO BLOCK */
+  .intro-block {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 32px 36px; margin-bottom: 32px;
+  }
+  .intro-block h3 {
+    font-family: 'Fraunces', serif; font-size: 22px; color: var(--navy-deep);
+    margin: 0 0 12px; font-weight: 600;
+  }
+  .intro-block p { font-size: 15.5px; line-height: 1.65; margin-bottom: 10px; }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  /* 3 SOURCES */
+  .sources-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 16px;
+  }
+  .source-card {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 18px 22px; border-top: 3px solid var(--teal);
+  }
+  .source-card.cnf { border-top-color: var(--amber); }
+  .source-card.aud { border-top-color: var(--rose); }
+  .source-card .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 4px;
+  }
+  .source-card.cnf .label { color: var(--amber); }
+  .source-card.aud .label { color: var(--rose); }
+  .source-card h5 {
+    font-family: 'Fraunces', serif; font-size: 17px; color: var(--navy-deep);
+    margin-bottom: 6px; font-weight: 600; line-height: 1.25;
+  }
+  .source-card p {
+    font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.5;
+  }
+  .source-card .stat {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-mute); margin-top: 8px; letter-spacing: 0.04em;
+  }
+
+  /* DATA BLOCK · grid of facts */
+  .data-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin: 24px 0;
+  }
+  .data-card {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 20px 22px;
+  }
+  .data-num {
+    font-family: 'Fraunces', serif; font-size: 38px; font-weight: 600;
+    color: var(--navy-deep); line-height: 1; letter-spacing: -0.02em;
+    margin-bottom: 4px; font-style: italic;
+  }
+  .data-num em { color: var(--teal); font-style: italic; }
+  .data-lbl {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 600; line-height: 1.4;
+  }
+
+  /* PRINCIPLES grid */
+  .principles {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0;
+  }
+  .principle {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 22px 24px;
+  }
+  .principle-id {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--teal); letter-spacing: 0.08em; font-weight: 700; margin-bottom: 6px;
+  }
+  .principle h5 {
+    font-family: 'Fraunces', serif; font-size: 18px; color: var(--navy-deep);
+    margin-bottom: 8px; font-weight: 600; line-height: 1.25;
+  }
+  .principle p { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+  /* HIERARCHY block */
+  .hierarchy {
+    background: white; border: 1px solid var(--line); border-radius: 10px;
+    padding: 28px 32px; margin: 22px 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .hier-level { display: grid; grid-template-columns: 28px 1fr; gap: 14px; padding: 9px 0; }
+  .hier-icon {
+    font-size: 18px; line-height: 1.2; color: var(--teal);
+  }
+  .hier-level.l1 { border-left: 3px solid var(--navy); padding-left: 12px; margin-bottom: 8px; }
+  .hier-level.l2 { padding-left: 28px; }
+  .hier-level.l3 { padding-left: 48px; }
+  .hier-level.l4 { padding-left: 28px; }
+  .hier-name {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+    color: var(--navy-deep); font-weight: 700; letter-spacing: 0.04em;
+  }
+  .hier-desc {
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: var(--ink-soft); margin-top: 2px; line-height: 1.5;
+  }
+
+  /* BIFACIAL — split table */
+  .bifacial {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+    margin: 22px 0;
+  }
+  .bif-col { padding: 24px 28px; background: white; }
+  .bif-col.prosp { border-right: 1px solid var(--line); }
+  .bif-col.retro { background: var(--cream-deep); }
+  .bif-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 6px;
+  }
+  .bif-col.prosp .bif-tag { color: var(--teal); }
+  .bif-col.retro .bif-tag { color: var(--ocre); }
+  .bif-col h4 {
+    font-family: 'Fraunces', serif; font-size: 22px; color: var(--navy-deep);
+    margin-bottom: 12px; font-weight: 600; line-height: 1.25;
+  }
+  .bif-col p { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 10px; }
+  .bif-col ul { list-style: none; padding: 0; }
+  .bif-col li {
+    font-size: 13px; line-height: 1.5; color: var(--ink-soft);
+    padding: 4px 0 4px 18px; position: relative;
+  }
+  .bif-col.prosp li::before {
+    content: '★'; position: absolute; left: 0; color: var(--teal); font-size: 11px;
+  }
+  .bif-col.retro li::before {
+    content: '·'; position: absolute; left: 6px; color: var(--ocre); font-weight: 700;
+  }
+  .bif-col strong { color: var(--navy-deep); font-weight: 600; }
+
+  /* TABLE */
+  .table-frame {
+    border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    background: white; margin: 22px 0;
+  }
+  .table-frame table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .table-frame th {
+    background: var(--cream-deep); color: var(--navy-deep);
+    text-align: left; padding: 12px 16px; font-weight: 700;
+    border-bottom: 1px solid var(--line);
+    font-family: 'Inter', sans-serif; font-size: 11.5px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .table-frame td {
+    padding: 11px 16px; border-bottom: 1px solid var(--line-soft);
+    vertical-align: top; color: var(--ink-soft); line-height: 1.5;
+  }
+  .table-frame tr:last-child td { border-bottom: none; }
+  .table-frame td:first-child {
+    color: var(--navy-deep); font-weight: 600;
+  }
+  .table-frame td.mono {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--navy-deep); font-weight: 600;
+  }
+  .table-frame td .mono {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--navy-deep); font-weight: 600;
+  }
+
+  /* STAR LEVEL CARDS */
+  .star-level {
+    display: grid; grid-template-columns: 100px 1fr; gap: 20px;
+    padding: 22px 0; border-bottom: 1px solid var(--line);
+  }
+  .star-level:last-child { border-bottom: none; }
+  .star-display {
+    font-family: 'Fraunces', serif; font-size: 32px; color: var(--teal);
+    line-height: 1; letter-spacing: -0.02em;
+  }
+  .star-display.bronze { color: #B8860B; }
+  .star-display.silver { color: #94A3B8; }
+  .star-display.gold { color: var(--teal); }
+  .star-content h4 {
+    font-family: 'Fraunces', serif; font-size: 19px; color: var(--navy-deep);
+    margin-bottom: 6px; font-weight: 600;
+  }
+  .star-criteria {
+    font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 8px;
+  }
+  .star-uses {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--teal); letter-spacing: 0.06em; margin-top: 4px;
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--teal-soft); border: 1px solid var(--teal-line);
+    border-left: 4px solid var(--teal); border-radius: 4px;
+    padding: 18px 22px; margin: 20px 0;
+  }
+  .callout.warn { background: #FEF3C7; border-color: #FCD9A0; border-left-color: var(--amber); }
+  .callout.critical { background: var(--rose-soft); border-color: #FCC; border-left-color: var(--rose); }
+  .callout-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--teal); font-weight: 600; margin-bottom: 8px;
+  }
+  .callout.warn .callout-title { color: var(--amber); }
+  .callout.critical .callout-title { color: var(--rose); }
+  .callout p { margin-bottom: 8px; font-size: 14.5px; line-height: 1.55; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout strong { color: var(--navy-deep); }
+
+  /* TRIANGULATION block */
+  .triangulation {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 0; border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden; margin: 22px 0;
+  }
+  .tri-col {
+    padding: 24px 26px; background: white;
+  }
+  .tri-col:not(:last-child) { border-right: 1px solid var(--line); }
+  .tri-col h4 {
+    font-family: 'Fraunces', serif; font-size: 19px; color: var(--navy-deep);
+    margin-bottom: 4px; font-weight: 600;
+  }
+  .tri-col .tri-stat {
+    font-family: 'Fraunces', serif; font-size: 40px; font-weight: 600;
+    color: var(--teal); line-height: 1; margin: 10px 0;
+    font-style: italic; letter-spacing: -0.02em;
+  }
+  .tri-col.warn .tri-stat { color: var(--amber); }
+  .tri-col.bad .tri-stat { color: var(--bad); }
+  .tri-col p { font-size: 13px; line-height: 1.5; color: var(--ink-soft); margin: 8px 0 0; }
+
+  /* GAP CARDS — P0/P1/P2 */
+  .gap-cards { margin: 22px 0; }
+  .gap-card {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 18px 22px; margin-bottom: 10px;
+    border-left: 5px solid var(--rose);
+    display: grid; grid-template-columns: 70px 1fr; gap: 16px;
+  }
+  .gap-card.p1 { border-left-color: var(--amber); }
+  .gap-card.p2 { border-left-color: var(--teal); }
+  .gap-prio {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-weight: 700; padding: 4px 10px; border-radius: 4px;
+    text-align: center; letter-spacing: 0.05em;
+    background: var(--rose); color: white; height: fit-content;
+  }
+  .gap-card.p1 .gap-prio { background: var(--amber); }
+  .gap-card.p2 .gap-prio { background: var(--teal); }
+  .gap-body h5 {
+    font-family: 'Fraunces', serif; font-size: 17px; color: var(--navy-deep);
+    margin-bottom: 4px; font-weight: 600; line-height: 1.25;
+  }
+  .gap-body .gap-sub {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink-mute); letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .gap-body p { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+  .gap-body p strong { color: var(--navy-deep); font-weight: 600; }
+
+  /* SESSION PLAN */
+  .session {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 22px 26px; margin-bottom: 14px;
+    display: grid; grid-template-columns: 60px 1fr; gap: 20px;
+  }
+  .session-num {
+    font-family: 'Fraunces', serif; font-size: 38px; color: var(--teal);
+    line-height: 0.95; font-style: italic; font-weight: 500;
+  }
+  .session h4 {
+    font-family: 'Fraunces', serif; font-size: 18px; color: var(--navy-deep);
+    margin-bottom: 4px; font-weight: 600;
+  }
+  .session .who {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    color: var(--ink-mute); letter-spacing: 0.06em; margin-bottom: 10px;
+  }
+  .session p { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 8px; }
+  .session .deliv {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    color: var(--teal); text-transform: uppercase; letter-spacing: 0.06em;
+    margin-top: 8px; font-weight: 600;
+  }
+
+  /* VERDICT */
+  .verdict {
+    background: var(--navy-deep); color: white; border-radius: 8px;
+    padding: 40px 48px; margin: 56px 0 0;
+  }
+  .verdict .eyebrow { color: #7DD3C0; margin-bottom: 12px; }
+  .verdict h3 {
+    font-family: 'Fraunces', serif; font-size: 28px; color: white;
+    margin: 0 0 18px; line-height: 1.25; font-weight: 500;
+  }
+  .verdict p {
+    font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.55;
+    color: rgba(255,255,255,0.85); font-weight: 400;
+  }
+  .verdict p strong { color: white; font-weight: 600; }
+
+  .doc-footer {
+    margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    color: var(--ink-mute); letter-spacing: 0.05em;
+    display: flex; justify-content: space-between;
+  }
+
+  @media (max-width: 880px) {
+    .container { padding: 40px 24px 60px; }
+    .hero h1 { font-size: 38px; }
+    .hero .lede { font-size: 18px; }
+    .data-grid { grid-template-columns: 1fr 1fr; }
+    .sources-grid, .principles, .triangulation, .bifacial { grid-template-columns: 1fr; }
+    .bif-col.prosp { border-right: none; border-bottom: 1px solid var(--line); }
+    .tri-col:not(:last-child) { border-right: none; border-bottom: 1px solid var(--line); }
+    .star-level { grid-template-columns: 1fr; gap: 8px; }
+    .session, .gap-card { grid-template-columns: 1fr; gap: 8px; }
+    .session-num { font-size: 28px; }
+    .verdict { padding: 28px 24px; }
+    .table-frame { overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <div class="eyebrow">Doc 04 · v3 · Pack de Onboarding Atom6 Studio</div>
+    <h1>A arquitetura de <em>dados</em> da Atena<br>e o que <em>falta</em> no UX</h1>
+    <p class="lede">Quão profunda é a estrutura de dados que a Atena foi projetada para endereçar — e quanto disso ainda não atravessou o portal da experiência do usuário no produto vivo.</p>
+    <div class="meta-row">
+      <span><strong>Fonte 1:</strong> Design Mestre da Arquitetura · v1.0 consolidada pós-auditoria</span>
+      <span><strong>Fonte 2:</strong> Conformidade v107 · sprint 3 · 04/05/2026</span>
+      <span><strong>Fonte 3:</strong> Análise arquitetural do MVP vivo · Junho 2026</span>
+    </div>
+  </div>
+
+  <!-- ============ INTRO · 3 fontes ============ -->
+  <div class="intro-block">
+    <h3>A triangulação de três fontes</h3>
+    <p>Este documento cruza <strong>três artefatos canônicos do projeto</strong> para responder duas perguntas centrais. <strong>(1) O que a Atena foi projetada para endereçar em termos de granularidade, complexidade e organização de dados?</strong> — resposta no Design Mestre. <strong>(2) O que disso já atravessou o portal da UX e o que ainda falta?</strong> — triangulação com Conformidade v107 e Auditoria do MVP vivo.</p>
+    <p>O delta entre o que está arquitetado e o que está renderizado é o trabalho do Atom6.</p>
+
+    <div class="sources-grid">
+      <div class="source-card">
+        <div class="label">Fonte 1 · canônica</div>
+        <h5>Design Mestre</h5>
+        <p>Arquitetura do Prontuário Clínico com IA · 17 seções · 5 decisões críticas (DC1–DC5) · referência mestre de implementação.</p>
+        <div class="stat">59 KB · v1.0 consolidada pós-auditoria</div>
+      </div>
+      <div class="source-card cnf">
+        <div class="label">Fonte 2 · validação</div>
+        <h5>Conformidade v107</h5>
+        <p>Auditoria de 4 fontes sobre o protótipo estático · confirma 94% de conformidade · 100% R1-R5 · 100% C1-C8 · 100% A1-A6.</p>
+        <div class="stat">04/05/2026 · sprint 3 · jsdom validado</div>
+      </div>
+      <div class="source-card aud">
+        <div class="label">Fonte 3 · realidade</div>
+        <h5>Análise arquitetural do MVP vivo</h5>
+        <p>Avaliação independente do produto vivo em app.wecann.clinic, focada em <strong>granularidade de dados</strong> e <strong>exigências arquiteturais</strong> definidas nas seções 01-10. Não é avaliação de UX/cores/tipografia.</p>
+        <div class="stat">Junho 2026 · app vivo · cruzamento com Design Mestre</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- PART A · A ARQUITETURA DE DADOS DA ATENA -->
+  <!-- ===================================================== -->
+  <div class="part-header">
+    <div class="part-eyebrow">Parte A · 01–10</div>
+    <h2>A arquitetura de dados que a Atena endereça</h2>
+    <p>Granularidade, complexidade e organização — direto do Design Mestre, fonte canônica do projeto.</p>
+  </div>
+
+  <!-- 01 — A escala -->
+  <section>
+    <div class="section-num">01 — A ESCALA DO PROBLEMA</div>
+    <h2>27 condições · 13 áreas clínicas · 33 especialidades</h2>
+    <p class="intro">A Atena não é um prontuário de cannabis — é uma plataforma RWE de cannabis medicinal cobrindo praticamente todo o espectro de doenças crônicas refratárias no Brasil. Esta escala é o problema que a arquitetura de dados precisa carregar.</p>
+
+    <div class="data-grid">
+      <div class="data-card"><div class="data-num"><em>27</em></div><div class="data-lbl">Condições clínicas cobertas</div></div>
+      <div class="data-card"><div class="data-num"><em>13</em></div><div class="data-lbl">Áreas clínicas com módulos próprios</div></div>
+      <div class="data-card"><div class="data-num"><em>+50</em></div><div class="data-lbl">Instrumentos validados mapeados</div></div>
+      <div class="data-card"><div class="data-num"><em>33</em></div><div class="data-lbl">Especialidades médicas atendidas</div></div>
+    </div>
+
+    <h3>As 13 áreas clínicas</h3>
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>Área</th><th>Condições incluídas</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Dor</td><td>Dor crônica · dor neuropática · fibromialgia · enxaqueca</td></tr>
+          <tr><td>Neurológica</td><td>Epilepsia · síndrome de Tourette · TDAH</td></tr>
+          <tr><td>Psiquiátrica</td><td>Ansiedade · depressão · TEPT · TOC · TCA · psicose</td></tr>
+          <tr><td>TEA</td><td>Transtorno do Espectro Autista</td></tr>
+          <tr><td>Oncologia/Paliativos</td><td>Dor oncológica · náuseas · QV em oncologia</td></tr>
+          <tr><td>Metabólica</td><td>Diabetes tipo 2 · obesidade</td></tr>
+          <tr><td>Ginecológica</td><td>Endometriose · SPM/TDPM</td></tr>
+          <tr><td>Digestiva</td><td>Doença inflamatória intestinal</td></tr>
+          <tr><td>Reumática/Autoimune</td><td>Artrite reumatoide · lúpus · doenças autoimunes</td></tr>
+          <tr><td>Dermatológica</td><td>Psoríase · dermatite atópica</td></tr>
+          <tr><td>Neurodegenerativa</td><td>Alzheimer/demência · Parkinson · esclerose múltipla</td></tr>
+          <tr><td>Dano Cerebral</td><td>Ictus · TCE · dano medular</td></tr>
+          <tr><td>Respiratória/Oftalmológica</td><td>DPOC · glaucoma</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 02 — 4 princípios -->
+  <section>
+    <div class="section-num">02 — OS 4 PRINCÍPIOS FUNDADORES</div>
+    <h2>Inegociáveis · regulam toda decisão de produto</h2>
+    <p class="intro">O Design Mestre + as Considerações Adán convergiram em 4 princípios consolidados que sustentam toda a arquitetura. Qualquer decisão de UX que enfraqueça um deles é uma decisão errada.</p>
+
+    <div class="principles">
+      <div class="principle">
+        <div class="principle-id">P1 · spec v1.0</div>
+        <h5>A superfície é UMA</h5>
+        <p>Não existe WeCann Clínico e WeCann Pesquisa como apps separados. Uma superfície única. O que varia é a linguagem (Camada 2 natural / Camada 3 técnica) e a proatividade da Athena (4 tiers cannabis: none / occasional / frequent / specialist).</p>
+      </div>
+      <div class="principle">
+        <div class="principle-id">P2 · spec v1.0</div>
+        <h5>Pack cannabis UNIVERSAL</h5>
+        <p>Os campos cannabis existem para todos os médicos — sempre. A Atena destaca conforme tier configurado em Configurações &gt; Perfil profissional. Independência: o pack não muda; o que muda é a proatividade da assistência.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-id">P3 · proposta unificada</div>
+        <h5>Infra metodológica universal em linguagem natural</h5>
+        <p>Estrelas, episódio terapêutico, completude, baseline, janelas analíticas (M1/M3/M6/M12), MCID — tudo visível em toda interface (Camada 2). Vocabulário técnico explícito é opt-in (Camada 3). Médico não precisa entender "OMOP CDM" para gerar dados ★★.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-id">P4 · Design Mestre</div>
+        <h5>O sistema empurra ★★ por defeito</h5>
+        <p>Não dependemos de movimento ativo do médico para garantir qualidade mínima publicável. Engenharia de incentivos visíveis (estrelas, marcos, ranking anônimo de completude) faz o trabalho silencioso. Qualidade é gravidade, não opção.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — Hierarquia -->
+  <section>
+    <div class="section-num">03 — ARQUITETURA HIERÁRQUICA</div>
+    <h2>Paciente → Episódio → Visita → Evento</h2>
+    <p class="intro">A estrutura hierárquica dos dados não é um detalhe de banco — é o que torna possível análises de persistência, switching de produto, descontinuação e dose-resposta. O Design Mestre fecha cada nível com regras operativas explícitas.</p>
+
+    <div class="hierarchy">
+      <div class="hier-level l1">
+        <div class="hier-icon">●</div>
+        <div>
+          <div class="hier-name">PACIENTE</div>
+          <div class="hier-desc">Identificado por UUID v4 irreversível · CPF cifrado (AES-256) em tabela separada com log de acesso · nenhum export analítico contém CPF.</div>
+        </div>
+      </div>
+      <div class="hier-level l2">
+        <div class="hier-icon">└</div>
+        <div>
+          <div class="hier-name">EPISÓDIO TERAPÊUTICO</div>
+          <div class="hier-desc">Produto + indicação principal + data de início. Um paciente pode ter <strong>episódios concorrentes</strong> se usar mais de um produto simultaneamente. Mudança de produto = novo episódio. Mudança de dose = evento dentro do episódio (não abre novo).</div>
+        </div>
+      </div>
+      <div class="hier-level l3">
+        <div class="hier-icon">├</div>
+        <div>
+          <div class="hier-name">VISITA</div>
+          <div class="hier-desc">Basal · M1, M3, M6, M12 · evento · descontinuação. Cada visita carrega: núcleo universal + módulos de sintoma ativos + módulos de contexto regulatório.</div>
+        </div>
+      </div>
+      <div class="hier-level l4" style="padding-left: 80px;">
+        <div class="hier-icon">└</div>
+        <div>
+          <div class="hier-name">EVENTO</div>
+          <div class="hier-desc">EA (efeito adverso) · mudança de dose · descontinuação. Sempre vinculado a uma visita ou diretamente ao episódio.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Regras operativas fechadas</h3>
+    <p>Episódio fecha automaticamente com <strong>descontinuação documentada</strong> ou <strong>ausência de registro por &gt; 180 dias</strong>. Isso é crítico: análises de persistência (Kaplan-Meier) dependem desse fechamento determinístico.</p>
+
+    <h3>Dados herdados do agente IA</h3>
+    <p>Antes mesmo do médico abrir a consulta, a Atena já injeta 5 variáveis estruturais que são <strong>confounders críticos</strong> para análises de efetividade:</p>
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>Variável</th><th>Descrição</th><th>Valor metodológico</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ID centro</td><td>Codificado internamente</td><td>Confounder de primeiro nível</td></tr>
+          <tr><td>Tipo de centro</td><td>Privado / Público / Misto</td><td>Variável de ajuste</td></tr>
+          <tr><td>Estado/região</td><td>Brasil</td><td>Confounder geográfico</td></tr>
+          <tr><td>ID prescritor</td><td>Codificado</td><td>Confounder crítico em análises de efetividade</td></tr>
+          <tr><td>Especialidade médica</td><td>Principal</td><td>Variável de estratificação</td></tr>
+          <tr><td>Grau de formação em cannabis</td><td>Tier 1-4 (none/occasional/frequent/specialist)</td><td>Confounder de primeira ordem · Atena adapta proatividade</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 04 — Bifacial -->
+  <section>
+    <div class="section-num">04 — BIFACIAL · A DECISÃO ARQUITETURAL MAIS CRÍTICA</div>
+    <h2>Base prospectiva ★ vs base retrospectiva A–D</h2>
+    <p class="intro">São duas camadas de dados completamente distintas. Confundi-las é o erro mais grave que pode ocorrer na implementação — e o erro mais sutil. Toda decisão de UX precisa preservar essa separação visual.</p>
+
+    <div class="bifacial">
+      <div class="bif-col prosp">
+        <div class="bif-tag">Base prospectiva</div>
+        <h4>★ Qualidade calculada · publicável</h4>
+        <p><strong>Objetivo:</strong> gerar RWE de alta qualidade · publicável · com potencial regulatório.</p>
+        <p><strong>Pré-requisitos antes do paciente 1:</strong></p>
+        <ul>
+          <li>CEP aprovado</li>
+          <li>Pré-registro ClinicalTrials.gov / ReBEC</li>
+          <li>Data dictionary completo</li>
+          <li>SAP (Statistical Analysis Plan) mestre</li>
+          <li>Consentimento em 2 camadas</li>
+        </ul>
+        <p style="margin-top: 14px;"><strong>Indicador:</strong> sistema de estrelas (★☆☆ / ★★☆ / ★★★) calculado automaticamente ao fechamento de cada visita.</p>
+        <p><strong>Aplicação:</strong> coortes para publicação STROBE · análises longitudinais MMRM · persistência KM · farmacovigilância formal · HTA/CONITEC.</p>
+      </div>
+      <div class="bif-col retro">
+        <div class="bif-tag">Base retrospectiva</div>
+        <h4>A–D Qualidade declarada · descritiva</h4>
+        <p><strong>Objetivo:</strong> aproveitar dados clínicos históricos importados para valor imediato ao médico e inteligência descritiva — com declaração explícita das limitações.</p>
+        <p><strong>Pré-requisitos:</strong></p>
+        <ul>
+          <li>Validação estrutural</li>
+          <li>Desidentificação</li>
+          <li>Flag de origem permanente</li>
+          <li>CEP para dados históricos (pode ser emenda)</li>
+        </ul>
+        <p style="margin-top: 14px;"><strong>Indicador:</strong> sistema de letras (A / B / C / D) baseado em ICG (Índice de Completude Geral) ao término da importação.</p>
+        <p><strong>NÃO é válido:</strong> RWE regulatório · farmacovigilância formal · análises de efetividade confirmatórias · publicações de alto impacto · HTA formal.</p>
+      </div>
+    </div>
+
+    <div class="callout critical">
+      <div class="callout-title">Regra de interface inegociável</div>
+      <p>Quando um médico tem dados dos dois tipos (histórico + prospectivo), o dashboard deve exibir <strong>ambas as coortes SEPARADAMENTE</strong>, com indicadores visuais distintos. <strong>Nunca misturar as duas camadas em um mesmo gráfico</strong> sem declaração ativa e visível do operador. Esta é a regra mais frequentemente violada em implementações apressadas.</p>
+    </div>
+  </section>
+
+  <!-- 05 — Granularidade Cannabis DC1 -->
+  <section>
+    <div class="section-num">05 — GRANULARIDADE CANNABIS · DC1</div>
+    <h2>13 campos obrigatórios para cada exposição</h2>
+    <p class="intro">A correção crítica DC1 do Design Mestre exige granularidade farmacológica completa para cada exposição cannabis. Não é "tomou óleo" — é mg/mL de CBD, mg/mL de THC, quimiotipo declarado, ratio calculado, via padronizada, doses D0/Dt/Dmédia. Sem isso, análises dose-resposta são impossíveis.</p>
+
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>Campo</th><th>Formato</th><th>Obrigatoriedade</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Nome comercial</td><td>Texto + catálogo interno ANVISA</td><td>Essencial</td></tr>
+          <tr><td>Concentração CBD</td><td><span class="mono">mg/mL ou mg/unidade</span></td><td>Essencial</td></tr>
+          <tr><td>Concentração THC</td><td><span class="mono">mg/mL ou mg/unidade</span></td><td>Essencial</td></tr>
+          <tr><td>Ratio CBD:THC</td><td>Calculado automaticamente</td><td>Essencial</td></tr>
+          <tr><td>Quimiotipo</td><td>Lista fechada · I · II · III · isolado CBD · isolado THC · outros</td><td>Essencial</td></tr>
+          <tr><td>Via de administração</td><td>Lista fechada · sublingual · oral · inalada · tópica · outros</td><td>Essencial</td></tr>
+          <tr><td>D0 (dose inicial)</td><td><span class="mono">mg CBD/dia + mg THC/dia</span></td><td>Essencial</td></tr>
+          <tr><td>Dt (dose atual)</td><td><span class="mono">mg CBD/dia + mg THC/dia</span> · atualizado a cada visita</td><td>Essencial</td></tr>
+          <tr><td>Dmédia</td><td>Calculada no SAP</td><td>Calculada</td></tr>
+          <tr><td>Cannabinoides minoritários</td><td>CBN · CBG · THCV · CBC (quando presente)</td><td>Importante (v107 pendente)</td></tr>
+          <tr><td>Terpenos</td><td>Perfil terpênico (JSONB) quando declarado</td><td>Importante</td></tr>
+          <tr><td>Custo mensal BRL</td><td>Valor + fonte (bloco 10 da basal)</td><td>Importante</td></tr>
+          <tr><td>Lote / origem</td><td>ANVISA · importação · judicial · associativismo · uso compassivo</td><td>Importante</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Por que essa granularidade</div>
+      <p>Análises dose-resposta exigem mg CBD/dia parseado, não "20 gotas 3×/dia". Comparativos entre produtos exigem ratio + quimiotipo. Farmacoeconomia exige custo mensal. Sem esses 13 campos, a Atena vira "prontuário com nota textual" — exatamente o que ela existe para superar.</p>
+    </div>
+  </section>
+
+  <!-- 06 — Visita Basal 12 blocos -->
+  <section>
+    <div class="section-num">06 — VISITA BASAL · 12 BLOCOS</div>
+    <h2>A estrutura ideal do primeiro encontro</h2>
+    <p class="intro">A visita basal é o momento mais importante de qualidade metodológica. O Design Mestre define 12 blocos com fonte (PRO / ClinRO / Sistêmico), prioridade e tempo estimado. Total ideal &lt; 30 min com PROs via WhatsApp · &gt; 30 min é inaceitável para adoção.</p>
+
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Conteúdo</th><th>Fonte</th><th>Prioridade</th><th>Tempo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">0</td><td>Sistema + consentimento + PROs pré-visita</td><td>Sistêmico</td><td>Essencial</td><td class="mono">2 min</td></tr>
+          <tr><td class="mono">1</td><td>Dados herdados do agente IA</td><td>Sistêmico (automático)</td><td>Essencial</td><td class="mono">0 min</td></tr>
+          <tr><td class="mono">2</td><td>Demográficos (IBGE, ABEP/CCEB)</td><td>PRO + ClinRO</td><td>Essencial</td><td class="mono">2 min</td></tr>
+          <tr><td class="mono">3</td><td>História clínica + CCI calculado</td><td>ClinRO</td><td>Essencial</td><td class="mono">5–8 min</td></tr>
+          <tr><td class="mono">4</td><td>Historial terapêutico prévio + tratamento prévio (DC5)</td><td>ClinRO</td><td>Essencial</td><td class="mono">3–5 min</td></tr>
+          <tr><td class="mono">5</td><td>Medicação concomitante + alertas CBD/THC</td><td>ClinRO</td><td>Essencial</td><td class="mono">3 min</td></tr>
+          <tr><td class="mono">6</td><td>Exposição ao produto (D0/Dt/ratio/quimiotipo/via)</td><td>ClinRO</td><td>Essencial</td><td class="mono">3 min</td></tr>
+          <tr><td class="mono">7</td><td>Outcome primário basal (por indicação)</td><td>PRO/ClinRO</td><td>Essencial</td><td class="mono">3–5 min</td></tr>
+          <tr><td class="mono">8</td><td>EQ-5D-5L / PROMIS GH (provisional)</td><td>PRO</td><td>Essencial</td><td class="mono">3 min</td></tr>
+          <tr><td class="mono">9</td><td>CGI-S basal</td><td>ClinRO</td><td>Essencial</td><td class="mono">1 min</td></tr>
+          <tr><td class="mono">10</td><td>Custo mensal do tratamento (H4)</td><td>PRO</td><td>Essencial</td><td class="mono">2 min</td></tr>
+          <tr><td class="mono">11</td><td>Farmacogenômica (upload de laudo)</td><td>Lab</td><td>Opcional</td><td>—</td></tr>
+          <tr><td class="mono">12</td><td>Notas clínicas livres</td><td>ClinRO</td><td>Opcional</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>DC5 · um bloco crítico camuflado de detalhe</h3>
+    <p>O Bloco 4 contém DC5 (decisão crítica 5) — captura do tratamento prévio. A interface deve nunca misturar pacientes <strong>"naïve" (sem tratamento prévio)</strong> com <strong>"em uso prévio"</strong> sem estratificação declarada. O <code>baseline_type</code> é <strong>imutável após salvar</strong>. Esta regra está atrás do P3 (linguagem natural): médico vê "Sem tratamento prévio" / "Em uso prévio"; sistema grava "naïve" / "em_uso_previo".</p>
+  </section>
+
+  <!-- 07 — Instrumentos -->
+  <section>
+    <div class="section-num">07 — INSTRUMENTOS CLÍNICOS</div>
+    <h2>+50 instrumentos validados · 5 universais · 6 proprietários</h2>
+    <p class="intro">A Atena não é uma plataforma de questionários — é uma plataforma que aplica instrumentos validados internacionalmente no timepoint correto, com versões PT-BR verificadas. Universais aplicam em <em>toda</em> visita. Específicos por indicação aplicam quando o módulo de sintoma ativa.</p>
+
+    <h3>Instrumentos universais · toda visita, todo paciente</h3>
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>Instrumento</th><th>Constructo</th><th>Tipo</th><th>Licença</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>EQ-5D-5L</td><td>QV / utilidade em saúde</td><td>PRO</td><td>Licença comercial (EuroQol) · <strong>crítica</strong></td></tr>
+          <tr><td>PROMIS Global Health</td><td>QV global</td><td>PRO</td><td>Livre (NIH)</td></tr>
+          <tr><td>CGI-S / CGI-C</td><td>Severidade / mudança global</td><td>ClinRO</td><td>Livre</td></tr>
+          <tr><td>PGIC</td><td>Mudança global percebida</td><td>PRO</td><td>Livre</td></tr>
+          <tr><td>WHODAS 2.0 (12 ítens)</td><td>Função e incapacidade global</td><td>PRO</td><td>Livre (OMS) · a partir de M3</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Outcomes primários por indicação</h3>
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>Grupo de indicações</th><th>Outcome primário</th><th>Instrumento</th><th>MCID</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Dor crônica · fibromialgia · neuropática</td><td>Intensidade da dor</td><td>NRS-11</td><td>≥2 pts ou ≥30%</td></tr>
+          <tr><td>Epilepsia</td><td>Frequência de crises</td><td>Diário ILAE</td><td>≥50% redução</td></tr>
+          <tr><td>Ansiedade / TEPT</td><td>Sintomas de ansiedade</td><td>GAD-7 / PCL-5</td><td>4 pts / 10–15 pts</td></tr>
+          <tr><td>Depressão</td><td>Sintomas depressivos</td><td>PHQ-9</td><td>≥5 pts</td></tr>
+          <tr><td>Transtornos do sono</td><td>Gravidade da insônia</td><td>ISI</td><td>≥6 pts</td></tr>
+          <tr><td>Espasticidade</td><td>Intensidade da espasticidade</td><td>NRS espasticidade</td><td>≥2 pts</td></tr>
+          <tr><td>Oncologia / Paliativos</td><td>Dor + náuseas + QV</td><td>BPI + MAT + EQ-5D-5L</td><td>Composto</td></tr>
+          <tr><td>Todos os pacientes</td><td>Qualidade de vida</td><td>EQ-5D-5L</td><td>MCID populacional brasileiro</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Instrumentos proprietários · plano de incorporação por fase</h3>
+    <p>EQ-5D-5L (EuroQol Group) é o caso crítico — indispensável para QALY/HTA. PROMIS GH é a alternativa livre no MVP, mas <strong>não gera índice de utilidade</strong>. Prazo máximo de 6 meses pós-MVP para resolver a licença comercial.</p>
+  </section>
+
+  <!-- 08 — Sistema de qualidade -->
+  <section>
+    <div class="section-num">08 — SISTEMA DE QUALIDADE DUAL</div>
+    <h2>★ para prospectivo · A–D para retrospectivo · sem mistura</h2>
+    <p class="intro">As estrelas substituem o semáforo de cores como indicador de qualidade. Cores quentes (vermelho/laranja/amarelo) ficam reservadas exclusivamente para alertas clínicos e de segurança. Esta regra é frequentemente violada quando designers tentam "alegrar" a interface.</p>
+
+    <h3>Estrelas · base prospectiva</h3>
+    <div style="background: white; border: 1px solid var(--line); border-radius: 8px; padding: 0 28px; margin: 16px 0;">
+      <div class="star-level">
+        <div class="star-display bronze">★ ☆ ☆</div>
+        <div class="star-content">
+          <h4>Acompanhamento clínico padrão</h4>
+          <div class="star-criteria">Core dataset essencial completo + EQ-5D-5L / PROMIS presente + ≥1 módulo de sintoma + EAs se aplicável + consentimento camada 1.</div>
+          <div class="star-uses">Usos válidos: prática clínica · dashboard do médico · análises descritivas básicas</div>
+        </div>
+      </div>
+      <div class="star-level">
+        <div class="star-display silver">★ ★ ☆</div>
+        <div class="star-content">
+          <h4>Apto para publicação científica · <strong style="color: var(--teal);">PADRÃO POR DEFEITO</strong></h4>
+          <div class="star-criteria">Tudo de ★☆☆ + covariáveis de ajuste ≥80% + outcome primário em basal e ≥1 seguimento + consentimento camada 2 + completude core dataset ≥85%.</div>
+          <div class="star-uses">Usos válidos: publicação STROBE · análises de mudança (MMRM) · análises de resposta · persistência (KM)</div>
+        </div>
+      </div>
+      <div class="star-level">
+        <div class="star-display gold">★ ★ ★</div>
+        <div class="star-content">
+          <h4>Apto para uso regulatório</h4>
+          <div class="star-criteria">Tudo de ★★☆ + rastreabilidade completa (timestamps, log de auditoria) + CEP ativo vinculado + SAP referenciado + completude ≥90% + designação manual pelo operador/comitê.</div>
+          <div class="star-uses">Usos válidos: interlocução regulatória ANVISA/FDA/EMA · PSUR · HTA/CONITEC</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-title">Filtro técnico obrigatório</div>
+      <p>O sistema deve <strong>impedir tecnicamente</strong> que análises de nível ★★ ou ★★★ incluam episódios que não atingem o nível mínimo. Esta não é convenção — é filtro obrigatório no motor analítico. Análise ★★★ exclui ★☆☆ e ★★☆ silenciosamente.</p>
+    </div>
+
+    <h3>Letras · base retrospectiva</h3>
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>Nível</th><th>Nome</th><th>ICG</th><th>Critérios</th><th>Análises permitidas</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">A</td><td>Alta qualidade relativa</td><td class="mono">≥75%</td><td>Identificação + exposição + diagnóstico ≥80%; ≥2 visitas em ≥60%; ≥1 desfecho em ≥60%; n≥200/indicação</td><td>Descritivas robustas · comparativas exploratórias · geração de hipóteses</td></tr>
+          <tr><td class="mono">B</td><td>Qualidade média</td><td class="mono">50–74%</td><td>Identificação ≥80%; diagnóstico ≥70%; exposição ≥60%; desfecho em ≥40%; n≥50/indicação</td><td>Descritivas básicas · dashboard do médico</td></tr>
+          <tr><td class="mono">C</td><td>Qualidade baixa / uso restrito</td><td class="mono">30–49%</td><td>Identificação ≥70%; diagnóstico ≥50%; sem desfecho formal; ou n&lt;50</td><td>Apenas descritivas muito básicas (contagens) · alerta visual proeminente obrigatório</td></tr>
+          <tr><td class="mono">D</td><td>Insuficiente · Quarentena</td><td class="mono">&lt;30%</td><td>ICG &lt;30%; ou sem ID; ou sem datas válidas &gt;30%; ou sem diagnóstico &gt;50%; ou sem produto &gt;50%</td><td>Nenhuma análise agregada · quarentena ativa</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 09 — Submodelos -->
+  <section>
+    <div class="section-num">09 — SUBMODELOS ESPECIAIS</div>
+    <h2>Pediátrico · Gestacional · variações por contexto</h2>
+    <p class="intro">Não é "esquema único" — a Atena ativa submodelos automáticos por contexto, mantendo o pack universal e adicionando camadas. Pediátrico exige fontes distintas de informação (ObsRO cuidador vs PRO paciente). Gestacional bloqueia cannabis e adapta toda a UI.</p>
+
+    <h3>Submodelo pediátrico</h3>
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>Faixa etária</th><th>Fonte primária</th><th>Instrumentos</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">&lt; 12 anos</td><td>ObsRO cuidador principal</td><td>EQ-5D-Y · ABC · WeeFIM · CSHQ · ADHD-RS-5</td></tr>
+          <tr><td class="mono">12–17 anos</td><td>PRO adolescente + ObsRO cuidador (ambas coletadas e analisadas separadamente)</td><td>Dupla coleta obrigatória</td></tr>
+          <tr><td class="mono">≥ 18 anos</td><td>PRO paciente</td><td>Instrumentos adulto padrão</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout critical">
+      <div class="callout-title">Regra inegociável · dados pediátricos</div>
+      <p>Dados pediátricos são analisados <strong>sempre em subgrupo separado</strong> — nunca misturados com adultos no análise primário. O dashboard separa visualmente.</p>
+    </div>
+
+    <h3>Submodelo gestacional</h3>
+    <p>Ativação automática quando paciente gestante é declarada. <strong>Cannabis é contraindicação absoluta na gestação</strong> (ACOG 2022 + SBP 2022) — a Atena bloqueia prescrição cannabis e adapta toda a microcopy. UI ganha banners de alerta e o módulo de farmacovigilância usa schema E2B-R3 para exposição gestacional.</p>
+  </section>
+
+  <!-- 10 — Schema RWE + Farmaco -->
+  <section>
+    <div class="section-num">10 — SCHEMA RWE + FARMACOVIGILÂNCIA</div>
+    <h2>A camada de pesquisa · onde nenhum concorrente chega</h2>
+    <p class="intro">O schema <code>rwe.*</code> é uma infraestrutura de pesquisa clínica completa — dezenas de tabelas especializadas, funções automatizadas, triggers de integridade. Auditada pelo coordenador científico. Integralmente versionada. <strong>Concorrentes genéricos levariam 24-36 meses para replicar.</strong></p>
+
+    <h3>Tabelas centrais do schema RWE</h3>
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>Tabela</th><th>Função</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="mono">rwe.condition_episodes</span></td><td>Eixo por condição clínica · cada paciente com Epilepsia tem um episódio · com Parkinson outro</td></tr>
+          <tr><td><span class="mono">rwe.therapeutic_arms</span></td><td>Braços terapêuticos dentro do episódio · cannabis · convencional · combinado</td></tr>
+          <tr><td><span class="mono">rwe.exposures</span></td><td>D0 · Dt · Dmédia · CBD e THC separados · formulação · terpenos · custo · lote</td></tr>
+          <tr><td><span class="mono">rwe.dose_change_events</span></td><td>Histórico de mudança de dose · núcleo da análise dose-resposta</td></tr>
+          <tr><td><span class="mono">rwe.instruments</span></td><td>Catálogo extenso de escalas validadas · PHQ-9 · GAD-7 · NRS · ISI · EQ-5D · MDS-UPDRS · RBDSQ · C-SSRS · MoCA · PRO-CTCAE completo</td></tr>
+          <tr><td><span class="mono">rwe.timepoints</span></td><td>pre_basal · baseline · M1 · M3 · M6 · M12 · define quando cada instrumento deve ser aplicado</td></tr>
+          <tr><td><span class="mono">rwe.pre_basal_responses</span></td><td>PROs pré-basais com validade de 60 dias e promoção médica confirmada</td></tr>
+          <tr><td><span class="mono">rwe.outcomes</span></td><td>1 outcome por timepoint do episódio · UNIQUE constraint · núcleo das análises P1 e P3</td></tr>
+          <tr><td><span class="mono">rwe.adverse_events</span></td><td>Farmacovigilância · causalidade WHO-UMC · terminologia MedDRA</td></tr>
+          <tr><td><span class="mono">rwe.cssrs_alerts</span></td><td>Risco suicida · protocolo F2: ≥3 → escalada médica ≤15min</td></tr>
+          <tr><td><span class="mono">rwe.gestational_exposures</span></td><td>Exposição durante gestação · E2B-R3 ready</td></tr>
+          <tr><td><span class="mono">rwe.research_consent</span></td><td>TCLE 2 camadas · 5 tipos (adulto eletrônico · pediátrico 0-6/7-11/12-17 · dispensa retrospectiva)</td></tr>
+          <tr><td><span class="mono">rwe.research_subjects</span></td><td>ÚNICA tabela que mapeia patient_id → research_id pseudonimizado · todo resto do schema usa research_id</td></tr>
+          <tr><td><span class="mono">rwe.product_catalog</span></td><td>39 produtos · CBD/THC · formulação · via regulatória · terpenos · forma farmacêutica</td></tr>
+          <tr><td><span class="mono">rwe.ethics_approvals</span></td><td>CAAE · parecer · emendas</td></tr>
+          <tr><td><span class="mono">rwe.protocol_versions</span></td><td>Versionamento CEP</td></tr>
+          <tr><td><span class="mono">rwe.data_lineage</span></td><td>Rastreabilidade · cada row em rwe.* aponta para origem em public.* · append-only · imutável (exigência CEP)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Critérios automáticos de alerta EAS</h3>
+    <p>O Design Mestre define alertas <strong>não-dismissíveis</strong> em farmacovigilância: desfecho = morte · ameaça de vida · hospitalização + causalidade ≥possível · grau CTCAE 4 ou 5 · termos MedDRA de psicose / ideação suicida · convulsão de nova aparição sem epilepsia.</p>
+    <p>Fluxo: sistema detecta → alerta automático → rascunho ANVISA pré-preenchido → médico revisa e assina → envio manual via VigiMed → sistema monitora prazo (7 dias EAS críticos · 15 dias demais).</p>
+  </section>
+
+  <!-- 11 — Interop -->
+  <section>
+    <div class="section-num">11 — INTEROPERABILIDADE</div>
+    <h2>OMOP CDM v5.4 + FHIR R4 + SNOMED</h2>
+    <p class="intro">A Atena não é "exportável" — ela <em>nasce</em> em padrões internacionais. Cada paciente registrado já está em OMOP. Cada documento clínico já está em FHIR. Cada CID/escala já é mapeável para SNOMED. Sem migração futura, sem retrabalho.</p>
+
+    <div class="data-grid">
+      <div class="data-card"><div class="data-num"><em>40</em></div><div class="data-lbl">Tabelas OMOP CDM v5.4</div></div>
+      <div class="data-card"><div class="data-num"><em>5,1M</em></div><div class="data-lbl">Conceitos vocabulários Athena</div></div>
+      <div class="data-card"><div class="data-num"><em>FHIR</em></div><div class="data-lbl">R4 nativo · documentos clínicos</div></div>
+      <div class="data-card"><div class="data-num"><em>SNOMED</em></div><div class="data-lbl">CID-10 mapeado bidirecionalmente</div></div>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- PART B · O QUE FALTA NA UX -->
+  <!-- ===================================================== -->
+  <div class="part-header" style="background: linear-gradient(135deg, #5a1f5e 0%, #3a0f3f 100%);">
+    <div class="part-eyebrow">Parte B · 12–15</div>
+    <h2>O que ainda não atravessou o portal da UX</h2>
+    <p>Análise arquitetural independente · Design Mestre × Conformidade v107 × MVP vivo · gaps priorizados.</p>
+  </div>
+
+  <!-- 12 — Triangulação -->
+  <section>
+    <div class="section-num">12 — A TRIANGULAÇÃO ARQUITETURAL</div>
+    <h2>Design Mestre · v107 · MVP vivo · três níveis de fidelidade</h2>
+    <p class="intro">A arquitetura do Design Mestre é a régua. A v107 prova em laboratório que dá para implementar. O MVP vivo é onde o usuário real entra em contato com o sistema. Este capítulo cruza as três fontes do ponto de vista de <em>fidelidade arquitetural</em> — granularidade de dados, hierarquia, bifacialidade, instrumentação, qualidade dual, submodelos. Não estamos avaliando UX, cores ou tipografia aqui. A pergunta é: <strong>quanto de cada exigência das seções 01-10 chegou ao produto vivo?</strong></p>
+
+    <div class="triangulation">
+      <div class="tri-col">
+        <h4>Design Mestre</h4>
+        <div class="tri-stat">100%</div>
+        <p><strong>A régua.</strong> Tudo que a arquitetura define que a Atena deve endereçar · 11 seções consolidadas · 5 decisões críticas DC1-DC5 · v1.0 auditada e versionada.</p>
+      </div>
+      <div class="tri-col warn">
+        <h4>v107 · protótipo estático</h4>
+        <div class="tri-stat">94%</div>
+        <p><strong>A prova em laboratório.</strong> 100% R1-R5 · 100% C1-C8 · 100% A1-A6 · 11/12 lacunas · 9/10 não-negociáveis · 11/13 campos DC1 · estrutura bifacial renderizada · timepoints estruturais · wizard basal 12 blocos · estrelas universais Camada 2.</p>
+      </div>
+      <div class="tri-col bad">
+        <h4>MVP vivo · estado de produção</h4>
+        <div class="tri-stat">parcial</div>
+        <p><strong>O que chegou ao usuário real.</strong> Boa parte das estruturas arquiteturais inexiste ou está implementada parcialmente. Granularidade DC1 fragmentada · bifacialidade não renderizada · episódio terapêutico ausente como entidade · timepoints implícitos · estrelas restritas a poucas telas · submodelos inexistentes.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Escopo desta análise · independência metodológica</div>
+      <p>A avaliação do MVP vivo aqui é <strong>arquitetural</strong>, não estética. Não estamos avaliando paleta, tipografia, micro-interações ou hierarquia visual — isso é trabalho da Atom. Também não avaliamos telas planejadas mas não construídas (Contabilidade, Financeiro), pois pertencem à Fase 2 do projeto. Avaliamos exclusivamente: <strong>quanto da arquitetura definida nas seções 01-10 deste documento já está implementado e funcionando no produto vivo</strong> — independentemente de como esteja visualmente apresentado.</p>
+    </div>
+
+    <h3>Análise arquitetural · v107 vs Design Mestre</h3>
+    <p>A v107 cobre 94% do Design Mestre. Os 6% restantes não são triviais e precisam ser nomeados para que a Atom os incorpore no redesign:</p>
+
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr>
+            <th>Exigência arquitetural</th>
+            <th>Seção</th>
+            <th>Estado no v107</th>
+            <th>O que falta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Granularidade Cannabis · DC1</td>
+            <td>05</td>
+            <td>11/13 campos implementados</td>
+            <td>Cannabinoides minoritários (CBN, CBG, THCV, CBC) e chip de custo mensal BRL na sub-bandeja.</td>
+          </tr>
+          <tr>
+            <td>Schema RWE · 16 tabelas</td>
+            <td>10</td>
+            <td>15/16 implementadas</td>
+            <td><span class="mono">rwe.product_catalog</span> · estrutura existe, mas catálogo cannabis não totalmente populado com cadastros canônicos por marca/lote.</td>
+          </tr>
+          <tr>
+            <td>Submodelos · pediátrico/gestacional</td>
+            <td>09</td>
+            <td>Auto-detecção implementada</td>
+            <td>Validação clínica do conjunto ObsRO/PRO/Z-scores WHO pendente de revisão metodológica final.</td>
+          </tr>
+          <tr>
+            <td>Bloco 11 da basal · farmacogenômica</td>
+            <td>06</td>
+            <td>Não implementado</td>
+            <td>L12 · bloco opcional · upload de laudo farmacogenômico não exposto na UI do wizard.</td>
+          </tr>
+          <tr>
+            <td>Performance · sub-1.5s primeira interação</td>
+            <td>—</td>
+            <td>Não mensurado</td>
+            <td>Requer load testing em ambiente de produção (Lighthouse, WebPageTest).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top: 16px;">Conclusão sobre o v107: <strong>arquiteturalmente o protótipo é fiel ao Design Mestre</strong>. As lacunas existentes são pontuais e bem documentadas. O v107 cumpre seu papel como referência canônica do que precisa atravessar para a produção.</p>
+
+    <h3>Análise arquitetural · MVP vivo vs Design Mestre</h3>
+    <p>Esta é a análise mais importante deste documento para o trabalho da Atom6. Avaliação focada exclusivamente em <strong>quanto da arquitetura definida nas seções 01-10 já está renderizado no produto vivo</strong>. Cada item abaixo refere à seção correspondente deste documento.</p>
+
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr>
+            <th>Exigência arquitetural</th>
+            <th>Seção</th>
+            <th>Estado MVP vivo</th>
+            <th>Gap arquitetural</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hierarquia Paciente → Episódio → Visita → Evento</td>
+            <td>03</td>
+            <td>Parcial</td>
+            <td><strong>Episódio terapêutico não existe como entidade visível.</strong> Paciente é renderizado como lista cronológica de consultas. Não há fechamento determinístico de episódio por descontinuação ou 180 dias sem registro.</td>
+          </tr>
+          <tr>
+            <td>Bifacial · prospectivo ★ vs retrospectivo A–D</td>
+            <td>04</td>
+            <td>Ausente</td>
+            <td><strong>Não há chip bifacial.</strong> A interface não distingue visualmente coortes prospectivas de retrospectivas. Risco de mistura silenciosa em dashboards e exports.</td>
+          </tr>
+          <tr>
+            <td>Granularidade Cannabis · 13 campos por exposição (DC1)</td>
+            <td>05</td>
+            <td>Parcial · ~6/13</td>
+            <td><strong>Dose terapêutica não capturada como campo.</strong> Ratio CBD:THC em texto livre. Cannabinoides minoritários ausentes. Custo mensal capturado em campo livre. Lote, fabricante e via de administração inconsistentes.</td>
+          </tr>
+          <tr>
+            <td>Visita basal · 12 blocos universais</td>
+            <td>06</td>
+            <td>Parcial</td>
+            <td>Wizard estruturado não existe. Anamnese é campo livre com modelos. Os 12 blocos (identificação, queixa, comorbidades, medicações, alergias, exame, instrumentos, contexto social, hábitos, cannabis prévia, farmacogenômica, consentimento) estão dispersos sem fluxo guiado.</td>
+          </tr>
+          <tr>
+            <td>Instrumentos clínicos universais + proprietários</td>
+            <td>07</td>
+            <td>Restrito</td>
+            <td>PHQ-9, GAD-7, EVA aplicáveis mas <strong>sem janelas analíticas estruturais</strong> (M1/M3/M6/M12). Outcomes primários por indicação não vinculados ao episódio. Aplicação é evento solto, não componente de timepoint.</td>
+          </tr>
+          <tr>
+            <td>Timepoints estruturais · M1/M3/M6/M12</td>
+            <td>03 · 07 · 10</td>
+            <td>Ausente</td>
+            <td><strong>Linha do tempo é cronológica</strong>, não estruturada por timepoints. Sistema não sabe se aquela aplicação de escala é "M3 do episódio X" ou "evento solto".</td>
+          </tr>
+          <tr>
+            <td>Qualidade dual · estrelas ★ + letras A-D</td>
+            <td>08</td>
+            <td>Restrito a algumas telas</td>
+            <td>Estrelas visíveis na Consulta e parcialmente em Casuística. <strong>Ausentes</strong> na lista de pacientes, Paciente 360, pós-consulta. Sistema de letras A-D não implementado no produto vivo.</td>
+          </tr>
+          <tr>
+            <td>Submodelos · pediátrico e gestacional</td>
+            <td>09</td>
+            <td>Ausente</td>
+            <td><strong>Auto-detecção por idade/gestação inexistente.</strong> Pediatra usa as mesmas telas do adulto. Sem ObsRO cuidador, sem Z-scores WHO, sem ajuste de bloco gestacional.</td>
+          </tr>
+          <tr>
+            <td>Schema RWE · 16 tabelas</td>
+            <td>10</td>
+            <td>Backend parcial · UI inexistente</td>
+            <td>Tabelas existem no banco, mas a UI não expõe as entidades correspondentes. <span class="mono">rwe.condition_episodes</span>, <span class="mono">rwe.timepoints</span>, <span class="mono">rwe.outcomes</span> são invisíveis ao médico — quando deveriam ser entidades primárias de navegação.</td>
+          </tr>
+          <tr>
+            <td>Consentimento em 2 camadas com versão</td>
+            <td>10</td>
+            <td>Parcial</td>
+            <td>TCLE genérico sem distinção visual entre clínico (obrigatório) e pesquisa (opt-in granular). Versão e timestamp registrados no backend mas <strong>não expostos ao médico</strong>.</td>
+          </tr>
+          <tr>
+            <td>Dualidade C2 (natural) / C3 (técnica)</td>
+            <td>02 · 08</td>
+            <td>Inconsistente</td>
+            <td>Sem regra clara. Alguns campos em linguagem técnica direta, outros em linguagem clínica, sem dualidade explícita. Snake_case técnico vazando em pelo menos um label (<span class="mono">controle_especial</span>).</td>
+          </tr>
+          <tr>
+            <td>Interoperabilidade OMOP CDM v5.4 / FHIR R4 / SNOMED</td>
+            <td>11</td>
+            <td>Backend · não exposto</td>
+            <td>Mapeamentos existem, mas o médico não tem evidência visual de que os dados são interoperáveis. Ausência de indicador de "qualidade de codificação" por consulta.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-title">Leitura objetiva da análise · MVP vivo</div>
+      <p>Das 12 exigências arquiteturais centrais derivadas das seções 01-10, <strong>nenhuma está plenamente implementada no MVP vivo</strong>. Aproximadamente metade das exigências está em estado parcial ou backend-only · a outra metade está ausente da UI. Isso não é um julgamento de qualidade do MVP — é uma constatação de que o produto vivo está em fase inicial em relação à arquitetura projetada, e o trabalho da Atom6 é exatamente trazer essa arquitetura para a superfície do usuário.</p>
+    </div>
+
+    <h3>Como ler esse delta</h3>
+    <p>A Atom6 não está desenhando do zero. Está fazendo a tradução: pegar tudo que a arquitetura definiu (Design Mestre · seções 01-10) e que o v107 já implementou em laboratório (94%) · e renderizar isso no produto vivo com a disciplina, clareza e fluência que o médico precisa para confiar. A próxima seção (13) faz o walkthrough detalhado dessas exigências arquiteturais — por que cada uma existe, o que está em jogo se não chegar à UI.</p>
+  </section>
+
+  <!-- 13 — Walkthrough Design Mestre -->
+  <section>
+    <div class="section-num">13 — WALKTHROUGH DETALHADO DO DESIGN MESTRE</div>
+    <h2>Por que cada decisão arquitetural existe</h2>
+    <p class="intro">Esta seção é a leitura guiada das seções 01-10 para a Atom. Para cada decisão estrutural, explicamos <strong>o problema clínico ou metodológico que ela resolve</strong> — e portanto o que se perde se ela não atravessar para a UI. Não é redundância das seções anteriores; é a camada de <em>racional</em> que falta. Foco em seis blocos arquiteturais críticos: <strong>bifacial · episódio terapêutico · timepoints · schema RWE · qualidade dual · submodelos</strong>.</p>
+
+    <!-- WALKTHROUGH 1 · BIFACIAL -->
+    <h3>1 · Bifacial — por que prospectivo e retrospectivo nunca se misturam</h3>
+    <p><strong>O problema clínico-metodológico:</strong> em medicina canabinoide brasileira, a maior parte dos dados disponíveis é histórica e foi coletada de forma não-padronizada — pacientes que já estavam em tratamento quando o sistema foi adotado, importação de prontuários antigos, dados declarados retroativamente. Esses dados têm valor (descrevem realidade clínica), mas não têm qualidade para inferência causal, para farmacovigilância formal ou para submissão regulatória.</p>
+    <p>Ao mesmo tempo, queremos gerar <em>novos</em> dados com qualidade de RWE publicável e potencialmente regulatório — coletados prospectivamente, com pré-registro do estudo, consentimento em 2 camadas, instrumentos validados aplicados em janelas analíticas estruturais, plano estatístico definido <em>antes</em> da análise.</p>
+    <p>Se os dois universos se misturam silenciosamente em qualquer análise — um dashboard de "efetividade do produto X", um relatório de farmacovigilância, uma publicação STROBE — o trabalho científico se torna inválido. Pior: o INPI regulatório (ANVISA) e a comunidade científica (peer review) rejeitarão o conjunto.</p>
+    <p><strong>A decisão arquitetural:</strong> bifacialidade obrigatória. Dados prospectivos recebem sistema de estrelas (★☆☆ / ★★☆ / ★★★) calculado automaticamente ao fechamento de cada visita. Dados retrospectivos recebem sistema de letras (A / B / C / D) baseado em ICG ao término da importação. <strong>Os dois nunca aparecem no mesmo agregado sem declaração ativa do usuário</strong>. A flag de origem é permanente e visualmente persistente.</p>
+    <p><strong>Implicação para a UI:</strong> qualquer tela que mostra agregados (Casuística, dashboards, exports, coortes para publicação) precisa de um <em>bifacial chip</em> visível e não-removível. Filtros precisam permitir alternar entre "só prospectivo", "só retrospectivo" ou "ambos com declaração". Em nenhum momento o sistema deve permitir um agregado misturado sem aviso explícito.</p>
+    <p><strong>Custo de não trazer isto à UI:</strong> publicação rejeitada · regulatório bloqueado · risco de litígio científico · perda de credibilidade junto a CEP/comissões de pesquisa.</p>
+
+    <!-- WALKTHROUGH 2 · EPISÓDIO -->
+    <h3>2 · Episódio terapêutico — por que paciente não é a unidade de análise</h3>
+    <p><strong>O problema clínico-metodológico:</strong> em prontuários convencionais, a unidade de análise é o paciente. "Maria, 47 anos, fibromialgia, em tratamento desde 2023". Isso funciona para cuidado individual, mas <em>quebra</em> análises científicas. Por quê? Porque Maria, ao longo de 3 anos, pode ter usado três produtos diferentes (Produto A por 8 meses, depois Produto B por 6 meses, depois Produto C há um ano). Misturar essas três fases em uma única estatística "Maria respondeu ao tratamento" perde toda a informação relevante: <em>qual</em> produto, em <em>qual</em> dose, por <em>quanto tempo</em>, com <em>qual</em> resposta.</p>
+    <p>A unidade científica correta é o <strong>episódio terapêutico</strong>: produto + indicação principal + data de início. Um paciente pode ter múltiplos episódios sequenciais (switching de produto) ou concorrentes (uso simultâneo de dois produtos, comum em manejo de dor + ansiedade). Cada episódio tem suas próprias visitas (basal, M1, M3, M6, M12), seus próprios instrumentos aplicados, seus próprios eventos adversos, seu próprio fechamento.</p>
+    <p><strong>A decisão arquitetural:</strong> hierarquia Paciente → Episódio → Visita → Evento. Episódio fecha automaticamente com descontinuação documentada ou ausência de registro &gt; 180 dias (regra determinística para permitir análises de persistência Kaplan-Meier). Mudança de produto = novo episódio. Mudança de dose dentro do mesmo produto = evento dentro do episódio.</p>
+    <p><strong>Implicação para a UI:</strong> ao abrir um paciente, a primeira entidade visível não é "lista de consultas" — é "lista de episódios". Cada episódio é um cartão expansível com seu produto, indicação, datas, visitas marcadas no calendário M1/M3/M6/M12, status (ativo / em descontinuação / fechado), grau de completude. A consulta é um evento <em>dentro</em> de um episódio. O médico cria episódios quando inicia tratamento; o sistema fecha automaticamente quando o critério se cumpre.</p>
+    <p><strong>Custo de não trazer isto à UI:</strong> análises de switching impossíveis · curvas de persistência distorcidas · farmacovigilância confunde EA do produto A com EA do produto B · publicações precisam de retrabalho manual de codificação · médico não percebe que paciente tem dois tratamentos concorrentes.</p>
+
+    <!-- WALKTHROUGH 3 · TIMEPOINTS -->
+    <h3>3 · Timepoints estruturais — por que M1, M3, M6, M12 não são datas soltas</h3>
+    <p><strong>O problema clínico-metodológico:</strong> para que análises longitudinais (MMRM, mixed models, GEE) funcionem em RWE, os pontos de medida precisam ser <em>estruturalmente comparáveis</em>. "Maria respondeu PHQ-9 = 14 em 03/02/2024 e PHQ-9 = 8 em 17/09/2024" é informação cronológica — mas não é informação analítica até que se saiba que a primeira medida é a basal e a segunda é, digamos, M6 do episódio.</p>
+    <p>Timepoints estruturais permitem responder perguntas como: "qual a redução média de PHQ-9 em M3 dos pacientes com depressão refratária no produto X?" — isso é análise longitudinal. Sem timepoints, só dá para responder: "qual a média de PHQ-9 nos pacientes do produto X em algum momento?" — isso é uma observação descritiva quase sem valor.</p>
+    <p><strong>A decisão arquitetural:</strong> cada episódio tem janelas analíticas pré-definidas — pré-basal (até 30 dias antes), basal (D0), M1 (30 ± 7 dias), M3 (90 ± 14 dias), M6 (180 ± 21 dias), M12 (365 ± 28 dias). Quando o médico aplica um instrumento dentro de uma janela, o sistema vincula automaticamente ao timepoint correspondente do episódio. O médico não precisa pensar nisso — o sistema reconhece a janela.</p>
+    <p><strong>Implicação para a UI:</strong> a tela de consulta precisa mostrar o <em>timepoint atual</em> daquele episódio ("você está em M3 desse episódio · janela de aplicação termina em 4 dias"). A coluna da Athena precisa sinalizar quando uma escala estruturalmente esperada não foi aplicada ("M3 fechando sem PHQ-9 · aplicar agora?"). A timeline do paciente precisa mostrar pontos discretos M1/M3/M6/M12 em vez de uma linha contínua de datas.</p>
+    <p><strong>Custo de não trazer isto à UI:</strong> impossibilidade de análise MMRM · publicações longitudinais inviáveis · médico aplica escala fora da janela e o dado perde valor para o estudo · ranking de completude por timepoint perde sentido.</p>
+
+    <!-- WALKTHROUGH 4 · SCHEMA RWE -->
+    <h3>4 · Schema RWE — por que 16 tabelas e não um único formulário</h3>
+    <p><strong>O problema clínico-metodológico:</strong> dados clínicos em prontuário convencional são amorfos — texto livre, datas dispersas, sem mapeamento ontológico. Para que esses dados sirvam a Real-World Evidence, precisam ser <em>estruturados</em> em entidades reconhecíveis por padrões internacionais (OMOP CDM, FHIR, SNOMED). Cada conceito clínico (uma exposição a medicamento, uma medida de instrumento, um evento adverso) precisa de sua tabela própria, suas chaves, seus relacionamentos.</p>
+    <p>Sem essa estrutura, a Atena é só mais um prontuário bonito. Com ela, a Atena é uma fonte de evidência mundial sobre medicina canabinoide. A diferença é técnica, mas o efeito comercial e científico é absoluto.</p>
+    <p><strong>A decisão arquitetural:</strong> 16 tabelas no schema RWE. As principais:</p>
+    <div class="table-frame">
+      <table>
+        <thead>
+          <tr><th>Tabela</th><th>O que captura</th><th>Por que é separada</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="mono">rwe.condition_episodes</span></td><td>Episódios terapêuticos (produto + indicação + datas)</td><td>Unidade central de análise — sem ela, dados são por-paciente, não por-tratamento.</td></tr>
+          <tr><td><span class="mono">rwe.exposures</span></td><td>Cada exposição a produto cannabis com 13 campos DC1</td><td>Permite análises de dose-resposta, switching, descontinuação.</td></tr>
+          <tr><td><span class="mono">rwe.instruments</span></td><td>Aplicações de PHQ-9, GAD-7, EVA, outcomes primários, etc.</td><td>Cada aplicação é um data point analítico individual.</td></tr>
+          <tr><td><span class="mono">rwe.timepoints</span></td><td>Janelas analíticas (pré-basal, basal, M1, M3, M6, M12)</td><td>Estrutura temporal das visitas — permite análises longitudinais.</td></tr>
+          <tr><td><span class="mono">rwe.outcomes</span></td><td>Outcomes primários e secundários por indicação</td><td>Variável dependente das análises de efetividade.</td></tr>
+          <tr><td><span class="mono">rwe.adverse_events</span></td><td>EA com CTCAE v5.0 + MedDRA + WHO-UMC</td><td>Farmacovigilância formal — não pode misturar com outcome.</td></tr>
+          <tr><td><span class="mono">rwe.research_consent</span></td><td>Consentimento em 2 camadas com timestamp e versão</td><td>Base legal para uso dos dados em pesquisa.</td></tr>
+          <tr><td><span class="mono">rwe.research_subjects</span></td><td>Inclusão/exclusão de pacientes em cada coorte/estudo</td><td>Definir <em>qual</em> paciente entra em <em>qual</em> análise.</td></tr>
+          <tr><td><span class="mono">rwe.product_catalog</span></td><td>Catálogo canônico de produtos cannabis por marca/lote</td><td>Padroniza nomes — "Cannabidiol 200mg/mL" não é o mesmo que "CBD 20%".</td></tr>
+          <tr><td><span class="mono">rwe.data_lineage</span></td><td>Origem, transformações e versão de cada dado</td><td>Auditoria reversa — quem inseriu, quando, com qual versão de schema.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Implicação para a UI:</strong> não é que o médico precise ver o nome das tabelas — pelo contrário, ele nunca deve ver. Mas as entidades correspondentes precisam estar acessíveis: episódios como cartões, exposições como blocos do prontuário, instrumentos como aplicações vinculadas, EA com classificação CTCAE visível, consentimento granular nas configurações do paciente. <strong>Cada tabela do schema deve ter uma "manifestação visual"</strong> na UI — caso contrário, o backend está sustentando uma realidade que o usuário não percebe.</p>
+    <p><strong>Custo de não trazer isto à UI:</strong> o backend acumula dados estruturados que o frontend não aproveita. Médico digita em texto livre o que poderia ser estruturado. Conversão para OMOP exige retrabalho manual. Casuística perde resolução analítica.</p>
+
+    <!-- WALKTHROUGH 5 · QUALIDADE DUAL -->
+    <h3>5 · Qualidade dual — por que dois sistemas (estrelas e letras) coexistem</h3>
+    <p><strong>O problema clínico-metodológico:</strong> qualidade de dado prospectivo e qualidade de dado retrospectivo se medem por critérios diferentes. Para o prospectivo, qualidade significa "preencheu todos os campos exigidos pelo protocolo + dentro da janela + com consentimento de pesquisa ativo". Para o retrospectivo, qualidade significa "o dado importado é completo o suficiente para descrição clínica, mesmo que faltem timepoints estruturais e instrumentos validados".</p>
+    <p>Se usássemos um único sistema (digamos, estrelas para tudo), os dados retrospectivos sempre apareceriam como ★☆☆ (baixa qualidade), o que é injusto — eles têm valor clínico real. E os dados prospectivos seriam comparados em uma régua que não distingue qualidades intermediárias com clareza.</p>
+    <p><strong>A decisão arquitetural:</strong> sistema dual.</p>
+    <div class="table-frame" style="margin-top: 12px;">
+      <table>
+        <thead><tr><th>Faceta</th><th>Indicador</th><th>Calculado quando</th><th>Para que serve</th></tr></thead>
+        <tbody>
+          <tr><td>Prospectivo</td><td>★☆☆ · ★★☆ · ★★★</td><td>Ao fechamento de cada visita</td><td>★☆☆ = clínico interno · ★★☆ = publicável (default do sistema) · ★★★ = regulatório (ANVISA/CONITEC).</td></tr>
+          <tr><td>Retrospectivo</td><td>A · B · C · D</td><td>Ao término da importação</td><td>A = quase-prospectivo · B = completude alta · C = limitado · D = só descritivo.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Implicação para a UI:</strong> em toda tela onde aparece um agregado de pacientes, o usuário precisa ver simultaneamente quantos pacientes em cada nível de estrela <em>e</em> quantos em cada letra. Filtros precisam permitir cruzar — "mostre só ★★★ e A". Casuística precisa permitir publicar dataset com nível mínimo declarado. Cada paciente, na lista de pacientes, precisa de chip de qualidade visível.</p>
+    <p><strong>Custo de não trazer isto à UI:</strong> o sistema empurra ★★ por defeito (P4) só funciona se o médico vê a estrela. Sem visibilidade, o incentivo de qualidade se perde. Médico não sabe se seus dados são publicáveis. Decisões de coorte para publicação ficam às cegas.</p>
+
+    <!-- WALKTHROUGH 6 · SUBMODELOS -->
+    <h3>6 · Submodelos — por que pediátrico e gestacional não são "presets"</h3>
+    <p><strong>O problema clínico-metodológico:</strong> um paciente pediátrico (&lt;12 anos) não é um adulto pequeno. Mede-se de forma diferente — escalas validadas para essa faixa, ObsRO (Observer-Reported Outcomes preenchido pelo cuidador) em vez de PRO (Patient-Reported Outcomes), Z-scores WHO para antropometria em vez de IMC absoluto, eventos adversos com gradação específica de pediatria. Para 12-17 anos, regra de dupla coleta (PRO do paciente + ObsRO do responsável). Para gestantes, módulo próprio com idade gestacional, DUM, paridade, intercorrências, interações maternofetais.</p>
+    <p>Se a Atena oferece "preset pediátrico" como toggle de UI, o médico esquece de ativar e os dados ficam corrompidos (criança preenchendo PRO de adulto). Se a Atena <em>detecta</em> e ativa automaticamente, o submodelo se torna estrutural.</p>
+    <p><strong>A decisão arquitetural:</strong> auto-detecção. <span class="mono">WCN.detectSubmodel(idade &lt; 12 → pediatric)</span>. <span class="mono">WCN.detectSubmodel(idade 12-17 → adolescent_dual)</span>. <span class="mono">WCN.detectSubmodel(gestante = true → gestational)</span>. Cada submodelo carrega seu próprio conjunto de instrumentos, blocos do wizard basal adaptados, regras de cálculo de outcome, gradação de EA específica.</p>
+    <p><strong>Implicação para a UI:</strong> ao abrir o paciente, banner discreto sinaliza submodelo ativo ("Submodelo pediátrico ativo · ObsRO + Z-scores WHO"). Telas adaptam automaticamente — wizard basal mostra blocos pediátricos, escalas oferecidas são as válidas para a faixa, antropometria mostra Z-score em vez de IMC. Nenhuma ação do médico para ativar; ele só percebe que o sistema reconheceu o contexto.</p>
+    <p><strong>Custo de não trazer isto à UI:</strong> pediatras usam telas de adulto e geram dados inválidos. Estudos pediátricos impossíveis. Risco regulatório em gestantes (cannabis em gestação é tema sensível e exige captura específica de dados). Perda de oportunidade científica em duas populações sub-representadas em RWE de cannabis.</p>
+
+    <!-- SÍNTESE DO WALKTHROUGH -->
+    <div class="callout">
+      <div class="callout-title">Síntese · o que a Atom leva deste walkthrough</div>
+      <p>Cada uma dessas seis decisões arquiteturais responde a um <em>problema científico real</em> da medicina canabinoide brasileira — não a uma preferência estética ou a uma escolha técnica arbitrária. Quando a Atom desenha qualquer tela do prontuário, a pergunta certa não é "isso fica bonito?" mas <strong>"isso preserva a fidelidade arquitetural?"</strong>. Bifacial visível? Episódios como entidade primária? Timepoints estruturais reconhecíveis? Schema RWE com manifestações visuais? Qualidade dual nos agregados? Submodelos detectados? Se sim, o desenho preserva a tese. Se não, a estética está vencendo a ciência — e isso, para a Atena, é o erro definitivo.</p>
+    </div>
+  </section>
+
+  <!-- 13 — Gaps priorizados -->
+  <section>
+    <div class="section-num">14 — GAPS PRIORIZADOS · O QUE FALTA NA UX</div>
+    <h2>P0 · P1 · P2 · o que não chegou ao portal</h2>
+    <p class="intro">Lista priorizada do que está no Design Mestre / v107 mas não está visível ou usável no MVP vivo. P0 = safety ou credibilidade · P1 = arquitetura central de dados · P2 = refinamentos.</p>
+
+    <h3>P0 · Safety & credibilidade · bugs em produção</h3>
+    <div class="gap-cards">
+      <div class="gap-card">
+        <div class="gap-prio">P0-A</div>
+        <div class="gap-body">
+          <h5>EA Grau 3 (severo) renderizado em gray-400</h5>
+          <div class="gap-sub">Safety · Pós-Consulta · risco clínico real</div>
+          <p>Design Mestre: cores quentes para alertas clínicos · Grau ≥3 = vermelho. v107: implementa. <strong>MVP vivo: renderiza em cinza neutro</strong>, idêntico a Grau 1. Médico pode não perceber o evento severo.</p>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-prio">P0-B</div>
+        <div class="gap-body">
+          <h5>Markdown raw vazando nas sugestões Athena</h5>
+          <div class="gap-sub">Credibilidade · Pré-Consulta · em produção</div>
+          <p>Sugestão Athena renderiza literal "<code>## Sugestão de Resposta para a Médica --- &gt;</code>" como texto. Médico envia ao paciente texto com markdown cru. <strong>Destrói confiança na IA imediatamente.</strong></p>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-prio">P0-C</div>
+        <div class="gap-body">
+          <h5>Variável <code>[Nome]</code> não resolvida</h5>
+          <div class="gap-sub">Credibilidade · Pré-Consulta · em produção</div>
+          <p>Atena escreve "da Dra. [Nome]" com a variável literal não substituída. Context injection do nome do médico falha antes da renderização.</p>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-prio">P0-D</div>
+        <div class="gap-body">
+          <h5>Token <code>--primary</code> corrompido</h5>
+          <div class="gap-sub">Arquitetura · sistêmico · pré-requisito</div>
+          <p>Resolve para emerald-500 em vez de navy. Afeta toda instância de botão primário, estado ativo, ênfase no produto. <strong>Pré-requisito de qualquer redesign Pulse.</strong></p>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-prio">P0-E</div>
+        <div class="gap-body">
+          <h5>Sugestões Athena sem evidência citada</h5>
+          <div class="gap-sub">P3 do Design Mestre · contrato com o médico</div>
+          <p>Atena sugere sem mostrar fonte. Design Mestre: cada sugestão deve ter evidence drawer com trecho, DOI, grau de evidência. v107: implementa parcialmente. MVP vivo: ausente. <strong>Sem isso, o Pragmático desinstala.</strong></p>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-prio">P0-F</div>
+        <div class="gap-body">
+          <h5>"controle_especial" snake_case na UI</h5>
+          <div class="gap-sub">P3 · Pré-Consulta · jargão técnico vazando</div>
+          <p>Badge em "Pré-Consulta" mostra <code>controle_especial</code> · identificador interno do banco de dados exposto ao médico. Viola o P3 (linguagem natural).</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>P1 · Arquitetura central de dados · estrutura RWE invisível</h3>
+    <div class="gap-cards">
+      <div class="gap-card p1">
+        <div class="gap-prio">P1-A</div>
+        <div class="gap-body">
+          <h5>Bifacial chip invisível</h5>
+          <div class="gap-sub">Decisão arquitetural mais crítica · seção 04</div>
+          <p>Design Mestre: prospectivo ★ e retrospectivo A–D nunca misturam visualmente sem declaração ativa. v107: implementa <code>cas-bifacial-chip-v98</code>. <strong>MVP vivo: ausente.</strong> Dashboards podem misturar coortes sem alerta visual.</p>
+        </div>
+      </div>
+      <div class="gap-card p1">
+        <div class="gap-prio">P1-B</div>
+        <div class="gap-body">
+          <h5>Episódio terapêutico como entidade visível</h5>
+          <div class="gap-sub">Hierarquia · seção 03</div>
+          <p>A unidade central de análise é o episódio (produto + indicação + datas). v107: implementa <code>rwe.condition_episodes</code> + sub-bandeja. <strong>MVP vivo: paciente vira "lista de consultas"</strong> · episódios não aparecem como entidade.</p>
+        </div>
+      </div>
+      <div class="gap-card p1">
+        <div class="gap-prio">P1-C</div>
+        <div class="gap-body">
+          <h5>Timepoints M1/M3/M6/M12 estruturais</h5>
+          <div class="gap-sub">RWE · seção 10</div>
+          <p>Design Mestre: timepoints definem quando cada instrumento aplica. v107: implementa <code>rwe.timepoints</code> · janelas analíticas explícitas. <strong>MVP vivo: linha do tempo cronológica sem estrutura de visita</strong>.</p>
+        </div>
+      </div>
+      <div class="gap-card p1">
+        <div class="gap-prio">P1-D</div>
+        <div class="gap-body">
+          <h5>Catálogo cannabis com 13 campos (DC1)</h5>
+          <div class="gap-sub">Granularidade DC1 · seção 05</div>
+          <p>Design Mestre: 13 campos por exposição cannabis. v107: 11/13 implementados (faltam cannabinoides minoritários e custo mensal BRL chip). <strong>MVP vivo: parcial · sem dose terapêutica · sem ratio explícito por consulta.</strong></p>
+        </div>
+      </div>
+      <div class="gap-card p1">
+        <div class="gap-prio">P1-E</div>
+        <div class="gap-body">
+          <h5>Sistema de estrelas universal nas telas</h5>
+          <div class="gap-sub">P4 · padrão inegociável</div>
+          <p>Design Mestre: ★ visível em toda interface por defeito. v107: estrelas universais Camada 2 + marcos. <strong>MVP vivo: estrelas só na Consulta (sem tooltip explicativo)</strong> e parcial em Casuística. Tela de Pacientes Lista, Paciente 360, Pós-Consulta · sem estrelas visíveis.</p>
+        </div>
+      </div>
+      <div class="gap-card p1">
+        <div class="gap-prio">P1-F</div>
+        <div class="gap-body">
+          <h5>Consentimento em 2 camadas com versão</h5>
+          <div class="gap-sub">CFM 2.227 · LGPD · seção 10</div>
+          <p>Design Mestre: 2 camadas com timestamp e versão. v107: implementa. <strong>MVP vivo: TCLE genérico sem distinção visual entre clínico (obrigatório) e pesquisa (opt-in granular).</strong></p>
+        </div>
+      </div>
+      <div class="gap-card p1">
+        <div class="gap-prio">P1-G</div>
+        <div class="gap-body">
+          <h5>Submodelo pediátrico auto-detect</h5>
+          <div class="gap-sub">Seção 09 · auto-ativação por idade</div>
+          <p>v107: <code>submodel-banner-v102</code> + <code>WCN.detectSubmodel(idade&lt;12 → pediatric)</code>. <strong>MVP vivo: ausente</strong> · pediatra usa as mesmas telas adulto · sem ObsRO cuidador · sem Z-scores WHO.</p>
+        </div>
+      </div>
+      <div class="gap-card p1">
+        <div class="gap-prio">P1-H</div>
+        <div class="gap-body">
+          <h5>Dualidade linguística C2 (natural) / C3 (técnica)</h5>
+          <div class="gap-sub">P3 · seção 02</div>
+          <p>Design Mestre: 7 elementos com dualidade (DC5, janelas M3, MCID, EA, marcos, TCLE C1, baseline). v107: implementa <code>wcn-c2-natural / wcn-c3-technical</code>. <strong>MVP vivo: linguagem inconsistente</strong> · alguns campos em C2, outros em C3, sem regra clara.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>P2 · Refinamentos · features que enriquecem mas não bloqueiam</h3>
+    <div class="gap-cards">
+      <div class="gap-card p2">
+        <div class="gap-prio">P2-A</div>
+        <div class="gap-body">
+          <h5>Cannabinoides minoritários (CBN/CBG/THCV/CBC)</h5>
+          <div class="gap-sub">DC1 · refinamento de catálogo</div>
+          <p>Mencionados em dados mas sem campo dedicado no bulário. Importante para análises de "efeito comitiva" e dose-resposta refinada.</p>
+        </div>
+      </div>
+      <div class="gap-card p2">
+        <div class="gap-prio">P2-B</div>
+        <div class="gap-body">
+          <h5>Custo mensal BRL chip explícito</h5>
+          <div class="gap-sub">Bloco 10 da basal · farmacoeconomia</div>
+          <p>Capturado em texto livre na v107 mas sem chip dedicado na sub-bandeja. Bloqueia análises de farmacoeconomia.</p>
+        </div>
+      </div>
+      <div class="gap-card p2">
+        <div class="gap-prio">P2-C</div>
+        <div class="gap-body">
+          <h5>Cmd+K palette com 40 comandos</h5>
+          <div class="gap-sub">Cmd+K · A5 · v107 Sprint 2</div>
+          <p>v107: implementado · 6 seções (Pacientes 3 + Escalas 8 + Medicações 4 + Cannabis 8 + Pesquisa 8 + Rápidos 13). <strong>MVP vivo: nenhum atalho de teclado</strong>. Sobrecarregado perde 20 min por dia.</p>
+        </div>
+      </div>
+      <div class="gap-card p2">
+        <div class="gap-prio">P2-D</div>
+        <div class="gap-body">
+          <h5>Ranking anônimo de completude</h5>
+          <div class="gap-sub">Incentivo · P4 · seção 10 Design Mestre</div>
+          <p>Médico vê sua posição em percentil em relação à sua indicação principal — não a identidade dos outros. Incentivo de qualidade sem competição negativa. <strong>MVP vivo: ausente.</strong></p>
+        </div>
+      </div>
+      <div class="gap-card p2">
+        <div class="gap-prio">P2-E</div>
+        <div class="gap-body">
+          <h5>Farmacogenômica · bloco 11</h5>
+          <div class="gap-sub">Visita basal · opcional</div>
+          <p>Upload de laudo farmacogenômico. Bloco opcional no Design Mestre. v107 não implementa em UI conforme prioridade. Pode ser deixado para fase avançada.</p>
+        </div>
+      </div>
+      <div class="gap-card p2">
+        <div class="gap-prio">P2-F</div>
+        <div class="gap-body">
+          <h5>Performance &lt; 1.5s primeira interação</h5>
+          <div class="gap-sub">Não funcional · requer load testing</div>
+          <p>Não mensurado. Requer load testing externo (Lighthouse/WebPageTest) em ambiente de produção. Crítico para Sobrecarregado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 — Roteiro -->
+  <section>
+    <div class="section-num">15 — ROTEIRO DE VALIDAÇÃO</div>
+    <h2>Como a Atom6 atravessa esse delta</h2>
+    <p class="intro">5 sessões guiadas. Patricia nas três primeiras para validar microcopy crítica e estados raros. Atom6 sozinha na quarta para olhar fresco. Quinta para síntese e priorização final.</p>
+
+    <div class="session">
+      <div class="session-num">01</div>
+      <div>
+        <h4>Tokens primeiro · pré-Figma · resolver os 3 críticos</h4>
+        <div class="who">Atom6 + Eng WeCann · 60 min</div>
+        <p>Antes de qualquer Figma: corrigir <code>--primary</code> → navy, <code>--background</code> → cream, unificar família verde em <code>--color-athena</code>. Re-deploy. Verificar propagação em 13 telas com prints antes/depois.</p>
+        <div class="deliv">Entregável · 3 tokens corrigidos em produção · 13 telas com mood Pulse imediato</div>
+      </div>
+    </div>
+
+    <div class="session">
+      <div class="session-num">02</div>
+      <div>
+        <h4>Walkthrough do Design Mestre · alinhamento de arquitetura</h4>
+        <div class="who">Patricia + Atom6 · 120 min</div>
+        <p>Leitura conjunta da <strong>seção 13</strong> deste doc — walkthrough detalhado das 6 decisões arquiteturais: bifacial, episódio terapêutico, timepoints, schema RWE, qualidade dual, submodelos. Atom6 sai entendendo <em>por que</em> cada coisa existe e o custo de não trazer para a UI.</p>
+        <div class="deliv">Entregável · alinhamento arquitetural · perguntas resolvidas antes do design</div>
+      </div>
+    </div>
+
+    <div class="session">
+      <div class="session-num">03</div>
+      <div>
+        <h4>Caça aos gaps P0 · safety + credibilidade</h4>
+        <div class="who">Patricia + Atom6 + Eng · 90 min</div>
+        <p>EA Grau 3 em vermelho · markdown raw · variável <code>[Nome]</code> · token <code>--primary</code> · evidence drawer universal · snake_case. <strong>Bugs em produção que precisam ser resolvidos antes do redesign visual.</strong></p>
+        <div class="deliv">Entregável · 6 P0 fixados e validados em produção</div>
+      </div>
+    </div>
+
+    <div class="session">
+      <div class="session-num">04</div>
+      <div>
+        <h4>Redesign sistêmico · P1 arquitetura central</h4>
+        <div class="who">Atom6 sozinha · 2 × 90 min</div>
+        <p>Patricia se afasta. Atom6 atravessa cada P1: bifacial chip · episódio como entidade · timepoints · catálogo cannabis 13 campos · estrelas universais · TCLE 2 camadas · submodelo pediátrico · dualidade C2/C3.</p>
+        <div class="deliv">Entregável · 8 P1 desenhados em alta fidelidade · prontos para revisão</div>
+      </div>
+    </div>
+
+    <div class="session">
+      <div class="session-num">05</div>
+      <div>
+        <h4>Síntese · backlog priorizado · primeiro sprint</h4>
+        <div class="who">Patricia + Atom6 · 60 min</div>
+        <p>Consolidar tudo. Priorizar redesigns por (a) ROI estratégico · alinhamento com tese RWE · (b) custo técnico · (c) impacto perceptual por persona. Sair com primeiro sprint Atom6 definido. Casar com os 6 P0 e 8 P1.</p>
+        <div class="deliv">Entregável · backlog priorizado · marco "Pulse v108 vivo" definido</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <div class="eyebrow">O brief em uma frase</div>
+    <h3>A arquitetura está pronta. O redesign não inventa nada — apenas traduz.</h3>
+    <p>A Atom6 não está desenhando do zero. Está fazendo a tradução do <strong>Design Mestre</strong> (a arquitetura · 100%) e da <strong>v107</strong> (a prova de conceito · 94%) para o produto vivo. <strong>Cada decisão de UX deve perguntar: "isso já está no Design Mestre? está no v107?"</strong> Se sim, o trabalho é renderizar com clareza. Se não, é provavelmente diluição da tese. O delta entre 94% laboratorial e 5.6/10 vivo é a régua. Quando o Atom6 fechar esse delta, a Atena terá atravessado o portal.</p>
+  </div>
+
+  <div class="doc-footer">
+    <span>Doc 04 · v3 · Arquitetura de Dados + Gaps UX</span>
+    <span>WeCann × Atom6 Studio · Junho 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
