@@ -100,6 +100,7 @@ export const TABS: DocTab[] = [
       { id: "jor-crucial", label: "07 · Por que a consulta é crucial" },
       { id: "jor-fase2", label: "08 · Fase 2 · Financeiro" },
       { id: "jor-processuais", label: "09 · Jornadas processuais" },
+      { id: "jor-userflow", label: "10 · Userflow consolidado" },
     ],
   },
   {

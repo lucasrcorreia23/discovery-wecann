@@ -9,6 +9,7 @@ import {
   PersonaRow,
   ProcJourney,
 } from "../ui/primitives";
+import Doc05Userflow from "./Doc05Userflow";
 
 const PERSONA_NAMES = [
   "Especialista Pragmático",
@@ -1666,6 +1667,8 @@ export default function Doc05Jornadas() {
         </Callout>
       </Section>
 
+      <Doc05Userflow />
+
       <div className="verdict">
         <div className="eyebrow">O que está em jogo</div>
         <h3>
@@ -1725,4 +1728,5 @@ const TOC_ITEMS = [
   { num: "07", title: "Por que a consulta é a tela crucial" },
   { num: "08", title: "Fase 2 · Financeiro e Contabilidade" },
   { num: "09", title: "3 jornadas processuais para a Atom iniciar" },
+  { num: "10", title: "Userflow consolidado · Doc 05 + inputs" },
 ];
