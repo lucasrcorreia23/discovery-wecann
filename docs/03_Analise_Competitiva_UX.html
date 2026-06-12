@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análise Competitiva UX · Voa · iClinic · CNN · Amplimed · Amigo · SOUL MV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1E3A8A;
+    --navy-deep: #0F1E4A;
+    --teal: #0F6E56;
+    --teal-soft: #E6F2EE;
+    --teal-line: #B8DDD0;
+    --purple: #6B21A8;
+    --purple-soft: #F3EAFB;
+    --cream: #FAF7F2;
+    --cream-deep: #F4EFE6;
+    --ink: #1A1A1A;
+    --ink-soft: #3D3D3D;
+    --ink-mute: #6B6B6B;
+    --line: #E5E0D6;
+    --line-soft: #EFEAE0;
+    --amber: #B45309;
+    --rose: #BE185D;
+    --rose-soft: #FDF2F8;
+
+    /* Competitor accent (only used as competitor identification chip) */
+    --voa: #6366F1;
+    --iclinic: #2E86C1;
+    --amplimed: #16A34A;
+    --soulmv: #DC2626;
+    --cnn: #0EA5E9;
+    --amigo: #F59E0B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 60px 48px 80px; }
+
+  /* HERO */
+  .hero {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 48px;
+    margin-bottom: 56px;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--navy-deep);
+    margin-bottom: 16px;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); font-weight: 500; }
+  .hero .lede {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    font-weight: 400;
+    max-width: 760px;
+  }
+  .meta-row {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+    flex-wrap: wrap;
+  }
+  .meta-row span strong { color: var(--ink); font-weight: 600; }
+
+  /* INTRO BLOCK */
+  .intro-block {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 32px 36px;
+    margin-bottom: 48px;
+  }
+  .intro-block h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--navy-deep);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .intro-block p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.65; margin-bottom: 10px; }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  /* MAP / POSITIONING */
+  .map-section {
+    margin-bottom: 64px;
+  }
+  .map-frame {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 32px;
+    margin-top: 12px;
+    position: relative;
+  }
+  .map-svg-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .map-svg-wrap svg { width: 100%; height: auto; display: block; }
+
+  /* COMPETITOR INDEX */
+  .comp-index {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 64px;
+  }
+  .ci-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 18px 18px;
+    border-top: 3px solid var(--ink-mute);
+  }
+  .ci-card.voa { border-top-color: var(--voa); }
+  .ci-card.iclinic { border-top-color: var(--iclinic); }
+  .ci-card.cnn { border-top-color: var(--cnn); }
+  .ci-card.amplimed { border-top-color: var(--amplimed); }
+  .ci-card.amigo { border-top-color: var(--amigo); }
+  .ci-card.soulmv { border-top-color: var(--soulmv); }
+  .ci-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--navy-deep);
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .ci-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ci-stat {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .ci-stat strong { color: var(--navy-deep); font-weight: 600; }
+
+  /* COMPETITOR SECTION */
+  .competitor {
+    margin-bottom: 80px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .competitor:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+  .comp-header {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 28px;
+    margin-bottom: 36px;
+    align-items: start;
+  }
+  .comp-num {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 0.95;
+    font-style: italic;
+    color: var(--teal);
+  }
+  .comp-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .comp-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .comp-chip.voa { background: var(--voa); }
+  .comp-chip.iclinic { background: var(--iclinic); }
+  .comp-chip.cnn { background: var(--cnn); }
+  .comp-chip.amplimed { background: var(--amplimed); }
+  .comp-chip.amigo { background: var(--amigo); }
+  .comp-chip.soulmv { background: var(--soulmv); }
+  .comp-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+  .comp-name {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    line-height: 1.1;
+    color: var(--navy-deep);
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .comp-tagline {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* SNAPSHOT STRIP */
+  .snap-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .snap-cell {
+    padding: 14px 18px;
+    border-right: 1px solid var(--line);
+  }
+  .snap-cell:last-child { border-right: none; }
+  .snap-cell .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .snap-cell .value {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--navy-deep);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* COMP BODY GRID */
+  .comp-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 28px;
+  }
+  .cb-block h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .cb-block.warn h4 { color: var(--rose); }
+  .cb-block.identity h4 { color: var(--purple); }
+  .cb-block p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .cb-block p:last-child { margin-bottom: 0; }
+  .cb-block ul { list-style: none; padding: 0; }
+  .cb-block li {
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin-bottom: 9px;
+    padding-left: 18px;
+    position: relative;
+    color: var(--ink-soft);
+  }
+  .cb-block li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 20px;
+    top: -4px;
+  }
+  .cb-block.warn li::before { color: var(--rose); content: '×'; font-size: 14px; top: 0; left: 2px; }
+  .cb-block.identity li::before { color: var(--purple); }
+  .cb-block li strong { color: var(--navy-deep); font-weight: 600; }
+
+  /* IDENTITY ROW */
+  .identity-row {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 22px 26px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .id-cell .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .id-cell .content {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .id-cell .content strong { color: var(--navy-deep); }
+
+  /* TAKEAWAY BLOCK */
+  .takeaway {
+    background: var(--navy-deep);
+    color: white;
+    border-radius: 8px;
+    padding: 28px 36px;
+    margin-top: 8px;
+  }
+  .takeaway h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #7DD3C0;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .takeaway .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 32px;
+  }
+  .ta-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+  .ta-item .marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .ta-item.adopt .marker { color: #7DD3C0; }
+  .ta-item.avoid .marker { color: #F472B6; }
+  .ta-item .text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+  }
+  .ta-item .text strong { color: white; font-weight: 600; }
+  .ta-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 8px;
+    grid-column: 1 / -1;
+    font-weight: 600;
+  }
+
+  /* MATRIX */
+  .matrix {
+    margin: 24px 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    background: white;
+  }
+  .matrix table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .matrix th {
+    background: var(--cream-deep);
+    color: var(--navy-deep);
+    text-align: left;
+    padding: 12px 14px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .matrix th:first-child { width: 180px; }
+  .matrix td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-size: 13px;
+  }
+  .matrix tr:last-child td { border-bottom: none; }
+  .matrix td:first-child {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--navy-deep);
+    font-weight: 600;
+    background: var(--cream);
+  }
+  .matrix td.us {
+    background: var(--teal-soft);
+    color: var(--navy-deep);
+    font-weight: 500;
+  }
+
+  /* SYNTHESIS */
+  .synthesis { margin-top: 32px; }
+  .synthesis h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.15;
+    color: var(--navy-deep);
+    margin-bottom: 8px;
+  }
+  .synthesis p.intro {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  h3.sub {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: var(--navy);
+    margin: 36px 0 14px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  /* VERDICT */
+  .verdict {
+    background: var(--navy-deep);
+    color: white;
+    border-radius: 8px;
+    padding: 40px 48px;
+    margin: 56px 0 0;
+  }
+  .verdict .eyebrow { color: #7DD3C0; margin-bottom: 12px; }
+  .verdict h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    color: white;
+    margin: 0 0 18px;
+    line-height: 1.25;
+    font-weight: 500;
+  }
+  .verdict p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+  .verdict p strong { color: white; font-weight: 600; }
+
+  /* FOOTER */
+  .doc-footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 720px) {
+    .container { padding: 40px 24px 60px; }
+    .hero h1 { font-size: 38px; }
+    .hero .lede { font-size: 18px; }
+    .comp-index { grid-template-columns: 1fr 1fr; }
+    .comp-header { grid-template-columns: 1fr; gap: 8px; }
+    .comp-num { font-size: 44px; }
+    .comp-name { font-size: 30px; }
+    .snap-strip { grid-template-columns: 1fr 1fr; }
+    .snap-cell:nth-child(2) { border-right: none; }
+    .snap-cell:nth-child(1), .snap-cell:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .comp-body, .identity-row, .takeaway .grid { grid-template-columns: 1fr; }
+    .verdict { padding: 28px 24px; }
+    .takeaway { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <div class="eyebrow">Doc 03 · Pack de Onboarding Atom6 Studio</div>
+    <h1>Análise <em>Competitiva</em><br>UX · Design · Branding</h1>
+    <p class="lede">Voa, iClinic, Amplimed, SOUL MV — quatro vizinhos no mapa, quatro lógicas de produto distintas. Onde a Atena entra sem ser confundida com nenhum deles.</p>
+    <div class="meta-row">
+      <span><strong>Concorrentes analisados:</strong> 6</span>
+      <span><strong>Lente:</strong> UX · design · branding · tom</span>
+      <span><strong>Fontes:</strong> sites oficiais + cobertura</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-block">
+    <h3>Por que esses 6 — e por que separados</h3>
+    <p>Os seis concorrentes selecionados representam <strong>arquétipos distintos</strong> do mercado brasileiro de prontuários, não competidores diretos entre si. <strong>Voa</strong> é o AI scribe puro (não EHR). <strong>iClinic</strong> é o software de gestão clínica para consultório. <strong>Clínica nas Nuvens</strong> é o SaaS de consultório clássico — sistema histórico do mercado e <em>de onde a WeCann migra dados</em>. <strong>Amplimed</strong> é o EHR-plus, com gestão financeira e operadoras de saúde. <strong>Amigo Tech</strong> é o SaaS com IA nativa e foco mobile · investido por venture e em crescimento agressivo. <strong>SOUL MV</strong> é o leviatã hospitalar, ERP de hospital com 50+ módulos.</p>
+    <p>Para a Atena, isso é estratégico: cada um carrega um padrão de design que o médico brasileiro <em>reconhece</em>. Decidir o que adotar, o que evitar e o que <strong>desviar deliberadamente</strong> é o trabalho do Atom6. Este documento mapeia cada um e fecha com matriz comparativa + posicionamento Atena.</p>
+  </div>
+
+  <!-- COMP INDEX -->
+  <div class="comp-index">
+    <div class="ci-card voa">
+      <div class="ci-name">Voa Health</div>
+      <div class="ci-cat">AI scribe puro</div>
+      <div class="ci-stat"><strong>60k+</strong> médicos · <strong>1M+</strong> consultas</div>
+    </div>
+    <div class="ci-card iclinic">
+      <div class="ci-name">iClinic</div>
+      <div class="ci-cat">SaaS clínico Afya</div>
+      <div class="ci-stat">Software de consultório · marketing-heavy</div>
+    </div>
+    <div class="ci-card cnn">
+      <div class="ci-name">Clínica nas Nuvens</div>
+      <div class="ci-cat">SaaS · 200+ recursos</div>
+      <div class="ci-stat"><strong>35k+</strong> profissionais · IA recente · WeCann migra de</div>
+    </div>
+    <div class="ci-card amplimed">
+      <div class="ci-name">Amplimed</div>
+      <div class="ci-cat">EHR + gestão</div>
+      <div class="ci-stat"><strong>70k+</strong> profissionais · <strong>51M+</strong> pacientes</div>
+    </div>
+    <div class="ci-card amigo">
+      <div class="ci-name">Amigo Tech</div>
+      <div class="ci-cat">SaaS · IA nativa · mobile-first</div>
+      <div class="ci-stat"><strong>35k+</strong> profissionais · <strong>40M</strong> atendimentos · R$ 10M VC</div>
+    </div>
+    <div class="ci-card soulmv">
+      <div class="ci-name">SOUL MV</div>
+      <div class="ci-cat">ERP hospitalar enterprise</div>
+      <div class="ci-stat"><strong>35 anos</strong> · 2.000+ instituições · KLAS LATAM 8×</div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <section class="map-section">
+    <div class="section-num">MAPA DE POSICIONAMENTO</div>
+    <h2 style="font-family: 'Fraunces', serif; font-weight: 600; font-size: 30px; color: var(--navy-deep); margin-bottom: 14px;">Onde cada um vive no mercado</h2>
+    <p style="color: var(--ink-soft); font-size: 15.5px; line-height: 1.6; max-width: 720px;">Eixo horizontal: <strong>escopo</strong> — de assistente pontual à plataforma completa. Eixo vertical: <strong>profundidade clínica</strong> — de operação administrativa a inteligência clínica especializada. A Atena vive no quadrante superior-direito, sozinha.</p>
+    <div class="map-frame">
+      <div class="map-svg-wrap">
+        <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg">
+          <!-- background grid -->
+          <defs>
+            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#EFEAE0" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="720" height="540" fill="url(#grid)"/>
+
+          <!-- axes -->
+          <line x1="80" y1="60" x2="80" y2="480" stroke="#3D3D3D" stroke-width="1.5"/>
+          <line x1="80" y1="480" x2="680" y2="480" stroke="#3D3D3D" stroke-width="1.5"/>
+
+          <!-- arrow tips -->
+          <polygon points="80,55 76,68 84,68" fill="#3D3D3D"/>
+          <polygon points="685,480 672,476 672,484" fill="#3D3D3D"/>
+
+          <!-- axis labels -->
+          <text x="50" y="40" font-family="JetBrains Mono, monospace" font-size="10" fill="#1A1A1A" font-weight="600" letter-spacing="1.2">PROFUNDIDADE CLÍNICA</text>
+          <text x="450" y="510" font-family="JetBrains Mono, monospace" font-size="10" fill="#1A1A1A" font-weight="600" letter-spacing="1.2">ESCOPO DO PRODUTO →</text>
+
+          <!-- low/high markers -->
+          <text x="40" y="475" font-family="Inter, sans-serif" font-size="10" fill="#6B6B6B" font-style="italic">baixa</text>
+          <text x="40" y="80" font-family="Inter, sans-serif" font-size="10" fill="#6B6B6B" font-style="italic">alta</text>
+          <text x="85" y="500" font-family="Inter, sans-serif" font-size="10" fill="#6B6B6B" font-style="italic">pontual</text>
+          <text x="600" y="500" font-family="Inter, sans-serif" font-size="10" fill="#6B6B6B" font-style="italic">plataforma</text>
+
+          <!-- quadrant labels (faded) -->
+          <text x="200" y="100" font-family="Fraunces, serif" font-size="11" fill="#B8B0A0" font-style="italic">Assistente clínico</text>
+          <text x="500" y="100" font-family="Fraunces, serif" font-size="11" fill="#B8B0A0" font-style="italic">Plataforma clínico-científica</text>
+          <text x="200" y="450" font-family="Fraunces, serif" font-size="11" fill="#B8B0A0" font-style="italic">Ferramenta auxiliar</text>
+          <text x="500" y="450" font-family="Fraunces, serif" font-size="11" fill="#B8B0A0" font-style="italic">ERP operacional</text>
+
+          <!-- Voa: AI scribe, low scope, mid-high clinical depth -->
+          <circle cx="200" cy="180" r="32" fill="#6366F1" opacity="0.15"/>
+          <circle cx="200" cy="180" r="8" fill="#6366F1"/>
+          <text x="220" y="178" font-family="Fraunces, serif" font-size="16" fill="#1E3A8A" font-weight="600">Voa</text>
+          <text x="220" y="194" font-family="Inter, sans-serif" font-size="10" fill="#6B6B6B">AI scribe puro</text>
+
+          <!-- iClinic: full scope clinic, mid clinical -->
+          <circle cx="380" cy="330" r="32" fill="#2E86C1" opacity="0.15"/>
+          <circle cx="380" cy="330" r="7" fill="#2E86C1"/>
+          <text x="395" y="328" font-family="Fraunces, serif" font-size="14" fill="#1E3A8A" font-weight="600">iClinic</text>
+          <text x="395" y="342" font-family="Inter, sans-serif" font-size="9" fill="#6B6B6B">SaaS consultório</text>
+
+          <!-- Clínica nas Nuvens: SaaS clássico, mid scope -->
+          <circle cx="340" cy="370" r="30" fill="#0EA5E9" opacity="0.15"/>
+          <circle cx="340" cy="370" r="7" fill="#0EA5E9"/>
+          <text x="240" y="372" font-family="Fraunces, serif" font-size="14" fill="#1E3A8A" font-weight="600">CNN</text>
+          <text x="240" y="386" font-family="Inter, sans-serif" font-size="9" fill="#6B6B6B">SaaS · 200+ recursos</text>
+
+          <!-- Amigo Tech: SaaS com IA nativa, mid-high -->
+          <circle cx="420" cy="280" r="34" fill="#F59E0B" opacity="0.15"/>
+          <circle cx="420" cy="280" r="7" fill="#F59E0B"/>
+          <text x="435" y="278" font-family="Fraunces, serif" font-size="14" fill="#1E3A8A" font-weight="600">Amigo Tech</text>
+          <text x="435" y="292" font-family="Inter, sans-serif" font-size="9" fill="#6B6B6B">SaaS + IA nativa + mobile</text>
+
+          <!-- Amplimed: wider scope, mid-low clinical -->
+          <circle cx="490" cy="370" r="40" fill="#16A34A" opacity="0.15"/>
+          <circle cx="490" cy="370" r="7" fill="#16A34A"/>
+          <text x="505" y="368" font-family="Fraunces, serif" font-size="14" fill="#1E3A8A" font-weight="600">Amplimed</text>
+          <text x="505" y="382" font-family="Inter, sans-serif" font-size="9" fill="#6B6B6B">EHR + gestão + operadoras</text>
+
+          <!-- SOUL MV: maximum scope, low clinical depth (but breadth) -->
+          <circle cx="610" cy="420" r="56" fill="#DC2626" opacity="0.15"/>
+          <circle cx="610" cy="420" r="8" fill="#DC2626"/>
+          <text x="540" y="445" font-family="Fraunces, serif" font-size="16" fill="#1E3A8A" font-weight="600">SOUL MV</text>
+          <text x="540" y="461" font-family="Inter, sans-serif" font-size="10" fill="#6B6B6B">ERP hospitalar enterprise</text>
+
+          <!-- Atena: high clinical depth, mid-high scope, alone -->
+          <circle cx="520" cy="160" r="38" fill="#0F6E56" opacity="0.20"/>
+          <circle cx="520" cy="160" r="10" fill="#0F6E56"/>
+          <text x="540" y="158" font-family="Fraunces, serif" font-size="18" fill="#0F6E56" font-weight="700">Atena</text>
+          <text x="540" y="174" font-family="Inter, sans-serif" font-size="10" fill="#0F6E56" font-weight="600">RWE + IA clínica + cannabis</text>
+
+          <!-- white space marker -->
+          <text x="380" y="200" font-family="JetBrains Mono, monospace" font-size="9" fill="#B8B0A0" letter-spacing="1">↑ ESPAÇO VAZIO ↑</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- 01 — VOA -->
+  <!-- =================================================== -->
+  <section class="competitor">
+    <div class="comp-header">
+      <div class="comp-num">01</div>
+      <div>
+        <div class="comp-meta">
+          <span class="comp-chip voa">AI scribe puro</span>
+          <span class="comp-url">voa.health</span>
+        </div>
+        <h3 class="comp-name">Voa Health</h3>
+        <p class="comp-tagline">"Foque no seu paciente e deixe a burocracia com a gente."</p>
+      </div>
+    </div>
+
+    <div class="snap-strip">
+      <div class="snap-cell"><div class="label">Fundação</div><div class="value">2023 · brasileira</div></div>
+      <div class="snap-cell"><div class="label">Categoria</div><div class="value">AI scribe / copiloto</div></div>
+      <div class="snap-cell"><div class="label">Escala</div><div class="value">60k+ médicos · 1M+ consultas</div></div>
+      <div class="snap-cell"><div class="label">Modelo</div><div class="value">Standalone · plug-in em qualquer EHR</div></div>
+    </div>
+
+    <div class="identity-row">
+      <div class="id-cell">
+        <div class="label">Identidade visual</div>
+        <div class="content">Estética <strong>aspiracional minimal</strong>. Logo light-mode, ícones lifestyle (lâmpada, coração, cadeado). Tipografia sans neutra, fundo claro, foto de médico em ambientes amplos e bem iluminados. Próxima da estética "calm tech" — Notion / Apple Health.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">Tom de voz</div>
+        <div class="content">Direto, motivacional, próximo. <em>"Sempre com você."</em> · <em>"Burocracia com a gente."</em> Promete <strong>liberdade</strong>, não eficiência. Vende emoção (cansaço, alívio) mais do que feature.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">IA personificada</div>
+        <div class="content">Voa não tem nome humano para a IA — a marca <em>é</em> a IA. Produto-irmão "<strong>Charcot IA</strong>" (referência neurológica) sinaliza ambição clínica.</div>
+      </div>
+    </div>
+
+    <div class="comp-body">
+      <div class="cb-block">
+        <h4>Forças UX · o que funciona</h4>
+        <ul>
+          <li><strong>Foco brutal.</strong> Faz uma coisa só. Transcreve e estrutura. A homepage não tem ruído.</li>
+          <li><strong>Prova social numérica em destaque.</strong> "60k médicos", "1M de atendimentos" — direto no hero.</li>
+          <li><strong>Onboarding leve.</strong> "Teste sem compromisso" como CTA primário, sem fricção.</li>
+          <li><strong>Mobilidade real.</strong> Funciona em qualquer EHR — não exige migração.</li>
+          <li><strong>Posicionamento de "produtividade" e não de prontuário.</strong> Foge da categoria saturada.</li>
+        </ul>
+      </div>
+      <div class="cb-block warn">
+        <h4>Limites · onde o produto se trai</h4>
+        <ul>
+          <li>É apenas <strong>scribe</strong> — não conhece o paciente, não tem memória longa, não faz pesquisa.</li>
+          <li>Áudio <strong>descartado</strong> automaticamente. Não há retro-análise possível.</li>
+          <li>Não é especializado em nenhuma terapia — útil em qualquer consulta, mestre em nenhuma.</li>
+          <li>Não faz pré nem pós-consulta. O ciclo clínico não fecha.</li>
+          <li>Estética genérica de SaaS internacional — em médicos seniores brasileiros, pode soar "young tech demais".</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <h4>★ Para a Atena · take-aways do Voa</h4>
+      <div class="grid">
+        <span class="ta-section-label">Adotar</span>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Foco editorial brutal.</strong> A landing page do Voa não fala de 20 features. Atena deve fazer o mesmo: vender 3 coisas, não 30.</span></div>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Prova social numérica em destaque.</strong> Atena pode usar "X médicos · Y pacientes · Z artigos publicados".</span></div>
+        <span class="ta-section-label">Evitar</span>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>Comoditização do scribe.</strong> Atena <em>não é</em> mais um Voa em verde. Precisa carregar peso clínico e científico desde o primeiro segundo de tela.</span></div>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>Estética "calm tech" genérica.</strong> Brand-twin de qualquer fintech. Atena precisa de identidade carregando ofício médico, não startup.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- 02 — ICLINIC -->
+  <!-- =================================================== -->
+  <section class="competitor">
+    <div class="comp-header">
+      <div class="comp-num">02</div>
+      <div>
+        <div class="comp-meta">
+          <span class="comp-chip iclinic">SaaS clínico Afya</span>
+          <span class="comp-url">iclinic.com.br</span>
+        </div>
+        <h3 class="comp-name">iClinic <span style="font-size: 22px; color: var(--ink-mute); font-weight: 400;">(Afya iClinic)</span></h3>
+        <p class="comp-tagline">"Software médico mais fácil de usar." · "Descomplique sua rotina."</p>
+      </div>
+    </div>
+
+    <div class="snap-strip">
+      <div class="snap-cell"><div class="label">Origem</div><div class="value">Ribeirão Preto · adquirida pela Afya</div></div>
+      <div class="snap-cell"><div class="label">Categoria</div><div class="value">Software de consultório</div></div>
+      <div class="snap-cell"><div class="label">Audiência</div><div class="value">Clínicas pequenas e médias</div></div>
+      <div class="snap-cell"><div class="label">Marketing</div><div class="value">Black Friday · cursos · podcast</div></div>
+    </div>
+
+    <div class="identity-row">
+      <div class="id-cell">
+        <div class="label">Identidade visual</div>
+        <div class="content">Paleta <strong>azul corporativo</strong> tradicional brasileira. Ícones flat, dashboards densos, cards com sombra suave. Estética de SaaS B2B "Hubspot-like" — funcional, mas sem assinatura forte. <strong>Comprada pela Afya</strong> (edtech médica de capital aberto) — perdeu carga startup.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">Tom de voz</div>
+        <div class="content">Marketing-heavy. <em>"Conquiste uma gestão clínica de excelência"</em>, <em>"descomplique sua rotina"</em>. Linguagem de growth, CTAs múltiplos ("Teste grátis", "Receber ligação", "Ligaremos para você em poucos minutos"). Sensação de funil de venda mais forte que sensação de produto.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">Compliance highlight</div>
+        <div class="content">Carrega a <strong>LGPD como pilar de marca</strong> — selo no topo, página dedicada, DPO contratado. Para médicos pragmáticos, é tranquilizante. Para a Atena: lição importante de <em>colocar compliance no front</em>, não escondido em rodapé.</div>
+      </div>
+    </div>
+
+    <div class="comp-body">
+      <div class="cb-block">
+        <h4>Forças UX · o que funciona</h4>
+        <ul>
+          <li><strong>Prontuário personalizável.</strong> "Cada especialidade configura sua anamnese" — flexibilidade alta, vital para médicos veteranos.</li>
+          <li><strong>Single-screen claim.</strong> "Tudo em uma só tela" — alinha com o princípio P1 da Atena.</li>
+          <li><strong>Cronologia clara.</strong> Prontuário em ordem cronológica com filtros — padrão consolidado, médico já espera.</li>
+          <li><strong>Assinatura digital ICP-Brasil</strong> embutida — peso jurídico.</li>
+          <li><strong>Compartilhamento granular.</strong> Médico-com-médico, paciente-com-médico — controle fino.</li>
+        </ul>
+      </div>
+      <div class="cb-block warn">
+        <h4>Fraquezas · o que o Atom6 deve evitar copiar</h4>
+        <ul>
+          <li><strong>UX pesada de growth.</strong> Pop-ups, "fale conosco", WhatsApp flutuante — produto se transforma em funil.</li>
+          <li><strong>IA tímida ou ausente.</strong> O posicionamento de IA é fraco — não há "agente" próprio com identidade.</li>
+          <li><strong>Estética datada.</strong> Visualmente parece SaaS 2018 — gradiente azul, sombras suaves, cards genéricos.</li>
+          <li><strong>Não há especialização.</strong> Vale para qualquer médico — daí, mestre em nenhuma área.</li>
+          <li><strong>Marketing &gt; produto.</strong> O site fala mais de "Black Friday" do que de capacidade clínica real.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <h4>★ Para a Atena · take-aways do iClinic</h4>
+      <div class="grid">
+        <span class="ta-section-label">Adotar</span>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>LGPD/compliance como pilar visível.</strong> Atena também precisa carimbar conformidade no front, não esconder em rodapé.</span></div>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Personalização do prontuário por especialidade.</strong> Já é o P2 Atena (pack universal + módulos). Confirma o caminho.</span></div>
+        <span class="ta-section-label">Evitar</span>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>Linguagem de growth dentro do produto.</strong> "Você ganhou um badge!" · "Black Friday do prontuário!" — letal para a categoria Atena.</span></div>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>Estética azul corporativa flat.</strong> Atena precisa parecer feita por gente que entende ofício médico, não by SaaS playbook.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- 03 — AMPLIMED -->
+  <!-- =================================================== -->
+  <section class="competitor">
+    <div class="comp-header">
+      <div class="comp-num">03</div>
+      <div>
+        <div class="comp-meta">
+          <span class="comp-chip amplimed">EHR + gestão</span>
+          <span class="comp-url">amplimed.com.br</span>
+        </div>
+        <h3 class="comp-name">Amplimed</h3>
+        <p class="comp-tagline">"Menos burocracia, mais atendimento. Tudo que sua clínica precisa para crescer."</p>
+      </div>
+    </div>
+
+    <div class="snap-strip">
+      <div class="snap-cell"><div class="label">Origem</div><div class="value">Chapecó/SC · 2014 · grupo Raia Drogasil</div></div>
+      <div class="snap-cell"><div class="label">Categoria</div><div class="value">EHR + financeiro + IA "Amélia"</div></div>
+      <div class="snap-cell"><div class="label">Escala</div><div class="value">70k+ pros · 51M+ pacientes · 32M+ migrados</div></div>
+      <div class="snap-cell"><div class="label">Segmentos</div><div class="value">Consultório · clínica · operadora</div></div>
+    </div>
+
+    <div class="identity-row">
+      <div class="id-cell">
+        <div class="label">Identidade visual</div>
+        <div class="content">Paleta verde + branco + ilustração corporativa, fotos lifestyle de médicos sorridentes, layout cheio de cards. Estética <strong>"healthtech BR-feliz"</strong> — diferente do azul iClinic, mais quente. Logo em verde sólido, ícones cheios, fotos AVIF de profissionais em ambiente claro.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">Tom de voz</div>
+        <div class="content">Operacional e otimista. <em>"Da agenda ao faturamento"</em>, <em>"99% de redução das glosas"</em>, <em>"automatize sua clínica"</em>. Fala muito de <strong>controle, automação, gestão</strong> — o lado administrativo predomina. Pouco peso clínico-científico.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">IA personificada · "Amélia"</div>
+        <div class="content"><strong>Mesma estratégia da Atena</strong> — IA com nome feminino, três submarcas (Amélia Agendamento, Copilot, Transcrição). Posicionada como <em>secretária digital</em> + assistente de busca. <strong>Não</strong> como colega clínica. Diferença crucial.</div>
+      </div>
+    </div>
+
+    <div class="comp-body">
+      <div class="cb-block">
+        <h4>Forças UX · o que funciona</h4>
+        <ul>
+          <li><strong>Segmentação clara por porte.</strong> Consultório / clínica / operadora — cada um vê produto diferente.</li>
+          <li><strong>Amélia com submarcas funcionais.</strong> Cada papel da IA tem nome próprio — facilita marketing e expectativa.</li>
+          <li><strong>AmpliSaúde paralelo.</strong> Wallet de saúde para o paciente — fecha ciclo paciente-médico.</li>
+          <li><strong>Faturamento TISS forte.</strong> "99% redução de glosa" — KPI mensurável, defensável.</li>
+          <li><strong>Migração como serviço.</strong> "32M+ prontuários migrados" como diferencial de aquisição — vence inércia.</li>
+        </ul>
+      </div>
+      <div class="cb-block warn">
+        <h4>Fraquezas · o que o Atom6 deve observar</h4>
+        <ul>
+          <li><strong>Excesso de feature breadth na home.</strong> ~25 features listadas na primeira tela — produto parece comoditizado.</li>
+          <li><strong>Estética "BR-feliz" pode soar light demais</strong> para especialistas seniores ou hospitais.</li>
+          <li><strong>Amélia é genérica.</strong> Faz tudo, mas não tem opinião clínica — é "secretária boa", não "colega médica".</li>
+          <li><strong>Atrelamento à Raia Drogasil</strong> (DPO no domínio raiadrograsil.my.onetrust.com) — pode gerar desconforto de compliance/conflict de interesse para pesquisa farmacêutica.</li>
+          <li><strong>Nenhum diferencial científico.</strong> Não há schema RWE, não há mention de OMOP, FHIR ou publicação. É operação, não ciência.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <h4>★ Para a Atena · take-aways do Amplimed</h4>
+      <div class="grid">
+        <span class="ta-section-label">Adotar</span>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Migração como argumento.</strong> "Migramos seu prontuário de qualquer sistema" derruba a maior barreira de adoção. Atena deve carregar isso.</span></div>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>IA personificada com submarcas funcionais.</strong> Padrão de UI: "Atena pré-consulta", "Atena copiloto", "Atena pós-consulta" pode ajudar leitura.</span></div>
+        <span class="ta-section-label">Evitar</span>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>Listar 25 features na home.</strong> Comoditiza. A Atena vende 3–5 coisas com profundidade, não um catálogo.</span></div>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>Estética "healthtech BR-feliz".</strong> Fotos lifestyle de médicos sorrindo, ilustrações cartunescas. Atena precisa carregar peso clínico/científico.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- 04 — CLÍNICA NAS NUVENS (CNN) -->
+  <!-- =================================================== -->
+  <section class="competitor">
+    <div class="comp-header">
+      <div class="comp-num">04</div>
+      <div>
+        <div class="comp-meta">
+          <span class="comp-chip cnn">SaaS clássico · 200+ recursos</span>
+          <span class="comp-url">clinicanasnuvens.com.br</span>
+        </div>
+        <h3 class="comp-name">Clínica nas Nuvens <span style="font-size: 22px; color: var(--ink-mute); font-weight: 400;">(CNN)</span></h3>
+        <p class="comp-tagline">"O verdadeiro sistema amigo do médico." · Prontuário customizável + agenda + financeiro + telemedicina.</p>
+      </div>
+    </div>
+
+    <div class="snap-strip">
+      <div class="snap-cell"><div class="label">Categoria</div><div class="value">SaaS de consultório · clínica · clínica-escola</div></div>
+      <div class="snap-cell"><div class="label">Escala</div><div class="value">35k+ profissionais</div></div>
+      <div class="snap-cell"><div class="label">Recursos</div><div class="value">200+ recursos · plano único</div></div>
+      <div class="snap-cell"><div class="label">Postura</div><div class="value">Mercado consolidado · conservador</div></div>
+    </div>
+
+    <div class="identity-row">
+      <div class="id-cell">
+        <div class="label">Identidade visual</div>
+        <div class="content">Site moderno · paleta azul-céu + branco · ilustração com mascote/identidade amigável · estética "<strong>SaaS BR-amigável</strong>" · próxima do iClinic mas com tom mais caloroso. Hospeda também white-label em <code>cnn.2opdigital.com.br</code> (atendimento a parceiros/operadoras).</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">Tom de voz</div>
+        <div class="content"><em>"Verdadeiro sistema amigo do médico"</em> · ataque velado a competidores que se vendem como "amigos". Foco em <strong>facilidade · estabilidade · longevidade</strong>. Não fala de IA como pilar — fala de <em>"organizar a clínica"</em>.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">IA personificada</div>
+        <div class="content"><strong>IA emergente</strong> · lançada recentemente · não tem personagem nem nome próprio. Posicionada como <em>feature</em> de transcrição e organização automática de prontuário, não como copiloto clínico.</div>
+      </div>
+    </div>
+
+    <div class="comp-body">
+      <div class="cb-block">
+        <h4>Forças UX · o que funciona</h4>
+        <ul>
+          <li><strong>Mercado consolidado.</strong> 35k profissionais · presença histórica · alta confiança de quem já usa há anos.</li>
+          <li><strong>200+ recursos.</strong> Cobre quase qualquer demanda operacional de consultório/clínica. Curva de fidelização alta por substituição.</li>
+          <li><strong>Telemedicina + Clínica-escola.</strong> 2 verticais específicas atendidas com customizações próprias · nichos defendidos.</li>
+          <li><strong>Plano único.</strong> Simplificação comercial · sem "Pro vs Enterprise" · entrada limpa.</li>
+          <li><strong>Validação CFM e segurança bancária.</strong> Comunica compliance e robustez como pilares de marca.</li>
+        </ul>
+      </div>
+      <div class="cb-block warn">
+        <h4>Limites · onde o produto se trai</h4>
+        <ul>
+          <li><strong>IA chegou tarde.</strong> Lançada em 2024-2025 · sem personagem · sem narrativa. Reativa ao mercado, não cria categoria.</li>
+          <li><strong>Posicionamento genérico.</strong> "Sistema amigo do médico" não diz nada sobre especialização. Vale para qualquer consultório, mestre em nenhuma área.</li>
+          <li><strong>Estética SaaS-BR conservadora.</strong> Não envelhece mal, mas também não atrai médicos premium que querem produto de ponta.</li>
+          <li><strong>200+ recursos = inchaço.</strong> Comunica abrangência, mas em produto significa menu cheio, telas densas, fricção de descoberta.</li>
+          <li><strong>Sem RWE, sem pesquisa, sem cannabis.</strong> Generalista puro. Nenhuma fronteira clínica defendida.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout-internal" style="background: var(--cream-deep); border: 1px solid var(--line); padding: 18px 22px; border-radius: 6px; margin: 18px 0;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amber); font-weight: 600; margin-bottom: 8px;">Contexto especial · WeCann</div>
+      <p style="font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0;"><strong>CNN é o sistema do qual a WeCann migra dados.</strong> O Relatório de Conformidade v107 confirma <strong>361.926 registros migrados</strong> da CNN (Clínica nas Nuvens) via reconciliação <em>FATURAMENTO → PAGAMENTO → MOVIMENTO</em>. Isso significa que muitos médicos que chegam à Atena vêm da CNN — eles têm na cabeça o padrão visual e operacional dela. A Atom6 desenha contra essa memória.</p>
+    </div>
+
+    <div class="takeaway">
+      <h4>★ Para a Atena · take-aways da CNN</h4>
+      <div class="grid">
+        <span class="ta-section-label">Adotar</span>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Migração suave de dados como argumento.</strong> Já temos a infra (361k registros migrados). Comunicar isso na landing reduz a maior barreira de adoção dos médicos CNN.</span></div>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Telemedicina e clínica-escola como verticais.</strong> CNN identificou nichos defendíveis · vale considerar se há nichos similares para a Atena (RWE multi-centro, ensaios clínicos coordenados).</span></div>
+        <span class="ta-section-label">Evitar</span>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>"Sistema amigo do médico" como narrativa.</strong> Genérico, vago, sem categoria. Atena é colega clínica, não amigo simpático.</span></div>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>200+ recursos como métrica de venda.</strong> Quantidade ≠ qualidade. Atena vende 7 entregáveis diferenciados · não 200 features comoditizadas.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- 05 — AMIGO TECH -->
+  <!-- =================================================== -->
+  <section class="competitor">
+    <div class="comp-header">
+      <div class="comp-num">05</div>
+      <div>
+        <div class="comp-meta">
+          <span class="comp-chip amigo">SaaS · IA nativa · mobile-first · VC backed</span>
+          <span class="comp-url">amigotech.com.br</span>
+        </div>
+        <h3 class="comp-name">Amigo Tech <span style="font-size: 22px; color: var(--ink-mute); font-weight: 400;">(Amigo Clinic + Amigo One)</span></h3>
+        <p class="comp-tagline">"All-in-one para médicos: agenda, prontuário, IA, transcrição, CRM e contabilidade." · Mobile-first com Amigo One app.</p>
+      </div>
+    </div>
+
+    <div class="snap-strip">
+      <div class="snap-cell"><div class="label">Escala</div><div class="value">35k+ profissionais · 40M atendimentos</div></div>
+      <div class="snap-cell"><div class="label">Funding</div><div class="value">R$ 10M HealthTech (rodada VC)</div></div>
+      <div class="snap-cell"><div class="label">Stack</div><div class="value">Web · Mobile (Amigo One) · IA nativa</div></div>
+      <div class="snap-cell"><div class="label">Modelo</div><div class="value">Freemium · prontuário grátis como entrada</div></div>
+    </div>
+
+    <div class="identity-row">
+      <div class="id-cell">
+        <div class="label">Identidade visual</div>
+        <div class="content">Estética <strong>healthtech moderna · paleta verde-amarelo</strong> · fotos lifestyle de médicos jovens · UI mais limpa e tipografia mais aerada que iClinic/CNN. Próxima de "fintech do médico" · denuncia origem startup de SP.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">Tom de voz</div>
+        <div class="content">Direto, ambicioso, prático. <em>"Digitaliza consultório e consultas"</em> · <em>"all-in-one"</em> · <em>"em um só lugar"</em>. Foco em <strong>consolidação · economia de tempo · digitalização integral</strong>. Discurso comparável a uma fintech que diz "fazemos tudo o que 4 apps fazem".</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">IA · concorrente direto</div>
+        <div class="content"><strong>IA nativa desde o design</strong> · sem personagem nomeado · mas integrada no fluxo: transcrição de consulta, organização automática, sugestões. Sem corpus proprietário · sem especialização clínica vertical · mas <em>moderna e fluida</em>. Mais próxima do que a Atena promete em <em>algumas dimensões</em> · não em todas.</div>
+      </div>
+    </div>
+
+    <div class="comp-body">
+      <div class="cb-block">
+        <h4>Forças UX · o que funciona</h4>
+        <ul>
+          <li><strong>40M atendimentos · escala real.</strong> Comprovação de mercado. Reduz dúvida de adoção · vendido como "já estamos provados".</li>
+          <li><strong>Mobile-first com Amigo One.</strong> Único concorrente que trata mobile como produto-primário, não secundário. Teleconsulta, assinatura digital, prescrições — tudo no celular. Forte para Recém-formado.</li>
+          <li><strong>Freemium agressivo.</strong> Prontuário grátis como porta de entrada · onboarding sem fricção · monetiza no upsell de IA/CRM/contabilidade.</li>
+          <li><strong>IA + transcrição nativos.</strong> Não é feature bolada, é parte do produto desde o design.</li>
+          <li><strong>Funding VC de R$ 10M.</strong> Tem dinheiro para investir em marketing e produto · vai pressionar mercado nos próximos 24 meses.</li>
+          <li><strong>Posicionamento "all-in-one" focado no médico autônomo.</strong> Especificidade de público clara · não tenta atender hospital + clínica + autônomo ao mesmo tempo.</li>
+        </ul>
+      </div>
+      <div class="cb-block warn">
+        <h4>Limites · onde o produto se trai</h4>
+        <ul>
+          <li><strong>Sem especialização vertical.</strong> Generalista · não tem cannabis, não tem RWE, não tem nada de pesquisa. Médico autônomo simples.</li>
+          <li><strong>IA sem corpus proprietário.</strong> Provavelmente modelos genéricos (Whisper + LLM) com prompt engineering. Sem Tratado, sem aulas, sem fórum · sem moat.</li>
+          <li><strong>Sem identidade clara da IA.</strong> Não tem personagem · não tem nome · IA é commodity invisível. Atena tem nome, postura, ética.</li>
+          <li><strong>Freemium pode virar armadilha.</strong> Atrai médico que não quer pagar · vai upgrades de pacote · paciente médio acaba sub-monetizado.</li>
+          <li><strong>Estética "healthtech jovem".</strong> Funciona com Recém-formado e Sobrecarregado · sai com o Sênior. Atena precisa atravessar todas as 5 personas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <h4>★ Para a Atena · take-aways da Amigo Tech</h4>
+      <div class="grid">
+        <span class="ta-section-label">Adotar</span>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Mobile-first sério, não secundário.</strong> Atena precisa ter app de qualidade equivalente · não pode ser web-only com responsive. Especialmente para Recém-formado em plantão.</span></div>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Freemium / trial para reduzir fricção.</strong> Considerar caminho de entrada gratuito (modo individual · sem RWE · sem cannabis) para Recém-formado experimentar antes de migrar.</span></div>
+        <span class="ta-section-label">Evitar</span>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>"All-in-one" como narrativa.</strong> Comoditiza. Atena vende profundidade clínica em cannabis + RWE · não amplitude operacional.</span></div>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>IA invisível / sem personagem.</strong> Amigo Tech tem IA boa, mas anônima. Atena vence pelo personagem · não pode imitar a Amigo.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- 06 — SOUL MV -->
+  <!-- =================================================== -->
+  <section class="competitor">
+    <div class="comp-header">
+      <div class="comp-num">06</div>
+      <div>
+        <div class="comp-meta">
+          <span class="comp-chip soulmv">ERP hospitalar enterprise</span>
+          <span class="comp-url">mv.com.br</span>
+        </div>
+        <h3 class="comp-name">SOUL MV</h3>
+        <p class="comp-tagline">"O sistema de gestão hospitalar mais usado do País. PEP MV — melhor da América Latina."</p>
+      </div>
+    </div>
+
+    <div class="snap-strip">
+      <div class="snap-cell"><div class="label">Origem</div><div class="value">Recife/PE · 1987 · 39 anos</div></div>
+      <div class="snap-cell"><div class="label">Categoria</div><div class="value">ERP hospitalar enterprise</div></div>
+      <div class="snap-cell"><div class="label">Escala</div><div class="value">2.000+ instituições · 50+ módulos</div></div>
+      <div class="snap-cell"><div class="label">Reconhecimento</div><div class="value">KLAS LATAM 8× · SBIS certificado</div></div>
+    </div>
+
+    <div class="identity-row">
+      <div class="id-cell">
+        <div class="label">Identidade visual</div>
+        <div class="content">Estética <strong>enterprise institucional</strong> — vermelho/marrom MV como cor primária, layout corporativo, fotos de hospital, presença em feiras (Hospitalar Hub). Nada de "wow" — comunica <strong>peso, longevidade, segurança</strong>. PDFs, whitepapers, case studies dominam o conteúdo.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">Tom de voz</div>
+        <div class="content">Institucional, denso, técnico. <em>"Excelência operacional"</em>, <em>"gestão integrada"</em>, <em>"experiência reconhecida"</em>. Não fala com o médico final — fala com o <strong>diretor de TI</strong>, o <strong>CFO hospitalar</strong>, o <strong>gestor regulatório</strong>. Linguagem de compra B2B grande, não de produto-amor.</div>
+      </div>
+      <div class="id-cell">
+        <div class="label">Modernização HTML5</div>
+        <div class="content">SOUL MV passou por <strong>migração HTML5</strong> recente — declaradamente "mais moderno e visualmente mais leve". Reconhece que a estética antiga estava pesada. Concorrentes enterprise envelhecem rápido visualmente.</div>
+      </div>
+    </div>
+
+    <div class="comp-body">
+      <div class="cb-block">
+        <h4>Forças UX · o que funciona</h4>
+        <ul>
+          <li><strong>Profundidade absurda.</strong> 50+ módulos cobrem tudo (assistencial, financeiro, suprimentos, regulatório). É a verdade do hospital grande.</li>
+          <li><strong>Integração multi-setor.</strong> Médico, enfermagem, farmácia, faturamento, regulatório — todos na mesma base. Sonho de gestor.</li>
+          <li><strong>Mobilidade bedside.</strong> Registro à beira-leito em mobile — feature que respeita o fluxo real do hospital.</li>
+          <li><strong>Selos pesados.</strong> KLAS, SBIS, ONA — vence comitê de compras institucional.</li>
+          <li><strong>Suporte 35 anos de relacionamento.</strong> Em hospital grande, fornecedor que entra dura décadas.</li>
+        </ul>
+      </div>
+      <div class="cb-block warn">
+        <h4>Fraquezas · onde Atom6 deve se distinguir</h4>
+        <ul>
+          <li><strong>UX clássica de ERP.</strong> Densa, fria, com 8 níveis de menu. Médico individual <em>odeia</em> usar.</li>
+          <li><strong>Velocidade de evolução baixa.</strong> Releases anuais, padrão enterprise — não absorve IA generativa rápido.</li>
+          <li><strong>Não tem IA própria de marca.</strong> Não há Athena/Amélia/Voa — IA é feature, não personagem.</li>
+          <li><strong>Cliente não é o médico</strong> — é o hospital. O médico é usuário forçado, não comprador. Daí a UX nunca foi feita para "encantar".</li>
+          <li><strong>Estética corporativa cansada.</strong> Mesmo após HTML5, o "DNA enterprise" persiste — não convence consultório nem clínica boutique.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <h4>★ Para a Atena · take-aways do SOUL MV</h4>
+      <div class="grid">
+        <span class="ta-section-label">Adotar</span>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Selos institucionais visíveis.</strong> SBIS, ONA, certificações são senhas de entrada em vendas para clínicas maiores. Atena deve buscar e exibir.</span></div>
+        <div class="ta-item adopt"><span class="marker">+</span><span class="text"><strong>Profundidade como diferenciação.</strong> O Atena RWE schema é tão profundo quanto qualquer ERP — só que <em>encapsulado</em> em UX que respira.</span></div>
+        <span class="ta-section-label">Evitar</span>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>Densidade de ERP.</strong> Atena tem profundidade comparável, mas precisa <em>esconder</em> a complexidade. Tela só mostra 5% do schema por vez.</span></div>
+        <div class="ta-item avoid"><span class="marker">−</span><span class="text"><strong>Tom institucional para gestor.</strong> Atena fala com o <em>médico</em>, não com o CFO hospitalar. Linguagem clínica e pessoal sempre.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SYNTHESIS ============ -->
+  <section class="synthesis">
+    <div class="section-num">SÍNTESE COMPARATIVA</div>
+    <h2>Onde a Atena entra · sem ser confundida com nenhum</h2>
+    <p class="intro">A matriz a seguir compara as 6 marcas em 10 dimensões de UX/produto/branding. A última coluna (Atena) é o "norte magnético" para o Atom6 — onde queremos estar quando o brief virar tela.</p>
+
+    <div class="matrix" style="overflow-x: auto;">
+      <table style="min-width: 1180px;">
+        <thead>
+          <tr>
+            <th>Dimensão</th>
+            <th>Voa</th>
+            <th>iClinic</th>
+            <th>CNN</th>
+            <th>Amplimed</th>
+            <th>Amigo Tech</th>
+            <th>SOUL MV</th>
+            <th style="color: var(--teal);">Atena ⟵</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Categoria-mãe</td>
+            <td>AI scribe</td>
+            <td>SaaS de consultório</td>
+            <td>SaaS · 200+ recursos</td>
+            <td>EHR + gestão</td>
+            <td>SaaS + IA nativa</td>
+            <td>ERP hospitalar</td>
+            <td class="us">Plataforma RWE clínico-científica</td>
+          </tr>
+          <tr>
+            <td>Cliente-alvo</td>
+            <td>Médico individual</td>
+            <td>Clínica pequena/média</td>
+            <td>Consultório · clínica-escola</td>
+            <td>Clínica · operadora</td>
+            <td>Médico autônomo</td>
+            <td>Hospital · gestor TI</td>
+            <td class="us">Médico prescritor · clínica científica</td>
+          </tr>
+          <tr>
+            <td>Personagem da IA</td>
+            <td>Voa (a marca é a IA)</td>
+            <td>—</td>
+            <td>IA emergente · sem nome</td>
+            <td>Amélia (secretária)</td>
+            <td>IA nativa · sem nome</td>
+            <td>—</td>
+            <td class="us">Atena (colega clínica)</td>
+          </tr>
+          <tr>
+            <td>Identidade visual</td>
+            <td>Calm tech aspiracional</td>
+            <td>Azul corporativo flat</td>
+            <td>SaaS-BR amigável</td>
+            <td>BR-feliz verde</td>
+            <td>Healthtech jovem</td>
+            <td>ERP enterprise</td>
+            <td class="us">Liberdade criativa Atom6</td>
+          </tr>
+          <tr>
+            <td>Profundidade clínica</td>
+            <td>Média (scribe)</td>
+            <td>Baixa</td>
+            <td>Baixa</td>
+            <td>Baixa</td>
+            <td>Média (IA nativa)</td>
+            <td>Média (módulos)</td>
+            <td class="us">Alta · schema RWE + base curada</td>
+          </tr>
+          <tr>
+            <td>Especialização</td>
+            <td>Genérica</td>
+            <td>Genérica</td>
+            <td>Telemedicina · clínica-escola</td>
+            <td>Genérica</td>
+            <td>Genérica · autônomo</td>
+            <td>Hospitalar</td>
+            <td class="us">Cannabis · 33 especialidades</td>
+          </tr>
+          <tr>
+            <td>Mobile</td>
+            <td>Web-only</td>
+            <td>Web + responsive</td>
+            <td>Web + responsive</td>
+            <td>Web + paciente app</td>
+            <td><strong>Mobile-first</strong></td>
+            <td>Bedside mobile</td>
+            <td class="us">Mobile-first nas telas críticas</td>
+          </tr>
+          <tr>
+            <td>Ciclo de cuidado</td>
+            <td>Só consulta</td>
+            <td>Só clínica</td>
+            <td>Clínica + teleconsulta</td>
+            <td>Consulta + gestão</td>
+            <td>Consulta + CRM + contábil</td>
+            <td>Hospitalar end-to-end</td>
+            <td class="us">Pré + durante + pós · longitudinal</td>
+          </tr>
+          <tr>
+            <td>Pesquisa / RWE</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Limitado</td>
+            <td class="us">Subproduto automático · OMOP + FHIR</td>
+          </tr>
+          <tr>
+            <td>Modelo comercial</td>
+            <td>SaaS individual</td>
+            <td>SaaS · Afya · BF</td>
+            <td>Plano único</td>
+            <td>3 planos (porte)</td>
+            <td>Freemium · VC backed</td>
+            <td>Enterprise · contrato longo</td>
+            <td class="us">SaaS clínico + research opt-in</td>
+          </tr>
+          <tr>
+            <td>Posicionamento de marca</td>
+            <td>"Liberdade da burocracia"</td>
+            <td>"Descomplique"</td>
+            <td>"Sistema amigo do médico"</td>
+            <td>"Da agenda ao faturamento"</td>
+            <td>"All-in-one · digitaliza tudo"</td>
+            <td>"Excelência operacional"</td>
+            <td class="us">"A colega médica inteligente"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">As 5 linhas vermelhas estratégicas</h3>
+    <p style="color: var(--ink-soft); margin-bottom: 20px;">Sintetizado das observações acima, cinco coisas que a Atena <em>não pode</em> parecer — para não ser confundida com nenhum dos 6.</p>
+
+    <div class="matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>Linha vermelha</th>
+            <th>Por quê</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Não parecer "mais um scribe"</td>
+            <td>Voa já ocupa esse espaço com 60k médicos. Atena precisa carregar profundidade clínico-científica desde o hero da landing page, das telas de copiloto e do dashboard.</td>
+          </tr>
+          <tr>
+            <td>Não parecer SaaS de consultório</td>
+            <td>iClinic é o template visual desse arquétipo. Azul flat, ícones genéricos, sombras suaves, dashboards "Hubspot-like" — tudo isso afasta da categoria Atena.</td>
+          </tr>
+          <tr>
+            <td>Não parecer "healthtech BR-feliz"</td>
+            <td>Amplimed domina essa estética verde/sorridente/cards. Atena é séria, clínica, científica. Sem fotos lifestyle de médicos rindo. Sem ilustração cartunesca de pulmão.</td>
+          </tr>
+          <tr>
+            <td>Não parecer ERP enterprise</td>
+            <td>SOUL MV é o "denso e cansado". Atena tem profundidade <em>e</em> respiração. A densidade fica embaixo; o que aparece é fluxo.</td>
+          </tr>
+          <tr>
+            <td>Não parecer "wellness verde-folhinha"</td>
+            <td>O clichê visual da cannabis (folhinhas, gradiente verde-natureza, hippie chique) é poison para a categoria Atena. <strong>É um produto clínico que por acaso domina cannabis</strong>, não um produto de cannabis.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Cinco coisas que a Atena pode roubar (e refinar)</h3>
+    <p style="color: var(--ink-soft); margin-bottom: 20px;">O que cada concorrente faz bem que merece ser absorvido — com reinterpretação Pulse Design.</p>
+
+    <div class="matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>De quem</th>
+            <th>O quê</th>
+            <th>Como aplicar na Atena</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Voa</td>
+            <td>Foco editorial brutal na landing page</td>
+            <td>Hero da Atena vende 3 promessas, não 30 features.</td>
+          </tr>
+          <tr>
+            <td>iClinic</td>
+            <td>Compliance como pilar de marca</td>
+            <td>LGPD, CEP, RDC 1.015 carimbados visíveis — não escondidos em "termos".</td>
+          </tr>
+          <tr>
+            <td>Amplimed</td>
+            <td>Migração como argumento de aquisição</td>
+            <td>"Migramos seu prontuário Voa/iClinic/Amplimed em X dias" — derruba inércia.</td>
+          </tr>
+          <tr>
+            <td>Amplimed</td>
+            <td>Submarcas funcionais da IA</td>
+            <td>"Atena pré-consulta", "Atena copiloto", "Atena pós-consulta" — facilita leitura sem fragmentar a marca.</td>
+          </tr>
+          <tr>
+            <td>SOUL MV</td>
+            <td>Selos institucionais ostensivos</td>
+            <td>CEP, CAAE, SBIS, ANVISA, OMOP, FHIR como badges visíveis — vencem comitês de compras de clínicas grandes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">O argumento competitivo em uma linha cada</h3>
+    <p style="color: var(--ink-soft); margin-bottom: 20px;">Como a Atena se diferencia, em uma frase, contra cada concorrente.</p>
+
+    <div class="matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>Contra</th>
+            <th>O argumento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Voa</td>
+            <td>"Voa transcreve. Atena <strong>conhece seu paciente</strong>, prepara a consulta antes, sugere com evidência citada e gera coorte de pesquisa enquanto você atende."</td>
+          </tr>
+          <tr>
+            <td>iClinic</td>
+            <td>"iClinic é onde você <strong>guarda</strong> o prontuário. Atena é onde o prontuário <strong>trabalha por você</strong> — em tempo real, com 5 memórias persistentes."</td>
+          </tr>
+          <tr>
+            <td>Clínica nas Nuvens</td>
+            <td>"CNN tem 200+ recursos genéricos. Atena tem <strong>7 diferenciais aprofundados</strong> em cannabis e RWE. Profundidade &gt; amplitude. <em>(E quando você migrar da CNN, todos os seus 30 anos de dados vêm junto.)</em>"</td>
+          </tr>
+          <tr>
+            <td>Amplimed</td>
+            <td>"Amélia é a secretária digital. Atena é a <strong>colega médica</strong> — sugere CID com evidência da literatura, audita interação, acompanha o paciente em M1/M3/M6/M12."</td>
+          </tr>
+          <tr>
+            <td>Amigo Tech</td>
+            <td>"Amigo Tech tem IA boa, mas <strong>anônima e genérica</strong>. Atena tem nome, postura ética, corpus proprietário (Tratado WeCann + 40k artigos PubMed). E uma comunidade de 4.000 médicos prescritores como dado vivo."</td>
+          </tr>
+          <tr>
+            <td>SOUL MV</td>
+            <td>"SOUL MV foi feito para o gestor do hospital. Atena foi feita <strong>para o médico</strong> — com a mesma profundidade clínica de um ERP, mas em uma superfície que respeita 12 minutos de consulta."</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <div class="eyebrow">O brief em uma frase</div>
+    <h3>Atena é o quadrante vazio do mapa — alta profundidade clínica + escopo de plataforma completo.</h3>
+    <p>Nenhum dos seis concorrentes ocupa esse espaço. Voa fica em assistente pontual · IA forte mas escopo limitado. iClinic, CNN e Amplimed em SaaS médio · operacionais sem profundidade clínica. Amigo Tech moderno e mobile-first · mas IA anônima e sem corpus proprietário. SOUL MV em ERP enterprise sem alma clínica. <strong>Quando o Atom6 desenhar a Atena, o teste mais simples é: nenhuma das seis marcas analisadas aqui poderia ter feito esta tela.</strong> Se a resposta for "poderia ser do Amplimed", "parece o Voa em verde" ou "tem cara de Amigo One", recomeçar.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>Doc 03 · Análise Competitiva UX · v2 · 6 concorrentes</span>
+    <span>WeCann × Atom6 Studio · Maio 2026</span>
+  </div>
+
+</div>
+</body>
+</html>

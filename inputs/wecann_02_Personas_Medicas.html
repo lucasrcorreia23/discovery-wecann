@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Personas Médicas · v2 · Brief Atom6 Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1E3A8A;
+    --navy-deep: #0F1E4A;
+    --teal: #0F6E56;
+    --teal-soft: #E6F2EE;
+    --teal-line: #B8DDD0;
+    --purple: #6B21A8;
+    --purple-soft: #F3EAFB;
+    --cream: #FAF7F2;
+    --cream-deep: #F4EFE6;
+    --ink: #1A1A1A;
+    --ink-soft: #3D3D3D;
+    --ink-mute: #6B6B6B;
+    --line: #E5E0D6;
+    --line-soft: #EFEAE0;
+    --amber: #B45309;
+    --rose: #BE185D;
+    --rose-soft: #FDF2F8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream); color: var(--ink);
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 60px 48px 80px; }
+
+  /* HERO */
+  .hero { border-bottom: 1px solid var(--line); padding-bottom: 48px; margin-bottom: 56px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); font-weight: 600; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 56px;
+    line-height: 1.05; letter-spacing: -0.02em; color: var(--navy-deep); margin-bottom: 16px;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); font-weight: 500; }
+  .hero .lede {
+    font-family: 'Fraunces', serif; font-size: 22px; line-height: 1.45;
+    color: var(--ink-soft); font-weight: 400; max-width: 760px;
+  }
+  .meta-row {
+    display: flex; gap: 32px; margin-top: 32px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-mute); letter-spacing: 0.05em; flex-wrap: wrap;
+  }
+  .meta-row span strong { color: var(--ink); font-weight: 600; }
+
+  /* INTRO BLOCK */
+  .intro-block {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 32px 36px; margin-bottom: 48px;
+  }
+  .intro-block h3 {
+    font-family: 'Fraunces', serif; font-size: 22px; color: var(--navy-deep);
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .intro-block p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.65; margin-bottom: 10px; }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  /* PERSONA INDEX */
+  .persona-index {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 64px;
+  }
+  .pi-card {
+    background: white; border: 1px solid var(--line); border-radius: 6px;
+    padding: 18px 16px; text-align: center;
+  }
+  .pi-num {
+    font-family: 'Fraunces', serif; font-size: 28px; color: var(--teal);
+    font-weight: 500; font-style: italic; line-height: 1; margin-bottom: 8px;
+  }
+  .pi-name {
+    font-family: 'Fraunces', serif; font-size: 14px; color: var(--navy-deep);
+    font-weight: 600; line-height: 1.25; margin-bottom: 6px;
+  }
+  .pi-age {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink-mute); letter-spacing: 0.06em;
+  }
+
+  /* ===== EXPOSIÇÃO ESTRATÉGICA (PLAYBOOK) ===== */
+  .section-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--teal); letter-spacing: 0.15em; margin-bottom: 8px; font-weight: 600;
+  }
+  h2 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 34px;
+    line-height: 1.15; letter-spacing: -0.015em; color: var(--navy-deep); margin-bottom: 16px;
+  }
+  p.intro {
+    font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.5;
+    color: var(--ink-soft); margin-bottom: 28px;
+  }
+
+  .playbook-persona {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 18px;
+    border-left: 5px solid var(--teal);
+  }
+  .pb-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 4px; flex-wrap: wrap; gap: 12px;
+  }
+  .pb-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--teal); letter-spacing: 0.1em; font-weight: 700;
+    text-transform: uppercase;
+  }
+  .pb-name {
+    font-family: 'Fraunces', serif; font-size: 28px; color: var(--navy-deep);
+    font-weight: 600; line-height: 1.15; margin-bottom: 4px; letter-spacing: -0.015em;
+  }
+  .pb-tagline {
+    font-family: 'Fraunces', serif; font-size: 16px; color: var(--teal);
+    font-style: italic; margin-bottom: 22px;
+  }
+  .pb-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px;
+  }
+  .pb-field {
+    border-top: 1px solid var(--line-soft); padding-top: 12px;
+  }
+  .pb-field.full { grid-column: 1 / -1; }
+  .pb-field .lbl {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 6px;
+  }
+  .pb-field p {
+    font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0;
+  }
+  .pb-field p strong { color: var(--navy-deep); font-weight: 600; }
+  .pb-message {
+    background: var(--teal-soft); border: 1px solid var(--teal-line);
+    border-radius: 6px; padding: 16px 18px; margin-top: 16px;
+  }
+  .pb-message-lbl {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 6px;
+  }
+  .pb-message p {
+    font-family: 'Fraunces', serif; font-size: 17px; color: var(--navy-deep);
+    font-style: italic; line-height: 1.4; margin: 0; font-weight: 500;
+  }
+  .pb-headlines {
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+  .pb-headlines-lbl {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 8px;
+  }
+  .pb-headline {
+    font-family: 'Fraunces', serif; font-size: 15px; color: var(--ink-soft);
+    margin-bottom: 5px; padding-left: 16px; position: relative; line-height: 1.4;
+  }
+  .pb-headline::before {
+    content: '›'; position: absolute; left: 0; color: var(--teal); font-weight: 700;
+  }
+
+  /* ===== PERSONA DEEP DIVE (UX) ===== */
+  .persona {
+    margin-bottom: 80px; padding-bottom: 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .persona:last-of-type { border-bottom: none; padding-bottom: 0; }
+  .persona-header {
+    display: grid; grid-template-columns: 80px 1fr; gap: 28px;
+    margin-bottom: 32px; align-items: start;
+  }
+  .persona-num {
+    font-family: 'Fraunces', serif; font-size: 64px; font-weight: 500;
+    color: var(--teal); line-height: 0.95; font-style: italic;
+  }
+  .persona-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--teal); letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 6px; font-weight: 600;
+  }
+  .persona-name {
+    font-family: 'Fraunces', serif; font-size: 38px; line-height: 1.1;
+    color: var(--navy-deep); margin-bottom: 10px; font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .persona-snapshot {
+    font-family: 'Fraunces', serif; font-size: 18px; color: var(--ink-soft);
+    line-height: 1.45; font-style: italic; font-weight: 400;
+  }
+
+  .demo-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    background: white; border: 1px solid var(--line); border-radius: 6px;
+    margin-bottom: 32px; overflow: hidden;
+  }
+  .demo-cell { padding: 14px 18px; border-right: 1px solid var(--line); }
+  .demo-cell:last-child { border-right: none; }
+  .demo-cell .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-mute);
+    margin-bottom: 4px; font-weight: 600;
+  }
+  .demo-cell .value {
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: var(--navy-deep); font-weight: 600; line-height: 1.3;
+  }
+
+  .persona-body {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 32px;
+  }
+  .pb-block h4 {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--teal); font-weight: 600; margin-bottom: 12px;
+  }
+  .pb-block h4.warn { color: var(--rose); }
+  .pb-block ul { list-style: none; padding: 0; }
+  .pb-block li {
+    font-size: 14.5px; line-height: 1.6; margin-bottom: 10px;
+    padding-left: 18px; position: relative; color: var(--ink-soft);
+  }
+  .pb-block li::before {
+    content: '·'; position: absolute; left: 4px; color: var(--teal);
+    font-weight: 700; font-size: 20px; top: -4px;
+  }
+  .pb-block.warn li::before { color: var(--rose); content: '×'; font-size: 14px; top: 0; left: 2px; }
+  .pb-block li strong { color: var(--navy-deep); font-weight: 600; }
+
+  /* UX DIRECTIVES — expanded */
+  .ux-directives {
+    background: var(--navy-deep); color: white;
+    border-radius: 8px; padding: 32px 36px; margin-bottom: 22px;
+  }
+  .ux-directives h4 {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #7DD3C0; font-weight: 600; margin-bottom: 6px;
+  }
+  .ux-directives .sub {
+    font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 22px;
+  }
+  .ux-directives .grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px 32px;
+  }
+  .ux-directives .ux-item {
+    display: grid; grid-template-columns: auto 1fr; gap: 11px; align-items: start;
+  }
+  .ux-item .marker {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: #7DD3C0; font-weight: 700; padding-top: 1px; min-width: 18px;
+  }
+  .ux-item .text {
+    font-size: 13.5px; line-height: 1.55; color: rgba(255,255,255,0.92);
+  }
+  .ux-item .text strong { color: white; font-weight: 600; }
+
+  /* Micro-copy library */
+  .microcopy-block {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 24px 26px; margin-bottom: 18px;
+  }
+  .microcopy-head {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 6px;
+  }
+  .microcopy-block h5 {
+    font-family: 'Fraunces', serif; font-size: 19px; color: var(--navy-deep);
+    font-weight: 600; margin-bottom: 16px; line-height: 1.2;
+  }
+  .micro-item {
+    padding: 11px 14px; background: var(--cream); border-radius: 5px;
+    margin-bottom: 7px; font-family: 'Inter', sans-serif;
+    font-size: 13.5px; line-height: 1.5; color: var(--ink-soft);
+    border-left: 3px solid var(--teal);
+  }
+  .micro-item:last-child { margin-bottom: 0; }
+  .micro-item .micro-tag {
+    display: inline-block; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--teal); margin-right: 8px;
+    text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+  }
+  .micro-item strong { color: var(--navy-deep); font-weight: 600; }
+
+  /* Component patterns */
+  .components-block {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 24px 26px; margin-bottom: 18px;
+  }
+  .components-head {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--purple); letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 6px;
+  }
+  .components-block h5 {
+    font-family: 'Fraunces', serif; font-size: 19px; color: var(--navy-deep);
+    font-weight: 600; margin-bottom: 16px; line-height: 1.2;
+  }
+  .comp-item {
+    padding: 14px 16px; background: var(--purple-soft);
+    border-radius: 5px; margin-bottom: 7px; border-left: 3px solid var(--purple);
+  }
+  .comp-item:last-child { margin-bottom: 0; }
+  .comp-name {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+    color: var(--purple); margin-bottom: 4px; letter-spacing: -0.1px;
+  }
+  .comp-desc {
+    font-size: 13px; line-height: 1.5; color: var(--ink-soft);
+  }
+  .comp-desc strong { color: var(--navy-deep); font-weight: 600; }
+
+  /* Edge cases */
+  .edge-block {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 24px 26px; margin-bottom: 18px;
+  }
+  .edge-head {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 6px;
+  }
+  .edge-block h5 {
+    font-family: 'Fraunces', serif; font-size: 19px; color: var(--navy-deep);
+    font-weight: 600; margin-bottom: 16px; line-height: 1.2;
+  }
+  .edge-item {
+    padding: 12px 14px; background: #FEF3C7; border-radius: 5px;
+    margin-bottom: 7px; border-left: 3px solid var(--amber);
+  }
+  .edge-item:last-child { margin-bottom: 0; }
+  .edge-scenario {
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
+    color: var(--amber); margin-bottom: 4px; letter-spacing: -0.1px;
+  }
+  .edge-response {
+    font-size: 13px; line-height: 1.5; color: var(--ink-soft);
+  }
+  .edge-response strong { color: var(--navy-deep); font-weight: 600; }
+
+  .message-block {
+    background: var(--teal-soft); border: 1px solid var(--teal-line);
+    border-radius: 6px; padding: 22px 28px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 16px;
+  }
+  .message-block .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--teal); font-weight: 600; margin-bottom: 8px;
+  }
+  .message-block .copy {
+    font-family: 'Fraunces', serif; font-size: 18px; line-height: 1.4;
+    color: var(--navy-deep); font-style: italic; font-weight: 500;
+  }
+  .message-block .quote {
+    font-family: 'Fraunces', serif; font-size: 16px; line-height: 1.45;
+    color: var(--ink-soft); font-weight: 400;
+  }
+  .message-block .quote::before { content: '"'; color: var(--teal); font-size: 24px; font-weight: 700; margin-right: 2px; }
+  .message-block .quote::after { content: '"'; color: var(--teal); font-size: 24px; font-weight: 700; margin-left: 2px; }
+
+  /* SYNTHESIS */
+  .synthesis { margin-top: 32px; }
+  .synthesis h2 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 34px;
+    line-height: 1.15; color: var(--navy-deep); margin-bottom: 8px;
+  }
+  .synthesis p.intro {
+    font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.5;
+    color: var(--ink-soft); margin-bottom: 32px;
+  }
+  .common-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0;
+  }
+  .common-card {
+    background: white; border: 1px solid var(--line); border-radius: 6px;
+    padding: 22px 24px;
+  }
+  .common-card h5 {
+    font-family: 'Fraunces', serif; font-size: 18px; color: var(--navy-deep);
+    font-weight: 600; margin-bottom: 8px; line-height: 1.25;
+  }
+  .common-card p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; }
+
+  .matrix {
+    margin: 28px 0; border: 1px solid var(--line); border-radius: 6px;
+    overflow: hidden; background: white;
+  }
+  .matrix table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .matrix th {
+    background: var(--cream-deep); color: var(--navy-deep);
+    text-align: left; padding: 12px 14px; font-weight: 600;
+    border-bottom: 1px solid var(--line); font-size: 12px;
+  }
+  .matrix th:first-child { width: 220px; }
+  .matrix td {
+    padding: 12px 14px; border-bottom: 1px solid var(--line-soft);
+    vertical-align: top; color: var(--ink-soft); line-height: 1.5;
+  }
+  .matrix tr:last-child td { border-bottom: none; }
+  .matrix td:first-child {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.05em; color: var(--navy-deep); font-weight: 600;
+    background: var(--cream);
+  }
+  .pill {
+    display: inline-block; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; padding: 2px 8px; border-radius: 10px;
+    background: var(--teal-soft); color: var(--teal); font-weight: 600; letter-spacing: 0.04em;
+  }
+
+  /* VERDICT */
+  .verdict {
+    background: var(--navy-deep); color: white; border-radius: 8px;
+    padding: 40px 48px; margin: 56px 0 0;
+  }
+  .verdict .eyebrow { color: #7DD3C0; margin-bottom: 12px; }
+  .verdict h3 {
+    font-family: 'Fraunces', serif; font-size: 28px; color: white;
+    margin: 0 0 18px; line-height: 1.25; font-weight: 500;
+  }
+  .verdict p {
+    font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.55;
+    color: rgba(255,255,255,0.85); font-weight: 400;
+  }
+  .verdict p strong { color: white; font-weight: 600; }
+
+  .doc-footer {
+    margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    color: var(--ink-mute); letter-spacing: 0.05em;
+    display: flex; justify-content: space-between;
+  }
+
+  @media (max-width: 720px) {
+    .container { padding: 40px 24px 60px; }
+    .hero h1 { font-size: 38px; }
+    .hero .lede { font-size: 18px; }
+    .persona-index { grid-template-columns: 1fr 1fr; }
+    .pb-grid { grid-template-columns: 1fr; }
+    .persona-header { grid-template-columns: 1fr; gap: 8px; }
+    .persona-num { font-size: 40px; }
+    .persona-name { font-size: 28px; }
+    .demo-strip { grid-template-columns: 1fr 1fr; }
+    .demo-cell:nth-child(2) { border-right: none; }
+    .demo-cell:nth-child(1), .demo-cell:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .persona-body, .ux-directives .grid, .message-block, .common-grid { grid-template-columns: 1fr; }
+    .verdict { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <div class="eyebrow">Doc 02 · v2 · Pack de Onboarding Atom6 Studio</div>
+    <h1>As 5 Personas <em>Médicas</em><br>da Atena</h1>
+    <p class="lede">Quem são os médicos que vão abrir a Atena pela primeira vez — e o que cada um precisa <em>sentir</em> nos primeiros 5 minutos para ficar.</p>
+    <div class="meta-row">
+      <span><strong>Fonte primária:</strong> WeCann Marketing Playbook · item 3</span>
+      <span><strong>Lente aplicada:</strong> UX · design · produto</span>
+      <span><strong>Mercado:</strong> Médicos prescritores · Brasil</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-block">
+    <h3>Como ler este documento</h3>
+    <p>O doc tem três camadas. <strong>Camada 1 · Exposição estratégica</strong> (seção 01) traz o playbook de marketing das 5 personas como referência canônica — demografia, psicografia, dores, desejos, objeções, mensagem-chave, gatilhos, conteúdo vencedor e headlines. Use como dicionário rápido. <strong>Camada 2 · Deep dive UX por persona</strong> (seções 02-06) aprofunda em diretivas de produto: 10 diretrizes UX, biblioteca de microcopy, componentes específicos e edge cases. <strong>Camada 3 · Síntese transversal</strong> (seção 07) fecha com matriz tática: qual persona lidera cada tela do produto.</p>
+    <p>As 5 personas convivem no produto. Boa notícia: 70% das decisões de UX servem todas. Má notícia: os 30% restantes exigem que a Atom6 escolha qual persona <em>lidera</em> cada tela.</p>
+  </div>
+
+  <!-- INDEX -->
+  <div class="persona-index">
+    <div class="pi-card"><div class="pi-num">01</div><div class="pi-name">Especialista Pragmático</div><div class="pi-age">35–55 anos</div></div>
+    <div class="pi-card"><div class="pi-num">02</div><div class="pi-name">Clínico Sobrecarregado</div><div class="pi-age">30–55 anos</div></div>
+    <div class="pi-card"><div class="pi-num">03</div><div class="pi-name">Sênior Explorador</div><div class="pi-age">55–75 anos</div></div>
+    <div class="pi-card"><div class="pi-num">04</div><div class="pi-name">Humanista Empático</div><div class="pi-age">30–60 anos</div></div>
+    <div class="pi-card"><div class="pi-num">05</div><div class="pi-name">Recém-formado</div><div class="pi-age">25–35 anos</div></div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 01 · EXPOSIÇÃO ESTRATÉGICA · DO PLAYBOOK -->
+  <!-- ============================================ -->
+  <section>
+    <div class="section-num">01 · EXPOSIÇÃO ESTRATÉGICA · PLAYBOOK DE MARKETING</div>
+    <h2>Quem são essas pessoas · antes do design</h2>
+    <p class="intro">Antes de qualquer decisão visual, o time precisa ter na cabeça a versão canônica dessas 5 personas — a que a WeCann usa para marketing, copy, vendas e estratégia. É a base psicográfica do produto. As diretivas UX que vêm depois aterrissam esta exposição em decisões de interface.</p>
+
+    <!-- 01.1 — Especialista Pragmático -->
+    <div class="playbook-persona">
+      <div class="pb-head">
+        <span class="pb-num">Persona 01</span>
+      </div>
+      <h3 class="pb-name">O Especialista Pragmático</h3>
+      <p class="pb-tagline">Cético, orientado a evidência, busca segurança jurídica e diretrizes claras.</p>
+      <div class="pb-grid">
+        <div class="pb-field">
+          <div class="lbl">Demografia</div>
+          <p>35–55 anos · neurologistas, psiquiatras, reumatologistas e afins · alta especialização · prática em clínicas e hospitais privados. Incomodados com pacientes que <strong>"estacionaram"</strong> nos protocolos convencionais.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Psicografia</div>
+          <p>Cético · orientado a evidência · busca segurança jurídica e diretrizes claras. Não compra sem dados quantificados. Audita fontes antes de aceitar qualquer recomendação clínica.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Nível de awareness</div>
+          <p>Consciente da solução, mas exige dados. Cético quanto à segurança e à dosagem. Conhece o tema · não vai ser convencido por hype.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Dores</div>
+          <p>Falta de guias práticos · risco jurídico · medo de erro público. Frustração com a refratariedade: <strong>20–60% dos pacientes psiquiátricos são refratários</strong> e <strong>40% dos portadores de dor crônica</strong> estão insatisfeitos com o tratamento atual.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Desejos</div>
+          <p>Algoritmos defensáveis · guidelines · provas · estudos de caso com dados quantificados. Quer poder explicar e defender qualquer decisão clínica em uma auditoria ou processo.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Objeções</div>
+          <p>"Isso é experimental" · "não há ECRs suficientes" · "vou esperar mais evidências antes de adotar".</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Gatilhos dominantes</div>
+          <p><strong>Autoridade e Redução de Ambiguidade</strong>. Dados quantificados · testemunhos de especialistas reconhecidos · validação jurídica e compliance. Foco total em evidências e guidelines.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Conteúdo vencedor</div>
+          <p>Whitepapers · guidelines em PDF · webinars com Q&amp;A jurídico · estudos de caso documentados com dados quantificados · revisão por pares.</p>
+        </div>
+      </div>
+      <div class="pb-message">
+        <div class="pb-message-lbl">Mensagem-chave</div>
+        <p>"Ciência de ponta, protocolos defensáveis e aplicação clínica segura."</p>
+      </div>
+      <div class="pb-headlines">
+        <div class="pb-headlines-lbl">Headlines vencedoras</div>
+        <div class="pb-headline">Diretrizes e segurança clínica: como aplicar terapias de fronteira com evidência.</div>
+      </div>
+    </div>
+
+    <!-- 01.2 — Clínico Sobrecarregado -->
+    <div class="playbook-persona">
+      <div class="pb-head">
+        <span class="pb-num">Persona 02</span>
+      </div>
+      <h3 class="pb-name">O Clínico Sobrecarregado</h3>
+      <p class="pb-tagline">Burnout · operador de receitas · busca eficiência e alívio. Vergonha silenciosa.</p>
+      <div class="pb-grid">
+        <div class="pb-field">
+          <div class="lbl">Demografia</div>
+          <p>30–55 anos · clínicos gerais com grande demanda · em burnout. Atende alto volume de pacientes e se sente como um <strong>"operador de receitas"</strong> · financeiramente instável apesar de trabalhar muito.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Psicografia</div>
+          <p>Busca soluções rápidas e eficazes · baixa tolerância a conteúdo denso. <strong>Vergonha silenciosa</strong> por estar exausto apesar da dedicação. Não verbaliza · esconde da equipe.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Nível de awareness</div>
+          <p>Consciente do problema (exaustão) e busca eficiência. Deseja melhores resultados para o paciente e para sua agenda.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Dores</div>
+          <p>Fadiga · falta de tempo · necessidade de resultados rápidos. Precisa de aplicação prática imediata · o <strong>Masterbook Digital</strong> WeCann é seu aliado de consulta rápida.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Desejos</div>
+          <p>Economia cognitiva · protocolos prontos · retorno financeiro e qualidade de vida recuperada. Quer fechar o dia sem levar prontuário pra casa.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Objeções</div>
+          <p>"Não tenho tempo para cursos longos" · "quem vai me apoiar depois?" · "Já tentei outras coisas, nada funciona pra rotina dura".</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Gatilhos dominantes</div>
+          <p><strong>Economia Cognitiva (Simplicidade) e Alívio</strong>. Retomar o controle da carreira. A possibilidade de respirar de novo.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Conteúdo vencedor</div>
+          <p>Checklists · protocolos "do consultório" · vídeos de 10–15 minutos · acompanhamento comunitário · respostas que cabem entre dois pacientes.</p>
+        </div>
+      </div>
+      <div class="pb-message">
+        <div class="pb-message-lbl">Mensagem-chave</div>
+        <p>"Soluções práticas para recuperar controle clínico e qualidade de vida."</p>
+      </div>
+      <div class="pb-headlines">
+        <div class="pb-headlines-lbl">Headlines vencedoras</div>
+        <div class="pb-headline">Maior eficiência clínica, menos horas de frustração — protocolos que funcionam.</div>
+      </div>
+    </div>
+
+    <!-- 01.3 — Sênior Explorador -->
+    <div class="playbook-persona">
+      <div class="pb-head">
+        <span class="pb-num">Persona 03</span>
+      </div>
+      <h3 class="pb-name">O Sênior Explorador — O Mentor que Quer Legado</h3>
+      <p class="pb-tagline">Estabilizado · em busca de propósito e autorrealização. Quer voltar a liderar.</p>
+      <div class="pb-grid">
+        <div class="pb-field">
+          <div class="lbl">Demografia</div>
+          <p>55–75 anos · médico veterano · predominantemente em SP e capitais · alta escolaridade · estabilidade financeira média-alta · percebe a medicina como mecânica e burocrática.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Momento de carreira</div>
+          <p>Estabilizado financeiramente · em busca de <strong>propósito e autorrealização</strong>. Quer relevância simbólica · não mais provar valor financeiro.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Psicografia</div>
+          <p>Busca sentido e legado · orgulhoso da carreira · quer autoridade e ser visto como referência. Medo latente de se tornar obsoleto diante das novas gerações.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Nível de awareness</div>
+          <p>Geralmente consciente da Medicina Endocanabinoide, mas busca profundidade. Consciente do problema (desencanto com a medicina atual) e da solução (inovação científica).</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Dores</div>
+          <p>Tédio profissional · medo de perder relevância · desconforto com novidades pouco fundamentadas. Sente que sua experiência não está sendo valorizada.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Desejos</div>
+          <p>Ensinar · orientar · deixar legado · pertencer a uma comunidade exclusiva de pares seniores. Ser citado como referência.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Objeções</div>
+          <p>"Isso é moda" · "não há evidência suficiente" · "não quero arriscar minha reputação". A reputação é seu ativo mais frágil.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Gatilhos dominantes</div>
+          <p><strong>Status e Legado · Exclusividade</strong>. Prova social de pares seniores · certificados e selos institucionais. O Tratado como símbolo de autoridade definitiva.</p>
+        </div>
+        <div class="pb-field full">
+          <div class="lbl">Prova de conexão (WeCann)</div>
+          <p>Dr. José Augusto (87 anos · 57 de medicina) expressando entusiasmo com o novo desafio. Dr. Oscar Peixoto (51 anos de medicina) vendo algo "totalmente novo". Essa prova social de pares com décadas de carreira é o que faz o Sênior aceitar olhar o produto.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Conteúdo vencedor</div>
+          <p>Mesas de discussão com líderes · sessões de mentoria · reviews longos de casos ("rituais") · dispositivos de reconhecimento (badges, certificados, mentorias formais).</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Aplicação na Atena</div>
+          <p>É a persona que mais valoriza a Casuística (legado em dados) · marcos de produção científica · status de Pesquisadora visível no perfil · tom institucional na microcopy.</p>
+        </div>
+      </div>
+      <div class="pb-message">
+        <div class="pb-message-lbl">Mensagem-chave</div>
+        <p>"Volte a liderar: ciência profunda, ferramentas práticas e comunidade de pares."</p>
+      </div>
+      <div class="pb-headlines">
+        <div class="pb-headlines-lbl">Headlines vencedoras</div>
+        <div class="pb-headline">Redescubra a medicina — torne-se referência em Medicina Endocanabinoide.</div>
+        <div class="pb-headline">Para médicos que lideram gerações: ciência profunda, prática segura.</div>
+      </div>
+    </div>
+
+    <!-- 01.4 — Humanista Empático -->
+    <div class="playbook-persona">
+      <div class="pb-head">
+        <span class="pb-num">Persona 04</span>
+      </div>
+      <h3 class="pb-name">O Humanista Empático</h3>
+      <p class="pb-tagline">Emocionalmente engajado · busca soluções que aliviem sofrimento sem dano.</p>
+      <div class="pb-grid">
+        <div class="pb-field">
+          <div class="lbl">Demografia</div>
+          <p>30–60 anos · geriatras, paliativistas, médicos de família e integrativos · sensíveis ao sofrimento · focados em qualidade de vida e redução da polifarmácia.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Psicografia</div>
+          <p>Forte foco no paciente · emocionalmente engajado · busca soluções que aliviem sofrimento sem dano. Vê o paciente como pessoa, não como diagnóstico.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Nível de awareness</div>
+          <p>Consciente do problema (dores refratárias) e curioso sobre soluções. Busca uma medicina mais integrativa e humanizada.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Dores</div>
+          <p>Frustração ao ver pacientes sem opções · polifarmácia excessiva · burnout moral. <strong>"Dor Moral"</strong> — saber que o paciente sofre, mas não ter ferramentas gentis para ajudá-lo sem causar excesso de efeitos colaterais.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Desejos</div>
+          <p>Resultados que melhorem qualidade de vida · ferramentas para reduzir polifarmácia. Quer ver a face do paciente mudar entre consultas.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Objeções</div>
+          <p>"É irresponsável tentar algo novo sem base suficiente" · "posso causar efeitos adversos". A medicina cuidadosa é seu valor central.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Gatilhos dominantes</div>
+          <p><strong>Ocitocina (Conexão) e Compaixão</strong>. Foco em histórias reais de transformação de vida · casos clínicos humanizados.</p>
+        </div>
+        <div class="pb-field full">
+          <div class="lbl">Prova de conexão (WeCann)</div>
+          <p>Depoimento de Fatima Poubel sobre tratar o indivíduo como um todo. Dra. Sandra Magali vendo pacientes específicos a cada nova orientação. O produto precisa fazer ela <em>sentir</em> que está cuidando, não apenas administrando.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Conteúdo vencedor</div>
+          <p>Histórias longas · casos clínicos humanizados · webinars com familiares e pacientes · narrativas de transformação. Não slides técnicos.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Aplicação na Atena</div>
+          <p>Persona-líder de Paciente 360 e Pós-Consulta. Microcopy <em>cuidadosa</em> · qualidade de vida em destaque · "voz do paciente" preservada · alertas de polifarmácia gentis.</p>
+        </div>
+      </div>
+      <div class="pb-message">
+        <div class="pb-message-lbl">Mensagem-chave</div>
+        <p>"Tratamentos que respeitam a pessoa — ciência e compaixão."</p>
+      </div>
+      <div class="pb-headlines">
+        <div class="pb-headlines-lbl">Headlines vencedoras</div>
+        <div class="pb-headline">Uma abordagem gentil e clínica que devolve qualidade de vida.</div>
+      </div>
+    </div>
+
+    <!-- 01.5 — Recém-formado -->
+    <div class="playbook-persona">
+      <div class="pb-head">
+        <span class="pb-num">Persona 05</span>
+      </div>
+      <h3 class="pb-name">O Recém-Formado / Buscador</h3>
+      <p class="pb-tagline">Inseguro tecnicamente · alta energia · ansioso por diferenciação. FOMO ativo.</p>
+      <div class="pb-grid">
+        <div class="pb-field">
+          <div class="lbl">Demografia</div>
+          <p>25–35 anos · recém-formados ou em início de carreira · clínicos gerais · alta energia. Médico jovem, <strong>inseguro tecnicamente e exausto de plantões subvalorizados</strong>.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Psicografia</div>
+          <p>Ansioso por diferenciação e com <strong>forte FOMO</strong> (medo de ficar para trás). Energia alta · disposto a aprender · curva de absorção rápida. Mobile-native.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Nível de awareness</div>
+          <p>Curioso · busca soluções de mercado. Ainda inconsciente do potencial: o Brasil registrou <strong>aumento de 86% nas prescrições</strong> de cannabis medicinal no último ano.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Dores</div>
+          <p>Insegurança técnica · falta de oportunidades · baixa visibilidade. Ansiedade com o futuro e medo de ser <strong>"só mais um na multidão"</strong> sem especialidade definida.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Desejos</div>
+          <p>Validação rápida · caminhos claros · networking. <strong>Atalho de autoridade</strong> e diferenciação para pular a fila da relevância clínica.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Objeções</div>
+          <p>"Não tenho tempo" · "não posso pagar agora". Falta de capital financeiro e temporal · não falta vontade.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Gatilhos dominantes</div>
+          <p><strong>FOMO (medo de ficar para trás) e Prova Social</strong>. Pertencer à <em>maior comunidade médica especializada do mundo</em> · ver outros jovens que decolaram.</p>
+        </div>
+        <div class="pb-field">
+          <div class="lbl">Conteúdo vencedor</div>
+          <p>Trilhas passo a passo · micro-credenciais · histórias de jovens que montaram prática com sucesso · gamificação · badges sutis · acesso a comunidade.</p>
+        </div>
+      </div>
+      <div class="pb-message">
+        <div class="pb-message-lbl">Mensagem-chave</div>
+        <p>"Diferencie-se desde o início: autoridade prática que abre oportunidades."</p>
+      </div>
+      <div class="pb-headlines">
+        <div class="pb-headlines-lbl">Headlines vencedoras</div>
+        <div class="pb-headline">Destaque no seu primeiro ano: autoridade clínica em medicina de fronteira.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 02–06 · PERSONA DEEP DIVES (UX) -->
+  <!-- ============================================ -->
+
+  <!-- ====================================================== -->
+  <!-- PERSONA 01: ESPECIALISTA PRAGMÁTICO · DEEP UX -->
+  <!-- ====================================================== -->
+  <section class="persona">
+    <div class="persona-header">
+      <div class="persona-num">01</div>
+      <div>
+        <div class="persona-title">Deep dive UX · persona principal · maior peso na decisão de compra</div>
+        <h3 class="persona-name">O Especialista Pragmático</h3>
+        <p class="persona-snapshot">"Me mostra a evidência. Me mostra a diretriz. Me mostra como eu defendo isso se eu for chamado a explicar."</p>
+      </div>
+    </div>
+
+    <div class="demo-strip">
+      <div class="demo-cell"><div class="label">Idade</div><div class="value">35–55 anos</div></div>
+      <div class="demo-cell"><div class="label">Especialidades</div><div class="value">Neuro · Psiq · Reumato · Dor</div></div>
+      <div class="demo-cell"><div class="label">Awareness</div><div class="value">Cético / orientado a evidência</div></div>
+      <div class="demo-cell"><div class="label">Setting</div><div class="value">Clínica privada / hospital</div></div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block">
+        <h4>Perfil cognitivo · como lê a tela</h4>
+        <ul>
+          <li><strong>Lê o rodapé.</strong> Quer ver fonte, data, modelo, versão. Se não houver, perde confiança imediatamente.</li>
+          <li><strong>Hover-test heavy.</strong> Vai passar o mouse em tudo antes de clicar.</li>
+          <li><strong>Reabre a evidência.</strong> Não basta citar; ele quer abrir o artigo, ver o trecho exato.</li>
+          <li><strong>Comparativo mental constante.</strong> Compara cada output com diretriz internacional que já conhece.</li>
+          <li><strong>Audita o histórico.</strong> Antes de aceitar uma sugestão, checa quando a Atena foi atualizada pela última vez.</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Dores · o que tira o sono</h4>
+        <ul>
+          <li><strong>Risco jurídico</strong> · medo de processo, CRM, denúncia pública</li>
+          <li><strong>Pacientes refratários</strong> · 20-60% psiq, 40% dor crônica insatisfeitos</li>
+          <li><strong>Ambiguidade regulatória</strong> em cannabis · RDC qual, quem assina, como prescrever</li>
+          <li><strong>Falta de algoritmo defensável</strong> · não pode "achar" · precisa justificar</li>
+          <li><strong>Confusão entre evidências</strong> · estudos contraditórios, sem síntese</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ux-directives">
+      <h4>★ 10 diretrizes UX para esta persona</h4>
+      <div class="sub">Cada uma destas diretivas, ausente ou mal feita, desinstala o produto.</div>
+      <div class="grid">
+        <div class="ux-item"><span class="marker">01</span><span class="text"><strong>Evidence drawer universal.</strong> Cada sugestão da Atena precisa expandir um drawer com fonte exata · trecho · DOI · link de artigo · grau de evidência (A/B/C). Nunca "a IA sugeriu" solto.</span></div>
+        <div class="ux-item"><span class="marker">02</span><span class="text"><strong>Audit trail em 1 clique.</strong> "Quem fez? Quando? Qual modelo? Posso reverter?" Cada registro do prontuário tem 4 perguntas respondidas em hover.</span></div>
+        <div class="ux-item"><span class="marker">03</span><span class="text"><strong>RDC + CID + CAAE carimbados.</strong> Receituário e classificação regulatória com número da norma + versão. Rodapé técnico · não front · mas sempre acessível.</span></div>
+        <div class="ux-item"><span class="marker">04</span><span class="text"><strong>Verbos clínicos rígidos.</strong> "Sugere", "indica", "aponta", "considera". Nunca "decide", "prescreve", "diagnostica". Lock no copy generator.</span></div>
+        <div class="ux-item"><span class="marker">05</span><span class="text"><strong>Reversibilidade explícita.</strong> Toda ação da Atena tem "rejeitar", "editar", "ignorar" a 1 clique · histórico registra mudança e motivo (opcional).</span></div>
+        <div class="ux-item"><span class="marker">06</span><span class="text"><strong>Mono em dado técnico.</strong> CID, dose, RDC, CAAE em tipografia de máquina. Sinaliza "isso é dado verificável, não opinião".</span></div>
+        <div class="ux-item"><span class="marker">07</span><span class="text"><strong>Indicador de consenso dual-LLM.</strong> Quando duas IAs concordaram, mostra "✓ consenso dual". Quando divergiram, mostra ambos lados e deixa o médico escolher.</span></div>
+        <div class="ux-item"><span class="marker">08</span><span class="text"><strong>Versionamento de sugestões.</strong> Cada sugestão tem timestamp + qual modelo + versão da base de conhecimento. Auditável retroativamente.</span></div>
+        <div class="ux-item"><span class="marker">09</span><span class="text"><strong>Confiança calibrada visível.</strong> Sugestões com baixa confiança da Atena aparecem como "considere · evidência limitada" · não somem · mas pesam menos visualmente.</span></div>
+        <div class="ux-item"><span class="marker">10</span><span class="text"><strong>"Atena diz que não sabe."</strong> Estado bem desenhado quando a IA não tem confiança · ela recua e devolve a decisão. Esta postura encanta o Pragmático.</span></div>
+      </div>
+    </div>
+
+    <div class="microcopy-block">
+      <div class="microcopy-head">Microcopy library · Pragmático</div>
+      <h5>Vocabulário que cria autoridade</h5>
+      <div class="micro-item"><span class="micro-tag">Sugestão</span>"Sugiro <strong>iniciar CBD 25mg/dia</strong> · evidência <strong>grau B</strong> · Mov Disord 2024 RCT n=68 · paciente similar a este perfil teve 1,4h/dia de redução no off-time."</div>
+      <div class="micro-item"><span class="micro-tag">Interação</span>"Atena identificou <strong>interação moderada</strong> entre Rasagilina × Clonazepam · <strong>confiança 87%</strong> · base internacional Lexicomp. Revisar antes de prescrever."</div>
+      <div class="micro-item"><span class="micro-tag">Regulatório</span>"<strong>RDC 1.015/2026 · Art. 19</strong> · classificação Controle Especial · 2 vias obrigatórias · validade 30 dias."</div>
+      <div class="micro-item"><span class="micro-tag">Auditoria</span>"Sugestão gerada por Claude Sonnet 4.5 · auditada por Claude Opus 4.6 · <strong>consenso dual ✓</strong> · base de conhecimento v107.3 · 02/06/2026 14:32."</div>
+      <div class="micro-item"><span class="micro-tag">Recusa</span>"Não localizei evidência confiável para esta combinação específica. <strong>Recomendo julgamento clínico</strong> com base no histórico do paciente."</div>
+      <div class="micro-item"><span class="micro-tag">Reversão</span>"Sugestão recusada às 14:35 · registrado em log de auditoria · permanece consultável no histórico do prontuário."</div>
+    </div>
+
+    <div class="components-block">
+      <div class="components-head">Componentes específicos · Pragmático</div>
+      <h5>Padrões de UI que sustentam autoridade</h5>
+      <div class="comp-item">
+        <div class="comp-name">Evidence Drawer Expansível</div>
+        <div class="comp-desc">Drawer lateral · 1 clique para expandir · mostra: <strong>fonte citada</strong>, trecho exato com highlight, DOI clicável, grau de evidência (A/B/C), data da última revisão. Botão "abrir artigo em nova aba".</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">RDC/CAAE Chip Verificável</div>
+        <div class="comp-desc">Pill com número da norma · hover mostra ementa em 2 linhas · clique abre legislação original. Cor neutra · não decorativa.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Dual-LLM Consensus Indicator</div>
+        <div class="comp-desc">Pequeno selo "✓ consenso dual" ou "△ divergência" ao lado de cada sugestão. Em divergência, drawer mostra as 2 visões com fontes de cada modelo.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Confidence Calibration Bar</div>
+        <div class="comp-desc">Barrinha sutil mostrando confiança da Atena (0-100%) · não decorativa · em sugestões críticas. Abaixo de 70%, copy muda para "considere".</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Audit Timestamp Footer</div>
+        <div class="comp-desc">Rodapé sutil em cada bloco de prontuário · "<em>preenchido por Atena · revisado por Dr. X · 02/06/2026 14:32 · modelo v107.3</em>" · informação completa para auditoria CRM.</div>
+      </div>
+    </div>
+
+    <div class="edge-block">
+      <div class="edge-head">Edge cases · Pragmático</div>
+      <h5>Cenários raros que precisam estar resolvidos</h5>
+      <div class="edge-item">
+        <div class="edge-scenario">Atena sem confiança suficiente</div>
+        <div class="edge-response">Quando a IA tem confiança baixa (&lt;50%) · ela <strong>recua e devolve a decisão</strong>. Copy: "Não localizei evidência confiável. Recomendo julgamento clínico com base no histórico do paciente."</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Conflito entre fontes</div>
+        <div class="edge-response">2 fontes da base sugerem condutas diferentes · Atena <strong>expõe os dois lados</strong> com fontes citadas e deixa o médico decidir. Copy: "Há evidências conflitantes para este caso: [Fonte 1 sugere X] · [Fonte 2 sugere Y]. Avalie julgamento."</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Norma regulatória mudou</div>
+        <div class="edge-response">RDC ou portaria foi atualizada após o prontuário ser preenchido. Atena <strong>alerta no próximo acesso</strong>: "RDC 1.015 foi atualizada em 15/05/2026 · 2 prescrições anteriores podem precisar revisão. Revisar protocolos?"</div>
+      </div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block warn">
+        <h4 class="warn">Anti-padrões · o que afasta</h4>
+        <ul>
+          <li>Tela "wow" sem justificativa clínica</li>
+          <li>Atena sugerindo sem citação</li>
+          <li>Gradiente, neon, gamificação</li>
+          <li>Linguagem de SaaS de growth ("seu insight do dia!")</li>
+          <li>Botões com emoji ou animação decorativa</li>
+          <li>Confiança IA não calibrada (sempre 100%)</li>
+          <li>Modelos black-box sem rastreabilidade</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Desejos · o que atrai</h4>
+        <ul>
+          <li>Guidelines em PDF prontos para citação</li>
+          <li>Estudos de caso quantificados</li>
+          <li>Whitepapers e Q&amp;A jurídico</li>
+          <li>Selo "auditado pelo coordenador científico"</li>
+          <li>Comparativo com diretriz internacional já conhecida</li>
+          <li>"Open source" / rastreabilidade total dos modelos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="message-block">
+      <div>
+        <div class="label">Mensagem-chave (playbook)</div>
+        <div class="copy">Ciência de ponta, protocolos defensáveis, aplicação clínica segura.</div>
+      </div>
+      <div>
+        <div class="label">Frase real</div>
+        <div class="quote">Diretrizes e segurança clínica: como aplicar terapias de fronteira com evidência.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- PERSONA 02: CLÍNICO SOBRECARREGADO · DEEP UX -->
+  <!-- ====================================================== -->
+  <section class="persona">
+    <div class="persona-header">
+      <div class="persona-num">02</div>
+      <div>
+        <div class="persona-title">Deep dive UX · persona transversal · maior teste de usabilidade</div>
+        <h3 class="persona-name">O Clínico Sobrecarregado</h3>
+        <p class="persona-snapshot">"Tenho 12 minutos por paciente e mais 24 na lista. Se a tela me pede mais de 2 cliques pra abrir, eu fecho."</p>
+      </div>
+    </div>
+
+    <div class="demo-strip">
+      <div class="demo-cell"><div class="label">Idade</div><div class="value">30–55 anos</div></div>
+      <div class="demo-cell"><div class="label">Perfil</div><div class="value">Clínico geral · alto volume</div></div>
+      <div class="demo-cell"><div class="label">Estado emocional</div><div class="value">Burnout · vergonha silenciosa</div></div>
+      <div class="demo-cell"><div class="label">Volume</div><div class="value">20–40 pacientes/dia</div></div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block">
+        <h4>Perfil cognitivo · como lê a tela</h4>
+        <ul>
+          <li><strong>F-pattern brutal.</strong> Lê só o topo-esquerda. Se a informação importante está no rodapé, ele não viu.</li>
+          <li><strong>Zero tolerância a tutorial.</strong> Não abre vídeo de 3min. Não lê tooltip de 4 linhas.</li>
+          <li><strong>Default-driven.</strong> Aceita 90% do que vier preenchido. Não personaliza.</li>
+          <li><strong>Memória muscular acima de tudo.</strong> Aprende um caminho e repete · se a UI muda, reclama.</li>
+          <li><strong>Optimistic feedback.</strong> Precisa ver "salvo" antes de clicar próximo · senão pensa que perdeu.</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Dores · o que tira o sono</h4>
+        <ul>
+          <li><strong>Fadiga</strong> física e cognitiva acumulada</li>
+          <li><strong>Sensação de "operador de receita"</strong> · perda de identidade clínica</li>
+          <li><strong>Falta de tempo</strong> · prontuário, família, atualização</li>
+          <li><strong>Vergonha silenciosa</strong> de estar exausto apesar da dedicação</li>
+          <li><strong>Repetição de erros</strong> · prescrições idênticas digitadas 30x/dia</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ux-directives">
+      <h4>★ 10 diretrizes UX para esta persona</h4>
+      <div class="sub">Velocidade não é detalhe. É a categoria.</div>
+      <div class="grid">
+        <div class="ux-item"><span class="marker">01</span><span class="text"><strong>Pulso do Dia curado.</strong> Dashboard inicial hierarquiza 3-5 itens REAIS · não 20 cards genéricos. Burnout não tolera ruído.</span></div>
+        <div class="ux-item"><span class="marker">02</span><span class="text"><strong>Atalhos de teclado em tudo.</strong> Próximo paciente, prescrever último, gerar atestado padrão · tudo via shortcut visível em sticker.</span></div>
+        <div class="ux-item"><span class="marker">03</span><span class="text"><strong>Defaults inteligentes da memória da Atena.</strong> "Você normalmente prescreve X mg para essa indicação" · aceita com Enter.</span></div>
+        <div class="ux-item"><span class="marker">04</span><span class="text"><strong>Zero campos obrigatórios sem justificativa.</strong> Se a tela bloquear por dado faltante, precisa explicar por quê em 1 linha.</span></div>
+        <div class="ux-item"><span class="marker">05</span><span class="text"><strong>Auto-save sem cerimônia.</strong> Nenhum modal "deseja salvar?". O sistema salva. Sempre. Mostra timestamp discreto.</span></div>
+        <div class="ux-item"><span class="marker">06</span><span class="text"><strong>"Próximo paciente" sempre 1 clique.</strong> Em qualquer tela, qualquer estado.</span></div>
+        <div class="ux-item"><span class="marker">07</span><span class="text"><strong>Fila de hoje sticky.</strong> Widget pequeno no topo durante o atendimento mostrando "Próximo: Joana M. em 8min" · contexto temporal sempre presente.</span></div>
+        <div class="ux-item"><span class="marker">08</span><span class="text"><strong>Smart autocomplete baseado no histórico do médico.</strong> "Você prescreveu CBD 50mg 18 vezes este mês · usar mesmo padrão?" · 1 tecla aceita.</span></div>
+        <div class="ux-item"><span class="marker">09</span><span class="text"><strong>Bulk actions onde fizer sentido.</strong> "Renovar 12 receitas em 1 clique" · "Assinar 5 atestados em lote" · "Enviar 8 lembretes para retorno".</span></div>
+        <div class="ux-item"><span class="marker">10</span><span class="text"><strong>Modo "expresso" para retornos rotineiros.</strong> Consulta de seguimento estável · template carregado · 4 cliques para fechar · sem perder qualidade científica.</span></div>
+      </div>
+    </div>
+
+    <div class="microcopy-block">
+      <div class="microcopy-head">Microcopy library · Sobrecarregado</div>
+      <h5>Vocabulário que economiza tempo cognitivo</h5>
+      <div class="micro-item"><span class="micro-tag">Tempo</span>"Próximo paciente em <strong>8 min</strong> · Joana M. · pré-consulta lida"</div>
+      <div class="micro-item"><span class="micro-tag">Salvamento</span>"Salvo automaticamente · 14:32 · sem perda de dados"</div>
+      <div class="micro-item"><span class="micro-tag">Bulk</span>"<strong>Renove 12 receitas em 1 clique</strong> · paciente já confirmou retorno"</div>
+      <div class="micro-item"><span class="micro-tag">Padrão</span>"Você prescreveu CBD 50mg <strong>18 vezes este mês</strong> · usar mesmo padrão? <kbd>Enter</kbd> aceita"</div>
+      <div class="micro-item"><span class="micro-tag">Atalho</span>"<kbd>⌘ N</kbd> nova nota · <kbd>⌘ ↵</kbd> salva · <kbd>⌘ →</kbd> próximo paciente"</div>
+      <div class="micro-item"><span class="micro-tag">Empty state</span>"Nenhum paciente agendado · use a tarde para revisar 8 prontuários pendentes · ou descanse · você merece"</div>
+    </div>
+
+    <div class="components-block">
+      <div class="components-head">Componentes específicos · Sobrecarregado</div>
+      <h5>Padrões de UI que devolvem tempo</h5>
+      <div class="comp-item">
+        <div class="comp-name">Sticky "Fila de Hoje" Widget</div>
+        <div class="comp-desc">Mini-widget no topo durante atendimento · mostra próximo paciente, tempo até ele, status da pré-consulta. Sempre visível · não distrai · dá controle temporal.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">One-Tap Action Menu</div>
+        <div class="comp-desc">Ações mais frequentes do médico (top 5) acessíveis em <strong>1 toque/clique</strong>. Personalizado por uso · não por padrão da indústria.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Quick Prescription from History</div>
+        <div class="comp-desc">"Repetir última prescrição" como CTA em 1 clique · com diff visual (se houve mudança em medicação/dose, destaque) · médico só confirma.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Bulk Renewal Modal</div>
+        <div class="comp-desc">Modal único listando todas as receitas vencidas · checkboxes pré-marcados · "Renovar selecionadas" com validação Atena em batch.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Expresso Template</div>
+        <div class="comp-desc">Toggle "modo expresso" para consultas de seguimento rotineiro · UI simplificada · template preenchido pela Atena · médico revisa e fecha em 4-5 cliques.</div>
+      </div>
+    </div>
+
+    <div class="edge-block">
+      <div class="edge-head">Edge cases · Sobrecarregado</div>
+      <h5>Cenários raros que precisam estar resolvidos</h5>
+      <div class="edge-item">
+        <div class="edge-scenario">Conexão lenta no consultório</div>
+        <div class="edge-response">Mostra "salvando..." com timeout de 5s · cai para <strong>modo offline silencioso</strong> · sincroniza quando volta. Médico nunca espera a UI.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Conflito de versão (2 abas abertas)</div>
+        <div class="edge-response">Oferece <strong>merge automático</strong> com revisão visual · destaca diferenças · médico aceita em 1 clique · ou edita manualmente.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Final do dia exausto</div>
+        <div class="edge-response">Dashboard detecta padrão de uso (16h+, 25 pacientes no dia) e <strong>simplifica visualmente</strong> · mostra apenas 2 itens críticos · empurra demais para amanhã.</div>
+      </div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block warn">
+        <h4 class="warn">Anti-padrões · o que afasta</h4>
+        <ul>
+          <li>Wizard multi-step para configurar coisa básica</li>
+          <li>Microcopy longa explicando feature</li>
+          <li>"Você sabia?" "Dica do dia" "Glossário"</li>
+          <li>Tela cheia de cards iguais sem hierarquia</li>
+          <li>Confirmação dupla para ação reversível</li>
+          <li>Notificações sem prioridade clara</li>
+          <li>"Onboarding" obrigatório de 3 minutos</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Desejos · o que atrai</h4>
+        <ul>
+          <li>Protocolos prontos, baixáveis em PDF</li>
+          <li>Checklists "do consultório"</li>
+          <li>Vídeos de 10–15 min, não mais</li>
+          <li>Recuperar tempo livre, sair na hora</li>
+          <li>Comunidade de apoio assíncrona</li>
+          <li>Templates de consultas frequentes prontos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="message-block">
+      <div>
+        <div class="label">Mensagem-chave (playbook)</div>
+        <div class="copy">Soluções práticas para recuperar controle clínico e qualidade de vida.</div>
+      </div>
+      <div>
+        <div class="label">Frase real</div>
+        <div class="quote">Maior eficiência clínica, menos horas de frustração — protocolos que funcionam.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- PERSONA 03: SÊNIOR EXPLORADOR · DEEP UX -->
+  <!-- ====================================================== -->
+  <section class="persona">
+    <div class="persona-header">
+      <div class="persona-num">03</div>
+      <div>
+        <div class="persona-title">Deep dive UX · persona de prestígio · maior peso simbólico</div>
+        <h3 class="persona-name">O Sênior Explorador</h3>
+        <p class="persona-snapshot">"Eu já vi tanta coisa. Mostra que aqui tem profundidade, não só interface bonita."</p>
+      </div>
+    </div>
+
+    <div class="demo-strip">
+      <div class="demo-cell"><div class="label">Idade</div><div class="value">55–75 anos</div></div>
+      <div class="demo-cell"><div class="label">Carreira</div><div class="value">Veterano · estabilizado</div></div>
+      <div class="demo-cell"><div class="label">Visão</div><div class="value">Presbiopia estabelecida</div></div>
+      <div class="demo-cell"><div class="label">Motor</div><div class="value">Legado · mentoria · status</div></div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block">
+        <h4>Perfil cognitivo · como lê a tela</h4>
+        <ul>
+          <li><strong>Leitor lento e profundo.</strong> Lê tudo. Não escaneia.</li>
+          <li><strong>Presbiopia.</strong> Tamanho mínimo de fonte importa — 15px é piso.</li>
+          <li><strong>Reluta com gestos modernos.</strong> Swipe, long press, atalhos não óbvios.</li>
+          <li><strong>Confia em hierarquia visual clara.</strong> Quer saber onde está sempre.</li>
+          <li><strong>Aprecia o ritual.</strong> Fazer prontuário é cerimônia · não tarefa.</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Dores · o que tira o sono</h4>
+        <ul>
+          <li><strong>Tédio profissional</strong> · sentir que a medicina virou mecânica</li>
+          <li><strong>Medo de obsolescência</strong> diante das gerações novas</li>
+          <li><strong>Desconforto com "moda"</strong> · quer profundidade, não trend</li>
+          <li><strong>Reputação como ativo frágil</strong> · não arrisca à toa</li>
+          <li><strong>Falta de legado documentado</strong> · décadas de prática sem registro estruturado</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ux-directives">
+      <h4>★ 10 diretrizes UX para esta persona</h4>
+      <div class="sub">A persona que mais valoriza o que ninguém mais nota.</div>
+      <div class="grid">
+        <div class="ux-item"><span class="marker">01</span><span class="text"><strong>Tipografia que carrega autoridade.</strong> Hierarquia clara · serifa em títulos não é decoração · é o que diferencia "produto sério" de "app de startup".</span></div>
+        <div class="ux-item"><span class="marker">02</span><span class="text"><strong>Tamanho de fonte generoso.</strong> Corpo a 15-16px · line-height 1.6+ · contraste AA mínimo · sempre.</span></div>
+        <div class="ux-item"><span class="marker">03</span><span class="text"><strong>Breadcrumbs e estado "onde estou" persistentes.</strong> Esta persona não quer perder posição. Volta sempre tem que ser claro.</span></div>
+        <div class="ux-item"><span class="marker">04</span><span class="text"><strong>Sessões longas sem cansaço.</strong> Sem flashes · sem animações nervosas · UI calma.</span></div>
+        <div class="ux-item"><span class="marker">05</span><span class="text"><strong>Badges e selos com peso.</strong> Certificação · anos de uso · número de pacientes · publicações · recompensa visual de longevidade.</span></div>
+        <div class="ux-item"><span class="marker">06</span><span class="text"><strong>"Modo mentoria" / visualização longa de caso.</strong> Deixar ele ler um caso inteiro de um paciente como se fosse artigo. Este é o ritual dele.</span></div>
+        <div class="ux-item"><span class="marker">07</span><span class="text"><strong>Histórico longitudinal completo.</strong> Timeline de 10 anos de um paciente em uma tela · sem paginação invisível.</span></div>
+        <div class="ux-item"><span class="marker">08</span><span class="text"><strong>Compare cases · 2 pacientes lado a lado.</strong> Para discutir com fellows/residentes · "estes 2 pacientes com mesma idade e comorbidade tiveram desfechos diferentes · por quê?"</span></div>
+        <div class="ux-item"><span class="marker">09</span><span class="text"><strong>Anotações privadas com formatação rica.</strong> Espaço para reflexão pessoal · markdown ou rich text · separado do prontuário oficial.</span></div>
+        <div class="ux-item"><span class="marker">10</span><span class="text"><strong>Exportar caso para apresentação.</strong> Caso virou PDF/PPT pronto para reunião de equipe ou WeCann Round. Legado em formato compartilhável.</span></div>
+      </div>
+    </div>
+
+    <div class="microcopy-block">
+      <div class="microcopy-head">Microcopy library · Sênior</div>
+      <h5>Vocabulário que cria reverência</h5>
+      <div class="micro-item"><span class="micro-tag">Identidade</span>"Caso completo · <strong>47 atendimentos · 8 anos de seguimento</strong> · Maria Aparecida do Amaral"</div>
+      <div class="micro-item"><span class="micro-tag">Reconhecimento</span>"Você é referência: <strong>312 pacientes Parkinson</strong> · 6 publicações sustentadas · marco Pesquisadora Sênior"</div>
+      <div class="micro-item"><span class="micro-tag">Continuidade</span>"Voltar onde você estava: Maria Aparecida · M3 visita basal · 4 dias atrás"</div>
+      <div class="micro-item"><span class="micro-tag">Legado</span>"Sua casuística entrou no <strong>Tratado de Medicina Endocanabinoide v3</strong> · capítulo Parkinson · <em>obrigado</em>"</div>
+      <div class="micro-item"><span class="micro-tag">Mentoria</span>"Compartilhar este caso com <strong>WeCann Rounds</strong> de Neurologia? · 142 pares verão"</div>
+      <div class="micro-item"><span class="micro-tag">Status</span>"Pesquisadora · <strong>nível 3 · "Sênior em formação"</strong> · próximo marco · 50 casos prospectivos"</div>
+    </div>
+
+    <div class="components-block">
+      <div class="components-head">Componentes específicos · Sênior</div>
+      <h5>Padrões de UI que sustentam autoridade e legado</h5>
+      <div class="comp-item">
+        <div class="comp-name">Case-as-Document Viewer</div>
+        <div class="comp-desc">Estilo prontuário em A4 · tipografia editorial · pode imprimir · serve para ler caso inteiro como artigo. <strong>Ritual de revisão clínica</strong>.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Compare Patients Side-by-Side</div>
+        <div class="comp-desc">2 colunas com pacientes diferentes · escalas, medicações, evolução temporal. Para ensinar fellows · para artigos · para WeCann Summit.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">"Modo Apresentação"</div>
+        <div class="comp-desc">UI temporariamente simplificada · fontes ampliadas · 1 caso por tela · navegação por setas · para reuniões de equipe ou aulas.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Marcos Científicos · Gamificação Sênior</div>
+        <div class="comp-desc">Marcos sem confete · "linguagem de jornada" · cita o Tratado de Medicina Endocanabinoide como árbitro do progresso · sem badges infantis.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Private Reflection Notes (Rich Text)</div>
+        <div class="comp-desc">Editor para anotações pessoais · markdown · separado do prontuário oficial · "diário clínico" · não auditável · exclusivo do médico.</div>
+      </div>
+    </div>
+
+    <div class="edge-block">
+      <div class="edge-head">Edge cases · Sênior</div>
+      <h5>Cenários raros que precisam estar resolvidos</h5>
+      <div class="edge-item">
+        <div class="edge-scenario">Perda de contexto na navegação</div>
+        <div class="edge-response">Breadcrumbs robustos sempre visíveis · botão "voltar onde estava" sempre 1 clique · estado preservado se a sessão cair.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Erro de digitação</div>
+        <div class="edge-response">Undo claro com timing generoso · "Última ação desfeita · 14:32" · confirmação visual gentil.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Notificações</div>
+        <div class="edge-response">Filtros generosos por padrão · só alertas críticos chegam · resto vai para "notificações arquivadas" semanais. Sem interrupção desnecessária.</div>
+      </div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block warn">
+        <h4 class="warn">Anti-padrões · o que afasta</h4>
+        <ul>
+          <li>Ícones flat sem rótulo</li>
+          <li>Microinteração jovem (confetes, easter eggs)</li>
+          <li>Estética "growth" — gradient, neon, dark mode agressivo</li>
+          <li>Linguagem informal ("Bora!", "Vamos lá!")</li>
+          <li>Esconder funcionalidade atrás de hamburger menu</li>
+          <li>Notificações push frequentes</li>
+          <li>Onboarding "interativo" obrigatório</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Desejos · o que atrai</h4>
+        <ul>
+          <li>Comunidade exclusiva de pares seniores</li>
+          <li>Sessões de mentoria e mesas de discussão</li>
+          <li>Reviews longos de casos como ritual</li>
+          <li>Certificados, selos, reconhecimento institucional</li>
+          <li>Sentir-se referência para a geração jovem</li>
+          <li>Casos exportáveis para apresentação · legado documentado</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="message-block">
+      <div>
+        <div class="label">Mensagem-chave (playbook)</div>
+        <div class="copy">Volte a liderar: ciência profunda, ferramentas práticas e comunidade de pares.</div>
+      </div>
+      <div>
+        <div class="label">Prova real (playbook)</div>
+        <div class="quote">Dr. José Augusto, 87 anos e 57 de medicina, expressa entusiasmo com o novo desafio.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- PERSONA 04: HUMANISTA EMPÁTICO · DEEP UX -->
+  <!-- ====================================================== -->
+  <section class="persona">
+    <div class="persona-header">
+      <div class="persona-num">04</div>
+      <div>
+        <div class="persona-title">Deep dive UX · persona de adesão profunda · embaixadora natural</div>
+        <h3 class="persona-name">O Humanista Empático</h3>
+        <p class="persona-snapshot">"O paciente não é o CID. É a história dele. Me ajuda a enxergar a pessoa, não a ficha."</p>
+      </div>
+    </div>
+
+    <div class="demo-strip">
+      <div class="demo-cell"><div class="label">Idade</div><div class="value">30–60 anos</div></div>
+      <div class="demo-cell"><div class="label">Especialidades</div><div class="value">Geriatria · Paliativos · MFC · Integrativa</div></div>
+      <div class="demo-cell"><div class="label">Awareness</div><div class="value">Consciente · curioso</div></div>
+      <div class="demo-cell"><div class="label">Driver</div><div class="value">Aliviar sofrimento sem dano</div></div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block">
+        <h4>Perfil cognitivo · como lê a tela</h4>
+        <ul>
+          <li><strong>Linguagem importa.</strong> Reage a microcopy fria ou desumanizadora.</li>
+          <li><strong>Quer ver a pessoa.</strong> Foto, nome, contexto familiar · não só dado.</li>
+          <li><strong>Lê histórias antes de números.</strong> Timeline narrativa &gt; gráfico.</li>
+          <li><strong>Confia em qualitativo.</strong> "Como está se sentindo?" pesa mais que escore.</li>
+          <li><strong>Atento ao contexto social.</strong> Cuidador, família, condições de moradia.</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Dores · o que tira o sono</h4>
+        <ul>
+          <li><strong>Dor moral</strong> · saber que o paciente sofre e não ter ferramenta gentil</li>
+          <li><strong>Polifarmácia excessiva</strong> · receita por receita acumulando dano</li>
+          <li><strong>Burnout moral</strong> · diferente do operacional, é existencial</li>
+          <li><strong>Ver paciente "vencer a fila" sem solução</strong></li>
+          <li><strong>Falta de tempo para conversa real</strong> · 12 minutos não cabem o luto</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ux-directives">
+      <h4>★ 10 diretrizes UX para esta persona</h4>
+      <div class="sub">O paciente como sujeito, não objeto · sempre.</div>
+      <div class="grid">
+        <div class="ux-item"><span class="marker">01</span><span class="text"><strong>Paciente 360 como narrativa.</strong> A tela do paciente precisa contar uma história, não só listar dado. Timeline terapêutica = arco narrativo.</span></div>
+        <div class="ux-item"><span class="marker">02</span><span class="text"><strong>Qualidade de vida em destaque.</strong> EQ-5D, PHQ-9, PROMIS Global · mostrar evolução com gráfico humano · não burocrático.</span></div>
+        <div class="ux-item"><span class="marker">03</span><span class="text"><strong>Linguagem cuidadosa.</strong> "Paciente em sofrimento" (não "caso refratário") · "Evolução do tratamento" (não "outcome do episódio").</span></div>
+        <div class="ux-item"><span class="marker">04</span><span class="text"><strong>Espaço para nota livre humana.</strong> Sempre um campo onde o médico escreve em prosa o que sente sobre o caso. Privado, dele.</span></div>
+        <div class="ux-item"><span class="marker">05</span><span class="text"><strong>"O que o paciente disse" em destaque.</strong> Trecho exato da fala em itálico, com peso visual. A voz do paciente vista, não só processada.</span></div>
+        <div class="ux-item"><span class="marker">06</span><span class="text"><strong>Sinalização de polifarmácia gentil mas firme.</strong> "5 medicamentos ativos · quer revisar?" · sem alarme, com convite.</span></div>
+        <div class="ux-item"><span class="marker">07</span><span class="text"><strong>Indicadores de bem-estar do paciente.</strong> Mood, sono, rede de apoio social, autonomia funcional. Não apenas escalas clínicas.</span></div>
+        <div class="ux-item"><span class="marker">08</span><span class="text"><strong>"Voz do paciente" toggle.</strong> Ver a consulta pela perspectiva narrativa do paciente · o que ele entendeu · com o que concordou · o que esquecerá.</span></div>
+        <div class="ux-item"><span class="marker">09</span><span class="text"><strong>Caregiver/Family tracking.</strong> Quem mais está no cuidado · sobrecarga do cuidador · rede de apoio social mapeada.</span></div>
+        <div class="ux-item"><span class="marker">10</span><span class="text"><strong>"Story arc" de cada paciente.</strong> Onde estamos no tratamento · qual capítulo · não apenas timeline cronológica. Tem começo, meio, esperança.</span></div>
+      </div>
+    </div>
+
+    <div class="microcopy-block">
+      <div class="microcopy-head">Microcopy library · Humanista</div>
+      <h5>Vocabulário que cuida</h5>
+      <div class="micro-item"><span class="micro-tag">Tempo</span>"<strong>Adelia está em sofrimento há 6 meses</strong> · vamos com calma · não há pressa para resolver tudo hoje"</div>
+      <div class="micro-item"><span class="micro-tag">Convite</span>"Pode ser muito para conversar agora · <strong>pode revisar depois</strong> · ela mostra para você no retorno"</div>
+      <div class="micro-item"><span class="micro-tag">Progresso</span>"Você reduziu <strong>3 medicações este ano</strong> · qualidade de vida +12% · paciente está dormindo melhor"</div>
+      <div class="micro-item"><span class="micro-tag">Voz</span>"O que Adelia disse hoje: <em>'estou cansada de tomar tanto remédio'</em>"</div>
+      <div class="micro-item"><span class="micro-tag">Cuidador</span>"<strong>Esposo cuidador há 5 anos</strong> · sobrecarga moderada · sugiro abordar na próxima consulta"</div>
+      <div class="micro-item"><span class="micro-tag">Polifarmácia</span>"5 medicamentos ativos · <strong>vale revisar a lista?</strong> · pode ser bom momento de simplificar"</div>
+    </div>
+
+    <div class="components-block">
+      <div class="components-head">Componentes específicos · Humanista</div>
+      <h5>Padrões de UI que humanizam</h5>
+      <div class="comp-item">
+        <div class="comp-name">Patient Narrative Panel</div>
+        <div class="comp-desc">Cabeçalho do Paciente 360 não é dados frios · é <strong>narrativa</strong>: "Adelia, 74 anos · Parkinson há 5 anos · aposentada da costura · mora com esposo cuidador". O olhar é humano antes de ser técnico.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">QoL Gauge Prominente</div>
+        <div class="comp-desc">Medidor de qualidade de vida visualmente proeminente · gráfico humano (não burocrático) · evolução temporal visível em 1 olhada · contextualizada com fatos sociais.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Care Team Picker</div>
+        <div class="comp-desc">Mapa visual da rede de cuidado · médico, cuidador, família, suporte social · indica sobrecarga do cuidador · sugere apoio quando detectado.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Polypharmacy Gentle Alert</div>
+        <div class="comp-desc">Alerta visual sutil quando paciente tem &gt;5 medicações · não vermelho assustador · convite "vale revisar?" com sugestões pré-formatadas de desprescrição.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Patient Voice Quote Block</div>
+        <div class="comp-desc">Falas literais do paciente em destaque visual · itálico · entre aspas · acompanha data e contexto. <strong>Frase clínica da consulta</strong> · preservada.</div>
+      </div>
+    </div>
+
+    <div class="edge-block">
+      <div class="edge-head">Edge cases · Humanista</div>
+      <h5>Cenários sensíveis que merecem cuidado especial</h5>
+      <div class="edge-item">
+        <div class="edge-scenario">Bad news para entregar</div>
+        <div class="edge-response">Atena oferece <strong>script de conversa difícil</strong> · base SPIKES protocol · pode ser ativada antes da consulta · médico decide se usa.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Paciente em fim de vida</div>
+        <div class="edge-response">UI muda sutilmente o tom · de "tratamento" para "cuidado paliativo" · linguagem ajusta automaticamente · sem perder respeito ao histórico.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Cuidador exausto detectado</div>
+        <div class="edge-response">Sinais clínicos (relatos repetidos, ausência em consultas, mudanças no paciente) <strong>acendem alerta cuidadoso</strong> · sugere recurso de apoio · sem culpar o cuidador.</div>
+      </div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block warn">
+        <h4 class="warn">Anti-padrões · o que afasta</h4>
+        <ul>
+          <li>Paciente reduzido a número de prontuário</li>
+          <li>Linguagem cirúrgica ("caso", "objeto", "sujeito")</li>
+          <li>Gráfico frio sem contexto narrativo</li>
+          <li>Alertas vermelhos para tudo (banaliza a urgência real)</li>
+          <li>Ausência de campo para nota privada qualitativa</li>
+          <li>"Otimização" como linguagem principal</li>
+          <li>Esconder a foto/nome do paciente em layouts compactos</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Desejos · o que atrai</h4>
+        <ul>
+          <li>Histórias longas e casos clínicos humanizados</li>
+          <li>Webinars com familiares e pacientes</li>
+          <li>Ferramentas para reduzir polifarmácia</li>
+          <li>Resultados em qualidade de vida concreta</li>
+          <li>Sentir que está fazendo medicina com alma</li>
+          <li>"Tempo de consulta protegido" como métrica</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="message-block">
+      <div>
+        <div class="label">Mensagem-chave (playbook)</div>
+        <div class="copy">Tratamentos que respeitam a pessoa — ciência e compaixão.</div>
+      </div>
+      <div>
+        <div class="label">Frase real (playbook)</div>
+        <div class="quote">Uma abordagem gentil e clínica que devolve qualidade de vida.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- PERSONA 05: RECÉM-FORMADO · DEEP UX -->
+  <!-- ====================================================== -->
+  <section class="persona">
+    <div class="persona-header">
+      <div class="persona-num">05</div>
+      <div>
+        <div class="persona-title">Deep dive UX · persona de aquisição rápida · construtora de comunidade</div>
+        <h3 class="persona-name">O Recém-formado / Buscador</h3>
+        <p class="persona-snapshot">"Acabei de me formar. Preciso me destacar, mas não tenho 5 anos pra construir reputação. Onde é o atalho?"</p>
+      </div>
+    </div>
+
+    <div class="demo-strip">
+      <div class="demo-cell"><div class="label">Idade</div><div class="value">25–35 anos</div></div>
+      <div class="demo-cell"><div class="label">Carreira</div><div class="value">Início · clínico geral</div></div>
+      <div class="demo-cell"><div class="label">Estado</div><div class="value">Inseguro tecnicamente · FOMO alto</div></div>
+      <div class="demo-cell"><div class="label">Mindset</div><div class="value">Mobile-first · social-native</div></div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block">
+        <h4>Perfil cognitivo · como lê a tela</h4>
+        <ul>
+          <li><strong>Scan rápido, mobile-first.</strong> Acessa muito pelo celular entre plantões.</li>
+          <li><strong>Reconhece padrões de UI moderna.</strong> Espera empty states bonitos, onboarding rico.</li>
+          <li><strong>Aceita gamificação leve.</strong> Progresso, conquistas, "você completou X" funcionam.</li>
+          <li><strong>Verifica prova social antes de confiar.</strong> Quem mais usa? Quantos? Quais especialidades?</li>
+          <li><strong>Compara com pares.</strong> "Outros médicos no meu primeiro ano fazem assim?"</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Dores · o que tira o sono</h4>
+        <ul>
+          <li><strong>Insegurança técnica</strong> · "será que estou fazendo certo?"</li>
+          <li><strong>FOMO profissional</strong> · medo de ficar para trás</li>
+          <li><strong>Baixa visibilidade</strong> · ser "só mais um na multidão"</li>
+          <li><strong>Plantões subvalorizados</strong> e estresse financeiro</li>
+          <li><strong>Falta de mentor</strong> · ninguém para perguntar nas dúvidas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ux-directives">
+      <h4>★ 10 diretrizes UX para esta persona</h4>
+      <div class="sub">A persona que precisa de scaffolding · sem patrocinar burrice.</div>
+      <div class="grid">
+        <div class="ux-item"><span class="marker">01</span><span class="text"><strong>Onboarding com scaffolding rico.</strong> Tour guiado curto, gravado, com "pular" sempre visível. Esta persona ENTRA · ao contrário das outras.</span></div>
+        <div class="ux-item"><span class="marker">02</span><span class="text"><strong>"Aprende com a Atena" como feature.</strong> Quando a Atena sugere algo, oferecer "ver explicação clínica" para o jovem que quer aprender enquanto usa.</span></div>
+        <div class="ux-item"><span class="marker">03</span><span class="text"><strong>Mobile-responsive de verdade.</strong> Não "também funciona no celular" · desenhado para celular como uso primário em plantão.</span></div>
+        <div class="ux-item"><span class="marker">04</span><span class="text"><strong>Selos de progresso sutis.</strong> "10 pacientes registrados em qualidade ★★" · sem confete, com discrição.</span></div>
+        <div class="ux-item"><span class="marker">05</span><span class="text"><strong>Comunidade acessível.</strong> Fórum WeCann a 1 clique de qualquer tela · não escondido em "ajuda".</span></div>
+        <div class="ux-item"><span class="marker">06</span><span class="text"><strong>Empty states inspiradores.</strong> "Sua primeira casuística aparecerá aqui" + preview do que vai ser · não tela vazia frustrante.</span></div>
+        <div class="ux-item"><span class="marker">07</span><span class="text"><strong>"Modo aprendizagem" toggle.</strong> Ativa explicações em cada decisão · "por que CBD aqui?" mostra fundamento clínico · ensina sem patrocinar.</span></div>
+        <div class="ux-item"><span class="marker">08</span><span class="text"><strong>Micro-credentials visíveis no perfil.</strong> "Especialista em Parkinson cannabis · 50 casos" · acessível para pacientes verem · constrói autoridade.</span></div>
+        <div class="ux-item"><span class="marker">09</span><span class="text"><strong>"Casos para estudar" curados pela Atena.</strong> Baseado em padrões do médico · "estes 5 casos do fórum se parecem com os seus · vale ler".</span></div>
+        <div class="ux-item"><span class="marker">10</span><span class="text"><strong>Peer comparison anônimo.</strong> "Outros médicos com seu perfil prescrevem assim..." · sem nomes · com curvas e padrões. Reduz ansiedade.</span></div>
+      </div>
+    </div>
+
+    <div class="microcopy-block">
+      <div class="microcopy-head">Microcopy library · Recém-formado</div>
+      <h5>Vocabulário que apoia sem patrocinar</h5>
+      <div class="micro-item"><span class="micro-tag">Apoio</span>"Tem dúvida? <strong>Clique '?'</strong> · Atena explica em 30 segundos · sem julgamento"</div>
+      <div class="micro-item"><span class="micro-tag">Empty state</span>"Sua primeira casuística aparecerá aqui · você precisa de <strong>10 pacientes prospectivos</strong> · falta 3 · está no caminho"</div>
+      <div class="micro-item"><span class="micro-tag">Peer</span>"Outros médicos no seu <strong>primeiro ano</strong> fazem assim... (dados anônimos de 142 pares)"</div>
+      <div class="micro-item"><span class="micro-tag">Conquista</span>"Você completou: <strong>50 pacientes Parkinson</strong> · medalha bronze · próxima: 100"</div>
+      <div class="micro-item"><span class="micro-tag">Mentoria</span>"Pode pedir <strong>2ª opinião da Atena</strong> · sem custo · sem julgamento"</div>
+      <div class="micro-item"><span class="micro-tag">Comunidade</span>"<strong>1.247 médicos</strong> estão online no fórum agora · pergunta livre"</div>
+    </div>
+
+    <div class="components-block">
+      <div class="components-head">Componentes específicos · Recém-formado</div>
+      <h5>Padrões de UI que constroem confiança</h5>
+      <div class="comp-item">
+        <div class="comp-name">Embedded Learning Tooltips</div>
+        <div class="comp-desc">Hover em qualquer termo técnico → <strong>tooltip com explicação clínica</strong>. CID, escalas, mecanismos · sem sair da tela. Ensina enquanto usa.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Mobile-First Floating Action Sheet</div>
+        <div class="comp-desc">Ações principais em sheet flutuante no mobile · uma mão · navegação por gestos · otimizado para plantão.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Progress Dashboard with Milestones</div>
+        <div class="comp-desc">Tela dedicada de progresso · próximos marcos · "faltam 3 pacientes para Investigadora Jr" · sem confete.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Peer Comparison Anonymized</div>
+        <div class="comp-desc">Gráfico mostrando padrões anônimos de pares com perfil similar · "outros médicos no seu primeiro ano". Reduz ansiedade · constrói parâmetro.</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-name">Atena "Segunda Opinião"</div>
+        <div class="comp-desc">Botão dedicado · "pedir segunda opinião" · Atena revisa toda a decisão clínica e devolve análise com pontos de melhoria · sem julgamento · com fontes.</div>
+      </div>
+    </div>
+
+    <div class="edge-block">
+      <div class="edge-head">Edge cases · Recém-formado</div>
+      <h5>Cenários onde o suporte é crítico</h5>
+      <div class="edge-item">
+        <div class="edge-scenario">Não sabe o que fazer · trava</div>
+        <div class="edge-response">UI oferece <strong>"pedir 2ª opinião da Atena"</strong> em destaque · sem custo cognitivo · sem julgamento. Atena guia pela decisão com perguntas.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Primeiro EA preocupante</div>
+        <div class="edge-response">Atena <strong>guia a escalada</strong> · "Grau 3 EA · vamos preencher juntos a notificação ANVISA · você não está sozinho". Walkthrough do protocolo.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-scenario">Primeiro paciente em coorte de pesquisa</div>
+        <div class="edge-response">Walkthrough especial · explica TCLE em 2 camadas · explica o que muda no fluxo · celebra o marco "<strong>Bem-vinda à pesquisa clínica</strong>" sem confete.</div>
+      </div>
+    </div>
+
+    <div class="persona-body">
+      <div class="pb-block warn">
+        <h4 class="warn">Anti-padrões · o que afasta</h4>
+        <ul>
+          <li>UX assumindo expertise clínica que ele ainda não tem</li>
+          <li>Linguagem que pressupõe muito repertório</li>
+          <li>Comunidade escondida ou difícil de achar</li>
+          <li>Mobile-experience claramente secundária</li>
+          <li>"Modo expert" sem trilha de aprendizado paralela</li>
+          <li>Gamificação infantilizada (confete, points óbvios)</li>
+          <li>Falta de explicação contextual em decisões clínicas</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <h4>Desejos · o que atrai</h4>
+        <ul>
+          <li>Trilhas passo a passo · micro-credenciais</li>
+          <li>Histórias de outros jovens que decolaram</li>
+          <li>Networking visível com pares</li>
+          <li>Validação rápida de competência</li>
+          <li>Pertencer à "maior comunidade de cannabis medicinal"</li>
+          <li>Mobile excelente · pode usar em qualquer lugar</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="message-block">
+      <div>
+        <div class="label">Mensagem-chave (playbook)</div>
+        <div class="copy">Diferencie-se desde o início: autoridade prática que abre oportunidades.</div>
+      </div>
+      <div>
+        <div class="label">Frase real (playbook)</div>
+        <div class="quote">Destaque no seu primeiro ano: autoridade clínica em medicina de fronteira.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 07 · SÍNTESE TRANSVERSAL -->
+  <!-- ============================================ -->
+  <section class="synthesis">
+    <div class="section-num">07 · SÍNTESE TRANSVERSAL</div>
+    <h2>O que une todas as 5 — e o que separa</h2>
+    <p class="intro">As cinco personas convivem no produto. A boa notícia: 70% das decisões de UX servem todas. A má notícia: os 30% restantes exigem que a Atom6 escolha qual persona <em>lidera</em> cada tela.</p>
+
+    <h3 style="font-family: 'Fraunces', serif; font-size: 22px; color: var(--navy); margin: 32px 0 14px; font-weight: 600;">O denominador comum · serve todas</h3>
+    <div class="common-grid">
+      <div class="common-card">
+        <h5>Confiança antes de fluência</h5>
+        <p>Nenhuma persona quer "se divertir" com a Atena. Todas querem confiar. Microcopy clínica, citação visível e reversibilidade são pisos universais.</p>
+      </div>
+      <div class="common-card">
+        <h5>Tempo é o ativo mais escasso</h5>
+        <p>Do recém-formado ao sênior, ninguém tem 10 min para tutorial. Atalhos, defaults inteligentes e auto-save são piso universal · só variam em sofisticação.</p>
+      </div>
+      <div class="common-card">
+        <h5>Profissão como identidade frágil</h5>
+        <p>Todas carregam vulnerabilidade profissional (medo de erro, obsolescência, irrelevância, dor moral, insegurança). O produto não pode mexer com nenhuma delas sem cuidado.</p>
+      </div>
+      <div class="common-card">
+        <h5>Paciente como centro real</h5>
+        <p>Mesmo o mais pragmático tem orgulho de cuidar bem. Toda persona se conecta com "isso me ajuda a tratar melhor o paciente" · esse é o argumento universal.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family: 'Fraunces', serif; font-size: 22px; color: var(--navy); margin: 40px 0 14px; font-weight: 600;">Qual persona lidera cada tela</h3>
+    <p style="color: var(--ink-soft); margin-bottom: 20px;">Matriz tática para o Atom6 priorizar trade-offs quando precisarem escolher.</p>
+
+    <div class="matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>Tela / Momento</th>
+            <th>Persona-líder</th>
+            <th>Razão</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Onboarding / primeira sessão</td>
+            <td><span class="pill">Recém-formado</span></td>
+            <td>É a persona que ENTRA no tour. As outras pulam · mas precisam ter como pular.</td>
+          </tr>
+          <tr>
+            <td>Dashboard / Pulso do Dia</td>
+            <td><span class="pill">Sobrecarregado</span></td>
+            <td>Hierarquização brutal de 3-5 itens reais. Burnout não tolera ruído.</td>
+          </tr>
+          <tr>
+            <td>Consulta / Encounter</td>
+            <td><span class="pill">Sobrecarregado</span> + <span class="pill">Pragmático</span></td>
+            <td>Velocidade do sobrecarregado + evidência do pragmático. Os dois mais difíceis de servir juntos.</td>
+          </tr>
+          <tr>
+            <td>Paciente 360</td>
+            <td><span class="pill">Humanista</span></td>
+            <td>Timeline narrativa, voz do paciente, qualidade de vida. Aqui o calor importa mais que o algoritmo.</td>
+          </tr>
+          <tr>
+            <td>Documentos / Receituário</td>
+            <td><span class="pill">Pragmático</span></td>
+            <td>RDC, CID, classificação regulatória, audit trail. Defensibilidade jurídica em primeiro lugar.</td>
+          </tr>
+          <tr>
+            <td>Copiloto clínico / sugestões da Atena</td>
+            <td><span class="pill">Pragmático</span></td>
+            <td>Evidence drawer, citação clicável, "rejeitar" a 1 clique. Sem isso, esta persona desinstala.</td>
+          </tr>
+          <tr>
+            <td>Casuística / Pesquisa</td>
+            <td><span class="pill">Sênior</span> + <span class="pill">Pragmático</span></td>
+            <td>Momento de prestígio (Sênior) com profundidade metodológica (Pragmático). É o "santuário".</td>
+          </tr>
+          <tr>
+            <td>Pós-consulta / acompanhamento</td>
+            <td><span class="pill">Humanista</span></td>
+            <td>O cuidado continua. Linguagem de seguimento, não de "fechar caso".</td>
+          </tr>
+          <tr>
+            <td>Comunidade / WeCann Academy</td>
+            <td><span class="pill">Recém-formado</span> + <span class="pill">Sênior</span></td>
+            <td>O recém-formado quer pertencer · o sênior quer mentorar. Mesmo espaço, papéis diferentes.</td>
+          </tr>
+          <tr>
+            <td>Configurações / preferências</td>
+            <td><span class="pill">Sênior</span></td>
+            <td>É quem efetivamente configura. Os outros aceitam default. Logo, generosidade tipográfica e organização clara.</td>
+          </tr>
+          <tr>
+            <td>Modo aprendizagem / 2ª opinião Atena</td>
+            <td><span class="pill">Recém-formado</span></td>
+            <td>Único contexto onde gamificação leve e scaffolding excessivo são desejados. Os outros desligam.</td>
+          </tr>
+          <tr>
+            <td>Apresentação de caso / Modo mentoria</td>
+            <td><span class="pill">Sênior</span></td>
+            <td>Caso virou artigo · exportável · pronto para Rounds ou Summit. Legado em formato compartilhável.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <div class="eyebrow">O brief em uma frase</div>
+    <h3>Desenhem para as 5 sem que nenhuma se sinta "convidada de alguém".</h3>
+    <p>O Pragmático precisa sentir que <strong>a evidência veio primeiro</strong>. O Sobrecarregado, que <strong>foi pensado para a vida dele</strong>. O Sênior, que <strong>tem peso e profundidade</strong>. O Humanista, que <strong>a pessoa importa</strong>. O Recém-formado, que <strong>tem caminho</strong>. Quando uma persona entra na Atena e pensa "isso aqui foi feito pra mim" — sem perceber que para as outras 4 também foi — a Atom6 acertou.</p>
+  </div>
+
+  <div class="doc-footer">
+    <span>Doc 02 · v2 · 5 Personas Médicas</span>
+    <span>WeCann × Atom6 Studio · Junho 2026</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jornadas UX da Atena · Brief Atom6 Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1E3A8A;
+    --navy-deep: #0F1E4A;
+    --teal: #0F6E56;
+    --teal-soft: #E6F2EE;
+    --teal-line: #B8DDD0;
+    --purple: #6B21A8;
+    --purple-soft: #F3EAFB;
+    --cream: #FAF7F2;
+    --cream-deep: #F4EFE6;
+    --ink: #1A1A1A;
+    --ink-soft: #3D3D3D;
+    --ink-mute: #6B6B6B;
+    --line: #E5E0D6;
+    --line-soft: #EFEAE0;
+    --amber: #B45309;
+    --amber-soft: #FEF3C7;
+    --rose: #BE185D;
+    --rose-soft: #FCE7F3;
+    --bronze: #B8860B;
+    --ocre: #B8956F;
+
+    --j1-color: #0F6E56;
+    --j1-soft: #E6F2EE;
+    --j2-color: #1E3A8A;
+    --j2-soft: #E8EBF5;
+    --j3-color: #6B21A8;
+    --j3-soft: #F3EAFB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1040px; margin: 0 auto; padding: 60px 48px 80px; }
+
+  .hero { border-bottom: 1px solid var(--line); padding-bottom: 48px; margin-bottom: 56px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); font-weight: 600; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 56px;
+    line-height: 1.05; letter-spacing: -0.02em; color: var(--navy-deep); margin-bottom: 16px;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); font-weight: 500; }
+  .hero .lede {
+    font-family: 'Fraunces', serif; font-size: 22px; line-height: 1.45;
+    color: var(--ink-soft); font-weight: 400; max-width: 820px;
+  }
+  .meta-row {
+    display: flex; gap: 32px; margin-top: 32px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-mute); letter-spacing: 0.05em; flex-wrap: wrap;
+  }
+  .meta-row span strong { color: var(--ink); font-weight: 600; }
+
+  section { margin-bottom: 72px; }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--teal); letter-spacing: 0.15em; margin-bottom: 8px; font-weight: 600;
+  }
+  h2 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 34px;
+    line-height: 1.15; letter-spacing: -0.015em; color: var(--navy-deep); margin-bottom: 16px;
+  }
+  h3 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px;
+    line-height: 1.25; color: var(--navy); margin: 36px 0 14px;
+  }
+  h4 {
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px;
+    color: var(--navy-deep); text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 24px 0 10px;
+  }
+  p { margin-bottom: 14px; color: var(--ink-soft); }
+  p.intro {
+    font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.5;
+    color: var(--ink-soft); margin-bottom: 24px;
+  }
+
+  /* CALLOUTS */
+  .callout {
+    background: white; border-left: 3px solid var(--teal); border-radius: 4px;
+    padding: 20px 24px; margin: 24px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .callout.navy { border-color: var(--navy); }
+  .callout.purple { border-color: var(--purple); }
+  .callout.amber { border-color: var(--amber); background: var(--amber-soft); }
+  .callout.rose { border-color: var(--rose); background: var(--rose-soft); }
+  .callout h4 { margin-top: 0; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* JOURNEY HEADER */
+  .journey-header {
+    display: flex; gap: 24px; align-items: flex-start; margin-bottom: 32px;
+    padding: 28px 32px; border-radius: 8px; border: 1px solid var(--line);
+  }
+  .journey-header.j1 { background: var(--j1-soft); border-color: var(--teal-line); }
+  .journey-header.j2 { background: var(--j2-soft); border-color: #C9D2E8; }
+  .journey-header.j3 { background: var(--j3-soft); border-color: #D9C5EB; }
+  .journey-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; padding: 6px 12px; border-radius: 4px;
+    background: white; flex-shrink: 0; align-self: flex-start;
+  }
+  .journey-header.j1 .journey-tag { color: var(--j1-color); border: 1px solid var(--teal-line); }
+  .journey-header.j2 .journey-tag { color: var(--j2-color); border: 1px solid #C9D2E8; }
+  .journey-header.j3 .journey-tag { color: var(--j3-color); border: 1px solid #D9C5EB; }
+  .journey-header h3 {
+    font-family: 'Fraunces', serif; font-size: 26px; margin: 0 0 6px;
+    color: var(--navy-deep);
+  }
+  .journey-header p {
+    margin: 0; font-size: 14px; color: var(--ink-soft); line-height: 1.5;
+  }
+
+  /* SCREEN CARD */
+  .screen {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 28px 32px; margin-bottom: 18px;
+  }
+  .screen-head {
+    display: flex; gap: 16px; align-items: center; padding-bottom: 14px;
+    border-bottom: 1px solid var(--line-soft); margin-bottom: 16px;
+  }
+  .screen-id {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-mute); letter-spacing: 0.08em; font-weight: 600;
+    padding: 4px 10px; border: 1px solid var(--line); border-radius: 4px;
+    background: var(--cream); flex-shrink: 0;
+  }
+  .screen-title {
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600;
+    color: var(--navy-deep); flex: 1;
+  }
+  .screen-state {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    padding: 3px 8px; border-radius: 3px; letter-spacing: 0.08em;
+    font-weight: 600; text-transform: uppercase;
+  }
+  .screen-state.live { background: var(--teal-soft); color: var(--teal); }
+  .screen-state.partial { background: var(--amber-soft); color: var(--amber); }
+  .screen-state.planned { background: var(--purple-soft); color: var(--purple); }
+
+  .screen-body p { font-size: 14.5px; }
+  .screen-body h4 {
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11.5px;
+    color: var(--ink); text-transform: uppercase; letter-spacing: 0.1em;
+    margin: 18px 0 8px;
+  }
+
+  ul.block-list {
+    list-style: none; padding: 0; margin: 8px 0 12px;
+  }
+  ul.block-list li {
+    padding: 8px 0 8px 18px; border-bottom: 1px dotted var(--line-soft);
+    font-size: 14px; color: var(--ink-soft); position: relative;
+  }
+  ul.block-list li::before {
+    content: "▸"; position: absolute; left: 0; top: 8px; color: var(--teal); font-size: 11px;
+  }
+  ul.block-list li:last-child { border-bottom: none; }
+  ul.block-list li strong { color: var(--ink); font-weight: 600; }
+
+  .athena-box {
+    background: var(--purple-soft); border-left: 3px solid var(--purple);
+    padding: 14px 18px; border-radius: 4px; margin: 16px 0;
+  }
+  .athena-box h4 {
+    color: var(--purple); margin: 0 0 6px; font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+  .athena-box p {
+    margin: 0; font-size: 14px; color: var(--ink-soft); line-height: 1.55;
+  }
+  .athena-box p + p { margin-top: 6px; }
+
+  .personas-row {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+    margin: 14px 0 6px;
+  }
+  .persona-chip {
+    border: 1px solid var(--line); border-radius: 6px; padding: 10px;
+    background: var(--cream); font-size: 11.5px; line-height: 1.4;
+  }
+  .persona-chip strong {
+    display: block; font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 0.08em; color: var(--navy);
+    text-transform: uppercase; margin-bottom: 4px; font-weight: 700;
+  }
+  .persona-chip span { color: var(--ink-soft); }
+
+  /* TABLES */
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0;
+    background: white; border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+    font-size: 13.5px;
+  }
+  th {
+    background: var(--cream-deep); padding: 11px 14px; text-align: left;
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-deep);
+    font-weight: 700; border-bottom: 1px solid var(--line);
+  }
+  td {
+    padding: 12px 14px; border-bottom: 1px solid var(--line-soft);
+    vertical-align: top; color: var(--ink-soft);
+  }
+  tr:last-child td { border-bottom: none; }
+  td strong { color: var(--ink); font-weight: 600; }
+
+  /* FORM FIELD */
+  .form-field {
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: 6px; padding: 14px 18px; margin-bottom: 10px;
+  }
+  .form-field-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    color: var(--navy); letter-spacing: 0.08em; font-weight: 700;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .form-field-type {
+    display: inline-block; font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; color: var(--purple); background: var(--purple-soft);
+    padding: 2px 6px; border-radius: 3px; margin-left: 8px;
+    font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .form-field p {
+    margin: 4px 0 0; font-size: 13.5px; color: var(--ink-soft);
+  }
+
+  /* TOC */
+  .toc {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 28px 32px; margin-bottom: 48px;
+  }
+  .toc h3 {
+    margin: 0 0 16px; font-family: 'Fraunces', serif; font-size: 18px;
+    color: var(--navy-deep);
+  }
+  .toc-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 24px;
+  }
+  .toc-item {
+    display: flex; gap: 12px; align-items: baseline;
+    font-size: 13.5px; padding: 5px 0;
+    border-bottom: 1px dotted var(--line-soft);
+  }
+  .toc-item-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    color: var(--teal); font-weight: 700; flex-shrink: 0; min-width: 24px;
+  }
+  .toc-item-title { color: var(--ink-soft); }
+
+  /* PROCESSUAL JOURNEY */
+  .proc-journey {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 28px 32px; margin-bottom: 20px;
+  }
+  .proc-journey-head {
+    display: flex; gap: 16px; align-items: baseline; margin-bottom: 16px;
+  }
+  .proc-journey-num {
+    font-family: 'Fraunces', serif; font-size: 36px; font-weight: 600;
+    color: var(--teal); line-height: 1; flex-shrink: 0;
+  }
+  .proc-journey-title {
+    font-family: 'Fraunces', serif; font-size: 22px; color: var(--navy-deep);
+    font-weight: 600;
+  }
+  .proc-flow {
+    display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px;
+    padding: 12px; background: var(--cream); border-radius: 6px;
+  }
+  .proc-step {
+    background: white; border: 1px solid var(--line);
+    padding: 6px 12px; border-radius: 20px; font-size: 12px;
+    font-family: 'JetBrains Mono', monospace; color: var(--navy);
+    font-weight: 600; letter-spacing: 0.04em;
+  }
+  .proc-arrow { color: var(--ink-mute); align-self: center; font-size: 11px; }
+
+  .verdict {
+    background: var(--navy-deep); color: white; border-radius: 8px;
+    padding: 40px 44px; margin-top: 56px;
+  }
+  .verdict h2 { color: white; margin-bottom: 14px; }
+  .verdict p { color: rgba(255,255,255,0.85); font-size: 16px; }
+  .verdict p.last { margin-bottom: 0; }
+  .verdict em { color: #B8DDD0; font-style: italic; }
+
+  .footer {
+    margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-mute); letter-spacing: 0.05em; text-align: center;
+  }
+
+  @media print {
+    body { background: white; }
+    .container { padding: 0; max-width: none; }
+    section { page-break-inside: avoid; }
+    .screen { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">Doc 05 · Brief Atom6 Studio · Versão 2</div>
+    <h1>As 3 jornadas da <em>Atena</em>.</h1>
+    <p class="lede">
+      Uma visão global e sistemática do prontuário, organizada em três tempos clínicos —
+      pré-consulta, consulta e pós-consulta. Cada tela detalhada por blocos, subcomponentes,
+      papel da Athena e impacto sobre cada uma das cinco personas médicas.
+    </p>
+    <div class="meta-row">
+      <span><strong>Escopo:</strong> 20 telas · 3 jornadas sistêmicas · 3 jornadas processuais</span>
+      <span><strong>Foco:</strong> arquitetura de informação, não identidade visual</span>
+      <span><strong>Audiência:</strong> Atom6 Studio · time de UX/Design</span>
+    </div>
+  </div>
+
+  <!-- NOTA INICIAL -->
+  <div class="callout navy">
+    <h4>Nota de leitura</h4>
+    <p>
+      Este documento descreve <strong>arquitetura de jornadas e funções</strong> — não prescreve
+      paleta, tipografia, hierarquia visual ou padrões de interação. Toda decisão de design
+      visual, microinteração, motion, ilustração e identidade gráfica fica com a Atom6.
+      Nosso papel aqui é entregar o <em>mapa do território</em>, não a estética.
+    </p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Sumário</h3>
+    <div class="toc-grid">
+      <div class="toc-item"><span class="toc-item-num">01</span><span class="toc-item-title">Visão sistêmica das 3 jornadas</span></div>
+      <div class="toc-item"><span class="toc-item-num">02</span><span class="toc-item-title">Jornada 1 · Pré-consulta · 6 telas</span></div>
+      <div class="toc-item"><span class="toc-item-num">03</span><span class="toc-item-title">Jornada 2 · Consulta · 7 telas</span></div>
+      <div class="toc-item"><span class="toc-item-num">04</span><span class="toc-item-title">Jornada 3 · Pós-consulta · 4 telas</span></div>
+      <div class="toc-item"><span class="toc-item-num">05</span><span class="toc-item-title">Telas meta · Athena, Modelos, Configurações, Suporte</span></div>
+      <div class="toc-item"><span class="toc-item-num">06</span><span class="toc-item-title">Formulário de onboarding do médico</span></div>
+      <div class="toc-item"><span class="toc-item-num">07</span><span class="toc-item-title">Por que a consulta é a tela crucial</span></div>
+      <div class="toc-item"><span class="toc-item-num">08</span><span class="toc-item-title">Fase 2 · Financeiro e Contabilidade</span></div>
+      <div class="toc-item"><span class="toc-item-num">09</span><span class="toc-item-title">3 jornadas processuais para a Atom iniciar</span></div>
+    </div>
+  </div>
+
+  <!-- 01 · VISÃO SISTÊMICA -->
+  <section>
+    <div class="section-num">01 · VISÃO SISTÊMICA</div>
+    <h2>As três jornadas como espelho da prática clínica</h2>
+    <p class="intro">
+      A organização em <strong>pré-consulta · consulta · pós-consulta</strong> não é
+      uma divisão de produto. É a estrutura natural do encontro médico-paciente — antes,
+      durante, depois — traduzida em arquitetura de informação.
+    </p>
+    <p>
+      Cada jornada agrupa telas, dados e ações que pertencem ao mesmo tempo clínico.
+      A pré-consulta concentra preparação e contexto. A consulta concentra decisão e
+      registro estruturado. A pós-consulta concentra entrega, acompanhamento e legado
+      de dados (casuística). É uma visão global e sistemática — não um fluxo linear único.
+      Um médico pode entrar pela casuística, pular para a agenda, voltar para uma consulta
+      passada e nunca seguir a sequência em ordem.
+    </p>
+    <p>
+      As telas <strong>meta</strong> — Home da Athena, Modelos, Configurações, Suporte —
+      atravessam as três jornadas. São onde o médico configura o sistema, descobre o
+      que ele faz e pede ajuda quando precisa.
+    </p>
+
+    <h3>Por que essa estrutura importa para a Atom</h3>
+    <p>
+      A Atom recebe um sistema com muitas peças. Algumas estão maduras (agenda, casuística,
+      cadastros), outras estão em estado intermediário (consulta, documentos), outras ainda
+      não foram implementadas conforme o desenho mestre (suporte). A estrutura em três jornadas
+      permite à equipe de design entender <em>onde</em> cada peça pertence dentro do todo —
+      e priorizar redesenho sem perder a coesão sistêmica.
+    </p>
+
+    <div class="callout">
+      <h4>Estado de implementação · três códigos</h4>
+      <p>
+        <strong>LIVE</strong> · em produção, funcionando no MVP atual.<br>
+        <strong>PARCIAL</strong> · implementado de forma incompleta ou divergente do design mestre.<br>
+        <strong>PLANEJADO</strong> · descrito no design mestre mas ainda não construído.
+      </p>
+    </div>
+  </section>
+
+  <!-- 02 · JORNADA 1 · PRÉ-CONSULTA -->
+  <section>
+    <div class="section-num">02 · JORNADA 1</div>
+    <div class="journey-header j1">
+      <div class="journey-tag">J1 · ANTES</div>
+      <div>
+        <h3>Pré-consulta · preparar o encontro</h3>
+        <p>
+          Tudo o que acontece antes do médico abrir a porta da sala (ou iniciar o vídeo).
+          Cadastro, agenda, pré-anamnese do paciente, mensagens, conferência de exames anteriores.
+          O objetivo é chegar à consulta com contexto completo — não com formulário em branco.
+        </p>
+      </div>
+    </div>
+
+    <!-- TELA · AGENDA -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-01</span>
+        <span class="screen-title">Agenda</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          O painel diário e semanal de consultas. Ponto de entrada mais frequente do médico no sistema —
+          é a primeira tela que ele abre de manhã e a última que ele fecha à noite.
+        </p>
+
+        <h4>Subtelas e estados</h4>
+        <ul class="block-list">
+          <li><strong>Visão dia</strong> · timeline vertical com horários, paciente, tipo (presencial / telemedicina), status (confirmado, aguardando, em atendimento, finalizado, faltou).</li>
+          <li><strong>Visão semana</strong> · grade 7 colunas, blocos arrastáveis.</li>
+          <li><strong>Visão mês</strong> · calendário com densidade por dia.</li>
+          <li><strong>Estado vazio</strong> · primeira semana após onboarding · sugestão de cadastrar pacientes ou importar agenda.</li>
+          <li><strong>Estado de conflito</strong> · agendamento sobreposto · resolução visual em modal.</li>
+        </ul>
+
+        <h4>Blocos e componentes</h4>
+        <ul class="block-list">
+          <li><strong>Card de agendamento</strong> · nome do paciente, foto, horário, modalidade, status, badge de pré-anamnese (respondida / pendente / não enviada), badge de retorno vs primeira consulta.</li>
+          <li><strong>Filtro lateral</strong> · por modalidade, por convênio/particular, por status.</li>
+          <li><strong>Botão "novo agendamento"</strong> · abre modal de cadastro rápido.</li>
+          <li><strong>Indicador de fim de expediente</strong> · linha horária do "agora".</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Antecipação:</strong> 30 minutos antes de cada consulta, sinaliza o que ainda
+            está pendente — pré-anamnese não respondida, exames previstos não anexados, retorno sem
+            acompanhamento de escala. Não interrompe; aparece como discreta sinalização contextual.
+          </p>
+          <p>
+            <strong>Sugestão de janela:</strong> em horários vazios, pode sugerir retornos pendentes
+            de pacientes que estão fora de janela esperada — sem agendar nada por conta própria.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Quer saber em 5 seg quantos pacientes hoje e quais têm pendências.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Precisa que a agenda mostre, sem cliques, onde está o gargalo do dia.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Aprecia visão semana para planejar bloco de retornos.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Quer ver a foto e o nome do paciente — não só horário e código.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Usa a agenda como to-do list e checklist de preparação.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · CADASTRO PACIENTE -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-02</span>
+        <span class="screen-title">Cadastro de paciente</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Formulário de criação ou edição de paciente. É onde nasce o identificador único do
+          paciente (UUID irreversível) que viaja por toda a casuística, RWE e prontuário.
+        </p>
+
+        <h4>Blocos do formulário</h4>
+        <ul class="block-list">
+          <li><strong>Identificação</strong> · nome completo, nome social, data de nascimento, sexo biológico, gênero, CPF, RG, foto.</li>
+          <li><strong>Contato</strong> · WhatsApp (principal), e-mail, telefone alternativo, endereço completo, contato de emergência.</li>
+          <li><strong>Convênio</strong> · operadora, plano, número de carteirinha, validade, autorização vigente, ou marcação "particular".</li>
+          <li><strong>Origem</strong> · indicação, marketing, retorno, transferência — usado em casuística.</li>
+          <li><strong>Consentimentos</strong> · LGPD básica (obrigatório) + pesquisa/RWE (opcional, em duas camadas com versão registrada).</li>
+        </ul>
+
+        <h4>Subestados</h4>
+        <ul class="block-list">
+          <li><strong>Cadastro rápido</strong> · só nome + WhatsApp + data de nascimento · usado pela secretária para abrir agendamento de urgência.</li>
+          <li><strong>Cadastro completo</strong> · todos os blocos · pode ser feito pelo paciente via link enviado por WhatsApp.</li>
+          <li><strong>Edição</strong> · paciente já existente · histórico de alterações registrado.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Detecção de duplicata:</strong> ao digitar nome ou CPF parcial, sugere paciente
+            existente para evitar prontuários duplicados — risco real em clínicas com mais de um
+            secretário cadastrando.
+          </p>
+          <p>
+            <strong>Validação CEP:</strong> autocompleta endereço a partir do CEP. Pequeno, mas
+            economiza minutos por cadastro.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Delega à secretária. Só revisa antes da consulta.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Quer que o paciente preencha por link, sem digitação.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Aproveita o cadastro para registrar dados de origem para a casuística.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Valoriza campos de nome social e contato de emergência.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Não delega ainda; preenche pessoalmente e aprende a estrutura.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · CADASTRO AGENDAMENTO -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-03</span>
+        <span class="screen-title">Cadastro de agendamento</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Modal acionado a partir da agenda ou da lista de pacientes. Cria o evento
+          de consulta que dispara o envio automático de pré-anamnese, lembretes e cobranças.
+        </p>
+
+        <h4>Campos do modal</h4>
+        <ul class="block-list">
+          <li><strong>Paciente</strong> · busca com autocomplete (puxa do cadastro).</li>
+          <li><strong>Data e horário</strong> · com checagem automática de conflito.</li>
+          <li><strong>Modalidade</strong> · presencial (com sala) ou telemedicina (gera link).</li>
+          <li><strong>Tipo</strong> · primeira consulta · retorno · sessão de seguimento · procedimento.</li>
+          <li><strong>Profissional</strong> · em clínicas com mais de um médico.</li>
+          <li><strong>Pré-anamnese</strong> · seleção do modelo a enviar (geral / específico de especialidade / sem envio).</li>
+          <li><strong>Observações</strong> · texto livre da secretária.</li>
+        </ul>
+
+        <h4>Subestados</h4>
+        <ul class="block-list">
+          <li><strong>Recorrente</strong> · cria série de retornos a cada X semanas.</li>
+          <li><strong>Bloqueio de agenda</strong> · variante do mesmo modal para reservar horário sem paciente.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Sugestão de modelo de pré-anamnese:</strong> ao detectar o tipo (primeira consulta
+            de paciente novo vs retorno conhecido) e a especialidade, sugere automaticamente o modelo
+            mais coerente. Pode ser sobrescrito.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Quase nunca toca — secretária cuida.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Idem. Mas confere o link de telemedicina antes da hora.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Define tipos de consulta para segmentação da casuística.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Acrescenta observações sobre fragilidades emocionais do paciente.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Faz pessoalmente. Aprende a operar a agenda.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · MENSAGENS PRÉ-CONSULTA -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-04</span>
+        <span class="screen-title">Mensagens · pré-consulta</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Inbox de comunicações automáticas e manuais com pacientes antes da consulta —
+          confirmação, envio de pré-anamnese, lembrete, instruções de preparo, ajustes de horário.
+          Roda majoritariamente via WhatsApp.
+        </p>
+
+        <h4>Blocos</h4>
+        <ul class="block-list">
+          <li><strong>Lista de threads</strong> · ordenada por urgência (próximas 24h primeiro) e por status (não-lida em destaque).</li>
+          <li><strong>Visor da conversa</strong> · histórico completo da thread com timestamps e canais (WhatsApp / e-mail / sistema).</li>
+          <li><strong>Templates rápidos</strong> · respostas prontas para perguntas frequentes ("o estacionamento", "vou estar com sintomas leves, posso ir?", "consigo remarcar?").</li>
+          <li><strong>Anexos</strong> · paciente envia foto de exame · sistema reconhece e oferece anexar ao prontuário automaticamente.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Triagem por urgência:</strong> classifica mensagens em "informativa", "operacional"
+            (remarcação, dúvida administrativa) e "clínica" (sintoma novo, piora, dúvida sobre
+            medicação). Apenas as clínicas chegam ao médico — o resto é resolvido pela secretária
+            ou por resposta automática.
+          </p>
+          <p>
+            <strong>Rascunho de resposta:</strong> para mensagens clínicas que o médico vai responder,
+            propõe rascunho baseado no contexto do paciente. O médico edita ou envia direto.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Só lê as clínicas. Tudo o mais é ruído.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Triagem da Athena é o que salva sua quinta-feira.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Lê histórico de mensagens para entender padrões.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Responde pessoalmente — mas aceita rascunho.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Aprende boas práticas observando rascunhos da Athena.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · PRÉ-ANAMNESE -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-05</span>
+        <span class="screen-title">Pré-anamnese · formulário do paciente</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Formulário enviado por link ao paciente antes da consulta. Acessado pelo celular,
+          sem login. Substitui o questionário em papel da sala de espera.
+        </p>
+
+        <h4>Blocos</h4>
+        <ul class="block-list">
+          <li><strong>Boas-vindas personalizadas</strong> · nome do médico, foto da clínica.</li>
+          <li><strong>Identificação</strong> · confirma e completa o cadastro inicial.</li>
+          <li><strong>Queixa principal e duração</strong> · texto livre + duração estruturada.</li>
+          <li><strong>História da doença atual</strong> · campo guiado com sub-perguntas.</li>
+          <li><strong>Comorbidades</strong> · checklist de condições comuns + texto livre.</li>
+          <li><strong>Medicações em uso</strong> · nome, dose, frequência · com busca em base de medicamentos.</li>
+          <li><strong>Alergias</strong> · estruturado com gravidade.</li>
+          <li><strong>Antecedentes familiares</strong> · principais condições com grau de parentesco.</li>
+          <li><strong>Hábitos de vida</strong> · tabagismo, álcool, exercício, sono, alimentação.</li>
+          <li><strong>Anexo de exames</strong> · upload de PDFs, fotos, laudos.</li>
+        </ul>
+
+        <h4>Subestados</h4>
+        <ul class="block-list">
+          <li><strong>Pediátrico</strong> · responsável preenche · campos específicos de gestação, parto, marcos de desenvolvimento.</li>
+          <li><strong>Ginecológico</strong> · ciclo menstrual, gestações prévias, contracepção.</li>
+          <li><strong>Psiquiátrico</strong> · escalas auto-aplicáveis (PHQ-9, GAD-7) embutidas.</li>
+          <li><strong>Não respondida</strong> · paciente não preencheu até a consulta · sistema sinaliza para o médico.</li>
+          <li><strong>Resposta parcial</strong> · paciente começou e parou · médico vê o que foi preenchido.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Estruturação:</strong> converte respostas livres em campos estruturados quando
+            possível — "tomo um comprimido azul de manhã" vira pergunta de esclarecimento amigável,
+            não rejeição.
+          </p>
+          <p>
+            <strong>Adaptação:</strong> ajusta perguntas seguintes a partir das respostas anteriores
+            (formulário ramificado), evitando que o paciente preencha o que não se aplica.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Chega à consulta com 70% do prontuário pronto.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Não precisa mais ditar comorbidades. Só confere.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Pode customizar o formulário por especialidade.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Pré-anamnese livra tempo na consulta para olhar nos olhos.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Aprende estruturação clínica vendo o que a Athena pergunta.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · PACIENTE 360 -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-06</span>
+        <span class="screen-title">Paciente 360 · visão integrada</span>
+        <span class="screen-state partial">Parcial</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Painel pré-consulta com tudo o que existe sobre aquele paciente, agregado em uma
+          única tela. Muitos médicos vão querer abrir essa tela <em>antes</em> da consulta —
+          especialmente quando a pré-anamnese não foi respondida.
+        </p>
+
+        <h4>Blocos</h4>
+        <ul class="block-list">
+          <li><strong>Cabeçalho do paciente</strong> · foto, idade, sexo, condições ativas, alertas críticos (alergia, anticoagulação).</li>
+          <li><strong>Linha do tempo</strong> · todas as consultas, exames, prescrições e eventos em ordem cronológica.</li>
+          <li><strong>Comorbidades ativas</strong> · com data de diagnóstico e CID.</li>
+          <li><strong>Medicações vigentes</strong> · com doses, datas de início e renovação.</li>
+          <li><strong>Exames recentes</strong> · últimos 6 meses · com sinalização de alterados.</li>
+          <li><strong>Documentos gerados</strong> · receitas, atestados, laudos.</li>
+          <li><strong>Histórico de pré-anamneses</strong> · evolução de queixas ao longo do tempo.</li>
+          <li><strong>Escalas aplicadas</strong> · com gráfico de evolução longitudinal.</li>
+          <li><strong>Notas de outros profissionais</strong> · em clínicas multidisciplinares.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Briefing de 60 segundos:</strong> resumo em prosa do estado clínico atual,
+            destacando o que mudou desde a última consulta. Útil quando o médico tem 2 minutos
+            entre pacientes para se preparar.
+          </p>
+          <p>
+            <strong>Alertas pré-consulta:</strong> "este paciente está há 8 meses sem aplicar
+            escala de seguimento", "exame de creatinina alterado não foi revisto", "interação
+            potencial entre nova medicação e a existente".
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Abre 360 quando paciente não respondeu pré-anamnese.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Substitui leitura de 30 prontuários antigos por 1 briefing.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Vai direto para a linha do tempo · adora visualização longitudinal.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Lê notas anteriores para retomar fios da história.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Estuda o paciente antes · aprende fazendo.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · JORNADA 2 · CONSULTA -->
+  <section>
+    <div class="section-num">03 · JORNADA 2</div>
+    <div class="journey-header j2">
+      <div class="journey-tag">J2 · DURANTE</div>
+      <div>
+        <h3>Consulta · decidir e registrar</h3>
+        <p>
+          O coração da Atena. Onde o médico encontra o paciente, escuta, examina, decide,
+          prescreve e registra. É também a jornada de maior densidade de informação e de
+          decisão — e por isso a que mais demanda design refinado.
+        </p>
+      </div>
+    </div>
+
+    <!-- TELA · CABEÇALHO DO PACIENTE -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-07</span>
+        <span class="screen-title">Cabeçalho do paciente · contexto persistente</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Faixa superior fixa, persistente em toda a tela de consulta. Identifica o paciente
+          e mantém alertas críticos sempre visíveis.
+        </p>
+
+        <h4>Componentes</h4>
+        <ul class="block-list">
+          <li><strong>Foto e nome</strong> · com nome social quando aplicável.</li>
+          <li><strong>Idade, sexo, peso, altura, IMC</strong> · em chips.</li>
+          <li><strong>Condições ativas</strong> · CIDs principais como chips coloridos.</li>
+          <li><strong>Alertas críticos</strong> · alergias graves, anticoagulação, gestação, marca-passo.</li>
+          <li><strong>Botões rápidos</strong> · Paciente 360 · histórico · documentos · ligar.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            Mantém os chips de alerta atualizados em tempo real. Quando o médico prescreve
+            algo que conflita com alergia ou interação, o chip pisca discretamente como sinal.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Vê IMC sem clicar. Essencial.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Alertas críticos sempre à vista evitam erro de fadiga.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Quer que o cabeçalho seja configurável (qual chip mostrar).</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Foto e nome social mais visíveis · não é só prontuário.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>CIDs visíveis ajudam a memorizar contexto.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · ANAMNESE E EXAME FÍSICO -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-08</span>
+        <span class="screen-title">Anamnese e Exame Físico · box estruturado</span>
+        <span class="screen-state partial">Parcial</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          O bloco mais denso e mais demandante do prontuário. Captura toda a história
+          clínica e o exame da consulta atual. Hoje no MVP é um campo de texto livre com
+          modelos — precisa evoluir para a estrutura "prontuário generativo" descrita no item 07.
+        </p>
+
+        <h4>Blocos da anamnese</h4>
+        <ul class="block-list">
+          <li><strong>Queixa principal e duração.</strong></li>
+          <li><strong>História da doença atual</strong> · com sub-blocos guiados por especialidade.</li>
+          <li><strong>Revisão de sistemas</strong> · checklist + texto.</li>
+          <li><strong>Antecedentes pessoais, familiares e sociais.</strong></li>
+          <li><strong>Medicações em uso e alergias</strong> · puxados do paciente, editáveis na consulta.</li>
+        </ul>
+
+        <h4>Blocos do exame físico</h4>
+        <ul class="block-list">
+          <li><strong>Sinais vitais</strong> · PA, FC, FR, SatO₂, temperatura, peso, altura, IMC, glicemia capilar.</li>
+          <li><strong>Exame geral</strong> · ectoscopia, hidratação, perfusão.</li>
+          <li><strong>Exames por sistema</strong> · pulmonar, cardiovascular, abdominal, neurológico, osteomuscular, dermatológico.</li>
+          <li><strong>Exames específicos por especialidade</strong> · ginecológico, oftalmológico, otorrinolaringológico, pediátrico.</li>
+        </ul>
+
+        <h4>Variações por especialidade</h4>
+        <ul class="block-list">
+          <li><strong>MFC, Pediatria, GO, Psiquiatria, Clínica Médica, Neurologia, Plástica, Dor</strong> — cada uma com seu conjunto de campos default e perguntas dirigidas.</li>
+          <li><strong>Submodelo pediátrico</strong> · &lt;12 anos ObsRO · 12–17 dupla coleta · ≥18 PRO.</li>
+          <li><strong>Submodelo gestacional</strong> · IG, DUM, paridade, intercorrências.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Preenchimento generativo:</strong> a partir da pré-anamnese e do histórico do
+            paciente, propõe a estrutura da consulta atual já preenchida — anamnese e exame físico
+            com base em padrões da especialidade. O médico revisa, ajusta, completa.
+          </p>
+          <p>
+            <strong>Sugestão de exame dirigido:</strong> a partir da queixa, sugere o que precisa
+            ser examinado naquela consulta. Útil em especialidades de borda da prática do médico.
+          </p>
+          <p>
+            <strong>Detecção de incoerência:</strong> sinaliza quando exame físico e história
+            não batem — sem alarmar, apenas sugerindo revisão.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Vai amar o prontuário generativo · revisa em vez de digitar.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Esta tela é o que define se ele continua usando ou não.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Quer customizar a estrutura por tipo de consulta.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Athena gera · ele dedica olhar e escuta ao paciente.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Aprende anamnese estruturada lendo o que a Athena propõe.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · NOTAS LIVRES -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-09</span>
+        <span class="screen-title">Notas livres do médico · espaço de insight</span>
+        <span class="screen-state partial">Parcial</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Caixa lateral para anotações curtas do médico — não substitui o prontuário, complementa.
+          Tipo "post-it inteligente" para insights, dúvidas clínicas, lembretes para a próxima consulta,
+          observações que não pertencem ao prontuário formal mas o médico quer guardar.
+        </p>
+
+        <h4>Componentes</h4>
+        <ul class="block-list">
+          <li><strong>Editor minimalista</strong> · texto livre, sem formatação complexa.</li>
+          <li><strong>Âncora de tópico</strong> · indicação opcional de em qual bloco da anamnese/EF a nota se refere.</li>
+          <li><strong>Contador de notas</strong> · número visível de notas da consulta atual.</li>
+          <li><strong>Histórico de notas anteriores</strong> · disponível por filtro · todas as notas do médico para aquele paciente.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Discrição:</strong> Athena não preenche aqui. Este espaço é do médico. Ela
+            pode, no máximo, lembrar de uma nota anterior relevante ao tema da consulta atual.
+          </p>
+          <p>
+            <strong>Persistência:</strong> notas marcadas como "lembrete para próxima" reaparecem
+            automaticamente na próxima consulta do paciente — sem o médico precisar buscar.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Usa para hipóteses diagnósticas em construção.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Lembretes simples · "checar exame mês que vem".</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Anota padrões clínicos que percebe na própria casuística.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Observações sobre vida pessoal e contexto emocional.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Dúvidas para revisar com preceptor · estudo dirigido.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · EXAMES COMPLEMENTARES -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-10</span>
+        <span class="screen-title">Exames complementares</span>
+        <span class="screen-state partial">Parcial</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Bloco que reúne exames trazidos pelo paciente, exames solicitados na consulta atual,
+          e resultados ainda pendentes. Visualização longitudinal.
+        </p>
+
+        <h4>Subtelas</h4>
+        <ul class="block-list">
+          <li><strong>Anexar exame trazido</strong> · upload de PDF / imagem · OCR opcional.</li>
+          <li><strong>Solicitar novo exame</strong> · seleção de exames com modelo de requisição.</li>
+          <li><strong>Resultado pendente</strong> · lista do que foi solicitado e ainda não voltou.</li>
+          <li><strong>Histórico longitudinal</strong> · gráfico de tendência para exames recorrentes (creatinina, HbA1c, TSH, etc).</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Leitura de PDF:</strong> extrai valores numéricos do PDF do laboratório e
+            popula a linha do tempo automaticamente.
+          </p>
+          <p>
+            <strong>Interpretação:</strong> destaca valores fora da referência. Sugere exames
+            complementares quando padrão clínico aponta nessa direção.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Quer gráfico longitudinal · não tabela.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>OCR salva horas de digitação semanal.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Cruza exames com escalas para enxergar padrão.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Compartilha gráfico com o paciente na tela.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Interpretação assistida acelera a curva de aprendizagem.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · GERAR DOCUMENTOS -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-11</span>
+        <span class="screen-title">Gerar documentos · 10 tipos</span>
+        <span class="screen-state partial">Parcial</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Espaço onde o médico cria documentos a partir do contexto da consulta. Cada tipo
+          tem template próprio, regras de assinatura digital (ICP-Brasil), envio (WhatsApp /
+          e-mail / impressão) e armazenamento no prontuário.
+        </p>
+
+        <h4>10 tipos de documento</h4>
+        <ul class="block-list">
+          <li><strong>Receituário simples</strong> · medicações de uso comum.</li>
+          <li><strong>Receituário de controle especial</strong> · branco · medicações da Portaria 344.</li>
+          <li><strong>Receituário de antimicrobianos.</strong></li>
+          <li><strong>Receituário amarelo</strong> · A1/A2/A3 · entorpecentes.</li>
+          <li><strong>Receituário azul</strong> · B1/B2 · psicotrópicos.</li>
+          <li><strong>Solicitação de exames</strong> · laboratoriais e de imagem.</li>
+          <li><strong>Atestado médico</strong> · com ou sem CID · variantes de afastamento, comparecimento, aptidão.</li>
+          <li><strong>Laudo médico</strong> · circunstanciado para perícia, escola, plano.</li>
+          <li><strong>Encaminhamento</strong> · para especialista ou serviço.</li>
+          <li><strong>Pedido cirúrgico / OPME</strong> · com justificativa técnica.</li>
+          <li><strong>Sumário clínico</strong> · resumo para o paciente, linguagem leiga (dualidade C2/C3).</li>
+          <li><strong>Orientações pós-consulta.</strong></li>
+          <li><strong>Termo de consentimento livre e esclarecido</strong> · TCLE de procedimentos e pesquisa.</li>
+        </ul>
+
+        <h4>Componentes comuns</h4>
+        <ul class="block-list">
+          <li><strong>Cabeçalho do médico</strong> · nome, CRM, RQE, foto, clínica.</li>
+          <li><strong>Identificação do paciente.</strong></li>
+          <li><strong>Corpo do documento</strong> · template específico por tipo.</li>
+          <li><strong>Assinatura digital ICP-Brasil</strong> · um clique.</li>
+          <li><strong>Envio</strong> · WhatsApp, e-mail, impressão, download.</li>
+          <li><strong>Armazenamento</strong> · vai automaticamente para "documentos gerados" do paciente.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Preenchimento contextual:</strong> ao detectar prescrição de cefalexina,
+            sugere receituário de antimicrobiano com posologia padrão e duração. Médico edita ou aceita.
+          </p>
+          <p>
+            <strong>Dualidade C2/C3:</strong> para o sumário clínico, gera versão técnica (C3) e
+            versão em linguagem leiga (C2) lado a lado · médico escolhe qual envia.
+          </p>
+          <p>
+            <strong>Checagem de interação:</strong> antes de assinar receita, verifica interações
+            medicamentosas com o que o paciente já usa · alerta sem bloquear.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>3 cliques de prescrição em vez de 12.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Atestado padrão pré-preenchido salva 2 minutos por consulta.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Cria templates próprios · biblioteca pessoal.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Sumário em linguagem leiga é seu favorito.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Aprende padrões corretos de prescrição vendo a sugestão.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · ATENDIMENTOS PRÉVIOS -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-12</span>
+        <span class="screen-title">Atendimentos prévios</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Lista de todas as consultas anteriores daquele paciente · acessível durante a consulta
+          atual sem perder o contexto. Cada item é expansível com a anamnese, exame, decisões.
+        </p>
+
+        <h4>Componentes</h4>
+        <ul class="block-list">
+          <li><strong>Lista cronológica</strong> · data, tipo, queixa principal.</li>
+          <li><strong>Filtros</strong> · por tipo de consulta, por médico (em clínicas), por intervalo.</li>
+          <li><strong>Visualização expandida</strong> · prontuário inteiro daquela consulta.</li>
+          <li><strong>Comparação</strong> · seleciona 2 consultas e vê lado a lado.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Resumo evolutivo:</strong> em vez de ler todas as consultas, médico pede
+            "como evoluiu desde a primeira consulta" e recebe síntese narrativa.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Vai direto à última consulta.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Confia no resumo evolutivo.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Lê em ordem cronológica · valoriza fio narrativo.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Lembra detalhes pessoais entre consultas.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Estuda a evolução para aprender raciocínio clínico.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · COLUNA ATHENA -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-13</span>
+        <span class="screen-title">Coluna da Athena · alertas, sugestões e insights</span>
+        <span class="screen-state partial">Parcial</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Coluna lateral persistente durante toda a consulta. Diferente da Athena difusa
+          (que aparece em outros lugares), aqui é a presença concentrada · um copiloto à direita.
+        </p>
+
+        <h4>Categorias de cards</h4>
+        <ul class="block-list">
+          <li><strong>Interação medicamentosa</strong> · severidade graduada · sempre com referência clicável.</li>
+          <li><strong>Escala pendente</strong> · "PHQ-9 não aplicado há 3 meses" · "vamos aplicar agora?"</li>
+          <li><strong>Checagem sugerida</strong> · "creatinina vence em 2 meses" · "rastreio de câncer indicado para idade".</li>
+          <li><strong>Literatura relevante</strong> · artigo recente sobre a condição em manejo.</li>
+          <li><strong>Sinalização de evento adverso</strong> · paciente reportou sintoma compatível com EA grau 2+ · solicita classificação CTCAE.</li>
+        </ul>
+
+        <h4>Comportamento</h4>
+        <ul class="block-list">
+          <li><strong>Não-bloqueante</strong> · nada interrompe o fluxo do médico.</li>
+          <li><strong>Descartável</strong> · cada card pode ser fechado · sistema aprende preferências.</li>
+          <li><strong>Justificada</strong> · todo card tem botão "por quê?" mostrando a evidência.</li>
+          <li><strong>Reversível</strong> · médico pode aceitar parcialmente.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            Esta tela <em>é</em> a Athena em sua forma mais visível. O resto do sistema tem
+            Athena difusa; aqui ela é explícita. A regra de ouro é a mesma: assistência, nunca
+            substituição. O médico decide sempre.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Aceita interações · ignora "literatura".</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Escalas pendentes evitam que ele esqueça.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Adora a coluna · é colega de discussão.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Valoriza alertas que protegem o paciente.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Lê todas as justificativas · estudo em ato.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · JORNADA 3 · PÓS-CONSULTA -->
+  <section>
+    <div class="section-num">04 · JORNADA 3</div>
+    <div class="journey-header j3">
+      <div class="journey-tag">J3 · DEPOIS</div>
+      <div>
+        <h3>Pós-consulta · entregar, acompanhar, capitalizar</h3>
+        <p>
+          O que acontece quando o paciente sai da sala. Envio de documentos, mensagens
+          de seguimento, análise da casuística acumulada, retroalimentação do médico.
+          A jornada que transforma consultas em prática refinada.
+        </p>
+      </div>
+    </div>
+
+    <!-- TELA · MENSAGENS PÓS -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-14</span>
+        <span class="screen-title">Mensagens · pós-consulta</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Inbox espelho da pré-consulta · mas para o tempo depois. Dúvidas sobre prescrição,
+          reações adversas, pedidos de relatório, agradecimentos, lembretes de retorno.
+        </p>
+
+        <h4>Componentes</h4>
+        <ul class="block-list">
+          <li><strong>Threads classificadas</strong> · operacionais, clínicas, urgentes.</li>
+          <li><strong>Visor de conversa</strong> · com vínculo direto à consulta de origem.</li>
+          <li><strong>Templates de resposta</strong> · orientações pós-procedimento, esclarecimentos sobre prescrição.</li>
+          <li><strong>Encaminhamento à secretária</strong> · com um clique.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Detecção de EA:</strong> identifica relato de reação adversa em mensagens livres
+            e sugere abertura de registro de farmacovigilância (CTCAE / MedDRA / WHO-UMC).
+          </p>
+          <p>
+            <strong>Resposta sugerida:</strong> rascunho contextual com base no histórico do paciente.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Só lê o filtrado pela Athena.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Triagem é vital · não dá conta de tudo.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Lê padrões de queixa pós-consulta.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Responde pessoalmente · acolhe.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Aprende lidando com efeitos esperados e inesperados.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · DOCUMENTOS GERADOS -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-15</span>
+        <span class="screen-title">Documentos gerados · biblioteca por paciente</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Arquivo de tudo que foi emitido — receitas, atestados, laudos, encaminhamentos,
+          TCLEs. Acessível tanto pelo médico quanto pelo paciente (via portal).
+        </p>
+
+        <h4>Componentes</h4>
+        <ul class="block-list">
+          <li><strong>Lista filtrável</strong> · por tipo, data, status de assinatura.</li>
+          <li><strong>Reenvio rápido</strong> · paciente perdeu a receita · 1 clique para reenviar pelo WhatsApp.</li>
+          <li><strong>Renovação</strong> · receita contínua · gera nova com base na anterior.</li>
+          <li><strong>Auditoria</strong> · quem assinou, quando, com qual certificado.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            Lembra quando uma receita controlada está próxima de vencer e sugere agendamento
+            de retorno antes que o paciente fique sem medicação.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Renovação 1-clique é seu favorito.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Reenvio rápido reduz volume de mensagens.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Audita as próprias prescrições periodicamente.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Mantém vínculo enviando documentos com nota personalizada.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Revisita prescrições passadas como autoavaliação.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · CASUÍSTICA -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-16</span>
+        <span class="screen-title">Casuística · legado de prática</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          A tela que transforma uma carreira de atendimentos em conhecimento agregado.
+          Painel longitudinal de toda a prática do médico — pacientes atendidos, condições
+          tratadas, evolução longitudinal, eficácia comparada. É o momento "uau" do sistema
+          para muitos médicos.
+        </p>
+
+        <h4>Blocos principais</h4>
+        <ul class="block-list">
+          <li><strong>Painel demográfico</strong> · distribuição etária, sexo, origem, condições mais atendidas.</li>
+          <li><strong>Painel longitudinal</strong> · pacientes em acompanhamento · novos vs retornos · adesão.</li>
+          <li><strong>Painel de desfecho</strong> · pacientes em remissão, melhora, manutenção, piora · por condição.</li>
+          <li><strong>Painel de instrumentos</strong> · evolução média de escalas (PHQ-9, GAD-7, EVA, etc) ao longo do tempo.</li>
+          <li><strong>Painel comparativo</strong> · médico vê sua eficácia por intervenção · sem ranking público, apenas autorreferenciado.</li>
+          <li><strong>Painel de eventos adversos</strong> · perfil de segurança da própria prática.</li>
+        </ul>
+
+        <h4>Subtelas e filtros</h4>
+        <ul class="block-list">
+          <li><strong>Recorte por condição</strong> · "ver só meus pacientes com fibromialgia".</li>
+          <li><strong>Recorte por intervenção</strong> · "ver evolução de quem tomou X vs Y".</li>
+          <li><strong>Recorte por persona de paciente</strong> · idade, sexo, condições associadas.</li>
+          <li><strong>Export para publicação</strong> · gera dataset anonimizado com nível ★★ (publicável) ou ★★★ (regulatório).</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Narrativa de prática:</strong> em vez de tabela, gera prosa — "nos últimos 6 meses,
+            você atendeu 184 pacientes com transtornos do humor, com melhora média de 4 pontos no PHQ-9
+            em 90 dias. Sua subgrupo de melhor desfecho é..."
+          </p>
+          <p>
+            <strong>Detecção de padrão:</strong> aponta correlações que o médico não procurou —
+            "pacientes acima de 60 anos respondem 30% mais ao protocolo Y do que ao X".
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Casuística é o que valida sua reputação técnica.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Vê pela primeira vez o tamanho real do que faz · motivação.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Esta é A tela · publica, palestra, ensina a partir daqui.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Lembra que cada número é uma história · usa com cautela.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Visão de carreira nascente · primeiro 100 pacientes.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA · GESTÃO DE PACIENTES -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-17</span>
+        <span class="screen-title">Gestão de pacientes</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Lista mestra de todos os pacientes da clínica · com filtros, busca, marcação de status.
+          Diferente da casuística (que é analítica), esta é operacional.
+        </p>
+
+        <h4>Componentes</h4>
+        <ul class="block-list">
+          <li><strong>Tabela com busca</strong> · nome, CPF, telefone.</li>
+          <li><strong>Filtros</strong> · ativo · em acompanhamento · alta · perdido de seguimento.</li>
+          <li><strong>Ação em massa</strong> · enviar mensagem para grupo (recall, campanha de vacinação).</li>
+          <li><strong>Marcação de prioridade</strong> · paciente VIP, paciente em situação delicada.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            Identifica pacientes "perdidos de seguimento" — última consulta há mais de X tempo
+            sem alta formal · sugere campanha de recall.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Quase não usa · delega à secretária.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Recall automático recupera 10% da agenda.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Segmenta pacientes para projetos de pesquisa.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Marca pacientes em luto · cuida do contato.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Aprende a operação da clínica fazendo gestão.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · TELAS META -->
+  <section>
+    <div class="section-num">05 · TELAS META</div>
+    <h2>Telas meta · atravessam as três jornadas</h2>
+    <p class="intro">
+      Não pertencem a um tempo clínico específico. São onde o médico configura,
+      explora e pede ajuda.
+    </p>
+
+    <!-- HOME ATHENA -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-18</span>
+        <span class="screen-title">Home da Athena</span>
+        <span class="screen-state partial">Parcial</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Tela inicial da plataforma (ou tela inicial alternativa, dependendo da preferência
+          do médico). Espaço de descoberta · onde o médico entende o que a Athena pode fazer,
+          vê novidades, acessa tutoriais.
+        </p>
+
+        <h4>Blocos</h4>
+        <ul class="block-list">
+          <li><strong>Resumo do dia</strong> · próximas consultas, pendências, alertas.</li>
+          <li><strong>Mini-cards de descoberta</strong> · "você sabia que a Athena pode...?"</li>
+          <li><strong>Atalhos personalizados</strong> · médico fixa o que mais usa.</li>
+          <li><strong>Trilha de aprendizado</strong> · módulos de onboarding por tópico (consulta, casuística, documentos).</li>
+          <li><strong>Status do sistema</strong> · saúde dos serviços (API, WhatsApp, casuística RWE, MEMED).</li>
+          <li><strong>Canais de contato</strong> · Athena suporte 24/7, WhatsApp prioritário, linha emergencial.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            Esta tela é a "personalidade pública" da Athena · onde ela se apresenta como
+            companheira de prática. Espaço para tutoriais, vídeos curtos, descoberta progressiva.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Pula direto pra agenda · ignora home.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Idem · home é "perda de tempo".</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Aprecia trilhas de descoberta · curioso.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Gosta do tom acolhedor da home.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>É onde mais passa tempo nos primeiros 30 dias.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODELOS -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-19</span>
+        <span class="screen-title">Modelos · extensão da personalização</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Biblioteca de modelos do médico · receituários padrão, atestados frequentes,
+          modelos de anamnese por tipo de queixa, mensagens automáticas. É uma extensão
+          do "configurações" — onde o médico molda a Atena à sua prática.
+        </p>
+
+        <h4>Tipos de modelo</h4>
+        <ul class="block-list">
+          <li><strong>Receituários favoritos</strong> · combinações fixas de medicação para queixa comum.</li>
+          <li><strong>Atestados padrão</strong> · variantes mais usadas.</li>
+          <li><strong>Modelos de anamnese</strong> · por especialidade, por tipo de consulta.</li>
+          <li><strong>Modelos de orientações pós-consulta</strong> · por procedimento.</li>
+          <li><strong>Mensagens automáticas</strong> · confirmação, lembrete, agradecimento.</li>
+          <li><strong>Templates de exames</strong> · combos de solicitação recorrentes.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            <strong>Geração de modelo:</strong> a partir de padrões detectados na própria prática
+            do médico, sugere "você prescreve esta combinação para 80% dos pacientes com X · quer
+            salvar como modelo?"
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Cria 10 modelos · usa para sempre.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Cada modelo é minutos economizados por consulta.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Templates por subtipo de paciente · refinamento contínuo.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Modelos de mensagem com toque humano.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Importa modelos de mentores · biblioteca herdada.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIGURAÇÕES -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-20</span>
+        <span class="screen-title">Configurações · dados, integrações, equipe</span>
+        <span class="screen-state live">Live</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Centro de controle da plataforma. Dados profissionais do médico, equipe da clínica,
+          integrações (MEMED, certificado digital, calendário externo), assinatura, faturamento.
+        </p>
+
+        <h4>Seções</h4>
+        <ul class="block-list">
+          <li><strong>Perfil profissional</strong> · onboarding completo do médico (ver item 06 a seguir).</li>
+          <li><strong>Clínica</strong> · razão social, CNPJ, endereço, logos, horário de funcionamento.</li>
+          <li><strong>Equipe</strong> · adicionar secretária(s), outros médicos, permissões.</li>
+          <li><strong>Integrações</strong> · MEMED, certificado ICP-Brasil, WhatsApp Business API, Google/Outlook Calendar.</li>
+          <li><strong>Modelos de pré-anamnese</strong> · padrões aplicados aos pacientes.</li>
+          <li><strong>Notificações</strong> · canais, frequência, tipos.</li>
+          <li><strong>Assinatura e faturamento</strong> · plano, método de pagamento, notas fiscais.</li>
+          <li><strong>Privacidade e LGPD</strong> · termos, consentimentos, exportação de dados.</li>
+        </ul>
+
+        <div class="callout amber">
+          <h4>Atenção · onboarding do médico em foco</h4>
+          <p>
+            O <strong>formulário de onboarding</strong> dentro de "Perfil profissional" é uma das
+            telas mais críticas do sistema — define como a Atena vai se comportar com aquele
+            médico daqui em diante. Especialidade, áreas de interesse, modelo de prática.
+            Está descrito em detalhe no item 06.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Configura uma vez · não volta mais.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Pede que a secretária configure.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Volta com frequência · refina integrações.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Customiza notificações para não invadir vida pessoal.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Passa pelo onboarding com cuidado · primeira impressão importa.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPORTE -->
+    <div class="screen">
+      <div class="screen-head">
+        <span class="screen-id">T-21</span>
+        <span class="screen-title">Suporte</span>
+        <span class="screen-state planned">Planejado · não implementado</span>
+      </div>
+      <div class="screen-body">
+        <p>
+          Espaço onde o médico pede ajuda — humana ou da própria Athena. Hoje no MVP existe
+          uma versão estática que <strong>não corresponde ao desenho mestre</strong>. O print de referência
+          mostra a versão prevista: status do sistema, canais de contato (Athena 24/7, WhatsApp,
+          e-mail, sessão de onboarding, linha emergencial), tickets do médico, trilha de descoberta
+          ("dia 3 · aula de hoje"). Hoje, na prática, o sistema não tem essa estrutura — apenas
+          um link de contato.
+        </p>
+
+        <h4>Blocos previstos (mas ainda não implementados conforme o desenho)</h4>
+        <ul class="block-list">
+          <li><strong>Status do sistema</strong> · saúde dos serviços principais (API Athena, WhatsApp, Casuística RWE, MEMED) com indicadores de latência e disponibilidade.</li>
+          <li><strong>Canais de contato</strong> · Athena Suporte 24/7 (chat) · WhatsApp prioritário · e-mail (resposta em &lt;4h úteis) · sessão de onboarding agendável · linha emergencial 0800 para risco clínico.</li>
+          <li><strong>Tickets do médico</strong> · abertos, pendentes, histórico 90d.</li>
+          <li><strong>Trilha de descoberta</strong> · "tour WeCann" em aulas curtas (2–3 min cada), semana 1 descoberta, semana 2 prática, etc.</li>
+          <li><strong>Central de ajuda</strong> · FAQ, vídeos curtos, documentação técnica.</li>
+        </ul>
+
+        <div class="athena-box">
+          <h4>Papel da Athena nesta tela</h4>
+          <p>
+            Primeira camada de suporte · responde dúvidas operacionais ("como gero uma receita
+            azul?") e direciona para humano quando passa de operacional para clínico ou financeiro.
+            Em ticket aberto, Athena rascunha resposta para o time humano revisar.
+          </p>
+        </div>
+
+        <h4>Impacto por persona</h4>
+        <div class="personas-row">
+          <div class="persona-chip"><strong>Especialista Pragmático</strong><span>Quase nunca usa · só em pane.</span></div>
+          <div class="persona-chip"><strong>Clínico Sobrecarregado</strong><span>Precisa do 0800 para situação de risco.</span></div>
+          <div class="persona-chip"><strong>Sênior Explorador</strong><span>Abre ticket de feature request frequentemente.</span></div>
+          <div class="persona-chip"><strong>Humanista Empático</strong><span>Valoriza canal humano · não quer chatbot.</span></div>
+          <div class="persona-chip"><strong>Recém-formado</strong><span>Passa horas na trilha de descoberta.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · FORMULÁRIO DE ONBOARDING -->
+  <section>
+    <div class="section-num">06 · ONBOARDING DO MÉDICO</div>
+    <h2>Formulário de onboarding · perfil profissional</h2>
+    <p class="intro">
+      Dentro da tela de Configurações, sub-seção <em>Perfil profissional</em>. É a porta de
+      entrada do médico no sistema — define a partir de qual perfil clínico a Athena vai
+      operar com ele.
+    </p>
+
+    <p>
+      Estrutura em <strong>6 passos</strong> · cada passo focado em uma dimensão da prática.
+      Pode ser preenchido na primeira sessão ou depois, mas o sistema lembra o que falta
+      até estar completo.
+    </p>
+
+    <h3>Passo 1 · Identificação</h3>
+    <div class="form-field">
+      <div class="form-field-label">Nome completo · CRM (estado) · RQE</div>
+      <p>Campos texto · validação de CRM em base oficial.</p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Foto profissional<span class="form-field-type">upload</span></div>
+      <p>Usada em cabeçalho de documentos, agenda do paciente e mensagens.</p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Pronome de tratamento preferido</div>
+      <p>Dr., Dra., Dre., apenas o nome · usado por Athena ao se dirigir ao médico.</p>
+    </div>
+
+    <h3>Passo 2 · Formação e especialidade</h3>
+    <div class="form-field">
+      <div class="form-field-label">Especialidade principal<span class="form-field-type">campo de busca</span></div>
+      <p>
+        Campo de busca com autocomplete · ao digitar as primeiras letras, o sistema sugere
+        a especialidade reconhecida pelo CFM (ex: digita "card" → aparece Cardiologia,
+        Cardiologia Pediátrica). Médico seleciona da lista.
+      </p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Especialidade secundária<span class="form-field-type">campo de busca · opcional</span></div>
+      <p>
+        Mesma mecânica do principal · opcional. Atende médicos com dupla formação (ex:
+        Clínica Médica + Geriatria, Pediatria + Alergia).
+      </p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Universidade de formação · ano de conclusão · residência</div>
+      <p>Para contexto de currículo · não interfere no comportamento da Athena.</p>
+    </div>
+
+    <h3>Passo 3 · Áreas clínicas de interesse</h3>
+    <div class="form-field">
+      <div class="form-field-label">Patologias e queixas mais frequentemente atendidas<span class="form-field-type">multi-seleção + texto</span></div>
+      <p>
+        Pergunta nova e central. "Quais patologias, queixas ou condições você atende com mais
+        frequência ou tem maior interesse?" · Lista filtrável por área clínica (saúde mental,
+        dor crônica, doenças cardiovasculares, oncologia, pediatria do desenvolvimento, etc),
+        com possibilidade de texto livre. Tudo isso alimenta os modelos de anamnese, as
+        sugestões da Athena, a coluna lateral e os alertas.
+      </p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Procedimentos que realiza<span class="form-field-type">multi-seleção · opcional</span></div>
+      <p>
+        Procedimentos que o médico executa em consultório · usado para sugerir modelos de
+        TCLE, orientações pós-procedimento, pedidos cirúrgicos.
+      </p>
+    </div>
+
+    <h3>Passo 4 · Modelo de prática</h3>
+    <div class="form-field">
+      <div class="form-field-label">Predominância do atendimento<span class="form-field-type">radio</span></div>
+      <p>
+        "Sua prática hoje é predominantemente:" → opções <strong>Pública</strong> ·
+        <strong>Privada</strong> · <strong>Mista</strong>. Pergunta nova. Determina linguagem
+        em sugestões da Athena (pública usa nomes genéricos de medicação, privada pode sugerir
+        marca; mista alterna). Também ajusta convênios padrão e tabelas de procedimento.
+      </p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Tipos de consulta que oferece<span class="form-field-type">multi-seleção</span></div>
+      <p>Presencial · telemedicina · domicílio · hospitalar.</p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Volume médio de consultas/semana</div>
+      <p>Faixa estimada · usado para projeção de casuística e para sugestão de planos.</p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Atua em clínica multidisciplinar?</div>
+      <p>Sim/não · se sim, abre fluxo de cadastro de outros profissionais.</p>
+    </div>
+
+    <h3>Passo 5 · Preferências de prática</h3>
+    <div class="form-field">
+      <div class="form-field-label">Estilo de anamnese preferido</div>
+      <p>
+        Estruturado completo · estruturado essencial · texto livre com prompts da Athena ·
+        misto. Determina como a tela de consulta T-08 é apresentada por padrão.
+      </p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Nível de proatividade da Athena</div>
+      <p>
+        Discreta (só responde quando chamada) · equilibrada (sugere periodicamente) · proativa
+        (alerta a cada interação). Configurável depois.
+      </p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Dualidade linguística C2/C3</div>
+      <p>
+        Quando emite sumário ou orientações ao paciente, preferência por linguagem técnica
+        (C3), leiga (C2) ou ambas lado a lado.
+      </p>
+    </div>
+
+    <h3>Passo 6 · Consentimentos e termos</h3>
+    <div class="form-field">
+      <div class="form-field-label">Termo de uso da plataforma</div>
+      <p>Aceite obrigatório · versão registrada com timestamp.</p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">Adesão à casuística RWE</div>
+      <p>
+        Opcional. Permite que seus dados anonimizados componham os datasets de Real-World
+        Evidence. Duas camadas: nível ★★ publicável · nível ★★★ regulatório.
+      </p>
+    </div>
+    <div class="form-field">
+      <div class="form-field-label">LGPD · responsabilidades</div>
+      <p>Aceite obrigatório com clareza sobre o papel de controlador de dados.</p>
+    </div>
+
+    <div class="callout">
+      <h4>Comportamento esperado do formulário</h4>
+      <p>
+        <strong>Progressivo:</strong> não bloqueia o médico em tela única gigante · cada passo
+        cabe em uma "respiração". <strong>Salva incremental:</strong> sai e volta sem perder
+        nada. <strong>Editável a qualquer tempo:</strong> não é assistente único · é configuração
+        viva. <strong>Conectado:</strong> mudar especialidade aqui muda imediatamente o
+        comportamento da Athena em todas as outras telas.
+      </p>
+    </div>
+  </section>
+
+  <!-- 07 · CONSULTA É CRUCIAL -->
+  <section>
+    <div class="section-num">07 · POR QUE A CONSULTA É CRUCIAL</div>
+    <h2>A tela de consulta · o ponto mais demandante do projeto</h2>
+    <p class="intro">
+      Entre todas as telas da Atena, a tela de consulta é a mais complexa, a mais densa em
+      informação, e a que mais demanda redesenho profundo. É também a tela onde o sistema
+      vai ser julgado — se a consulta funciona, o resto funciona.
+    </p>
+
+    <h3>Por que é a tela mais complexa</h3>
+    <p>
+      A consulta concentra, em um único momento, toda a história clínica acumulada do paciente,
+      a história presente, o exame físico, a decisão terapêutica, a prescrição, os documentos
+      emitidos e as recomendações. Tudo isso enquanto o médico mantém contato visual e vínculo
+      humano com o paciente. É a tela onde o sistema precisa ficar invisível para que a
+      consulta aconteça.
+    </p>
+    <p>
+      Hoje, no MVP, o box de anamnese e exame físico é essencialmente um campo de texto livre
+      acompanhado de modelos. Funciona — é a parte mais usada do produto —, mas precisa de
+      melhorias profundas para sustentar a promessa de "prontuário da nova geração".
+    </p>
+
+    <h3>O direcionamento recente · prontuário generativo</h3>
+    <p>
+      Uma das orientações mais importantes que demos recentemente para esta tela é a proposta
+      do <strong>prontuário generativo</strong> — anexada como referência para a Atom6.
+      A ideia em três linhas:
+    </p>
+
+    <div class="callout navy">
+      <h4>Princípio do prontuário generativo</h4>
+      <p>
+        <strong>1.</strong> A Athena preenche o prontuário com assertividade · anamnese, exame
+        físico e raciocínio clínico estruturado · a partir do contexto do paciente e da especialidade.
+      </p>
+      <p>
+        <strong>2.</strong> A organização da anamnese e do exame físico se ajusta dinamicamente à
+        especialidade · o que aparece para um pediatra é diferente do que aparece para um neurologista,
+        que é diferente do que aparece para um psiquiatra · sem que o médico precise configurar.
+      </p>
+      <p>
+        <strong>3.</strong> O médico, liberado do trabalho de digitação estruturada, dedica seu
+        tempo e espaço mental a outros tipos de anotação — insights, dúvidas em construção,
+        lembretes para a próxima consulta. As "notas livres" voltam ao seu lugar original:
+        anotações curtas, pensamento em ato, não substituto de prontuário.
+      </p>
+    </div>
+
+    <h3>Implicações para o redesenho</h3>
+    <p>
+      A reorganização do box de anamnese e exame físico em três colunas (anamnese/EF ·
+      notas do médico · coluna da Athena) já desenhada no doc consolidado de especialidades é
+      a base. Mas precisa ser refinada com a Atom para resolver alguns pontos críticos:
+    </p>
+
+    <ul class="block-list">
+      <li><strong>Equilíbrio entre estruturação e fluência</strong> · estruturar demais engessa o pensamento clínico · estruturar de menos perde dados para casuística e RWE.</li>
+      <li><strong>Velocidade de revisão</strong> · médico precisa percorrer e ajustar o que a Athena gerou em segundos, não em minutos.</li>
+      <li><strong>Reversibilidade</strong> · toda sugestão da Athena precisa ser facilmente rejeitada · sem fricção.</li>
+      <li><strong>Densidade visual</strong> · a tela tem muita informação · precisa ser legível para um cardiologista de 48 anos com presbiopia em 5 minutos.</li>
+      <li><strong>Adaptação por especialidade</strong> · 8 especialidades já mapeadas · MFC, Pediatria, GO, Psiquiatria, Clínica Médica, Neurologia, Plástica, Dor · cada uma com seu conjunto.</li>
+      <li><strong>Preservação do espaço de notas</strong> · não pode ser colonizado pela Athena · é território do médico.</li>
+    </ul>
+
+    <p>
+      Essa tela é, dentro do brief da Atom, a que vai consumir mais tempo de desenho e mais
+      iteração. É também a que vai mais diferenciar a Atena do prontuário comum — e onde o
+      design pode mudar o jogo.
+    </p>
+  </section>
+
+  <!-- 08 · FASE 2 · FINANCEIRO -->
+  <section>
+    <div class="section-num">08 · FASE 2</div>
+    <h2>Financeiro e Contabilidade · próxima fase</h2>
+    <p class="intro">
+      Recibos, controle de receitas e despesas, conciliação bancária, integração com contabilidade,
+      emissão de notas fiscais, gestão de convênios e glosas — está tudo planejado, mas
+      <strong>não faz parte deste brief de redesenho</strong>.
+    </p>
+
+    <p>
+      Essas features e telas estão planejadas para serem executadas em uma fase posterior do
+      projeto. A Atom não precisa redesenhar nada dessa área agora · o foco está nas três
+      jornadas clínicas e nas telas meta descritas acima.
+    </p>
+
+    <p>
+      O motivo dessa decisão é estratégico: o coração da Atena é o trabalho clínico, e o
+      diferencial competitivo está na qualidade do prontuário e da casuística. O financeiro
+      é importante para a clínica, mas não é onde o produto se diferencia · será resolvido
+      em fase 2 com aproveitamento de soluções já maduras no mercado.
+    </p>
+
+    <div class="callout">
+      <h4>Telas previstas para fase 2 (apenas referência)</h4>
+      <p>
+        Painel financeiro · Recibos e notas fiscais · Conciliação bancária · Gestão de convênios
+        e glosas · Relatórios contábeis · Fluxo de caixa · Comissionamento de equipe. Tudo isso
+        ficará fora do escopo do redesenho da Atom6 nesta fase.
+      </p>
+    </div>
+  </section>
+
+  <!-- 09 · 3 JORNADAS PROCESSUAIS -->
+  <section>
+    <div class="section-num">09 · CAMINHO PROPOSTO PARA A ATOM</div>
+    <h2>Três jornadas processuais para iniciar o trabalho</h2>
+    <p class="intro">
+      A organização sistêmica em pré-consulta · consulta · pós-consulta é a visão de
+      arquitetura. Para o trabalho de design da Atom6, propomos uma entrada por
+      <strong>jornadas processuais</strong> — três fluxos completos que atravessam várias
+      telas e permitem testar o sistema de ponta a ponta.
+    </p>
+
+    <!-- PROC J1 · ONBOARDING DO MÉDICO -->
+    <div class="proc-journey">
+      <div class="proc-journey-head">
+        <div class="proc-journey-num">1</div>
+        <div>
+          <div class="proc-journey-title">Onboarding do médico · primeiro acesso</div>
+          <p style="margin: 4px 0 0; color: var(--ink-mute); font-size: 13.5px;">
+            Do convite por e-mail ao primeiro "uau" na casuística. É a jornada que define se
+            o médico fica ou abandona.
+          </p>
+        </div>
+      </div>
+
+      <div class="proc-flow">
+        <span class="proc-step">Login</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Configurações · onboarding form</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Modelos · personalização</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Casuística · momento "uau"</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Home Athena · descoberta</span>
+      </div>
+
+      <p>
+        <strong>Login</strong> · tela de entrada · magic link ou senha · primeira impressão.
+        <strong>Configurações</strong> · médico preenche o formulário de onboarding em 6 passos
+        descrito no item 06 · sai com a Atena já configurada à sua especialidade e modo de prática.
+        <strong>Modelos</strong> · vê seus modelos preenchidos automaticamente pela Athena com
+        base na especialidade declarada · pode editar, criar, descartar · começa a sentir o
+        sistema como seu.
+        <strong>Casuística</strong> · ao importar dados de prontuários anteriores (ou após
+        as primeiras semanas), o médico vê pela primeira vez sua carreira inteira em uma
+        única tela · o efeito "vi meu legado" · momento "uau" do produto.
+        <strong>Home da Athena</strong> · entra na trilha de descoberta · descobre progressivamente
+        o que o prontuário pode fazer · sai com a sensação de que tem um sistema novo nas mãos.
+      </p>
+    </div>
+
+    <!-- PROC J2 · PRIMEIRA CONSULTA -->
+    <div class="proc-journey">
+      <div class="proc-journey-head">
+        <div class="proc-journey-num">2</div>
+        <div>
+          <div class="proc-journey-title">Primeira consulta · online e presencial</div>
+          <p style="margin: 4px 0 0; color: var(--ink-mute); font-size: 13.5px;">
+            A jornada do uso pleno · todas as colunas de informação ativas, decisões médicas
+            sendo registradas em tempo real. O teste de verdade do redesenho.
+          </p>
+        </div>
+      </div>
+
+      <div class="proc-flow">
+        <span class="proc-step">Agenda</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Cabeçalho do paciente</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Pré-anamnese ou Paciente 360</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Anamnese + Exame Físico</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Notas livres</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Exames complementares</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Gerar documentos</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Coluna Athena · presente o tempo todo</span>
+      </div>
+
+      <p>
+        <strong>Agenda</strong> · médico vê quem é o próximo, badge de pré-anamnese respondida ou
+        não, retorno ou primeira consulta · 5 segundos de leitura.
+        <strong>Cabeçalho do paciente</strong> · persistente durante toda a consulta · idade,
+        sexo, IMC, condições, alergias, alertas sempre à vista.
+        <strong>Pré-anamnese ou Paciente 360</strong> · cenário 1, o paciente respondeu a pré-anamnese
+        e o médico revisa as respostas · cenário 2, o paciente não respondeu, o médico abre a
+        tela Paciente 360 para se preparar com o que existe (consultas anteriores, exames,
+        evolução de escalas). Muitos médicos vão querer abrir Paciente 360 mesmo quando a
+        pré-anamnese foi respondida — para ver a vida do paciente em perspectiva.
+        <strong>Anamnese e exame físico</strong> · prontuário generativo · Athena propõe estrutura
+        já preenchida com base no contexto · médico revisa, ajusta, complementa · adapta ao que
+        a consulta efetivamente revelou. Esta é a tela mais demandante do sistema (ver item 07).
+        <strong>Notas livres</strong> · espaço do médico · insights, lembretes, dúvidas em construção ·
+        não compete com a anamnese formal.
+        <strong>Exames complementares</strong> · anexa o que o paciente trouxe (OCR automático),
+        solicita o que precisa, vê histórico longitudinal.
+        <strong>Gerar documentos</strong> · receituários (5 sub-tipos), atestado, laudo,
+        encaminhamento, sumário em linguagem leiga, TCLE · assinatura digital, envio por WhatsApp
+        em segundos.
+        <strong>Coluna da Athena</strong> · presente o tempo todo · alertas de interação, escalas
+        pendentes, literatura relevante · sempre não-bloqueante, sempre justificada, sempre
+        descartável.
+      </p>
+    </div>
+
+    <!-- PROC J3 · SECRETÁRIA -->
+    <div class="proc-journey">
+      <div class="proc-journey-head">
+        <div class="proc-journey-num">3</div>
+        <div>
+          <div class="proc-journey-title">Jornada da secretária · operação da clínica</div>
+          <p style="margin: 4px 0 0; color: var(--ink-mute); font-size: 13.5px;">
+            Quase tudo o que a clínica produz em volume passa pelas mãos da secretária.
+            Atena é também ferramenta dela · não só do médico.
+          </p>
+        </div>
+      </div>
+
+      <div class="proc-flow">
+        <span class="proc-step">Agenda</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Cadastro de paciente</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Cadastro de agendamento</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Mensagens pré-consulta</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Mensagens pós-consulta</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Gestão de pacientes</span>
+        <span class="proc-arrow">→</span>
+        <span class="proc-step">Suporte (quando preciso)</span>
+      </div>
+
+      <p>
+        <strong>Agenda</strong> · principal ferramenta operacional · arrasta, encaixa, confirma,
+        cancela.
+        <strong>Cadastro de paciente</strong> · cadastro rápido para urgências, cadastro completo
+        para pacientes novos · envio de link para o próprio paciente completar.
+        <strong>Cadastro de agendamento</strong> · associa paciente, horário, modalidade,
+        profissional, pré-anamnese · dispara automações.
+        <strong>Mensagens pré-consulta</strong> · responde dúvidas administrativas, confirma
+        presenças, reenvia links de pré-anamnese · só escala para o médico o que é clínico.
+        <strong>Mensagens pós-consulta</strong> · espelho · agradecimentos, reenvio de receita
+        perdida, marcação de retorno · escala dúvidas clínicas, reações adversas.
+        <strong>Gestão de pacientes</strong> · campanhas de recall, mensagens em massa para
+        grupos · onde recupera pacientes perdidos.
+        <strong>Suporte</strong> · quando algo dá errado (recurso de pagamento de plano,
+        problema de integração com MEMED) · é a secretária quem mais abre ticket. O fluxo
+        de suporte ainda não foi implementado conforme o desenho mestre · ver item T-21.
+      </p>
+    </div>
+
+    <div class="callout">
+      <h4>Como sugerimos usar essas três jornadas processuais</h4>
+      <p>
+        Cada uma é um "vertical slice" que atravessa várias telas e exercita o sistema de
+        ponta a ponta. Recomendamos que a Atom6 desenhe um protótipo navegável por jornada —
+        em vez de tela a tela isoladamente — para entender se o produto se sustenta como
+        experiência contínua, não como soma de telas.
+      </p>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <h2>O que está em jogo</h2>
+    <p>
+      A Atena foi pensada como sistema · não como tela. Sua diferença competitiva nasce da
+      coerência entre as três jornadas — pré, durante e pós — e da forma como a Athena se
+      manifesta de modo distinto em cada uma.
+    </p>
+    <p>
+      <strong>Pré-consulta</strong> é preparação · Athena triagem e contexto.
+      <strong>Consulta</strong> é decisão · Athena copiloto e gerador.
+      <strong>Pós-consulta</strong> é legado · Athena curadora e descobridora de padrões.
+    </p>
+    <p class="last">
+      O trabalho da Atom6 é traduzir essa arquitetura em uma <em>experiência</em> que faça
+      jus à promessa do prontuário da nova geração. Tudo o que está neste documento é o
+      mapa do território — o desenho do território é o próximo passo.
+    </p>
+  </div>
+
+  <div class="footer">
+    Doc 05 · Jornadas UX da Atena · v2 · Brief Atom6 Studio · WeCann 2026
+  </div>
+
+</div>
+</body>
+</html>
