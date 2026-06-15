@@ -29,6 +29,20 @@ export const TABS: DocTab[] = [
     ],
   },
   {
+    id: "referencias-marca",
+    label: "Ref. Marca",
+    navLabel: "06 · Referências de Marca",
+    sections: [
+      { id: "ref-intro", label: "00 · Contexto" },
+      { id: "ref-spacex", label: "01 · SpaceX" },
+      { id: "ref-apple", label: "02 · Apple" },
+      { id: "ref-nike", label: "03 · Nike" },
+      { id: "ref-msf", label: "04 · Médicos sem Fronteiras" },
+      { id: "ref-sintese", label: "05 · Síntese · O que a WeCann olha" },
+      { id: "ref-design", label: "06 · Implicações para design" },
+    ],
+  },
+  {
     id: "personas",
     label: "Personas",
     navLabel: "02 · Personas Médicas",

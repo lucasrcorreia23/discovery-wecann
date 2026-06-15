@@ -10,6 +10,7 @@ type Props = {
   onSearch: (value: string) => void;
   onNavigate: (sectionId: string) => void;
   open: boolean;
+  searching?: boolean;
 };
 
 export default function Sidebar({
@@ -19,6 +20,7 @@ export default function Sidebar({
   onSearch,
   onNavigate,
   open,
+  searching = false,
 }: Props) {
   return (
     <aside className={`sidebar${open ? " open" : ""}`}>
@@ -40,12 +42,16 @@ export default function Sidebar({
           <line x1="21" y1="21" x2="16.5" y2="16.5" />
         </svg>
         <input
-          type="text"
-          placeholder="Buscar nesta seção…"
+          type="search"
+          placeholder="Buscar em todo o Discovery…"
           value={search}
           onChange={(e) => onSearch(e.target.value)}
+          aria-label="Buscar em todo o Discovery Pack"
         />
       </div>
+      {searching && (
+        <p className="search-sidebar-hint">Resultados em todos os documentos</p>
+      )}
 
       <div className="nav-label">{tab.navLabel}</div>
       <nav className="nav-list">
@@ -53,7 +59,7 @@ export default function Sidebar({
           <a
             key={s.id}
             className={`${s.sub ? "sub" : ""}${
-              activeSection === s.id ? " active" : ""
+              activeSection === s.id && !searching ? " active" : ""
             }`}
             onClick={(e) => {
               e.preventDefault();
