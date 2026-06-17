@@ -2,13 +2,14 @@
 
 **Fonte:** material enviado pelo cliente (WeCann)  
 **Uso:** consulta de posicionamento, narrativa e critérios de design para Atom6 Studio  
-**Produto:** Atena · Prontuário Inteligente
+**Produto:** WeCann Care · Prontuário Inteligente  
+**IA:** Atena
 
 ---
 
 ## Contexto
 
-Lista de empresas e referências que o cliente sente ter algo forte que ressoa com o que imagina e deseja para o produto e a marca WeCann / Atena.
+Lista de empresas e referências que o cliente sente ter algo forte que ressoa com o que imagina e deseja para o produto WeCann Care e a marca WeCann.
 
 ---
 

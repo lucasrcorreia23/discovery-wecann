@@ -153,7 +153,7 @@ export default function Doc06ReferenciasMarca() {
             Referências de <em>marca e produto</em>
           </>
         }
-        lead="Empresas e narrativas que o cliente sente ressoar com o que imagina para a WeCann e a Atena — para consulta em posicionamento, design e tom de voz."
+        lead="Empresas e narrativas que o cliente sente ressoar com o que imagina para a WeCann e a WeCann Care — para consulta em posicionamento, design e tom de voz."
         meta={[
           { dt: "Fonte", dd: "Cliente WeCann · envio direto" },
           { dt: "Uso", dd: "Marca · narrativa · critérios de UX" },
@@ -176,7 +176,7 @@ export default function Doc06ReferenciasMarca() {
       >
         <p>
           Segue a lista de empresas que o cliente sente ter algo forte que ressoa
-          com o que imagina e deseja para o produto e a marca WeCann / Atena.
+          com o que imagina e deseja para o produto e a marca WeCann / WeCann Care.
         </p>
         <BlockList
           items={[
@@ -295,8 +295,8 @@ export default function Doc06ReferenciasMarca() {
           </Card>
           <Card eyebrow="Nike" title="Médico herói" border="accent">
             <p>
-              Atena apoia; nunca rouba a cena na consulta. O produto é sombra, não
-              protagonista.
+              Atena apoia; nunca rouba a cena na consulta. O WeCann Care fica em
+              segundo plano — sombra, não protagonista.
             </p>
           </Card>
           <Card eyebrow="MSF" title="Honestidade clínica" border="teal">

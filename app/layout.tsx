@@ -8,9 +8,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Atena — Discovery",
+  title: "WeCann Care — Discovery",
   description:
-    "Documentação viva do Discovery da Atena · Prontuário Inteligente da WeCann.",
+    "Documentação viva do Discovery da WeCann Care · Prontuário Inteligente da WeCann.",
 };
 
 export default function RootLayout({

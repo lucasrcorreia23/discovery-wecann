@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { TABS } from "@/lib/discovery-nav";
+import { TABS, resolveHashTarget } from "@/lib/discovery-nav";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 import SearchPool from "./SearchPool";
@@ -15,6 +15,7 @@ import Doc03Competitiva from "./docs/Doc03Competitiva";
 import Doc04Arquitetura from "./docs/Doc04Arquitetura";
 import Doc05Jornadas from "./docs/Doc05Jornadas";
 import Doc07Documentos from "./docs/Doc07Documentos";
+import Doc08Entrevistas from "./docs/Doc08Entrevistas";
 
 const DOC_COMPONENTS: Record<string, React.ComponentType> = {
   posicionamento: Doc01Posicionamento,
@@ -24,6 +25,7 @@ const DOC_COMPONENTS: Record<string, React.ComponentType> = {
   arquitetura: Doc04Arquitetura,
   jornadas: Doc05Jornadas,
   documentos: Doc07Documentos,
+  entrevistas: Doc08Entrevistas,
 };
 
 const WIDE_TABS = new Set(["competitiva", "documentos"]);
@@ -85,15 +87,20 @@ export default function DiscoveryWiki() {
 
   const scrollToSection = useCallback(
     (sectionId: string, behavior: ScrollBehavior = "smooth") => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const el = contentRef.current?.querySelector(
-            `#${CSS.escape(sectionId)}`,
-          );
-          el?.scrollIntoView({ behavior, block: "start" });
+      const attempt = (triesLeft: number) => {
+        const el = contentRef.current?.querySelector(
+          `#${CSS.escape(sectionId)}`,
+        );
+        if (el) {
+          el.scrollIntoView({ behavior, block: "start" });
           history.replaceState(null, "", `#${sectionId}`);
-        });
-      });
+          return;
+        }
+        if (triesLeft > 0) {
+          requestAnimationFrame(() => attempt(triesLeft - 1));
+        }
+      };
+      requestAnimationFrame(() => attempt(24));
     },
     [],
   );
@@ -113,6 +120,30 @@ export default function DiscoveryWiki() {
     setGlobalQuery("");
   }, []);
 
+  const navigateToHash = useCallback(
+    (hash: string, behavior: ScrollBehavior = "smooth") => {
+      const target = resolveHashTarget(hash);
+      if (!target) return false;
+
+      setSearchInput("");
+      setGlobalQuery("");
+      setMenuOpen(false);
+      setActiveTab(target.tabId);
+
+      if (target.sectionId) {
+        window.scrollTo({ top: 0, behavior: "auto" });
+        scrollToSection(target.sectionId, behavior);
+      } else {
+        window.scrollTo({ top: 0, behavior });
+        if (typeof history !== "undefined") {
+          history.replaceState(null, "", `#${target.tabId}`);
+        }
+      }
+      return true;
+    },
+    [scrollToSection],
+  );
+
   const handleSelectResult = useCallback(
     (tabId: string, sectionId: string) => {
       setSearchInput("");
@@ -127,25 +158,41 @@ export default function DiscoveryWiki() {
 
   // boot a partir do hash (#tab ou #section)
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (!hash) return;
-    const directTab = TABS.find((t) => t.id === hash);
-    if (directTab) {
-      setActiveTab(directTab.id);
-      return;
-    }
-    const owner = TABS.find((t) => t.sections.some((s) => s.id === hash));
-    if (owner) {
-      setActiveTab(owner.id);
-      requestAnimationFrame(() => {
-        const el = contentRef.current?.querySelector(
-          `#${CSS.escape(hash)}`,
-        );
-        el?.scrollIntoView({ behavior: "auto", block: "start" });
-      });
-    }
+    const hash = window.location.hash;
+    if (hash) navigateToHash(hash, "auto");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) navigateToHash(hash, "auto");
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [navigateToHash]);
+
+  useEffect(() => {
+    const root = contentRef.current;
+    if (!root) return;
+
+    const onClick = (e: MouseEvent) => {
+      const anchor = (e.target as Element).closest("a[href^='#']");
+      if (!anchor || !(anchor instanceof HTMLAnchorElement)) return;
+
+      const href = anchor.getAttribute("href");
+      if (!href || href === "#") return;
+
+      const clean = href.replace(/^#/, "");
+      if (!resolveHashTarget(clean)) return;
+
+      e.preventDefault();
+      navigateToHash(href);
+    };
+
+    root.addEventListener("click", onClick);
+    return () => root.removeEventListener("click", onClick);
+  }, [navigateToHash, activeTab]);
 
   return (
     <div className="wrap">

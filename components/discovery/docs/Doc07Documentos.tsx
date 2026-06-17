@@ -11,18 +11,19 @@ export default function Doc07Documentos() {
             Documentos <em>Imprimíveis + Digitais</em>
           </>
         }
-        lead="Pack completo de 14 documentos do prontuário Atena: 5 receituários regulatórios e 9 documentos clínicos, com emissão em PDF A4 assinada ICP-Brasil e experiência mobile do paciente quando aplicável."
+        lead="Pack completo de 14 documentos do prontuário WeCann Care: 5 receituários regulatórios e 9 documentos clínicos, com emissão em PDF A4 assinada ICP-Brasil e experiência mobile do paciente quando aplicável."
         meta={[
           { dt: "Versão", dd: "v5 · Junho 2026" },
           { dt: "Escopo", dd: "14 documentos" },
           { dt: "Canais", dd: "Desktop + Mobile" },
-          { dt: "Produto", dd: "WeCann Care · Atena" },
+          { dt: "Produto", dd: "WeCann Care · Prontuário Inteligente" },
+          { dt: "IA", dd: "Atena" },
         ]}
       />
 
       <Section id="doc-overview" num="00 — VISÃO GERAL" title="Pack completo de documentação clínica">
         <p>
-          Todo documento emitido pelo médico no prontuário Atena possui trilha
+          Todo documento emitido pelo médico no prontuário WeCann Care possui trilha
           de auditoria e assinatura digital ICP-Brasil. Os receituários seguem
           Portaria SVS/MS 344/98 e RDC 471/2021; os documentos clínicos seguem
           CFM 1.658/2002, CFM 2.227/2018 e LGPD.

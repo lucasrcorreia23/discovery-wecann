@@ -35,7 +35,7 @@ const DECISIONS = [
   {
     tema: "Layout 3 colunas",
     fonte: "Doc 06",
-    impacto: "J2 = Anamnese/EF | Notas | Athena — composição fixa",
+    impacto: "J2 = Anamnese/EF | Notas | Atena — composição fixa",
   },
   {
     tema: "Episódio > consulta",
@@ -120,7 +120,7 @@ export default function Doc05Userflow() {
         <p>
           Inclui <strong>Pulso do dia</strong> (pílula 3–5 min + perguntas à
           casuística) e kanban operacional da secretária antes de entrar no
-          paciente. Na consulta: layout 3 colunas, cards emergentes da Athena sem
+          paciente. Na consulta: layout 3 colunas, cards emergentes da Atena sem
           clique, fork por especialidade e passo de conferência médico vs IA.
         </p>
       </ProcJourney>
@@ -135,7 +135,7 @@ export default function Doc05Userflow() {
           "Modelos",
           "Migração",
           "Casuística uau",
-          "Home Athena",
+          "Home Atena",
         ]}
       >
         <p>
@@ -175,7 +175,7 @@ export default function Doc05Userflow() {
         ]}
       >
         <p>
-          Médico só vê threads clínicas triadas pela Athena. Kanban 4 fluxos × 4
+          Médico só vê threads clínicas triadas pela Atena. Kanban 4 fluxos × 4
           colunas na demo v107.
         </p>
       </ProcJourney>
@@ -198,7 +198,7 @@ export default function Doc05Userflow() {
           <br />
           <strong>Coluna 2</strong> · Notas livres (território do médico)
           <br />
-          <strong>Coluna 3</strong> · Athena copilota (cards emergentes, não
+          <strong>Coluna 3</strong> · Atena copilota (cards emergentes, não
           bloqueante)
         </p>
       </div>
@@ -232,7 +232,7 @@ export default function Doc05Userflow() {
           },
           {
             name: "Recém-formado",
-            desc: "J2 Athena + conferência IA",
+            desc: "J2 Atena + conferência IA",
           },
           {
             name: "Sênior",
@@ -240,7 +240,7 @@ export default function Doc05Userflow() {
           },
           {
             name: "Humanista",
-            desc: "J2 tempo livre; Athena preenche",
+            desc: "J2 tempo livre; Atena preenche",
           },
         ]}
       />

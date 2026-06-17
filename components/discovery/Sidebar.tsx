@@ -73,7 +73,7 @@ export default function Sidebar({
       </nav>
 
       <div className="sidebar-foot">
-        Atena · Prontuário Inteligente
+        WeCann Care · Prontuário Inteligente
         <br />
         Brief para Atom6 Studio
       </div>

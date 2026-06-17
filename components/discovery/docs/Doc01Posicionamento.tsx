@@ -9,26 +9,26 @@ export default function Doc01Posicionamento() {
           <>
             Posicionamento <em>Estratégico</em>
             <br />
-            da Atena
+            da WeCann Care
           </>
         }
-        lead="Quem é a WeCann, por que estamos construindo a Atena e o que torna esse prontuário inteligente uma categoria nova — não um EHR a mais com nome diferente."
+        lead="Quem é a WeCann, por que estamos construindo a WeCann Care e o que torna esse prontuário inteligente uma categoria nova — não um EHR a mais com nome diferente."
         meta={[
           { dt: "Cliente", dd: "WeCann Academy" },
-          { dt: "Produto", dd: "Atena · Prontuário Inteligente" },
+          { dt: "Produto", dd: "WeCann Care · Prontuário Inteligente" },
           { dt: "Audiência", dd: "Médicos prescritores · Brasil" },
           { dt: "Idioma", dd: "PT-BR" },
         ]}
       />
 
       {/* 00 — QUEM SOMOS */}
-      <Section id="pos-wecann" num="00 — QUEM SOMOS" title="A WeCann antes da Atena">
+      <Section id="pos-wecann" num="00 — QUEM SOMOS" title="A WeCann antes da WeCann Care">
         <p>
-          Para entender por que estamos construindo a Atena, é preciso entender
-          quem a constrói. A WeCann Academy não nasceu como uma healthtech.
-          Nasceu como a maior instituição de educação médica continuada do mundo
-          em medicina endocanabinoide — e a Atena é o braço clínico desse
-          projeto, não um startup separado.
+          Para entender por que estamos construindo a WeCann Care, é preciso
+          entender quem a constrói. A WeCann Academy não nasceu como uma
+          healthtech. Nasceu como a maior instituição de educação médica
+          continuada do mundo em medicina endocanabinoide — e a WeCann Care é o
+          braço clínico desse projeto, não um startup separado.
         </p>
 
         <h3>Propósito</h3>
@@ -87,8 +87,8 @@ export default function Doc01Posicionamento() {
         <h3>O ecossistema de produtos</h3>
         <p>
           A WeCann opera um portfólio integrado de produtos que se reforçam
-          mutuamente. Cada um é referência mundial em sua categoria — e a Atena
-          nasce conectada a todos eles desde o dia zero.
+          mutuamente. Cada um é referência mundial em sua categoria — e a WeCann
+          Care nasce conectada a todos eles desde o dia zero.
         </p>
 
         <div className="grid-2">
@@ -132,11 +132,12 @@ export default function Doc01Posicionamento() {
           </div>
           <div className="card product-card atena">
             <div className="role">Braço clínico · este projeto</div>
-            <h5>Atena · Prontuário Inteligente</h5>
+            <h5>WeCann Care · Prontuário Inteligente</h5>
             <p>
-              Agente de IA clínica treinado no <em>corpus</em> exclusivo WeCann —
-              Tratado, aulas dos experts, casos do fórum, normas regulatórias.
-              Materializa em código clínico tudo que a Academy ensina há anos.
+              Prontuário inteligente movido pela IA clínica <em>Atena</em>,
+              treinada no <em>corpus</em> exclusivo WeCann — Tratado, aulas dos
+              experts, casos do fórum, normas regulatórias. Materializa em código
+              clínico tudo que a Academy ensina há anos.
             </p>
           </div>
         </div>
@@ -210,12 +211,12 @@ export default function Doc01Posicionamento() {
           </strong>
         </p>
         <p>
-          A WeCann existe para devolver ao médico a soberania clínica. A Atena
-          existe para devolver ao médico o tempo, a clareza e a evidência — em
-          tempo real, durante a consulta, sem aumentar a carga burocrática.
+          A WeCann existe para devolver ao médico a soberania clínica. A WeCann
+          Care existe para devolver ao médico o tempo, a clareza e a evidência —
+          em tempo real, durante a consulta, sem aumentar a carga burocrática.
         </p>
 
-        <Callout label="Onde a Atena entra no projeto WeCann">
+        <Callout label="Onde a WeCann Care entra no projeto WeCann">
           <p>
             Por anos a WeCann ensinou medicina endocanabinoide para 4.000+
             médicos. Eles voltavam ao consultório armados de evidência — e batiam
@@ -224,8 +225,8 @@ export default function Doc01Posicionamento() {
             prática diária.
           </p>
           <p>
-            <strong>A Atena fecha esse loop.</strong> É o primeiro EHR do mundo
-            que <em>nasce</em> dentro da maior escola de medicina endocanabinoide
+            <strong>A WeCann Care fecha esse loop.</strong> É o primeiro EHR do
+            mundo que <em>nasce</em> dentro da maior escola de medicina endocanabinoide
             do planeta. Não é um prontuário com módulo de cannabis — é o
             prontuário onde a cannabis é nativa, com o Tratado, as aulas, as
             normas e os casos do fórum carregados na IA por padrão.
@@ -236,7 +237,7 @@ export default function Doc01Posicionamento() {
       {/* 01 — A TESE */}
       <Section
         id="pos-tese"
-        num="01 — A TESE DA ATENA"
+        num="01 — A TESE DA WECANN CARE"
         title={
           <>
             Não é um prontuário. É o &ldquo;Flatiron da cannabis&rdquo;.
@@ -244,11 +245,11 @@ export default function Doc01Posicionamento() {
         }
       >
         <p>
-          A Atena tem uma tese focada e recusa explícita ao
+          A WeCann Care tem uma tese focada e recusa explícita ao
           &ldquo;one-stop-shop&rdquo;. Cada médico prescritor brasileiro tem hoje
           uma base de centenas a milhares de casos com desfecho real — e nenhuma
           forma estruturada de transformar isso em evidência. Prontuários
-          genéricos guardam texto livre. A Atena captura dado pesquisável.
+          genéricos guardam texto livre. A WeCann Care captura dado pesquisável.
         </p>
         <p>
           O paralelo é com a Flatiron Health (vendida à Roche por US$ 1,9 bi) na
@@ -280,7 +281,7 @@ export default function Doc01Posicionamento() {
         title="Quem é Atena, dentro do produto"
       >
         <p>
-          Atena é a IA que mora dentro do prontuário. A forma como ela se
+          Atena é a IA que mora dentro do WeCann Care. A forma como ela se
           apresenta é tão deliberada quanto a forma como uma colega médica
           entraria na sala de consulta: presente, útil, com voz própria — e nunca
           tentando passar a perna do médico.
@@ -323,9 +324,9 @@ export default function Doc01Posicionamento() {
         </ul>
         <p>
           A Atena é a materialização clínica de tudo que a WeCann ensina. Quando
-          um médico formado pela Certificação Internacional acessa a Atena, ele
+          um médico formado pela Certificação Internacional acessa o WeCann Care, ele
           encontra a mesma voz, o mesmo rigor e a mesma base científica das aulas
-          — só que dentro do prontuário, ao vivo, ao lado do paciente.
+          — com a Atena ao lado, ao vivo, na consulta.
         </p>
       </Section>
 
@@ -388,7 +389,7 @@ export default function Doc01Posicionamento() {
       <Section
         id="pos-entregaveis"
         num="04 — ENTREGÁVEIS DIFERENCIADOS"
-        title="Sete coisas que a Atena entrega e nenhum prontuário do mercado entrega"
+        title="Sete coisas que a WeCann Care entrega e nenhum prontuário do mercado entrega"
       >
         <p>
           Quando o time UX olhar para os fluxos, esses são os sete diferenciais
@@ -413,13 +414,13 @@ export default function Doc01Posicionamento() {
       <Section
         id="pos-diferenca"
         num="05 — A DIFERENÇA, EM DETALHE"
-        title="Atena vs prontuários genéricos · dimensão por dimensão"
+        title="WeCann Care vs prontuários genéricos · dimensão por dimensão"
       >
         <p>
           A maior parte dos prontuários do mercado brasileiro (iClinic, Amplimed,
           Ninsaúde, App Health) está copiando uma jogada que era de 2018: chatbot
           para agendar + scribe para transcrever + dashboard
-          &ldquo;moderno&rdquo;. A Atena opera em outra liga. Aqui está o
+          &ldquo;moderno&rdquo;. A WeCann Care opera em outra liga. Aqui está o
           detalhamento, em 10 dimensões, do que separa as duas categorias.
         </p>
         {DIMENSIONS.map((dim) => (
@@ -438,7 +439,7 @@ export default function Doc01Posicionamento() {
                 </ul>
               </div>
               <div className="v-us">
-                <div className="v-tag">Atena</div>
+                <div className="v-tag">WeCann Care</div>
                 {dim.usIntro && (
                   <p
                     style={{ fontSize: 13, marginBottom: 8 }}
@@ -474,7 +475,7 @@ export default function Doc01Posicionamento() {
         <Callout label="A barreira competitiva, em uma linha" variant="teal">
           <p>
             Concorrentes precisariam construir um <em>chassi</em> completamente
-            novo para chegar onde a Atena está. <strong>Schema RWE completo:</strong>{" "}
+            novo para chegar onde a WeCann Care está. <strong>Schema RWE completo:</strong>{" "}
             24-36 meses para replicar. <strong>OMOP CDM + FHIR R4:</strong> 12-24
             meses. <strong>Base cannabis curada com 7 fontes:</strong> 12-18
             meses. <strong>Comunidade de 4.000+ médicos da WeCann:</strong> 2-3
@@ -514,7 +515,7 @@ export default function Doc01Posicionamento() {
       <Section
         id="pos-paraquem"
         num="07 — PARA QUEM DESENHAMOS"
-        title="O médico que precisa amar a Atena em 5 minutos"
+        title="O médico que precisa amar a WeCann Care em 5 minutos"
       >
         <p>
           A Atom6 vai trabalhar com 5 personas detalhadas no Doc 02 — mas há um
@@ -534,13 +535,13 @@ export default function Doc01Posicionamento() {
           <strong>
             sério, rápido, confiável e que respeite a inteligência clínica dele
           </strong>
-          . Quando vê a Atena pela primeira vez, o sinal interno que precisa
+          . Quando vê a WeCann Care pela primeira vez, o sinal interno que precisa
           disparar é: &ldquo;isso aqui foi feito por gente que entende meu
           trabalho&rdquo;.
         </p>
         <Callout label="Benchmark de qualidade do produto" variant="purple">
           <p>
-            Um cardiologista de 48 anos, com presbiopia, abre a Atena pela
+            Um cardiologista de 48 anos, com presbiopia, abre a WeCann Care pela
             primeira vez e em <strong>5 minutos</strong> está pensando &ldquo;eu
             não consigo mais voltar&rdquo;. Não porque a interface é
             &ldquo;linda&rdquo;. Porque é <strong>óbvia</strong>,{" "}
@@ -553,7 +554,7 @@ export default function Doc01Posicionamento() {
       {/* 08 — NÃO É */}
       <Section
         id="pos-naoe"
-        num="08 — O QUE A ATENA NÃO É"
+        num="08 — O QUE A WECANN CARE NÃO É"
         title="Linhas vermelhas estratégicas"
       >
         <p>

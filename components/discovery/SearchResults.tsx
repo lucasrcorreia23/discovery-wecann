@@ -50,7 +50,7 @@ export default function SearchResults({
         <div className="search-results-empty">
           <p>Nenhuma seção contém esse termo.</p>
           <p className="search-results-hint">
-            Tente termos mais curtos ou sinônimos (ex.: casuística, Athena,
+            Tente termos mais curtos ou sinônimos (ex.: casuística, Atena,
             pré-consulta).
           </p>
         </div>

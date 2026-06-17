@@ -38,11 +38,11 @@ export default function Doc04Arquitetura() {
         kicker="Doc 04 · v3 · Pack de Onboarding Atom6 Studio"
         title={
           <>
-            A arquitetura de <em>dados</em> da Atena
+            A arquitetura de <em>dados</em> da WeCann Care
             <br />e o que <em>falta</em> no UX
           </>
         }
-        lead="Quão profunda é a estrutura de dados que a Atena foi projetada para endereçar — e quanto disso ainda não atravessou o portal da experiência do usuário no produto vivo."
+        lead="Quão profunda é a estrutura de dados que a WeCann Care foi projetada para endereçar — e quanto disso ainda não atravessou o portal da experiência do usuário no produto vivo."
         meta={[
           {
             dt: "Fonte 1",
@@ -61,7 +61,7 @@ export default function Doc04Arquitetura() {
             <strong>três artefatos canônicos do projeto</strong> para responder
             duas perguntas centrais.{" "}
             <strong>
-              (1) O que a Atena foi projetada para endereçar em termos de
+              (1) O que a WeCann Care foi projetada para endereçar em termos de
               granularidade, complexidade e organização de dados?
             </strong>{" "}
             — resposta no Design Mestre.{" "}
@@ -110,7 +110,7 @@ export default function Doc04Arquitetura() {
         </div>
       </div>
 
-      <PartHeader eyebrow="Parte A · 01–10" title="A arquitetura de dados que a Atena endereça">
+      <PartHeader eyebrow="Parte A · 01–10" title="A arquitetura de dados que a WeCann Care endereça">
         <p>
           Granularidade, complexidade e organização — direto do Design Mestre,
           fonte canônica do projeto.
@@ -124,7 +124,7 @@ export default function Doc04Arquitetura() {
         title="27 condições · 13 áreas clínicas · 33 especialidades"
       >
         <p>
-          A Atena não é um prontuário de cannabis — é uma plataforma RWE de
+          A WeCann Care não é um prontuário de cannabis — é uma plataforma RWE de
           cannabis medicinal cobrindo praticamente todo o espectro de doenças
           crônicas refratárias no Brasil. Esta escala é o problema que a
           arquitetura de dados precisa carregar.
@@ -179,7 +179,7 @@ export default function Doc04Arquitetura() {
             [
               "P1 · spec v1.0",
               "A superfície é UMA",
-              "Não existe WeCann Clínico e WeCann Pesquisa como apps separados. Uma superfície única. O que varia é a linguagem (Camada 2 natural / Camada 3 técnica) e a proatividade da Athena (4 tiers cannabis: none / occasional / frequent / specialist).",
+              "Não existe WeCann Clínico e WeCann Pesquisa como apps separados. Uma superfície única. O que varia é a linguagem (Camada 2 natural / Camada 3 técnica) e a proatividade da Atena (4 tiers cannabis: none / occasional / frequent / specialist).",
             ],
             [
               "P2 · spec v1.0",
@@ -400,7 +400,7 @@ export default function Doc04Arquitetura() {
           <p>
             Análises dose-resposta exigem mg CBD/dia parseado, não “20 gotas
             3×/dia”. Comparativos entre produtos exigem ratio + quimiotipo.
-            Farmacoeconomia exige custo mensal. Sem esses 13 campos, a Atena vira
+            Farmacoeconomia exige custo mensal. Sem esses 13 campos, a WeCann Care vira
             “prontuário com nota textual” — exatamente o que ela existe para
             superar.
           </p>
@@ -456,7 +456,7 @@ export default function Doc04Arquitetura() {
         title="+50 instrumentos validados · 5 universais · 6 proprietários"
       >
         <p>
-          A Atena não é uma plataforma de questionários — é uma plataforma que
+          A WeCann Care não é uma plataforma de questionários — é uma plataforma que
           aplica instrumentos validados internacionalmente no timepoint correto,
           com versões PT-BR verificadas. Universais aplicam em <em>toda</em>{" "}
           visita. Específicos por indicação aplicam quando o módulo de sintoma
@@ -658,7 +658,7 @@ export default function Doc04Arquitetura() {
         title="OMOP CDM v5.4 + FHIR R4 + SNOMED"
       >
         <p>
-          A Atena não é “exportável” — ela <em>nasce</em> em padrões
+          A WeCann Care não é “exportável” — ela <em>nasce</em> em padrões
           internacionais. Cada paciente registrado já está em OMOP. Cada documento
           clínico já está em FHIR. Cada CID/escala já é mapeável para SNOMED. Sem
           migração futura, sem retrabalho.
@@ -708,7 +708,7 @@ export default function Doc04Arquitetura() {
             <h4>Design Mestre</h4>
             <div className="tri-stat">100%</div>
             <p>
-              <strong>A régua.</strong> Tudo que a arquitetura define que a Atena
+              <strong>A régua.</strong> Tudo que a arquitetura define que a WeCann Care
               deve endereçar · 11 seções consolidadas · 5 decisões críticas DC1-DC5
               · v1.0 auditada e versionada.
             </p>
@@ -893,7 +893,7 @@ export default function Doc04Arquitetura() {
             no v107?”
           </strong>{" "}
           Se sim, o trabalho é renderizar com clareza. Se não, é provavelmente
-          diluição da tese. Quando o Atom6 fechar esse delta, a Atena terá
+          diluição da tese. Quando o Atom6 fechar esse delta, a WeCann Care terá
           atravessado o portal.
         </p>
       </div>
@@ -957,7 +957,7 @@ const WALKTHROUGH = [
       "<strong>O problema clínico-metodológico:</strong> para análises longitudinais (MMRM, mixed models, GEE) funcionarem em RWE, os pontos de medida precisam ser <em>estruturalmente comparáveis</em>. Uma data solta é informação cronológica — mas não analítica até que se saiba que é a basal e a outra é M6.",
       "Timepoints estruturais permitem responder “qual a redução média de PHQ-9 em M3 dos pacientes com depressão refratária no produto X?”. Sem timepoints, só dá para responder a média em algum momento — quase sem valor.",
       "<strong>A decisão arquitetural:</strong> cada episódio tem janelas pré-definidas — pré-basal, basal (D0), M1 (30±7), M3 (90±14), M6 (180±21), M12 (365±28). Ao aplicar um instrumento dentro da janela, o sistema vincula automaticamente ao timepoint.",
-      "<strong>Implicação para a UI:</strong> a consulta mostra o <em>timepoint atual</em> (“você está em M3 · janela termina em 4 dias”). A coluna da Athena sinaliza escala esperada não aplicada. A timeline mostra pontos discretos M1/M3/M6/M12.",
+      "<strong>Implicação para a UI:</strong> a consulta mostra o <em>timepoint atual</em> (“você está em M3 · janela termina em 4 dias”). A coluna da Atena sinaliza escala esperada não aplicada. A timeline mostra pontos discretos M1/M3/M6/M12.",
       "<strong>Custo de não trazer isto à UI:</strong> impossibilidade de análise MMRM · publicações longitudinais inviáveis · escala aplicada fora da janela perde valor.",
     ],
   },
@@ -965,7 +965,7 @@ const WALKTHROUGH = [
     title: "4 · Schema RWE — por que 16 tabelas e não um único formulário",
     paras: [
       "<strong>O problema clínico-metodológico:</strong> dados clínicos convencionais são amorfos — texto livre, datas dispersas, sem mapeamento ontológico. Para servir a RWE, precisam ser <em>estruturados</em> em entidades reconhecíveis por padrões internacionais (OMOP, FHIR, SNOMED).",
-      "Sem essa estrutura, a Atena é só mais um prontuário bonito. Com ela, é uma fonte de evidência mundial sobre medicina canabinoide. A diferença é técnica, mas o efeito comercial e científico é absoluto.",
+      "Sem essa estrutura, a WeCann Care é só mais um prontuário bonito. Com ela, é uma fonte de evidência mundial sobre medicina canabinoide. A diferença é técnica, mas o efeito comercial e científico é absoluto.",
       "<strong>A decisão arquitetural:</strong> 16 tabelas no schema RWE — <span class='mono'>condition_episodes</span>, <span class='mono'>exposures</span>, <span class='mono'>instruments</span>, <span class='mono'>timepoints</span>, <span class='mono'>outcomes</span>, <span class='mono'>adverse_events</span>, <span class='mono'>research_consent</span>, <span class='mono'>research_subjects</span>, <span class='mono'>product_catalog</span>, <span class='mono'>data_lineage</span>, entre outras.",
       "<strong>Implicação para a UI:</strong> o médico nunca vê o nome das tabelas, mas as entidades correspondentes precisam estar acessíveis: episódios como cartões, exposições como blocos, instrumentos como aplicações vinculadas, EA com CTCAE visível. <strong>Cada tabela do schema deve ter uma “manifestação visual”</strong>.",
       "<strong>Custo de não trazer isto à UI:</strong> o backend acumula dados estruturados que o frontend não aproveita. Conversão para OMOP exige retrabalho manual. Casuística perde resolução analítica.",
@@ -985,7 +985,7 @@ const WALKTHROUGH = [
     title: "6 · Submodelos — por que pediátrico e gestacional não são “presets”",
     paras: [
       "<strong>O problema clínico-metodológico:</strong> um paciente pediátrico (&lt;12 anos) não é um adulto pequeno. Mede-se de forma diferente — escalas próprias, ObsRO (cuidador) em vez de PRO, Z-scores WHO em vez de IMC. Para 12-17 anos, dupla coleta. Para gestantes, módulo próprio com idade gestacional, DUM, paridade.",
-      "Se a Atena oferece “preset pediátrico” como toggle, o médico esquece de ativar e os dados corrompem. Se <em>detecta</em> e ativa automaticamente, o submodelo se torna estrutural.",
+      "Se a WeCann Care oferece “preset pediátrico” como toggle, o médico esquece de ativar e os dados corrompem. Se <em>detecta</em> e ativa automaticamente, o submodelo se torna estrutural.",
       "<strong>A decisão arquitetural:</strong> auto-detecção. <span class='mono'>WCN.detectSubmodel(idade &lt; 12 → pediatric)</span>; <span class='mono'>(idade 12-17 → adolescent_dual)</span>; <span class='mono'>(gestante = true → gestational)</span>. Cada submodelo carrega instrumentos, blocos e regras próprias.",
       "<strong>Implicação para a UI:</strong> ao abrir o paciente, banner discreto sinaliza submodelo ativo. Telas adaptam automaticamente — escalas válidas para a faixa, antropometria em Z-score. Nenhuma ação do médico para ativar.",
       "<strong>Custo de não trazer isto à UI:</strong> pediatras usam telas de adulto e geram dados inválidos. Estudos pediátricos impossíveis. Risco regulatório em gestantes.",
@@ -995,10 +995,10 @@ const WALKTHROUGH = [
 
 const P0 = [
   { prio: "P0-A", title: "EA Grau 3 (severo) renderizado em gray-400", sub: "Safety · Pós-Consulta · risco clínico real", body: "Design Mestre: cores quentes para alertas clínicos · Grau ≥3 = vermelho. v107: implementa. <strong>MVP vivo: renderiza em cinza neutro</strong>, idêntico a Grau 1. Médico pode não perceber o evento severo." },
-  { prio: "P0-B", title: "Markdown raw vazando nas sugestões Athena", sub: "Credibilidade · Pré-Consulta · em produção", body: 'Sugestão Athena renderiza literal "<code>## Sugestão de Resposta --- &gt;</code>" como texto. Médico envia ao paciente texto com markdown cru. <strong>Destrói confiança na IA imediatamente.</strong>' },
+  { prio: "P0-B", title: "Markdown raw vazando nas sugestões Atena", sub: "Credibilidade · Pré-Consulta · em produção", body: 'Sugestão Atena renderiza literal "<code>## Sugestão de Resposta --- &gt;</code>" como texto. Médico envia ao paciente texto com markdown cru. <strong>Destrói confiança na IA imediatamente.</strong>' },
   { prio: "P0-C", title: "Variável <code>[Nome]</code> não resolvida", sub: "Credibilidade · Pré-Consulta · em produção", body: 'Atena escreve "da Dra. [Nome]" com a variável literal não substituída. Context injection do nome do médico falha antes da renderização.' },
   { prio: "P0-D", title: "Token <code>--primary</code> corrompido", sub: "Arquitetura · sistêmico · pré-requisito", body: "Resolve para emerald-500 em vez de navy. Afeta toda instância de botão primário, estado ativo, ênfase no produto. <strong>Pré-requisito de qualquer redesign Pulse.</strong>" },
-  { prio: "P0-E", title: "Sugestões Athena sem evidência citada", sub: "P3 do Design Mestre · contrato com o médico", body: "Atena sugere sem mostrar fonte. Design Mestre: cada sugestão deve ter evidence drawer com trecho, DOI, grau de evidência. MVP vivo: ausente. <strong>Sem isso, o Pragmático desinstala.</strong>" },
+  { prio: "P0-E", title: "Sugestões Atena sem evidência citada", sub: "P3 do Design Mestre · contrato com o médico", body: "Atena sugere sem mostrar fonte. Design Mestre: cada sugestão deve ter evidence drawer com trecho, DOI, grau de evidência. MVP vivo: ausente. <strong>Sem isso, o Pragmático desinstala.</strong>" },
   { prio: "P0-F", title: '"controle_especial" snake_case na UI', sub: "P3 · Pré-Consulta · jargão técnico vazando", body: "Badge em “Pré-Consulta” mostra <code>controle_especial</code> · identificador interno do banco exposto ao médico. Viola o P3 (linguagem natural)." },
 ];
 

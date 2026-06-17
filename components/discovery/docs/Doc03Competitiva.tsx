@@ -12,7 +12,7 @@ export default function Doc03Competitiva() {
             UX · Design · Branding
           </>
         }
-        lead="Voa, iClinic, Amplimed, SOUL MV — quatro vizinhos no mapa, quatro lógicas de produto distintas. Onde a Atena entra sem ser confundida com nenhum deles."
+        lead="Voa, iClinic, Amplimed, SOUL MV — quatro vizinhos no mapa, quatro lógicas de produto distintas. Onde a WeCann Care entra sem ser confundida com nenhum deles."
         meta={[
           { dt: "Concorrentes analisados", dd: "6" },
           { dt: "Lente", dd: "UX · design · branding · tom" },
@@ -38,7 +38,7 @@ export default function Doc03Competitiva() {
             50+ módulos.
           </p>
           <p>
-            Para a Atena, isso é estratégico: cada um carrega um padrão de design
+            Para a WeCann Care, isso é estratégico: cada um carrega um padrão de design
             que o médico brasileiro <em>reconhece</em>. Decidir o que adotar, o
             que evitar e o que <strong>desviar deliberadamente</strong> é o
             trabalho do Atom6.
@@ -69,7 +69,7 @@ export default function Doc03Competitiva() {
           Eixo horizontal: <strong>escopo</strong> — de assistente pontual à
           plataforma completa. Eixo vertical:{" "}
           <strong>profundidade clínica</strong> — de operação administrativa a
-          inteligência clínica especializada. A Atena vive no quadrante
+          inteligência clínica especializada. A WeCann Care vive no quadrante
           superior-direito, sozinha.
         </p>
         <div className="map-frame">
@@ -143,7 +143,7 @@ export default function Doc03Competitiva() {
           )}
 
           <div className="takeaway">
-            <h4>★ Para a Atena · take-aways {c.short}</h4>
+            <h4>★ Para a WeCann Care · take-aways {c.short}</h4>
             <div className="grid">
               <span className="ta-section-label">Adotar</span>
               {c.adopt.map((t, i) => (
@@ -174,11 +174,11 @@ export default function Doc03Competitiva() {
       <Section
         id="comp-sintese"
         num="SÍNTESE COMPARATIVA"
-        title="Onde a Atena entra · sem ser confundida com nenhum"
+        title="Onde a WeCann Care entra · sem ser confundida com nenhum"
       >
         <p>
           A matriz a seguir compara as 6 marcas em 10 dimensões de
-          UX/produto/branding. A última coluna (Atena) é o &ldquo;norte
+          UX/produto/branding. A última coluna (WeCann Care) é o &ldquo;norte
           magnético&rdquo; para o Atom6 — onde queremos estar quando o brief virar
           tela.
         </p>
@@ -194,7 +194,7 @@ export default function Doc03Competitiva() {
                 <th>Amplimed</th>
                 <th>Amigo Tech</th>
                 <th>SOUL MV</th>
-                <th style={{ color: "var(--teal)" }}>Atena ⟵</th>
+                <th style={{ color: "var(--teal)" }}>WeCann Care ⟵</th>
               </tr>
             </thead>
             <tbody>
@@ -216,7 +216,7 @@ export default function Doc03Competitiva() {
 
         <h3>As 5 linhas vermelhas estratégicas</h3>
         <p>
-          Sintetizado das observações acima, cinco coisas que a Atena{" "}
+          Sintetizado das observações acima, cinco coisas que a WeCann Care{" "}
           <em>não pode</em> parecer — para não ser confundida com nenhum dos 6.
         </p>
         <div className="table-frame">
@@ -240,7 +240,7 @@ export default function Doc03Competitiva() {
           </table>
         </div>
 
-        <h3>Cinco coisas que a Atena pode roubar (e refinar)</h3>
+        <h3>Cinco coisas que a WeCann Care pode roubar (e refinar)</h3>
         <p>
           O que cada concorrente faz bem que merece ser absorvido — com
           reinterpretação Pulse Design.
@@ -251,7 +251,7 @@ export default function Doc03Competitiva() {
               <tr>
                 <th>De quem</th>
                 <th>O quê</th>
-                <th>Como aplicar na Atena</th>
+                <th>Como aplicar na WeCann Care</th>
               </tr>
             </thead>
             <tbody>
@@ -269,7 +269,7 @@ export default function Doc03Competitiva() {
         </div>
 
         <h3>O argumento competitivo em uma linha cada</h3>
-        <p>Como a Atena se diferencia, em uma frase, contra cada concorrente.</p>
+        <p>Como a WeCann Care se diferencia, em uma frase, contra cada concorrente.</p>
         <div className="table-frame">
           <table>
             <thead>
@@ -295,7 +295,7 @@ export default function Doc03Competitiva() {
       <div className="verdict">
         <div className="eyebrow">O brief em uma frase</div>
         <h3>
-          Atena é o quadrante vazio do mapa — alta profundidade clínica + escopo
+          WeCann Care é o quadrante vazio do mapa — alta profundidade clínica + escopo
           de plataforma completo.
         </h3>
         <p>
@@ -305,7 +305,7 @@ export default function Doc03Competitiva() {
           mobile-first · mas IA anônima e sem corpus proprietário. SOUL MV em ERP
           enterprise sem alma clínica.{" "}
           <strong>
-            Quando o Atom6 desenhar a Atena, o teste mais simples é: nenhuma das
+            Quando o Atom6 desenhar a WeCann Care, o teste mais simples é: nenhuma das
             seis marcas analisadas aqui poderia ter feito esta tela.
           </strong>{" "}
           Se a resposta for &ldquo;poderia ser do Amplimed&rdquo;, &ldquo;parece o
@@ -459,11 +459,11 @@ function PositioningMap() {
         ERP hospitalar enterprise
       </text>
 
-      {/* Atena */}
+      {/* WeCann Care */}
       <circle cx="520" cy="160" r="38" fill="#2dd4bf" opacity="0.22" />
       <circle cx="520" cy="160" r="10" fill="#2dd4bf" />
-      <text x="540" y="158" fontSize="18" fill="#2dd4bf" fontWeight="700">
-        Atena
+      <text x="540" y="158" fontSize="16" fill="#2dd4bf" fontWeight="700">
+        WeCann Care
       </text>
       <text x="540" y="174" fontSize="10" fill="#2dd4bf" fontWeight="600">
         RWE + IA clínica + cannabis
@@ -592,12 +592,12 @@ const COMPETITORS: Competitor[] = [
       "Estética genérica de SaaS internacional — em médicos seniores brasileiros, pode soar “young tech demais”.",
     ],
     adopt: [
-      "<strong>Foco editorial brutal.</strong> A landing page do Voa não fala de 20 features. Atena deve fazer o mesmo: vender 3 coisas, não 30.",
-      "<strong>Prova social numérica em destaque.</strong> Atena pode usar “X médicos · Y pacientes · Z artigos publicados”.",
+      "<strong>Foco editorial brutal.</strong> A landing page do Voa não fala de 20 features. A WeCann Care deve fazer o mesmo: vender 3 coisas, não 30.",
+      "<strong>Prova social numérica em destaque.</strong> A WeCann Care pode usar “X médicos · Y pacientes · Z artigos publicados”.",
     ],
     avoid: [
-      "<strong>Comoditização do scribe.</strong> Atena <em>não é</em> mais um Voa em verde. Precisa carregar peso clínico e científico desde o primeiro segundo de tela.",
-      "<strong>Estética “calm tech” genérica.</strong> Brand-twin de qualquer fintech. Atena precisa de identidade carregando ofício médico, não startup.",
+      "<strong>Comoditização do scribe.</strong> A WeCann Care <em>não é</em> mais um Voa em verde. Precisa carregar peso clínico e científico desde o primeiro segundo de tela.",
+      "<strong>Estética “calm tech” genérica.</strong> Brand-twin de qualquer fintech. A WeCann Care precisa de identidade carregando ofício médico, não startup.",
     ],
   },
   {
@@ -630,13 +630,13 @@ const COMPETITORS: Competitor[] = [
       {
         label: "Compliance highlight",
         content:
-          "Carrega a <strong>LGPD como pilar de marca</strong> — selo no topo, página dedicada, DPO contratado. Para médicos pragmáticos, é tranquilizante. Para a Atena: lição importante de <em>colocar compliance no front</em>, não escondido em rodapé.",
+          "Carrega a <strong>LGPD como pilar de marca</strong> — selo no topo, página dedicada, DPO contratado. Para médicos pragmáticos, é tranquilizante. Para a WeCann Care: lição importante de <em>colocar compliance no front</em>, não escondido em rodapé.",
       },
     ],
     strengthsTitle: "Forças UX · o que funciona",
     strengths: [
       "<strong>Prontuário personalizável.</strong> “Cada especialidade configura sua anamnese” — flexibilidade alta, vital para médicos veteranos.",
-      "<strong>Single-screen claim.</strong> “Tudo em uma só tela” — alinha com o princípio P1 da Atena.",
+      "<strong>Single-screen claim.</strong> “Tudo em uma só tela” — alinha com o princípio P1 da WeCann Care.",
       "<strong>Cronologia clara.</strong> Prontuário em ordem cronológica com filtros — padrão consolidado, médico já espera.",
       "<strong>Assinatura digital ICP-Brasil</strong> embutida — peso jurídico.",
       "<strong>Compartilhamento granular.</strong> Médico-com-médico, paciente-com-médico — controle fino.",
@@ -650,12 +650,12 @@ const COMPETITORS: Competitor[] = [
       "<strong>Marketing &gt; produto.</strong> O site fala mais de “Black Friday” do que de capacidade clínica real.",
     ],
     adopt: [
-      "<strong>LGPD/compliance como pilar visível.</strong> Atena também precisa carimbar conformidade no front, não esconder em rodapé.",
-      "<strong>Personalização do prontuário por especialidade.</strong> Já é o P2 Atena (pack universal + módulos). Confirma o caminho.",
+      "<strong>LGPD/compliance como pilar visível.</strong> A WeCann Care também precisa carimbar conformidade no front, não esconder em rodapé.",
+      "<strong>Personalização do prontuário por especialidade.</strong> Já é o P2 da WeCann Care (pack universal + módulos). Confirma o caminho.",
     ],
     avoid: [
-      "<strong>Linguagem de growth dentro do produto.</strong> “Você ganhou um badge!” · “Black Friday do prontuário!” — letal para a categoria Atena.",
-      "<strong>Estética azul corporativa flat.</strong> Atena precisa parecer feita por gente que entende ofício médico, não by SaaS playbook.",
+      "<strong>Linguagem de growth dentro do produto.</strong> “Você ganhou um badge!” · “Black Friday do prontuário!” — letal para a categoria da WeCann Care.",
+      "<strong>Estética azul corporativa flat.</strong> A WeCann Care precisa parecer feita por gente que entende ofício médico, não by SaaS playbook.",
     ],
   },
   {
@@ -708,12 +708,12 @@ const COMPETITORS: Competitor[] = [
       "<strong>Nenhum diferencial científico.</strong> Não há schema RWE, não há mention de OMOP, FHIR ou publicação. É operação, não ciência.",
     ],
     adopt: [
-      "<strong>Migração como argumento.</strong> “Migramos seu prontuário de qualquer sistema” derruba a maior barreira de adoção. Atena deve carregar isso.",
+      "<strong>Migração como argumento.</strong> “Migramos seu prontuário de qualquer sistema” derruba a maior barreira de adoção. A WeCann Care deve carregar isso.",
       "<strong>IA personificada com submarcas funcionais.</strong> Padrão de UI: “Atena pré-consulta”, “Atena copiloto”, “Atena pós-consulta” pode ajudar leitura.",
     ],
     avoid: [
-      "<strong>Listar 25 features na home.</strong> Comoditiza. A Atena vende 3–5 coisas com profundidade, não um catálogo.",
-      "<strong>Estética “healthtech BR-feliz”.</strong> Fotos lifestyle de médicos sorrindo, ilustrações cartunescas. Atena precisa carregar peso clínico/científico.",
+      "<strong>Listar 25 features na home.</strong> Comoditiza. A WeCann Care vende 3–5 coisas com profundidade, não um catálogo.",
+      "<strong>Estética “healthtech BR-feliz”.</strong> Fotos lifestyle de médicos sorrindo, ilustrações cartunescas. A WeCann Care precisa carregar peso clínico/científico.",
     ],
   },
   {
@@ -770,15 +770,15 @@ const COMPETITORS: Competitor[] = [
     ],
     special: {
       label: "Contexto especial · WeCann",
-      text: "<strong>CNN é o sistema do qual a WeCann migra dados.</strong> O Relatório de Conformidade v107 confirma <strong>361.926 registros migrados</strong> da CNN via reconciliação <em>FATURAMENTO → PAGAMENTO → MOVIMENTO</em>. Isso significa que muitos médicos que chegam à Atena vêm da CNN — eles têm na cabeça o padrão visual e operacional dela. A Atom6 desenha contra essa memória.",
+      text: "<strong>CNN é o sistema do qual a WeCann migra dados.</strong> O Relatório de Conformidade v107 confirma <strong>361.926 registros migrados</strong> da CNN via reconciliação <em>FATURAMENTO → PAGAMENTO → MOVIMENTO</em>. Isso significa que muitos médicos que chegam à WeCann Care vêm da CNN — eles têm na cabeça o padrão visual e operacional dela. A Atom6 desenha contra essa memória.",
     },
     adopt: [
       "<strong>Migração suave de dados como argumento.</strong> Já temos a infra (361k registros migrados). Comunicar isso na landing reduz a maior barreira de adoção dos médicos CNN.",
-      "<strong>Telemedicina e clínica-escola como verticais.</strong> CNN identificou nichos defendíveis · vale considerar se há nichos similares para a Atena (RWE multi-centro, ensaios clínicos coordenados).",
+      "<strong>Telemedicina e clínica-escola como verticais.</strong> CNN identificou nichos defendíveis · vale considerar se há nichos similares para a WeCann Care (RWE multi-centro, ensaios clínicos coordenados).",
     ],
     avoid: [
       "<strong>“Sistema amigo do médico” como narrativa.</strong> Genérico, vago, sem categoria. Atena é colega clínica, não amigo simpático.",
-      "<strong>200+ recursos como métrica de venda.</strong> Quantidade ≠ qualidade. Atena vende 7 entregáveis diferenciados · não 200 features comoditizadas.",
+      "<strong>200+ recursos como métrica de venda.</strong> Quantidade ≠ qualidade. A WeCann Care vende 7 entregáveis diferenciados · não 200 features comoditizadas.",
     ],
   },
   {
@@ -811,7 +811,7 @@ const COMPETITORS: Competitor[] = [
       {
         label: "IA · concorrente direto",
         content:
-          "<strong>IA nativa desde o design</strong> · sem personagem nomeado · mas integrada no fluxo: transcrição de consulta, organização automática, sugestões. Sem corpus proprietário · sem especialização clínica vertical · mas <em>moderna e fluida</em>. Mais próxima do que a Atena promete em <em>algumas dimensões</em> · não em todas.",
+          "<strong>IA nativa desde o design</strong> · sem personagem nomeado · mas integrada no fluxo: transcrição de consulta, organização automática, sugestões. Sem corpus proprietário · sem especialização clínica vertical · mas <em>moderna e fluida</em>. Mais próxima do que a WeCann Care promete em <em>algumas dimensões</em> · não em todas.",
       },
     ],
     strengthsTitle: "Forças UX · o que funciona",
@@ -829,14 +829,14 @@ const COMPETITORS: Competitor[] = [
       "<strong>IA sem corpus proprietário.</strong> Provavelmente modelos genéricos (Whisper + LLM) com prompt engineering. Sem Tratado, sem aulas, sem fórum · sem moat.",
       "<strong>Sem identidade clara da IA.</strong> Não tem personagem · não tem nome · IA é commodity invisível. Atena tem nome, postura, ética.",
       "<strong>Freemium pode virar armadilha.</strong> Atrai médico que não quer pagar · paciente médio acaba sub-monetizado.",
-      "<strong>Estética “healthtech jovem”.</strong> Funciona com Recém-formado e Sobrecarregado · sai com o Sênior. Atena precisa atravessar todas as 5 personas.",
+      "<strong>Estética “healthtech jovem”.</strong> Funciona com Recém-formado e Sobrecarregado · sai com o Sênior. A WeCann Care precisa atravessar todas as 5 personas.",
     ],
     adopt: [
-      "<strong>Mobile-first sério, não secundário.</strong> Atena precisa ter app de qualidade equivalente · não pode ser web-only com responsive. Especialmente para Recém-formado em plantão.",
+      "<strong>Mobile-first sério, não secundário.</strong> A WeCann Care precisa ter app de qualidade equivalente · não pode ser web-only com responsive. Especialmente para Recém-formado em plantão.",
       "<strong>Freemium / trial para reduzir fricção.</strong> Considerar caminho de entrada gratuito (modo individual · sem RWE · sem cannabis) para Recém-formado experimentar antes de migrar.",
     ],
     avoid: [
-      "<strong>“All-in-one” como narrativa.</strong> Comoditiza. Atena vende profundidade clínica em cannabis + RWE · não amplitude operacional.",
+      "<strong>“All-in-one” como narrativa.</strong> Comoditiza. A WeCann Care vende profundidade clínica em cannabis + RWE · não amplitude operacional.",
       "<strong>IA invisível / sem personagem.</strong> Amigo Tech tem IA boa, mas anônima. Atena vence pelo personagem · não pode imitar a Amigo.",
     ],
   },
@@ -885,17 +885,17 @@ const COMPETITORS: Competitor[] = [
     limits: [
       "<strong>UX clássica de ERP.</strong> Densa, fria, com 8 níveis de menu. Médico individual <em>odeia</em> usar.",
       "<strong>Velocidade de evolução baixa.</strong> Releases anuais, padrão enterprise — não absorve IA generativa rápido.",
-      "<strong>Não tem IA própria de marca.</strong> Não há Athena/Amélia/Voa — IA é feature, não personagem.",
+      "<strong>Não tem IA própria de marca.</strong> Não há Atena/Amélia/Voa — IA é feature, não personagem.",
       "<strong>Cliente não é o médico</strong> — é o hospital. O médico é usuário forçado, não comprador. Daí a UX nunca foi feita para “encantar”.",
       "<strong>Estética corporativa cansada.</strong> Mesmo após HTML5, o “DNA enterprise” persiste — não convence consultório nem clínica boutique.",
     ],
     adopt: [
-      "<strong>Selos institucionais visíveis.</strong> SBIS, ONA, certificações são senhas de entrada em vendas para clínicas maiores. Atena deve buscar e exibir.",
-      "<strong>Profundidade como diferenciação.</strong> O Atena RWE schema é tão profundo quanto qualquer ERP — só que <em>encapsulado</em> em UX que respira.",
+      "<strong>Selos institucionais visíveis.</strong> SBIS, ONA, certificações são senhas de entrada em vendas para clínicas maiores. A WeCann Care deve buscar e exibir.",
+      "<strong>Profundidade como diferenciação.</strong> O schema RWE da WeCann Care é tão profundo quanto qualquer ERP — só que <em>encapsulado</em> em UX que respira.",
     ],
     avoid: [
-      "<strong>Densidade de ERP.</strong> Atena tem profundidade comparável, mas precisa <em>esconder</em> a complexidade. Tela só mostra 5% do schema por vez.",
-      "<strong>Tom institucional para gestor.</strong> Atena fala com o <em>médico</em>, não com o CFO hospitalar. Linguagem clínica e pessoal sempre.",
+      "<strong>Densidade de ERP.</strong> A WeCann Care tem profundidade comparável, mas precisa <em>esconder</em> a complexidade. Tela só mostra 5% do schema por vez.",
+      "<strong>Tom institucional para gestor.</strong> A WeCann Care fala com o <em>médico</em>, não com o CFO hospitalar. Linguagem clínica e pessoal sempre.",
     ],
   },
 ];
@@ -1016,23 +1016,23 @@ const MATRIX: string[][] = [
 const RED_LINES: string[][] = [
   [
     "Não parecer “mais um scribe”",
-    "Voa já ocupa esse espaço com 60k médicos. Atena precisa carregar profundidade clínico-científica desde o hero da landing page, das telas de copiloto e do dashboard.",
+    "Voa já ocupa esse espaço com 60k médicos. A WeCann Care precisa carregar profundidade clínico-científica desde o hero da landing page, das telas de copiloto e do dashboard.",
   ],
   [
     "Não parecer SaaS de consultório",
-    "iClinic é o template visual desse arquétipo. Azul flat, ícones genéricos, sombras suaves, dashboards “Hubspot-like” — tudo isso afasta da categoria Atena.",
+    "iClinic é o template visual desse arquétipo. Azul flat, ícones genéricos, sombras suaves, dashboards “Hubspot-like” — tudo isso afasta da categoria da WeCann Care.",
   ],
   [
     "Não parecer “healthtech BR-feliz”",
-    "Amplimed domina essa estética verde/sorridente/cards. Atena é séria, clínica, científica. Sem fotos lifestyle de médicos rindo. Sem ilustração cartunesca de pulmão.",
+    "Amplimed domina essa estética verde/sorridente/cards. A WeCann Care é séria, clínica, científica. Sem fotos lifestyle de médicos rindo. Sem ilustração cartunesca de pulmão.",
   ],
   [
     "Não parecer ERP enterprise",
-    "SOUL MV é o “denso e cansado”. Atena tem profundidade <em>e</em> respiração. A densidade fica embaixo; o que aparece é fluxo.",
+    "SOUL MV é o “denso e cansado”. A WeCann Care tem profundidade <em>e</em> respiração. A densidade fica embaixo; o que aparece é fluxo.",
   ],
   [
     "Não parecer “wellness verde-folhinha”",
-    "O clichê visual da cannabis (folhinhas, gradiente verde-natureza, hippie chique) é poison para a categoria Atena. <strong>É um produto clínico que por acaso domina cannabis</strong>, não um produto de cannabis.",
+    "O clichê visual da cannabis (folhinhas, gradiente verde-natureza, hippie chique) é poison para a categoria da WeCann Care. <strong>É um produto clínico que por acaso domina cannabis</strong>, não um produto de cannabis.",
   ],
 ];
 
@@ -1040,7 +1040,7 @@ const STEAL: string[][] = [
   [
     "Voa",
     "Foco editorial brutal na landing page",
-    "Hero da Atena vende 3 promessas, não 30 features.",
+    "Hero da WeCann Care vende 3 promessas, não 30 features.",
   ],
   [
     "iClinic",
@@ -1067,15 +1067,15 @@ const STEAL: string[][] = [
 const ARGUMENTS: string[][] = [
   [
     "Voa",
-    "“Voa transcreve. Atena <strong>conhece seu paciente</strong>, prepara a consulta antes, sugere com evidência citada e gera coorte de pesquisa enquanto você atende.”",
+    "“Voa transcreve. A WeCann Care <strong>conhece seu paciente</strong>, prepara a consulta antes, sugere com evidência citada e gera coorte de pesquisa enquanto você atende.”",
   ],
   [
     "iClinic",
-    "“iClinic é onde você <strong>guarda</strong> o prontuário. Atena é onde o prontuário <strong>trabalha por você</strong> — em tempo real, com 5 memórias persistentes.”",
+    "“iClinic é onde você <strong>guarda</strong> o prontuário. A WeCann Care é onde o prontuário <strong>trabalha por você</strong> — em tempo real, com 5 memórias persistentes.”",
   ],
   [
     "Clínica nas Nuvens",
-    "“CNN tem 200+ recursos genéricos. Atena tem <strong>7 diferenciais aprofundados</strong> em cannabis e RWE. Profundidade &gt; amplitude. <em>(E quando você migrar da CNN, todos os seus 30 anos de dados vêm junto.)</em>”",
+    "“CNN tem 200+ recursos genéricos. A WeCann Care tem <strong>7 diferenciais aprofundados</strong> em cannabis e RWE. Profundidade &gt; amplitude. <em>(E quando você migrar da CNN, todos os seus 30 anos de dados vêm junto.)</em>”",
   ],
   [
     "Amplimed",
@@ -1087,6 +1087,6 @@ const ARGUMENTS: string[][] = [
   ],
   [
     "SOUL MV",
-    "“SOUL MV foi feito para o gestor do hospital. Atena foi feita <strong>para o médico</strong> — com a mesma profundidade clínica de um ERP, mas em uma superfície que respeita 12 minutos de consulta.”",
+    "“SOUL MV foi feito para o gestor do hospital. A WeCann Care foi feita <strong>para o médico</strong> — com a mesma profundidade clínica de um ERP, mas em uma superfície que respeita 12 minutos de consulta.”",
   ],
 ];

@@ -8,6 +8,7 @@ import Doc03Competitiva from "./docs/Doc03Competitiva";
 import Doc04Arquitetura from "./docs/Doc04Arquitetura";
 import Doc05Jornadas from "./docs/Doc05Jornadas";
 import Doc07Documentos from "./docs/Doc07Documentos";
+import Doc08Entrevistas from "./docs/Doc08Entrevistas";
 
 const DOC_COMPONENTS: Record<string, React.ComponentType> = {
   posicionamento: Doc01Posicionamento,
@@ -17,6 +18,7 @@ const DOC_COMPONENTS: Record<string, React.ComponentType> = {
   arquitetura: Doc04Arquitetura,
   jornadas: Doc05Jornadas,
   documentos: Doc07Documentos,
+  entrevistas: Doc08Entrevistas,
 };
 
 type Props = {

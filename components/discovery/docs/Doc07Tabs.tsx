@@ -259,7 +259,7 @@ const PANELS: Panel[] = [
       { label: "Destinatário", value: "Laboratório / serviço de imagem" },
       { label: "Validade", value: "30 a 90 dias (conforme convênio)" },
       { label: "Justificativa", value: "CID + indicação clínica obrigatórios" },
-      { label: "Athena", value: "Combos por indicação + tabela TUSS" },
+      { label: "Atena", value: "Combos por indicação + tabela TUSS" },
     ],
     alertTone: "info",
     alert:
@@ -296,7 +296,7 @@ const PANELS: Panel[] = [
       { label: "Destinatário", value: "Hospital / convênio / auditoria" },
       { label: "Validade", value: "60 dias para autorização" },
       { label: "Anexos", value: "Exames pré-op + laudos" },
-      { label: "Athena", value: "Sugere CID/TUSS + risco cirúrgico" },
+      { label: "Atena", value: "Sugere CID/TUSS + risco cirúrgico" },
     ],
     alertTone: "info",
     alert:
@@ -333,7 +333,7 @@ const PANELS: Panel[] = [
       { label: "Destinatário", value: "Operadora / auditoria OPME" },
       { label: "Marcas", value: "3 alternativas (Res. CFM 2.226/2019)" },
       { label: "Justificativa", value: "Tipo, tamanho e indicação técnica" },
-      { label: "Athena", value: "Sugere materiais por procedimento" },
+      { label: "Atena", value: "Sugere materiais por procedimento" },
     ],
     alertTone: "warn",
     alert:
@@ -370,7 +370,7 @@ const PANELS: Panel[] = [
       { label: "Destinatário", value: "Especialista / serviço de referência" },
       { label: "Urgência", value: "Eletivo, prioritário ou urgente" },
       { label: "Anexos", value: "Exames recentes + sumário clínico" },
-      { label: "Athena", value: "Resumo clínico em linguagem técnica" },
+      { label: "Atena", value: "Resumo clínico em linguagem técnica" },
     ],
     alertTone: "info",
     alert:
@@ -451,7 +451,7 @@ const PANELS: Panel[] = [
       { label: "Destinatário", value: "INSS, perícia, plano, escola" },
       { label: "Conteúdo", value: "Histórico + exame + conclusão técnica" },
       { label: "Validade", value: "Conforme finalidade (60-180 dias)" },
-      { label: "Athena", value: "Estrutura técnica padronizada" },
+      { label: "Atena", value: "Estrutura técnica padronizada" },
     ],
     alertTone: "pac",
     alert:
@@ -496,7 +496,7 @@ const PANELS: Panel[] = [
       { label: "Destinatário", value: "Paciente em linguagem acessível" },
       { label: "Dualidade", value: "C2 leigo / C3 técnico opcional" },
       { label: "Conteúdo", value: "Evolução, conduta e próximos passos" },
-      { label: "Athena", value: "Tradução do prontuário em prosa clara" },
+      { label: "Atena", value: "Tradução do prontuário em prosa clara" },
     ],
     alertTone: "pac",
     alert:
@@ -541,7 +541,7 @@ const PANELS: Panel[] = [
       { label: "Destinatário", value: "Paciente · uso domiciliar" },
       { label: "Estrutura", value: "Como tomar + sinais de alerta" },
       { label: "Quando", value: "Início de tratamento e ajuste de dose" },
-      { label: "Athena", value: "Conteúdo por condição + medicação" },
+      { label: "Atena", value: "Conteúdo por condição + medicação" },
     ],
     alertTone: "pac",
     alert:
@@ -586,7 +586,7 @@ const PANELS: Panel[] = [
       { label: "Tipo", value: "Tratamento (obrigatório) + Pesquisa (opt-in)" },
       { label: "Versão", value: "Versionada com timestamp imutável" },
       { label: "Camadas", value: "Consentimento granular e revogável" },
-      { label: "Athena", value: "Texto C2 leigo + C3 técnico opcional" },
+      { label: "Atena", value: "Texto C2 leigo + C3 técnico opcional" },
     ],
     alertTone: "pac",
     alert:

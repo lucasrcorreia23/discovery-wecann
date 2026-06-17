@@ -57,7 +57,7 @@ flowchart TD
         P[Pulso do dia · pílula + chat casuística]
         AG[Agenda · badges pré-anamnese]
         PRE{Tela pré-consulta}
-        M[Mensagens · triagem Athena]
+        M[Mensagens · triagem Atena]
         Q[Questionários / pipeline IA]
         K[Kanban 4 fluxos · secretária]
         L --> P --> AG --> PRE
@@ -75,7 +75,7 @@ flowchart TD
         COL[Layout 3 colunas]
         AN[Anamnese + EF generativo]
         NT[Notas livres]
-        ATH[Coluna Athena · cards emergentes]
+        ATH[Coluna Atena · cards emergentes]
         EX[Exames · OCR + timeline]
         DOC[Gerar documentos]
         CONF[Conferência médico vs IA]
@@ -105,7 +105,7 @@ flowchart TD
 | Passo | Tela Doc 05 | Estado típico | Nota dos inputs |
 |-------|-------------|---------------|-----------------|
 | Login | — | LIVE | Fora do escopo redesign Atom6 |
-| Pulso do dia | T-18 (Home Athena) | PARCIAL | Modal fullscreen na demo v107; pílulas 3–5 min |
+| Pulso do dia | T-18 (Home Atena) | PARCIAL | Modal fullscreen na demo v107; pílulas 3–5 min |
 | Agenda | T-01 | LIVE | Badges de % pré-anamnese (demo v107) |
 | Pré-consulta operacional | T-04, T-05 | LIVE/PARCIAL | Kanban 4×4; uso forte da secretária |
 | Cadastro / Agendamento | T-02, T-03 | LIVE | Fluxo secretária (Jornada D) |
@@ -118,7 +118,7 @@ flowchart TD
 
 ### 4.3 Comportamento “vivo” (Eduardo, imersão)
 
-Muitos elementos na consulta **emergem sem clique** — CID sugerido, escalas, alertas de interação, cards na coluna Athena. O userflow deve prever:
+Muitos elementos na consulta **emergem sem clique** — CID sugerido, escalas, alertas de interação, cards na coluna Atena. O userflow deve prever:
 
 1. **Estados dinâmicos** durante J2 (não wireframe estático)
 2. **Conferência** explícita ao encerrar: médico valida vs. proposta da IA
@@ -126,7 +126,7 @@ Muitos elementos na consulta **emergem sem clique** — CID sugerido, escalas, a
 
 ### 4.4 Equilíbrio disruptivo (Daniel)
 
-- Athena presente, mas informação organizada — **não** chat-only na consulta
+- Atena presente, mas informação organizada — **não** chat-only na consulta
 - Liberar features em camadas: “painel de Airbus no foguete do Musk”
 - Médico conservador não pode sentir que perdeu o prontuário; inovador não pode achar “mais um iClinic”
 
@@ -140,7 +140,7 @@ flowchart LR
     O2 --> O3[Modelos · personalização]
     O3 --> O4[Importação / migração]
     O4 --> O5[Casuística · momento uau]
-    O5 --> O6[Home Athena · descoberta]
+    O5 --> O6[Home Atena · descoberta]
 ```
 
 | Elemento | Tela | Personas âncora |
@@ -183,7 +183,7 @@ flowchart LR
 
 | Responsável | O que faz | O que o médico vê |
 |-------------|-----------|-------------------|
-| Secretária | Kanban, cadastros, agendamento, triagem inicial | Só threads clínicas (Athena triou) |
+| Secretária | Kanban, cadastros, agendamento, triagem inicial | Só threads clínicas (Atena triou) |
 | Médico | Decisão clínica, documentos, conferência IA | Agenda com contexto, não operação |
 
 ---
@@ -195,7 +195,7 @@ Protótipo navegável mínimo — **worst case por persona**:
 ```
 Login → Agenda → Selecionar paciente → Play consulta
   → [Pré-anamnese OU Paciente 360]
-  → Consulta 3 colunas (Anamnese/EF | Notas | Athena)
+  → Consulta 3 colunas (Anamnese/EF | Notas | Atena)
   → Gerar documento
   → Conferência médico vs IA
   → Mensagem pós-consulta
@@ -215,9 +215,9 @@ Login → Agenda → Selecionar paciente → Play consulta
 |---------|---------------|---------------------|
 | Pragmático | J3 Casuística + cortes RWE | Entrada rápida na agenda; pós mínimo |
 | Sobrecarregado | J1 triagem + J2 docs 1-clique | Pulso opcional; máxima automação J2/J3 |
-| Recém-formado | J2 Athena + onboarding | Conferência IA; tooltips “por quê?” |
+| Recém-formado | J2 Atena + onboarding | Conferência IA; tooltips “por quê?” |
 | Sênior | J3 casuística + J1 pílulas curtas | Fonte grande; poucos cliques |
-| Humanista | J2 tempo livre + J1 conversa | Athena preenche; médico olha para o paciente |
+| Humanista | J2 tempo livre + J1 conversa | Atena preenche; médico olha para o paciente |
 
 ---
 
@@ -232,7 +232,7 @@ Login → Agenda → Selecionar paciente → Play consulta
 | Episódio > consulta avulsa | Doc 04 (gap) | J2/J3 devem evoluir para episódio + timepoint |
 | Financeiro | Doc 05 Fase 2 | Fora do userflow Atom6 atual |
 | App do paciente | briefing externo | Pré-anamnese e docs sim; redesign app não |
-| Prontuário que ensina | imersões | Pílulas em J1, cards Athena em J2, insights em J3 |
+| Prontuário que ensina | imersões | Pílulas em J1, cards Atena em J2, insights em J3 |
 
 ---
 

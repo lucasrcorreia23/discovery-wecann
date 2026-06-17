@@ -5,11 +5,231 @@ import {
   ScreenCard,
   BlockList,
   JourneyHeader,
-  AthenaBox,
+  AtenaBox,
   PersonaRow,
   ProcJourney,
+  Swimlane,
+  SwimlaneLegend,
+  type SwimLane,
 } from "../ui/primitives";
 import Doc05Userflow from "./Doc05Userflow";
+
+const CURRENT_FLOW_PHASES = [
+  "Onboarding",
+  "Pré-consulta",
+  "Consulta",
+  "Pós-consulta",
+];
+
+const CURRENT_FLOW_LANES: SwimLane[] = [
+  {
+    id: "medico",
+    name: "Médico",
+    accent: "accent",
+    cells: [
+      [
+        {
+          kind: "terminal",
+          label: "Cria conta e acessa",
+          route: "Login · WeCann Care",
+        },
+        {
+          kind: "decision",
+          label: "Perfil / CRM configurado?",
+          branches: [
+            { label: "Não", to: "Completa perfil e convida usuários" },
+            { label: "Sim", to: "Conclui Primeiros passos no EHR" },
+          ],
+        },
+        {
+          label: "Completa perfil e convida usuários",
+          route:
+            "Configurações › Profissionais · CRM-SP · Usuários & Permissões",
+        },
+        {
+          label: "Primeiros passos no EHR",
+          route: "Cadastrar paciente · Agenda · Consulta IA · Documentos",
+        },
+      ],
+      [
+        {
+          label: "Abre a Agenda do dia",
+          route: "Agenda › Dia/Hoje · Agendados · Confirmados",
+        },
+        {
+          label: "Acessa Paciente 360 e histórico",
+          route: "Paciente 360 · diagnóstico ativo (CID) · último atendimento",
+        },
+        {
+          label: "Revisa Pré-Consulta",
+          route: "Pré-Consulta › Questionário · anamnese · documentos",
+        },
+        {
+          label: "Consulta Modelos e sugestões",
+          route: "Modelos & Packs · Sugestão Atena",
+        },
+      ],
+      [
+        {
+          label: "Inicia Consulta com IA (Atena)",
+          route:
+            "Consulta › Gerar link teleconsulta/presencial · Transcrição ao vivo",
+        },
+        {
+          label: "Atena hidrata e preenche",
+          route:
+            "Hidrata comorbidades, medicações, escalas e exames · médico revisa",
+        },
+        {
+          kind: "decision",
+          label: "Indica cannabis medicinal?",
+          branches: [
+            { label: "Sim", to: "Gera receita em Documentos" },
+            { label: "Não", to: "Registra conduta alternativa / encaminha" },
+          ],
+        },
+        {
+          label: "Gera receita · revisa e assina",
+          route:
+            "Documentos › canabidiol · controle especial · Validação Atena (CFM 2.314/22)",
+        },
+        {
+          kind: "decision",
+          label: "Solicita exames complementares?",
+          branches: [
+            { label: "Sim", to: "Documentos › Exames · Solicitar" },
+            { label: "Não", to: "Gera laudo e orientações" },
+          ],
+        },
+        {
+          label: "Conduta & Plano · finaliza atendimento",
+          route: "Conduta & Plano Terapêutico · Encaminhamento",
+        },
+      ],
+      [
+        {
+          kind: "handoff",
+          label: "Handoff → envia documentos",
+          route: "Documentos › Laudo · Sumário Clínico · Orientações",
+        },
+        {
+          label: "Disponibiliza documentos ao paciente",
+          route: "Validação Atena · envio direto ao paciente",
+        },
+        {
+          kind: "decision",
+          label: "Necessita retorno?",
+          branches: [
+            { label: "Sim", to: "Define FUP (M1–M12)" },
+            { label: "Não", to: "Segue para Casuística" },
+          ],
+        },
+        {
+          label: "Acompanha Casuística e Outcomes",
+          route: "Casuística · Outcomes · Efeitos adversos · FUP",
+        },
+      ],
+    ],
+  },
+  {
+    id: "secretario",
+    name: "Secretário",
+    accent: "teal",
+    cells: [
+      [
+        {
+          kind: "terminal",
+          label: "Cria conta pelo link do médico",
+          route: "Login · WeCann Care",
+        },
+        {
+          label: "Cadastra equipe, ausências e integrações",
+          route:
+            "Configurações › Profissionais · Ausências · Integrações (WhatsApp)",
+        },
+        {
+          kind: "decision",
+          label: "Agenda configurada?",
+          branches: [
+            { label: "Não", to: "Ajusta Profissionais / Ausências" },
+            { label: "Sim", to: "Pronto para operar" },
+          ],
+        },
+      ],
+      [
+        {
+          label: "Recebe contato do paciente (lead)",
+          route: "Pré-Consulta › Mensagens novas · WhatsApp",
+        },
+        {
+          kind: "decision",
+          label: "Paciente já cadastrado?",
+          branches: [
+            { label: "Não", to: "Cadastra paciente · CPF · TCLE" },
+            { label: "Sim", to: "Busca paciente existente" },
+          ],
+        },
+        {
+          label: "Cadastra / busca paciente",
+          route: "Pacientes › Cadastrar · Buscar por nome/CPF/telefone",
+        },
+        {
+          label: "Agenda a consulta",
+          route: "Agenda › Novo agendamento · presencial/online",
+        },
+        {
+          label: "Envia convite de pré-consulta (WhatsApp)",
+          route: "Agendamento WhatsApp · Convite de pré-consulta",
+        },
+        {
+          label: "Coleta questionários e documentos",
+          route: "Pré-Consulta › Questionários · documentos",
+        },
+        {
+          kind: "decision",
+          label: "Pagamento confirmado?",
+          branches: [
+            { label: "Não", to: "Realiza cobrança / 2ª via · TISS / convênio" },
+            { label: "Sim", to: "Confirma presença" },
+          ],
+        },
+        {
+          label: "Confirma presença e recepciona",
+          route: "Agenda › Confirmados · Alertas (sem confirmação)",
+        },
+      ],
+      [
+        {
+          label: "Dá suporte de acesso à teleconsulta",
+          route: "Link teleconsulta · suporte ao paciente",
+        },
+      ],
+      [
+        {
+          label: "Envia receita e documentos (WhatsApp)",
+          route: "Pós-Consulta › Chat WhatsApp · documentos",
+        },
+        {
+          label: "Apoia renovação e acesso ao produto",
+          route: "Pós-Consulta › Renovação de receitas · ANVISA",
+        },
+        {
+          label: "Agenda retorno (FUP)",
+          route: "Agenda › retorno · FUP (M1–M12)",
+        },
+      ],
+    ],
+  },
+];
+
+const CURRENT_FLOW_LEGEND = [
+  { kind: "medico", label: "Ação do médico" },
+  { kind: "secretario", label: "Ação do secretário" },
+  { kind: "decision", label: "Decisão (Sim / Não)" },
+  { kind: "handoff", label: "Handoff entre raias" },
+  { kind: "terminal", label: "Início / fim" },
+  { kind: "action", label: "Texto cinza = tela/rota real" },
+];
 
 const PERSONA_NAMES = [
   "Especialista Pragmático",
@@ -26,10 +246,10 @@ export default function Doc05Jornadas() {
         kicker="Doc 05 · Brief Atom6 Studio · Versão 2"
         title={
           <>
-            As 3 jornadas da <em>Atena</em>.
+            As 3 jornadas da <em>WeCann Care</em>.
           </>
         }
-        lead="Uma visão global e sistemática do prontuário, organizada em três tempos clínicos — pré-consulta, consulta e pós-consulta. Cada tela detalhada por blocos, subcomponentes, papel da Athena e impacto sobre cada uma das cinco personas médicas."
+        lead="Uma visão global e sistemática do WeCann Care, organizada em três tempos clínicos — pré-consulta, consulta e pós-consulta. Cada tela detalhada por blocos, subcomponentes, papel da Atena e impacto sobre cada uma das cinco personas médicas."
         meta={[
           {
             dt: "Escopo",
@@ -69,6 +289,64 @@ export default function Doc05Jornadas() {
       </div>
 
       <Section
+        id="jor-atual"
+        num="00 · VISÃO ATUAL (AS-IS)"
+        title="Fluxo atual · Médico & Secretário (WeCann EHR)"
+      >
+        <p className="intro">
+          Antes da leitura de arquitetura, o fluxo real do produto hoje, em
+          raias. Baseado no <strong>User Flow - Jornada do Médico & Secretário</strong>:
+          duas raias (médico e secretário) ao longo de quatro fases —
+          onboarding, pré-consulta, consulta e pós-consulta — com as telas/rotas
+          reais do app, pontos de decisão e os handoffs entre os dois papéis.
+        </p>
+        <p>
+          As seções seguintes (visão sistêmica e jornadas processuais) são a
+          leitura de arquitetura e a proposta de redesenho <em>sobre</em> esta
+          base atual.
+        </p>
+
+        <Swimlane phases={CURRENT_FLOW_PHASES} lanes={CURRENT_FLOW_LANES} />
+        <SwimlaneLegend items={CURRENT_FLOW_LEGEND} />
+
+        <Callout variant="teal" label="Insights do fluxo">
+          <p>
+            <strong>Onboarding do médico</strong> deve ser didático, mas
+            demonstrar a proposta de valor rápido — sem passar a percepção de
+            ser "mais um software de ponto eletrônico".
+          </p>
+          <p>
+            <strong>Onboarding do secretário</strong> precisa de etapas voltadas
+            ao que são e ao valor dos módulos de narrativa financeira,
+            contabilidade, gestão das automações e integrações.
+          </p>
+        </Callout>
+
+        <Callout label="Premissas (assumptions)">
+          <p>
+            Assume-se que o secretário recebe acesso depois que o médico cadastra
+            o usuário dele — mas ele poderia ser o primeiro usuário e depois
+            convidar o médico com tudo já configurado.
+          </p>
+          <p>
+            A plataforma é agnóstica a procedimentos: o fluxo de definição de
+            conduta é o mesmo para outras práticas, apesar de hoje a consulta
+            questionar especificamente o tratamento com cannabis.
+          </p>
+        </Callout>
+
+        <Callout variant="warn" label="Perguntas em aberto (questions)">
+          <BlockList
+            items={[
+              "Quais as possibilidades de intervenção do médico na ferramenta durante a consulta?",
+              "Como é o output da transcrição ao vivo da Atena?",
+              "Como o pós-consulta se conecta ao FUP — a integração agenda/FUP é direta na plataforma?",
+            ]}
+          />
+        </Callout>
+      </Section>
+
+      <Section
         id="jor-visao"
         num="01 · VISÃO SISTÊMICA"
         title="As três jornadas como espelho da prática clínica"
@@ -89,7 +367,7 @@ export default function Doc05Jornadas() {
         <p>
           Um médico pode entrar pela casuística, pular para a agenda, voltar para
           uma consulta passada e nunca seguir a sequência em ordem. As telas
-          <strong> meta</strong> — Home da Athena, Modelos, Configurações,
+          <strong> meta</strong> — Home da Atena, Modelos, Configurações,
           Suporte — atravessam as três jornadas.
         </p>
         <h3>Por que essa estrutura importa para a Atom</h3>
@@ -176,7 +454,7 @@ export default function Doc05Jornadas() {
               </>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               <strong>Antecipação:</strong> 30 minutos antes de cada consulta,
               sinaliza pendências (pré-anamnese, exames previstos, escalas).
@@ -185,7 +463,7 @@ export default function Doc05Jornadas() {
               <strong>Sugestão de janela:</strong> em horários vazios, pode sugerir
               retornos pendentes fora de janela esperada.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -258,7 +536,7 @@ export default function Doc05Jornadas() {
               </>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               <strong>Detecção de duplicata:</strong> sugere paciente existente ao
               digitar nome/CPF parcial.
@@ -266,7 +544,7 @@ export default function Doc05Jornadas() {
             <p>
               <strong>Validação CEP:</strong> autocompleta endereço.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -331,12 +609,12 @@ export default function Doc05Jornadas() {
               </>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               <strong>Sugestão de modelo:</strong> com base no tipo de consulta e
               especialidade, sugere o modelo de pré-anamnese mais coerente.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -383,7 +661,7 @@ export default function Doc05Jornadas() {
               </>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               <strong>Triagem por urgência:</strong> classifica em informativa,
               operacional e clínica.
@@ -392,7 +670,7 @@ export default function Doc05Jornadas() {
               <strong>Rascunho de resposta:</strong> propõe texto contextual para
               mensagens clínicas.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -411,7 +689,7 @@ export default function Doc05Jornadas() {
               },
               {
                 name: PERSONA_NAMES[4],
-                desc: "Aprende observando rascunhos da Athena.",
+                desc: "Aprende observando rascunhos da Atena.",
               },
             ]}
           />
@@ -483,7 +761,7 @@ export default function Doc05Jornadas() {
               </>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               <strong>Estruturação:</strong> converte respostas livres em campos
               estruturados quando possível.
@@ -491,7 +769,7 @@ export default function Doc05Jornadas() {
             <p>
               <strong>Adaptação:</strong> formulário ramificado conforme respostas.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -513,7 +791,7 @@ export default function Doc05Jornadas() {
               },
               {
                 name: PERSONA_NAMES[4],
-                desc: "Aprende estrutura clínica com o fluxo da Athena.",
+                desc: "Aprende estrutura clínica com o fluxo da Atena.",
               },
             ]}
           />
@@ -558,7 +836,7 @@ export default function Doc05Jornadas() {
               </>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               <strong>Briefing de 60 segundos:</strong> resumo do estado clínico
               atual e mudanças desde a última consulta.
@@ -567,7 +845,7 @@ export default function Doc05Jornadas() {
               <strong>Alertas pré-consulta:</strong> pendências de escala,
               revisão de exame alterado, interação potencial.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -603,7 +881,7 @@ export default function Doc05Jornadas() {
           title="Consulta · decidir e registrar"
         >
           <p>
-            O coração da Atena: encontro clínico, decisão terapêutica, registro
+            O coração da WeCann Care: encontro clínico, decisão terapêutica, registro
             estruturado e maior densidade de informação.
           </p>
         </JourneyHeader>
@@ -639,12 +917,12 @@ export default function Doc05Jornadas() {
               </>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Mantém chips de alerta atualizados em tempo real e sinaliza
               conflitos de prescrição com alergias/interações.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -714,7 +992,7 @@ export default function Doc05Jornadas() {
               <>Submodelo gestacional: IG, DUM, paridade, intercorrências.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               <strong>Preenchimento generativo:</strong> propõe estrutura da
               consulta com base na pré-anamnese e histórico.
@@ -725,7 +1003,7 @@ export default function Doc05Jornadas() {
             <p>
               <strong>Detecção de incoerência</strong> entre história e exame.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -771,12 +1049,12 @@ export default function Doc05Jornadas() {
               <>Histórico de notas anteriores por paciente.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Não preenche este espaço. Só relembra notas anteriores relevantes e
               reapresenta lembretes marcados para próxima consulta.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -815,14 +1093,14 @@ export default function Doc05Jornadas() {
               <>Histórico longitudinal para exames recorrentes.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Extrai valores de PDF e popula timeline automaticamente.
             </p>
             <p>
               Destaca valores fora da referência e sugere exames complementares.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -881,12 +1159,12 @@ export default function Doc05Jornadas() {
               <>Armazenamento automático em documentos do paciente.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Preenche contexto de documento, oferece versão C2/C3 do sumário e
               checa interação medicamentosa antes da assinatura.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -925,11 +1203,11 @@ export default function Doc05Jornadas() {
               <>Comparação entre duas consultas.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Gera resumo evolutivo ("como evoluiu desde a primeira consulta").
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -953,7 +1231,7 @@ export default function Doc05Jornadas() {
 
         <ScreenCard
           id="T-13"
-          title="Coluna da Athena · alertas, sugestões e insights"
+          title="Coluna da Atena · alertas, sugestões e insights"
           state="partial"
         >
           <p>
@@ -979,12 +1257,12 @@ export default function Doc05Jornadas() {
               <>Reversível e aceitação parcial.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
-              É a Athena em forma visível e contínua. Regra de ouro: assistência,
+              É a Atena em forma visível e contínua. Regra de ouro: assistência,
               nunca substituição.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -1039,13 +1317,13 @@ export default function Doc05Jornadas() {
               <>Encaminhamento para secretária em um clique.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Detecta relato de evento adverso em texto livre e sugere abertura de
               farmacovigilância (CTCAE/MedDRA/WHO-UMC).
             </p>
             <p>Propõe resposta contextual baseada no histórico do paciente.</p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -1085,12 +1363,12 @@ export default function Doc05Jornadas() {
               <>Auditoria de assinatura e certificado.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Lembra vencimento de receitas controladas e sugere retorno antes da
               interrupção terapêutica.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -1140,12 +1418,12 @@ export default function Doc05Jornadas() {
               <>Export anonimizado para nível ★★ e ★★★.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Gera narrativa da prática e detecta correlações ocultas para apoiar
               decisão clínica.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -1187,11 +1465,11 @@ export default function Doc05Jornadas() {
               <>Marcação de prioridade clínica/operacional.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Identifica perdidos de seguimento e sugere campanhas de recall.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -1226,7 +1504,7 @@ export default function Doc05Jornadas() {
           configura, explora e pede ajuda.
         </p>
 
-        <ScreenCard id="T-18" title="Home da Athena" state="partial">
+        <ScreenCard id="T-18" title="Home da Atena" state="partial">
           <p>
             Tela inicial alternativa para descoberta do sistema, novidades e
             trilhas rápidas de aprendizado.
@@ -1242,12 +1520,12 @@ export default function Doc05Jornadas() {
               <>Canais de contato com suporte.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
-              Espaço de apresentação da Athena como companheira de prática, com
+              Espaço de apresentação da Atena como companheira de prática, com
               tutoriais e descoberta progressiva.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -1285,12 +1563,12 @@ export default function Doc05Jornadas() {
               <>Templates de exames recorrentes.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Detecta padrões da prática e sugere salvar combinações frequentes
               como modelos.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -1333,7 +1611,7 @@ export default function Doc05Jornadas() {
           <Callout variant="warn" label="Atenção · onboarding em foco">
             <p>
               O formulário em Perfil profissional é crítico, porque define como a
-              Athena vai se comportar com cada médico.
+              Atena vai se comportar com cada médico.
             </p>
           </Callout>
           <h4>Impacto por persona</h4>
@@ -1367,7 +1645,7 @@ export default function Doc05Jornadas() {
             items={[
               <>Status do sistema com disponibilidade/latência.</>,
               <>
-                Canais de contato: Athena 24/7, WhatsApp prioritário, e-mail,
+                Canais de contato: Atena 24/7, WhatsApp prioritário, e-mail,
                 sessão de onboarding, linha emergencial.
               </>,
               <>Tickets do médico (abertos, pendentes, histórico).</>,
@@ -1375,12 +1653,12 @@ export default function Doc05Jornadas() {
               <>Central de ajuda com FAQ e vídeos.</>,
             ]}
           />
-          <AthenaBox label="Papel da Athena nesta tela">
+          <AtenaBox label="Papel da Atena nesta tela">
             <p>
               Primeira camada de suporte operacional e roteamento para humano em
               temas clínicos/financeiros sensíveis.
             </p>
-          </AthenaBox>
+          </AtenaBox>
           <h4>Impacto por persona</h4>
           <PersonaRow
             items={[
@@ -1409,7 +1687,7 @@ export default function Doc05Jornadas() {
         title="Formulário de onboarding · perfil profissional"
       >
         <p className="intro">
-          Dentro de Configurações &gt; Perfil profissional. Define como a Athena vai
+          Dentro de Configurações &gt; Perfil profissional. Define como a Atena vai
           operar com cada médico.
         </p>
         <p>
@@ -1429,7 +1707,7 @@ export default function Doc05Jornadas() {
         />
         <Field
           label="Pronome de tratamento preferido"
-          desc="Dr., Dra., Dre., apenas nome; usado pela Athena."
+          desc="Dr., Dra., Dre., apenas nome; usado pela Atena."
         />
 
         <h3>Passo 2 · Formação e especialidade</h3>
@@ -1445,14 +1723,14 @@ export default function Doc05Jornadas() {
         />
         <Field
           label="Universidade, ano e residência"
-          desc="Contexto curricular; não altera comportamento da Athena."
+          desc="Contexto curricular; não altera comportamento da Atena."
         />
 
         <h3>Passo 3 · Áreas clínicas de interesse</h3>
         <Field
           label="Patologias e queixas mais atendidas"
           type="multi-seleção + texto"
-          desc="Pergunta central que alimenta modelos de anamnese, sugestões da Athena e coluna lateral."
+          desc="Pergunta central que alimenta modelos de anamnese, sugestões da Atena e coluna lateral."
         />
         <Field
           label="Procedimentos que realiza"
@@ -1486,7 +1764,7 @@ export default function Doc05Jornadas() {
           desc="Estruturado completo, estruturado essencial, livre com prompts, ou misto."
         />
         <Field
-          label="Nível de proatividade da Athena"
+          label="Nível de proatividade da Atena"
           desc="Discreta, equilibrada ou proativa."
         />
         <Field
@@ -1512,7 +1790,7 @@ export default function Doc05Jornadas() {
           <p>
             <strong>Progressivo</strong> (não gigante), <strong>salvo incremental</strong>,{" "}
             <strong>editável a qualquer tempo</strong> e <strong>conectado</strong>{" "}
-            ao comportamento da Athena em todas as telas.
+            ao comportamento da Atena em todas as telas.
           </p>
         </Callout>
       </Section>
@@ -1539,7 +1817,7 @@ export default function Doc05Jornadas() {
         <h3>Direcionamento recente · prontuário generativo</h3>
         <Callout variant="teal" label="Princípio do prontuário generativo">
           <p>
-            <strong>1.</strong> Athena preenche anamnese/exame com assertividade.
+            <strong>1.</strong> Atena preenche anamnese/exame com assertividade.
           </p>
           <p>
             <strong>2.</strong> Estrutura se adapta dinamicamente à especialidade.
@@ -1554,7 +1832,7 @@ export default function Doc05Jornadas() {
           items={[
             <>Equilíbrio entre estruturação e fluência clínica.</>,
             <>Velocidade de revisão do conteúdo gerado.</>,
-            <>Reversibilidade total das sugestões da Athena.</>,
+            <>Reversibilidade total das sugestões da Atena.</>,
             <>Densidade visual legível para uso real de consultório.</>,
             <>Adaptação por 8 especialidades mapeadas.</>,
             <>Preservação do território das notas livres.</>,
@@ -1562,7 +1840,7 @@ export default function Doc05Jornadas() {
         />
         <p>
           Esta é a área que mais vai consumir tempo e iteração da Atom6 e que mais
-          diferencia a Atena do prontuário comum.
+          diferencia a WeCann Care do prontuário comum.
         </p>
       </Section>
 
@@ -1607,13 +1885,13 @@ export default function Doc05Jornadas() {
             "Configurações · onboarding form",
             "Modelos · personalização",
             "Casuística · momento 'uau'",
-            "Home Athena · descoberta",
+            "Home da Atena · descoberta",
           ]}
         >
           <p>
             Jornada que define ativação: médico entra, configura perfil em 6
             passos, personaliza modelos, enxerga legado de dados na casuística e
-            descobre capacidades da Athena pela home.
+            descobre capacidades da Atena pela home.
           </p>
         </ProcJourney>
 
@@ -1629,19 +1907,19 @@ export default function Doc05Jornadas() {
             "Notas livres",
             "Exames complementares",
             "Gerar documentos",
-            "Coluna Athena · presente o tempo todo",
+            "Coluna da Atena · presente o tempo todo",
           ]}
         >
           <p>
             Fluxo central da prática: contexto, consulta estruturada, documentação e
-            assistência contínua da Athena, sempre não-bloqueante e justificada.
+            assistência contínua da Atena, sempre não-bloqueante e justificada.
           </p>
         </ProcJourney>
 
         <ProcJourney
           num={3}
           title="Jornada da secretária · operação da clínica"
-          subtitle="Atena também é ferramenta operacional, não só médica."
+          subtitle="WeCann Care também é ferramenta operacional, não só médica."
           flow={[
             "Agenda",
             "Cadastro de paciente",
@@ -1672,14 +1950,14 @@ export default function Doc05Jornadas() {
       <div className="verdict">
         <div className="eyebrow">O que está em jogo</div>
         <h3>
-          A Atena foi pensada como sistema, não como tela.
+          A WeCann Care foi pensada como sistema, não como tela.
         </h3>
         <p>
           Sua vantagem competitiva nasce da coerência entre pré-consulta, consulta
-          e pós-consulta, e de como a Athena muda de papel em cada tempo clínico.
+          e pós-consulta, e de como a Atena muda de papel em cada tempo clínico.
         </p>
         <p>
-          <strong>Pré-consulta</strong> é preparação (Athena de triagem e contexto).
+          <strong>Pré-consulta</strong> é preparação (Atena de triagem e contexto).
           {" "}<strong>Consulta</strong> é decisão (copiloto e gerador).
           {" "}<strong>Pós-consulta</strong> é legado (curadoria e descoberta de padrões).
         </p>
@@ -1691,7 +1969,7 @@ export default function Doc05Jornadas() {
       </div>
 
       <div className="doc-footer">
-        <span>Doc 05 · Jornadas UX da Atena · v2 · Brief Atom6 Studio</span>
+        <span>Doc 05 · Jornadas UX da WeCann Care · v2 · Brief Atom6 Studio</span>
         <span>WeCann 2026</span>
       </div>
     </div>
@@ -1719,11 +1997,12 @@ function Field({
 }
 
 const TOC_ITEMS = [
+  { num: "00", title: "Visão atual (as-is) · Médico & Secretário" },
   { num: "01", title: "Visão sistêmica das 3 jornadas" },
   { num: "02", title: "Jornada 1 · Pré-consulta · 6 telas" },
   { num: "03", title: "Jornada 2 · Consulta · 7 telas" },
   { num: "04", title: "Jornada 3 · Pós-consulta · 4 telas" },
-  { num: "05", title: "Telas meta · Athena, Modelos, Configurações, Suporte" },
+  { num: "05", title: "Telas meta · Home da Atena, Modelos, Configurações, Suporte" },
   { num: "06", title: "Formulário de onboarding do médico" },
   { num: "07", title: "Por que a consulta é a tela crucial" },
   { num: "08", title: "Fase 2 · Financeiro e Contabilidade" },

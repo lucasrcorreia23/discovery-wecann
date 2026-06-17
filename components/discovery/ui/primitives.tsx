@@ -355,9 +355,9 @@ export function JourneyHeader({
   );
 }
 
-/* ---------- ATHENA BOX ---------- */
-export function AthenaBox({
-  label = "Coluna da Athena",
+/* ---------- ATENA BOX ---------- */
+export function AtenaBox({
+  label = "Coluna da Atena",
   children,
 }: {
   label?: string;
@@ -457,7 +457,7 @@ export function CompetitorHeader({
 }
 
 export function Takeaway({
-  label = "O que a Atena rouba",
+  label = "O que a WeCann Care rouba",
   children,
 }: {
   label?: string;
@@ -487,6 +487,47 @@ export function CatSep({
   );
 }
 
+/* ---------- MEETING (bloco colapsável de entrevista, doc 08) ---------- */
+export function Meeting({
+  id,
+  when,
+  title,
+  sub,
+  open,
+  children,
+}: {
+  id: string;
+  when: string;
+  title: React.ReactNode;
+  sub: React.ReactNode;
+  open?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <details className="meeting" id={id} open={open}>
+      <summary>
+        <span className="m-when">{when}</span>
+        <span className="m-head">
+          <span className="m-title">{title}</span>
+          <span className="m-sub">{sub}</span>
+        </span>
+        <svg
+          className="m-chev"
+          width={16}
+          height={16}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </summary>
+      <div className="m-body">{children}</div>
+    </details>
+  );
+}
+
 /* ---------- INFO RULES (doc 07) ---------- */
 export function InfoRules({
   items,
@@ -502,5 +543,106 @@ export function InfoRules({
         </div>
       ))}
     </dl>
+  );
+}
+
+/* ---------- SWIMLANE (visão atual · doc 05) ---------- */
+export type FlowStep = {
+  kind?: "action" | "decision" | "terminal" | "handoff";
+  label: React.ReactNode;
+  route?: React.ReactNode;
+  branches?: { label: string; to: React.ReactNode }[];
+};
+
+export type SwimLane = {
+  id: string;
+  name: string;
+  accent?: "accent" | "teal";
+  /** uma lista de passos por fase, alinhada ao array `phases` */
+  cells: FlowStep[][];
+};
+
+function FlowStepView({ step }: { step: FlowStep }) {
+  const kind = step.kind ?? "action";
+  return (
+    <div className={`flow-step ${kind}`}>
+      <div className="flow-step-label">{step.label}</div>
+      {step.route && <div className="flow-route">{step.route}</div>}
+      {step.branches && step.branches.length > 0 && (
+        <div className="flow-branches">
+          {step.branches.map((b, i) => (
+            <div className="flow-branch" key={i}>
+              <span className="flow-branch-tag">{b.label}</span>
+              <span className="flow-branch-to">{b.to}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function Swimlane({
+  phases,
+  lanes,
+}: {
+  phases: string[];
+  lanes: SwimLane[];
+}) {
+  return (
+    <div className="swimlane-wrap">
+      <div
+        className="swimlane"
+        style={{
+          gridTemplateColumns: `var(--lane-label) repeat(${phases.length}, minmax(176px, 1fr))`,
+        }}
+      >
+        <div className="swimlane-corner" aria-hidden />
+        {phases.map((p) => (
+          <div className="swimlane-phase" key={p}>
+            {p}
+          </div>
+        ))}
+
+        {lanes.map((lane) => (
+          <React.Fragment key={lane.id}>
+            <div className={`swimlane-actor ${lane.accent ?? "accent"}`}>
+              <span>{lane.name}</span>
+            </div>
+            {phases.map((p, pi) => {
+              const steps = lane.cells[pi] ?? [];
+              return (
+                <div className="swimlane-cell" key={`${lane.id}-${p}`}>
+                  {steps.map((step, si) => (
+                    <React.Fragment key={si}>
+                      {si > 0 && <span className="flow-connector" aria-hidden />}
+                      <FlowStepView step={step} />
+                    </React.Fragment>
+                  ))}
+                </div>
+              );
+            })}
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ---------- SWIMLANE LEGEND ---------- */
+export function SwimlaneLegend({
+  items,
+}: {
+  items: { kind: string; label: React.ReactNode }[];
+}) {
+  return (
+    <div className="swimlane-legend">
+      {items.map((it, i) => (
+        <span className="legend-item" key={i}>
+          <span className={`legend-swatch ${it.kind}`} aria-hidden />
+          {it.label}
+        </span>
+      ))}
+    </div>
   );
 }

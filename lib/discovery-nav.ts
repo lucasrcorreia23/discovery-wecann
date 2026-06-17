@@ -17,7 +17,7 @@ export const TABS: DocTab[] = [
     label: "Posicionamento",
     navLabel: "01 · Posicionamento",
     sections: [
-      { id: "pos-wecann", label: "00 · A WeCann antes da Atena" },
+      { id: "pos-wecann", label: "00 · A WeCann antes da WeCann Care" },
       { id: "pos-tese", label: "01 · A tese" },
       { id: "pos-atena", label: "02 · A Atena no produto" },
       { id: "pos-principios", label: "03 · Os princípios" },
@@ -25,7 +25,7 @@ export const TABS: DocTab[] = [
       { id: "pos-diferenca", label: "05 · A diferença em detalhe" },
       { id: "pos-tom", label: "06 · Tom de voz" },
       { id: "pos-paraquem", label: "07 · Para quem desenhamos" },
-      { id: "pos-naoe", label: "08 · O que a Atena não é" },
+      { id: "pos-naoe", label: "08 · O que a WeCann Care não é" },
     ],
   },
   {
@@ -105,6 +105,7 @@ export const TABS: DocTab[] = [
     label: "Jornadas",
     navLabel: "05 · Jornadas UX",
     sections: [
+      { id: "jor-atual", label: "00 · Visão atual (as-is)" },
       { id: "jor-visao", label: "01 · Visão sistêmica" },
       { id: "jor-j1", label: "02 · Jornada 1 · Pré-consulta" },
       { id: "jor-j2", label: "03 · Jornada 2 · Consulta" },
@@ -141,4 +142,34 @@ export const TABS: DocTab[] = [
       { id: "doc-tcle", label: "TCLE", sub: true },
     ],
   },
+  {
+    id: "entrevistas",
+    label: "Entrevistas",
+    navLabel: "08 · Entrevistas",
+    sections: [
+      { id: "ent-metodologia", label: "00 · Metodologia" },
+      { id: "ent-overview", label: "Visão geral · 3 entrevistas" },
+      { id: "ent-individuais", label: "01 · Entrevistas individuais" },
+      { id: "ent-tercio", label: "E1 · Dr. Tércio", sub: true },
+      { id: "ent-marco", label: "E2 · Dr. Marco Antônio", sub: true },
+      { id: "ent-barbara", label: "E3 · Dra. Bárbara", sub: true },
+      { id: "ent-insights", label: "02 · Insights consolidados" },
+    ],
+  },
 ];
+
+/** Resolve #hash para aba e, opcionalmente, seção (navegação cross-doc). */
+export function resolveHashTarget(
+  hash: string,
+): { tabId: string; sectionId?: string } | null {
+  const clean = hash.replace(/^#/, "").trim();
+  if (!clean) return null;
+
+  const directTab = TABS.find((t) => t.id === clean);
+  if (directTab) return { tabId: directTab.id };
+
+  const owner = TABS.find((t) => t.sections.some((s) => s.id === clean));
+  if (owner) return { tabId: owner.id, sectionId: clean };
+
+  return null;
+}

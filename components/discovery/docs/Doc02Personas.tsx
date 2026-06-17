@@ -9,10 +9,10 @@ export default function Doc02Personas() {
           <>
             As 5 Personas <em>Médicas</em>
             <br />
-            da Atena
+            da WeCann Care
           </>
         }
-        lead="Quem são os médicos que vão abrir a Atena pela primeira vez — e o que cada um precisa sentir nos primeiros 5 minutos para ficar."
+        lead="Quem são os médicos que vão abrir a WeCann Care pela primeira vez — e o que cada um precisa sentir nos primeiros 5 minutos para ficar."
         meta={[
           { dt: "Fonte primária", dd: "WeCann Marketing Playbook · item 3" },
           { dt: "Lente aplicada", dd: "UX · design · produto" },
@@ -294,7 +294,7 @@ export default function Doc02Personas() {
           <strong>foi pensado para a vida dele</strong>. O Sênior, que{" "}
           <strong>tem peso e profundidade</strong>. O Humanista, que{" "}
           <strong>a pessoa importa</strong>. O Recém-formado, que{" "}
-          <strong>tem caminho</strong>. Quando uma persona entra na Atena e pensa
+          <strong>tem caminho</strong>. Quando uma persona entra na WeCann Care e pensa
           &ldquo;isso aqui foi feito pra mim&rdquo; — sem perceber que para as
           outras 4 também foi — a Atom6 acertou.
         </p>
@@ -469,7 +469,7 @@ const PLAYBOOK: Playbook[] = [
         text: "Mesas de discussão com líderes · sessões de mentoria · reviews longos de casos (“rituais”) · dispositivos de reconhecimento (badges, certificados, mentorias formais).",
       },
       {
-        lbl: "Aplicação na Atena",
+        lbl: "Aplicação na WeCann Care",
         text: "É a persona que mais valoriza a Casuística (legado em dados) · marcos de produção científica · status de Pesquisadora visível no perfil · tom institucional na microcopy.",
       },
     ],
@@ -525,7 +525,7 @@ const PLAYBOOK: Playbook[] = [
         text: "Histórias longas · casos clínicos humanizados · webinars com familiares e pacientes · narrativas de transformação. Não slides técnicos.",
       },
       {
-        lbl: "Aplicação na Atena",
+        lbl: "Aplicação na WeCann Care",
         text: "Persona-líder de Paciente 360 e Pós-Consulta. Microcopy <em>cuidadosa</em> · qualidade de vida em destaque · “voz do paciente” preservada · alertas de polifarmácia gentis.",
       },
     ],
