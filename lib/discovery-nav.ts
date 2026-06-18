@@ -148,11 +148,12 @@ export const TABS: DocTab[] = [
     navLabel: "08 · Entrevistas",
     sections: [
       { id: "ent-metodologia", label: "00 · Metodologia" },
-      { id: "ent-overview", label: "Visão geral · 3 entrevistas" },
+      { id: "ent-overview", label: "Visão geral · 4 sessões" },
       { id: "ent-individuais", label: "01 · Entrevistas individuais" },
       { id: "ent-tercio", label: "E1 · Dr. Tércio", sub: true },
       { id: "ent-marco", label: "E2 · Dr. Marco Antônio", sub: true },
       { id: "ent-barbara", label: "E3 · Dra. Bárbara", sub: true },
+      { id: "ent-patricia", label: "E4 · Dra. Patricia", sub: true },
       { id: "ent-insights", label: "02 · Insights consolidados" },
     ],
   },

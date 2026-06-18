@@ -1,13 +1,13 @@
 # Doc 08 · Entrevistas — Pesquisa com usuários
 
-Pesquisa qualitativa com médicos prescritores de cannabis. As sessões seguem
-roteiro em blocos com objetivos explícitos; os achados aparecem nas entrevistas
+Pesquisa qualitativa com médicos prescritores de cannabis. Três entrevistas por
+blocos e uma sessão de shadowing com a fundadora; os achados aparecem nas sessões
 individuais e na síntese consolidada.
 
-- **Método:** Entrevista por blocos · ~55 min
-- **Amostra:** 3 entrevistas
-- **Período:** 11–16/06/2026
-- **Condução:** Nádia Morgado · Guilherme Dutra Guedes
+- **Método:** Entrevista por blocos + shadowing
+- **Amostra:** 3 entrevistas + 1 shadowing
+- **Período:** 11–18/06/2026
+- **Condução:** Nádia Morgado · Guilherme Dutra Guedes · Lucas Correia
 - **Estrutura:** espelha os pontos 5.2.5 (entrevistas individuais) e 5.2.6
   (insights consolidados) do template de Discovery.
 
@@ -40,9 +40,11 @@ factual com julgamento sobre ferramentas. Duração total: ~55 min.
 | E1 · 15/06 | Dr. Tércio | Sênior + Humanista | 62 anos, medicina de família e cannabis, telemedicina. Cético com IA, analógico, paranoico com LGPD. |
 | E2 · 16/06 | Dr. Marco Antônio | Recém-formado | Residente de psiquiatria, início de carreira, barreira financeira. Quer tela limpa, sem excesso de abas. |
 | E3 · 11/06 | Dra. Bárbara | Humanista + Pragmático | Médica de família há 22 anos, cannabis, detalhista. Usa 6 ferramentas e prompts próprios de IA. |
+| E4 · 18/06 | Dra. Patricia Montagner | Especialista pragmático · Fundadora | Neurocirurgiã e fundadora WeCann. Shadowing no consultório com Clínica nas Nuvens + protótipo WeCann. Valida MVP e critica UX da tela de consulta. |
 
 A diversidade é intencional: confirma que a plataforma precisa atender perfis
-radicalmente diferentes.
+radicalmente diferentes — e que o produto precisa funcionar além do perfil da
+própria Patricia.
 
 ---
 
@@ -223,34 +225,114 @@ Usuária estruturada de IA, mas desconfiada — lê tudo. Match com as personas
 
 ---
 
+### E4 · Dra. Patricia Montagner — Shadowing no consultório
+
+`18/06/2026 · 2h 02min · presencial · shadowing · perfil: Especialista pragmático · Fundadora`
+
+> **Shadowing · não é entrevista por blocos.** Sessão de observação guiada no
+> consultório real: Patricia opera o Clínica nas Nuvens (EHR atual) e valida
+> telas do protótipo WeCann ao vivo.
+
+**Perfil e contexto.** Médica neurocirurgiã e fundadora da WeCann. Referência de
+produto e de persona médica, mas se autodeclara "exceção da exceção": notebook +
+segunda tela, secretária dedicada (Mary), alta afinidade tecnológica. Contrasta
+com o perfil típico: 1 monitor pequeno, sem secretária, pouca afinidade (alguns
+usam Word ou caderno). Pede que o produto não seja feito para ela — "para meio
+milhão de médicos". Hipótese: o prontuário é a tela que o médico mais usa; visão
+do prontuário como educação contínua, RWE e rede social médica. Match com a
+persona **Especialista pragmático**.
+
+**Fluxo de trabalho atual.**
+- *Pré-consulta:* coleta via WhatsApp; box de contexto clínico antes do
+  atendimento ("metade do jogo ganho"). Clínica nas Nuvens não puxa histórico na
+  pré-visualização da agenda.
+- *Durante:* agenda como ponto de entrada (só nome + tipo de consulta). Mary
+  testa câmera/microfone antes da telemedicina; objetivo é videoconsulta embedada
+  na mesma tela. Validação da IA em tempo real (tele) vs. no final (presencial).
+- *Pós-consulta:* Kanban com classificação automática (renovação receita,
+  encaixe, feedback, dúvida medicação, financeiro) — diferencial inexistente no
+  mercado.
+- *Documentos entre consultas:* tela dedicada para receitas avulsas, atestados e
+  laudos fora do contexto de atendimento.
+
+**Uso de IA.**
+- Transcrição em tempo real preenche campos corretos; médico revisa e valida
+  (nunca determinístico).
+- Prescrição inteligente com cálculo automático de miligramagem e disclaimers.
+- Coluna Atena: alertas clínicos (vermelho), escalas, pílulas educacionais
+  (roxo). Cards empilhados — 1 por vez.
+- Laudos por IA a partir do histórico completo (compliance vs. ChatGPT).
+- Casuística com "Compartilhar minha prática" (Instagram, abstract congresso).
+
+**Dores priorizadas.**
+- Login com fricção (delay 2FA, múltiplos códigos); magic link em ambiente
+  compartilhado.
+- ~100% dos médicos ignoram campos separados → dados não estruturados.
+- Tela de consulta atual: muitos cliques, sobrecarga visual — "não tá legal".
+- Paciente 360: sem consolidação; cabeçalho saturado.
+- 10+ checks de validação da IA cansativo; finalização condensada.
+- Laudos manuais extremamente demorados.
+
+**Ideias e pedidos diretos.**
+- MVP inegociável: Home, Casuística, Pré-consulta, Tela de consulta, Documentos,
+  Pós-consulta, Paciente 360 (Agenda = commodity).
+- Layout v107+: menu lateral retrátil, coluna Atena, box único, videoconsulta
+  embedada, timer visível.
+- CIDs fechados, medicações padronizadas, editor tipo Notion (barra /, @).
+- Agenda enriquecida: foto + diagnóstico + tempo de acompanhamento.
+- Onboarding com packs de templates por especialidade.
+
+**Leitura Atom6 · validações e sinais.**
+- Confirma excesso de cliques citado por E1–E3; Patricia valida ao vivo ("não tá
+  legal"). Cruza com Marco (abas) e Bárbara (fragmentação).
+- Valida User Flow: pré-consulta WhatsApp, tela única com vídeo (Tércio), Kanban
+  pós-consulta, documentos entre consultas.
+- 7 telas do MVP mapeiam para User Flow e schema RWE (Doc 04).
+- Clínica nas Nuvens como baseline competitivo — mercado entrega repositório, não
+  plataforma.
+- Real estate e escala: monitores menores (Guilherme); Paciente 360 com anos de
+  dados (Lucas).
+- Visão estratégica: prontuário como pilar de atualização clínica — alinha com
+  Atena invisível, desde que não sobrecarregue o perfil típico.
+
+---
+
 ## 02 · Insights consolidados
 
-Síntese consolidada das três entrevistas, cruzando as dores observadas com as
-Personas (Doc 02), a Análise Competitiva (Doc 03) e o User Flow
-(pré / durante / pós-consulta).
+Síntese consolidada das quatro sessões (três entrevistas + shadowing), cruzando
+as dores observadas com as Personas (Doc 02), a Análise Competitiva (Doc 03) e o
+User Flow (pré / durante / pós-consulta).
 
 ### Achados consolidados
 
 - **Fragmentação de ferramentas é universal.** Tércio (Doutoralia + Drive +
   WhatsApp + caderno), Marco (prontuário hospitalar + BIPP + ChatGPT + Google
-  Docs), Bárbara (6 ferramentas). Validação mais forte da plataforma única.
-- **IA já é rotina, mas com revisão humana inegociável.** Os três leem e corrigem
-  tudo, exigem fonte/evidência. A régua não é automatizar, é acelerar com
-  controle.
+  Docs), Bárbara (6 ferramentas), Patricia (Clínica nas Nuvens + Meet +
+  WhatsApp + ChatGPT para laudos). Validação mais forte da plataforma única.
+- **IA já é rotina, mas com revisão humana inegociável.** Os quatro leem e
+  corrigem tudo. A régua não é automatizar, é acelerar com controle — Patricia
+  alerta que 10+ validações seguidas cansa.
 - **O olhar humano é insubstituível.** Tércio (sinais subliminares), Marco (não
-  digita na frente do paciente), Bárbara (relatos contraditórios). Reforça a
-  Atena invisível.
+  digita na frente do paciente), Bárbara (relatos contraditórios), Patricia
+  (validação em tempo real na tele). Reforça a Atena invisível.
 - **Tempo é a moeda.** Tércio ("o lance é o tempo"), Bárbara (burocracia), Marco
-  (densidade do registro). O ganho percebido vem de devolver tempo ao médico.
+  (densidade do registro), Patricia (laudos manuais demorados).
+- **Excesso de cliques é consenso.** Marco (abas SOAP), Bárbara (62 cliques no
+  IJIA), Patricia ("não tá legal"). Os três entrevistados + a fundadora apontam o
+  mesmo padrão.
 
 ### Sinais consolidados
 
 - Barreira financeira no início de carreira (Marco) — implica modelo de negócio.
 - Acessibilidade para idosos (Tércio) — tipografia ampliável.
-- Simplicidade vs. excesso de abas e botões (Marco).
-- LGPD, sigilo e imutabilidade do laudo (Tércio, Marco).
-- Acompanhamento hoje é reativo (os três) — oportunidade de FUP proativo (M1–M12).
-- Personalização (receituário, prompts, modelos).
+- Simplicidade vs. excesso de abas e botões (Marco, Patricia) — layout v107+.
+- LGPD, sigilo e imutabilidade do laudo (Tércio, Marco); laudos por IA com
+  compliance (Patricia).
+- Acompanhamento hoje é reativo (os três entrevistados) — Patricia valida Kanban
+  pós-consulta como diferencial.
+- Personalização (receituário, prompts, modelos, packs de templates).
+- Produto para o médico típico, não para a fundadora (Patricia) — real estate em
+  monitores menores.
 
 ### Formas e insights para melhorar
 
@@ -258,15 +340,16 @@ Oportunidades cruzando as dores observadas com o User Flow (pré / durante / pó
 e a análise competitiva.
 
 - **Pré-consulta — hidratação + preparo.** Atena hidrata comorbidades,
-  medicações, escalas e exames; paciente sobe exames e TCLE antes.
+  medicações, escalas e exames; paciente sobe exames e TCLE antes. Resolve
+  Bárbara, Tércio e o box de contexto da Patricia.
 - **Durante — foco no paciente.** Transcrição ao vivo com separação de voz médico
-  × paciente (dor do Tércio) e tela única / editor fluido (dor do Marco).
-- **Pós-consulta — saída rápida e limpa.** Receita validada e assinada rápido,
-  enviada em PDF sem pop-ups (dor da Bárbara); laudo imutável com retificação
-  rastreável (pedido do Tércio).
-- **Diferenciais — memória e casuística.** Busca semântica na casuística
-  (Bárbara), CID automático, base científica confiável (Tércio) e FUP proativo,
-  ligados ao schema RWE.
+  × paciente (Tércio), box único e videoconsulta embedada (Marco e Patricia).
+- **Pós-consulta — saída rápida e limpa.** Receita em PDF sem pop-ups (Bárbara);
+  laudo por IA com compliance (Patricia); retificação rastreável (Tércio); Kanban
+  pós-consulta.
+- **Diferenciais — memória e casuística.** Busca semântica (Bárbara), CID
+  automático, base científica (Tércio), Paciente 360 escalável (Patricia), ligados
+  ao schema RWE.
 
 ---
 

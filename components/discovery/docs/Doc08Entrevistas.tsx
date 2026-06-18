@@ -19,12 +19,12 @@ export default function Doc08Entrevistas() {
             Entrevistas com <em>médicos</em>
           </>
         }
-        lead="Pesquisa qualitativa com médicos prescritores de cannabis. As sessões seguem roteiro em blocos com objetivos explícitos; os achados aparecem nas entrevistas individuais e na síntese consolidada."
+        lead="Pesquisa qualitativa com médicos prescritores de cannabis. Três entrevistas por blocos e uma sessão de shadowing com a fundadora; os achados aparecem nas sessões individuais e na síntese consolidada."
         meta={[
-          { dt: "Método", dd: "Entrevista por blocos · ~55 min" },
-          { dt: "Amostra", dd: "3 entrevistas" },
-          { dt: "Período", dd: "11–16/06/2026" },
-          { dt: "Condução", dd: "Nádia Morgado · Guilherme Dutra Guedes" },
+          { dt: "Método", dd: "Entrevista por blocos + shadowing" },
+          { dt: "Amostra", dd: "3 entrevistas + 1 shadowing" },
+          { dt: "Período", dd: "11–18/06/2026" },
+          { dt: "Condução", dd: "Nádia Morgado · Guilherme Dutra Guedes · Lucas Correia" },
         ]}
       />
 
@@ -59,11 +59,10 @@ export default function Doc08Entrevistas() {
       >
         <p>
           Três perfis distintos de médicos prescritores, deliberadamente
-          contrastantes: um médico sênior cético e analógico, um residente no
-          início de carreira com forte restrição financeira, e uma médica de
-          família detalhista e usuária estruturada de IA. A diversidade é
-          intencional: confirma que a plataforma precisa atender perfis
-          radicalmente diferentes.
+          contrastantes, mais uma sessão de shadowing com a fundadora validando
+          o protótipo no consultório real. A diversidade é intencional: confirma
+          que a plataforma precisa atender perfis radicalmente diferentes — e
+          que o produto precisa funcionar além do perfil da própria Patricia.
         </p>
         <div className="stack">
           <Card eyebrow="E1 · 15/06" title="Dr. Tércio" border="accent">
@@ -85,6 +84,14 @@ export default function Doc08Entrevistas() {
               Médica de família há 22 anos, cannabis, detalhista. Usa 6
               ferramentas e prompts próprios de IA. Perfil{" "}
               <strong>Humanista + Pragmático</strong>.
+            </p>
+          </Card>
+          <Card eyebrow="E4 · 18/06" title="Dra. Patricia Montagner" border="teal">
+            <p>
+              Neurocirurgiã e fundadora WeCann. Shadowing no consultório com
+              Clínica nas Nuvens + protótipo WeCann. Valida MVP e critica UX da
+              tela de consulta. Perfil{" "}
+              <strong>Especialista pragmático · Fundadora</strong>.
             </p>
           </Card>
         </div>
@@ -582,6 +589,231 @@ export default function Doc08Entrevistas() {
             ]}
           />
         </Meeting>
+
+        {/* ---------- E4 · Patricia · Shadowing ---------- */}
+        <Meeting
+          id="ent-patricia"
+          when="E4 · 18/06"
+          title="Dra. Patricia Montagner · Shadowing no consultório"
+          sub="18/06/2026 · 2h 02min · presencial · shadowing · perfil: Especialista pragmático · Fundadora"
+        >
+          <Callout variant="info" label="Shadowing · não é entrevista por blocos">
+            <p>
+              Sessão de observação guiada no consultório real: Patricia opera o{" "}
+              <strong>Clínica nas Nuvens</strong> (EHR atual) e valida telas do
+              protótipo WeCann ao vivo. Evidência de produto e de fluxo, não de
+              roteiro estruturado.
+            </p>
+          </Callout>
+
+          <h4>Perfil e contexto</h4>
+          <p>
+            Médica neurocirurgiã e fundadora da WeCann. Referência de produto e
+            de persona médica, mas se autodeclara{" "}
+            <strong>&ldquo;exceção da exceção&rdquo;</strong>: notebook +
+            segunda tela + computador da clínica, secretária dedicada (Mary),
+            alta afinidade tecnológica. Contrasta com o perfil típico do mercado:
+            1 monitor pequeno, sem secretária, pouca afinidade com tecnologia
+            (alguns usam Word ou caderno). Pede explicitamente que o produto{" "}
+            <strong>não seja feito para ela</strong> — &ldquo;para meio milhão
+            de médicos&rdquo;. Hipótese central: o prontuário é a tela que o
+            médico mais usa — mais do que qualquer rede social — e nenhum
+            concorrente pensou além do repositório de informações. Visão do
+            prontuário como plataforma de educação contínua, pesquisa
+            multicêntrica (RWE) e rede social médica. Match com a persona{" "}
+            <Tag variant="teal">Especialista pragmático</Tag>.
+          </p>
+
+          <h4>Fluxo de trabalho atual</h4>
+          <BlockList
+            items={[
+              <>
+                <strong>Pré-consulta:</strong> coleta de informações via
+                WhatsApp antes da consulta; consolidação num box de contexto
+                clínico disponível antes de o médico iniciar o atendimento
+                (&ldquo;metade do jogo ganho&rdquo;). Hoje o Clínica nas Nuvens
+                não puxa histórico clínico na pré-visualização da agenda.
+              </>,
+              <>
+                <strong>Durante:</strong> agenda é o ponto de entrada principal
+                (hoje só nome + tipo de consulta — sem foto, diagnóstico ou
+                tempo de acompanhamento). Telemedicina: Mary (secretária) entra
+                no Meet antes com o paciente para testar câmera/microfone;
+                objetivo é aviso automático &ldquo;paciente entrou na sala&rdquo;
+                e videoconsulta embedada na mesma tela do prontuário, sem
+                redirecionar. Validação da IA em tempo real na telemedicina;
+                revisão concentrada no final na consulta presencial.
+              </>,
+              <>
+                <strong>Pós-consulta:</strong> Kanban com classificação
+                automática das mensagens dos pacientes por tipo — renovação de
+                receita, solicitação de encaixe, feedback de tratamento, dúvidas
+                sobre medicação, questões financeiras / nota fiscal. Nenhum
+                prontuário do mercado oferece isso de forma estruturada hoje.
+              </>,
+              <>
+                <strong>Documentos entre consultas:</strong> tela dedicada para
+                emissão de receitas, solicitações de exames, atestados e laudos
+                fora do contexto de atendimento — mais prático do que entrar no
+                prontuário do paciente para emitir uma receita avulsa.
+              </>,
+            ]}
+          />
+
+          <h4>Uso de IA</h4>
+          <BlockList
+            items={[
+              <>
+                <strong>Transcrição em tempo real:</strong> IA preenche os
+                campos corretos do prontuário automaticamente; médico faz apenas
+                revisão e validação — nunca determinístico, sempre sugestão com
+                check.
+              </>,
+              <>
+                <strong>Prescrição inteligente:</strong> seleção de medicação →
+                sistema preenche concentração, forma de uso e cálculo de
+                miligramagem por dose/dia (ex.: Canabidiol 10 gotas × 2x/dia →
+                66mg/dia). Disclaimers automáticos para receita sem nome, sem
+                CRM ou sobredosagem fora de bula.
+              </>,
+              <>
+                <strong>Coluna Atena:</strong> alertas clínicos em vermelho
+                (interações, efeitos adversos, sobredosagem — não dispensáveis),
+                lembretes de escala por patologia e pílulas educacionais em
+                roxo (artigos, aulas WeCann). Cards empilhados — médico vê 1
+                por vez, dá ok ou descarta.
+              </>,
+              <>
+                <strong>Laudos por IA:</strong> botão único → IA lê o histórico
+                completo e gera o laudo. Diferencial de compliance: evita uso do
+                ChatGPT com dados de pacientes fora das normas.
+              </>,
+              <>
+                <strong>Casuística e conteúdo:</strong> gráficos agregados da
+                prática; funcionalidade &ldquo;Compartilhar minha prática&rdquo;
+                (card Instagram, abstract para congresso, posts anonimizados).
+              </>,
+            ]}
+          />
+
+          <h4>Dores priorizadas</h4>
+          <BlockList
+            items={[
+              <>
+                <strong>Acesso ao sistema:</strong> login por e-mail + 2FA com
+                delay no envio do código, chegada de múltiplos códigos e
+                confusão de qual usar. Magic link em ambiente compartilhado
+                abre no dispositivo errado.
+              </>,
+              <>
+                <strong>Prontuário não estruturado:</strong> quase 100% dos
+                médicos ignoram campos separados (queixa, histórico, conduta) e
+                escrevem tudo num campo aberto — dados pobres, sem valor
+                analítico.
+              </>,
+              <>
+                <strong>Tela de consulta atual:</strong> múltiplas abas,
+                muitos cliques, sobrecarga visual — &ldquo;não tá legal&rdquo;.
+                Risco de sobrecarga com vídeo + prontuário + alertas +
+                transcrição em monitores menores.
+              </>,
+              <>
+                <strong>Paciente 360:</strong> prontuários anteriores sem
+                consolidação; cabeçalho com cards saturado de informação.
+              </>,
+              <>
+                <strong>Validação da IA:</strong> 10+ checks seguidos é
+                cansativo; tela de finalização com muita informação condensada.
+              </>,
+              <>
+                <strong>Laudos manuais:</strong> gerar laudos manualmente é
+                extremamente demorado — maior dor relatada na emissão de
+                documentos.
+              </>,
+            ]}
+          />
+
+          <h4>Ideias e pedidos diretos</h4>
+          <BlockList
+            items={[
+              <>
+                <strong>MVP inegociável (7 telas):</strong> Home, Casuística,
+                Pré-consulta, Tela de consulta, Documentos, Pós-consulta e
+                Paciente 360. Agenda é commodity — inovação mais em branding do
+                que em UX.
+              </>,
+              <>
+                <strong>Layout v107+:</strong> menu lateral retrátil, coluna
+                Atena à direita, box único de prontuário preenchido pela
+                transcrição, campo de anotações livres com âncora inteligente,
+                videoconsulta embedada, timer de consulta visível.
+              </>,
+              <>
+                <strong>Campos fechados:</strong> CIDs com seletor e busca;
+                medicações com nome, concentração e posologia padronizados.
+                Editor tipo Notion (barra <code>/</code>, <code>@</code>) para
+                estruturar o tipo de dado conforme o contexto.
+              </>,
+              <>
+                <strong>Agenda enriquecida:</strong> foto do paciente +
+                diagnóstico principal + tempo de acompanhamento diretamente na
+                listagem.
+              </>,
+              <>
+                <strong>Onboarding com packs:</strong> no primeiro acesso, médico
+                responde sobre especialidade; sistema sugere packs de templates e
+                prioriza conforme o contexto da consulta (ex.: dor crônica num
+                neurologista).
+              </>,
+            ]}
+          />
+
+          <h4>Leitura Atom6 · validações e sinais</h4>
+          <BlockList
+            items={[
+              <>
+                <strong>Confirma o padrão E1–E3:</strong> os três entrevistados
+                citaram excesso de cliques; Patricia valida ao vivo na tela de
+                consulta (&ldquo;não tá legal&rdquo;) — prontuários do mercado
+                não estão ouvindo os usuários. Cruza com a dor do{" "}
+                <a href="#ent-marco">Marco (abas demais)</a> e da{" "}
+                <a href="#ent-barbara">Bárbara (fragmentação)</a>.
+              </>,
+              <>
+                <strong>Valida o User Flow inteiro:</strong> pré-consulta
+                WhatsApp (resolve o resumo manual da Bárbara), tela única com
+                vídeo embedado (dor do Tércio de duas telas), pós-consulta
+                Kanban e documentos entre consultas.
+              </>,
+              <>
+                <strong>Priorização de produto explícita:</strong> as 7 telas do
+                MVP mapeiam diretamente para os módulos do User Flow e do{" "}
+                <a href="#arq-rwe">schema RWE (Doc 04)</a> — casuística,
+                Paciente 360 e laudos por IA.
+              </>,
+              <>
+                <strong>Clínica nas Nuvens como baseline:</strong> fricções de
+                login, agenda pobre e prontuário não estruturado reforçam a{" "}
+                <a href="#competitiva">análise competitiva (Doc 03)</a> — o
+                mercado entrega repositório, não plataforma.
+              </>,
+              <>
+                <strong>Real estate e escala:</strong> desafio de equilibrar
+                profundidade com foco em monitores menores (Guilherme); base com
+                anos de histórico exige que Paciente 360 escale desde o design
+                (Lucas).
+              </>,
+              <>
+                <strong>Visão estratégica:</strong> queda nas vendas da
+                certificação médica como sinal de mudança de comportamento; o
+                prontuário como principal pilar de atualização clínica — alinha
+                com a tese da <a href="#pos-atena">Atena invisível</a> e com a
+                referência <a href="#ref-nike">Nike (médico herói)</a>, desde
+                que a interface não sobrecarregue o perfil típico.
+              </>,
+            ]}
+          />
+        </Meeting>
       </Section>
 
       <Section
@@ -590,8 +822,8 @@ export default function Doc08Entrevistas() {
         title="Insights consolidados"
       >
         <p>
-          Síntese consolidada das três entrevistas, cruzando as dores observadas
-          com as <a href="#personas">Personas (Doc 02)</a>, a{" "}
+          Síntese consolidada das quatro sessões (três entrevistas + shadowing),
+          cruzando as dores observadas com as <a href="#personas">Personas (Doc 02)</a>, a{" "}
           <a href="#competitiva">Análise Competitiva (Doc 03)</a> e o User Flow
           (pré / durante / pós-consulta).
         </p>
@@ -603,28 +835,38 @@ export default function Doc08Entrevistas() {
               <strong>Fragmentação de ferramentas é universal.</strong> Tércio
               (Doutoralia + Drive + WhatsApp + caderno), Marco (prontuário
               hospitalar + BIPP + ChatGPT + Google Docs), Bárbara (6
-              ferramentas). Todos gastam tempo &ldquo;juntando tudo&rdquo; — é a
-              validação mais forte da <strong>plataforma única</strong> como tese
-              da WeCann.
+              ferramentas), Patricia (Clínica nas Nuvens + Meet + WhatsApp +
+              ChatGPT para laudos). Todos gastam tempo &ldquo;juntando
+              tudo&rdquo; — é a validação mais forte da{" "}
+              <strong>plataforma única</strong> como tese da WeCann.
             </>,
             <>
               <strong>IA já é rotina, mas com revisão humana inegociável.</strong>{" "}
-              Os três leem e corrigem tudo, exigem fonte/evidência e desconfiam de
+              Os quatro leem e corrigem tudo, exigem fonte/evidência e desconfiam de
               saída automática. A régua não é &ldquo;automatizar&rdquo;, é{" "}
-              <strong>acelerar com controle</strong>.
+              <strong>acelerar com controle</strong> — Patricia exige checks, mas
+              alerta que 10+ validações seguidas cansa.
             </>,
             <>
               <strong>O olhar humano é insubstituível.</strong> Tércio (sinais
               subliminares, tom de voz), Marco (não digita na frente do
               paciente), Bárbara (relatos contraditórios que a IA não
-              interpreta). Reforça a <strong>Atena invisível</strong>: o médico é
-              o herói, o produto é sombra.
+              interpreta), Patricia (validação em tempo real na tele, revisão no
+              final no presencial). Reforça a <strong>Atena invisível</strong>:
+              o médico é o herói, o produto é sombra.
             </>,
             <>
               <strong>Tempo é a moeda.</strong> Tércio (&ldquo;o lance é o
               tempo&rdquo;), Bárbara (burocracia e fragmentação), Marco (densidade
-              do registro psiquiátrico). O ganho percebido vem de devolver tempo
-              ao médico.
+              do registro psiquiátrico), Patricia (laudos manuais extremamente
+              demorados). O ganho percebido vem de devolver tempo ao médico.
+            </>,
+            <>
+              <strong>Excesso de cliques é consenso.</strong> Marco (abas SOAP),
+              Bárbara (62 cliques no IJIA), Patricia ao vivo (&ldquo;não tá
+              legal&rdquo; na tela de consulta). Nádia consolidou: os três
+              entrevistados + a fundadora apontam o mesmo padrão — prontuários
+              cheios de campos que ninguém usa.
             </>,
           ]}
         />
@@ -641,21 +883,30 @@ export default function Doc08Entrevistas() {
               ampliável e interface sem medo para público 60+.
             </>,
             <>
-              <strong>Simplicidade vs. excesso de abas e botões</strong> (Marco):
-              tela limpa como diferencial.
+              <strong>Simplicidade vs. excesso de abas e botões</strong> (Marco,
+              Patricia): tela limpa e box único como diferencial — layout v107+.
             </>,
             <>
               <strong>LGPD, sigilo e imutabilidade do laudo</strong> (Tércio,
-              Marco): requisito de confiança, não só feature.
+              Marco): requisito de confiança, não só feature. Patricia reforça
+              compliance na geração de laudos por IA (vs. ChatGPT).
             </>,
             <>
-              <strong>Acompanhamento hoje é reativo</strong> (os três):
-              oportunidade clara de <strong>FUP proativo</strong> (M1–M12 do User
-              Flow).
+              <strong>Acompanhamento hoje é reativo</strong> (os três
+              entrevistados): oportunidade clara de <strong>FUP proativo</strong>{" "}
+              (M1–M12 do User Flow) — Patricia valida o Kanban pós-consulta como
+              diferencial inexistente no mercado.
             </>,
             <>
               <strong>Personalização</strong> (receituário do Marco, prompts da
-              Bárbara, modelos do Tércio): cada médico tem o próprio jeito.
+              Bárbara, modelos do Tércio, packs de templates da Patricia): cada
+              médico tem o próprio jeito.
+            </>,
+            <>
+              <strong>Produto para o médico típico, não para a fundadora</strong>{" "}
+              (Patricia): notebook + segunda tela ≠ 1 monitor pequeno sem
+              secretária — real estate e densidade de informação precisam
+              escalar para o perfil médio.
             </>,
           ]}
         />
@@ -670,28 +921,32 @@ export default function Doc08Entrevistas() {
           <Card eyebrow="Pré-consulta" title="Hidratação + preparo" border="teal">
             <p>
               Atena hidrata comorbidades, medicações, escalas e exames; paciente
-              sobe exames e TCLE antes. Resolve o resumo manual de Bárbara e o
-              preparo de Tércio.
+              sobe exames e TCLE antes. Resolve o resumo manual de Bárbara, o
+              preparo de Tércio e o box de contexto clínico da Patricia
+              (&ldquo;metade do jogo ganho&rdquo;).
             </p>
           </Card>
           <Card eyebrow="Durante" title="Foco no paciente" border="accent">
             <p>
               Transcrição ao vivo com <strong>separação de voz médico ×
-              paciente</strong> (dor explícita do Tércio) e tela única / editor
-              fluido (dor do Marco). Médico olha nos olhos; Atena registra.
+              paciente</strong> (dor explícita do Tércio), tela única / editor
+              fluido com box único (dor do Marco e Patricia) e videoconsulta
+              embedada. Médico olha nos olhos; Atena registra.
             </p>
           </Card>
           <Card eyebrow="Pós-consulta" title="Saída rápida e limpa" border="teal">
             <p>
               Receita gerada, validada e assinada rápido, enviada em PDF{" "}
-              <strong>sem pop-ups de venda</strong> (dor da Bárbara). Laudo
-              imutável com retificação rastreável (pedido do Tércio).
+              <strong>sem pop-ups de venda</strong> (dor da Bárbara). Laudo por
+              IA com compliance (Patricia) e retificação rastreável (pedido do
+              Tércio). Kanban pós-consulta por tipo de demanda.
             </p>
           </Card>
           <Card eyebrow="Diferenciais" title="Memória e casuística" border="accent">
             <p>
               Busca semântica na casuística (Bárbara), CID automático, base
-              científica confiável (Tércio) e FUP proativo — ligados ao{" "}
+              científica confiável (Tércio), FUP proativo e Paciente 360
+              escalável (Patricia) — ligados ao{" "}
               <a href="#arq-rwe">schema RWE</a>.
             </p>
           </Card>
