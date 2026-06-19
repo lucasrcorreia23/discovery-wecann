@@ -7,6 +7,24 @@
 
 ---
 
+## 00 · Palavra de posicionamento
+
+Síntese do workshop de marca com os fundadores (Atomsix · junho/2026). A WeCann Care ocupa o vazio entre o **disruptivo** e o **clinicamente sério** — território que nenhum concorrente direto brasileiro assume por completo.
+
+> **Disruptivo na forma. Humano na essência.**
+
+**Princípio organizador:** a identidade visual é tecnológica e disruptiva; a experiência e a narrativa do produto são essencialmente humanas. Não é meio-termo — é divisão por camada.
+
+**Declaração.** Para médicos prescritores que merecem mais do que registrar consultas, **WeCann Care** é o prontuário inteligente que **entende Medicina e contribui com a Medicina** — com superfície de precisão e engenharia, e experiência centrada no médico e no encontro clínico — para que avance na fronteira da prática e se reencontre com o motivo pelo qual escolheu ser médico.
+
+- **Autoridade** — rigor técnico-jurídico, protocolos internacionais e validação por pares.
+- **Emoção** — atravessar uma fronteira na Medicina e reconectar-se com a vocação original.
+- **Prova** — casuística e ciência em escala; régua definitiva: o médico que percebe que se tornou clinicamente melhor.
+
+Fonte: `inputs/WeCann_Posicionamento_de_Marca.md`
+
+---
+
 ## Contexto
 
 Lista de empresas e referências que o cliente sente ter algo forte que ressoa com o que imagina e deseja para o produto WeCann Care e a marca WeCann.

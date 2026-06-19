@@ -170,8 +170,68 @@ export default function Doc06ReferenciasMarca() {
       </Callout>
 
       <Section
+        id="ref-posicionamento"
+        num="00 · POSICIONAMENTO"
+        title="Palavra de posicionamento"
+      >
+        <p>
+          Síntese do workshop de marca com os fundadores (Atomsix · junho/2026).
+          A WeCann Care ocupa o vazio entre o <strong>disruptivo</strong> e o{" "}
+          <strong>clinicamente sério</strong> — território que nenhum concorrente
+          direto brasileiro assume por completo.
+        </p>
+
+        <div className="pull">
+          Disruptivo na forma. Humano na essência.
+        </div>
+
+        <p>
+          <strong>Princípio organizador:</strong> a identidade visual é
+          tecnológica e disruptiva; a experiência e a narrativa do produto são
+          essencialmente humanas. Não é meio-termo — é divisão por camada.
+        </p>
+
+        <Callout label="Declaração" variant="purple">
+          <p>
+            Para médicos prescritores que merecem mais do que registrar consultas,{" "}
+            <strong>WeCann Care</strong> é o prontuário inteligente que{" "}
+            <strong>entende Medicina e contribui com a Medicina</strong> — com
+            superfície de precisão e engenharia, e experiência centrada no médico
+            e no encontro clínico — para que avance na fronteira da prática e se
+            reencontre com o motivo pelo qual escolheu ser médico.
+          </p>
+        </Callout>
+
+        <BlockList
+          items={[
+            <>
+              <strong>Autoridade</strong> — rigor técnico-jurídico, protocolos
+              internacionais e validação por pares: médicos de prestígio que
+              escolhem a marca como espelho de credibilidade.
+            </>,
+            <>
+              <strong>Emoção</strong> — atravessar uma fronteira desconhecida na
+              Medicina e, ao mesmo tempo, reconectar-se com a vocação original;
+              pertencimento que evolui de respeito para admiração.
+            </>,
+            <>
+              <strong>Prova</strong> — casuística, dados e ciência em escala; a
+              régua definitiva: o médico que, depois de usar o produto, percebe
+              que se tornou clinicamente melhor.
+            </>,
+          ]}
+        />
+
+        <p>
+          Fonte:{" "}
+          <code>inputs/WeCann_Posicionamento_de_Marca.md</code> · Atomsix Studio
+          · junho/2026.
+        </p>
+      </Section>
+
+      <Section
         id="ref-intro"
-        num="00 · CONTEXTO"
+        num="01 · CONTEXTO"
         title="Lista de referências enviada pelo cliente"
       >
         <p>
@@ -226,7 +286,7 @@ export default function Doc06ReferenciasMarca() {
 
       <Section
         id="ref-sintese"
-        num="05 · SÍNTESE"
+        num="06 · SÍNTESE"
         title="O padrão que o setor não estava entregando"
       >
         <p>
@@ -277,7 +337,7 @@ export default function Doc06ReferenciasMarca() {
 
       <Section
         id="ref-design"
-        num="06 · IMPLICAÇÕES"
+        num="07 · IMPLICAÇÕES"
         title="Para design e produto (Atom6)"
       >
         <div className="grid-2">
