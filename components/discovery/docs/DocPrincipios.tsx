@@ -52,11 +52,7 @@ export default function DocPrincipios() {
         <PrincipleList items={PRINCIPLES} />
       </Section>
 
-      <p style={{ marginTop: 48, borderTop: "1px solid var(--line)", paddingTop: 28, color: "var(--ink-faint)", fontSize: "var(--fs-body-sm)" }}>
-        Estes princípios ficam vivos: novos itens podem ser adicionados
-        conforme entrevistas e validações trouxerem dores ou padrões não
-        cobertos.
-      </p>
+   
     </div>
   );
 }
