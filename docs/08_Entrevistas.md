@@ -56,7 +56,7 @@ própria Patricia.
 
 > **Confidencial · uso interno.** O entrevistado pediu explicitamente que esta
 > sessão **não seja publicada nem divulgada externamente** ("só para
-> entendimento de vocês"). Manter restrito à equipe Atom6 / WeCann.
+> entendimento de vocês"). Manter restrito à equipe AtomSix / WeCann.
 
 **Perfil e contexto.** 62 anos, formado há quase 40. Ex-médico militar, depois
 medicina de família em comunidades rurais; hoje foco em cannabis medicinal,
@@ -106,7 +106,7 @@ personas **Sênior** e **Humanista**.
 - Acessibilidade real (tipografia ampliável).
 - Velocidade acima de tudo: "o lance é o tempo".
 
-**Leitura Atom6 · validações e sinais.**
+**Leitura AtomSix · validações e sinais.**
 - Valida a tese da Atena invisível: o olhar humano é insubstituível; a IA deve
   organizar e poupar tempo, não atender. Converge com a persona Humanista e com
   a referência Nike (médico herói).
@@ -156,7 +156,7 @@ escolhas de ferramenta. Match com a persona **Recém-formado**.
   envio digital, aviso de consulta automático, agenda centralizada.
 - Espaço para anotações privadas fora do prontuário do paciente.
 
-**Leitura Atom6 · validações e sinais.**
+**Leitura AtomSix · validações e sinais.**
 - Primeira voz pela simplicidade ("abas demais") — valida interface mínima
   (Apple · complexidade invisível).
 - Barreira de preço no início de carreira: sinal de modelo de negócio /
@@ -213,7 +213,7 @@ Usuária estruturada de IA, mas desconfiada — lê tudo. Match com as personas
 - Busca semântica na base / casuística própria.
 - Receita em PDF limpa, sem pop-ups.
 
-**Leitura Atom6 · validações e sinais.**
+**Leitura AtomSix · validações e sinais.**
 - Valida diretamente a tese central da WeCann: a fragmentação de 6 ferramentas é
   o problema que a plataforma única resolve.
 - Olhar humano insubstituível com exemplo concreto: paciente de 96 anos + 2
@@ -282,7 +282,7 @@ persona **Especialista pragmático**.
 - Agenda enriquecida: foto + diagnóstico + tempo de acompanhamento.
 - Onboarding com packs de templates por especialidade.
 
-**Leitura Atom6 · validações e sinais.**
+**Leitura AtomSix · validações e sinais.**
 - Confirma excesso de cliques citado por E1–E3; Patricia valida ao vivo ("não tá
   legal"). Cruza com Marco (abas) e Bárbara (fragmentação).
 - Valida User Flow: pré-consulta WhatsApp, tela única com vídeo (Tércio), Kanban

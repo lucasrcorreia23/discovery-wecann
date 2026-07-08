@@ -4,7 +4,7 @@ export default function Doc03Competitiva() {
   return (
     <div className="tab-view">
       <Hero
-        kicker="Doc 03 · Pack de Onboarding Atom6 Studio"
+        kicker="Doc 03 · Pack de Onboarding AtomSix Studio"
         title={
           <>
             Análise <em>Competitiva</em>
@@ -41,7 +41,7 @@ export default function Doc03Competitiva() {
             Para a WeCann Care, isso é estratégico: cada um carrega um padrão de design
             que o médico brasileiro <em>reconhece</em>. Decidir o que adotar, o
             que evitar e o que <strong>desviar deliberadamente</strong> é o
-            trabalho do Atom6.
+            trabalho da AtomSix.
           </p>
         </div>
 
@@ -179,7 +179,7 @@ export default function Doc03Competitiva() {
         <p>
           A matriz a seguir compara as 6 marcas em 10 dimensões de
           UX/produto/branding. A última coluna (WeCann Care) é o &ldquo;norte
-          magnético&rdquo; para o Atom6 — onde queremos estar quando o brief virar
+          magnético&rdquo; para a AtomSix — onde queremos estar quando o brief virar
           tela.
         </p>
 
@@ -305,7 +305,7 @@ export default function Doc03Competitiva() {
           mobile-first · mas IA anônima e sem corpus proprietário. SOUL MV em ERP
           enterprise sem alma clínica.{" "}
           <strong>
-            Quando o Atom6 desenhar a WeCann Care, o teste mais simples é: nenhuma das
+            Quando a AtomSix desenhar a WeCann Care, o teste mais simples é: nenhuma das
             seis marcas analisadas aqui poderia ter feito esta tela.
           </strong>{" "}
           Se a resposta for &ldquo;poderia ser do Amplimed&rdquo;, &ldquo;parece o
@@ -315,7 +315,7 @@ export default function Doc03Competitiva() {
 
       <div className="doc-footer">
         <span>Doc 03 · Análise Competitiva UX · v2 · 6 concorrentes</span>
-        <span>WeCann × Atom6 Studio · Maio 2026</span>
+        <span>WeCann × AtomSix Studio · Maio 2026</span>
       </div>
     </div>
   );
@@ -641,7 +641,7 @@ const COMPETITORS: Competitor[] = [
       "<strong>Assinatura digital ICP-Brasil</strong> embutida — peso jurídico.",
       "<strong>Compartilhamento granular.</strong> Médico-com-médico, paciente-com-médico — controle fino.",
     ],
-    limitsTitle: "Fraquezas · o que o Atom6 deve evitar copiar",
+    limitsTitle: "Fraquezas · o que a AtomSix deve evitar copiar",
     limits: [
       "<strong>UX pesada de growth.</strong> Pop-ups, “fale conosco”, WhatsApp flutuante — produto se transforma em funil.",
       "<strong>IA tímida ou ausente.</strong> O posicionamento de IA é fraco — não há “agente” próprio com identidade.",
@@ -699,7 +699,7 @@ const COMPETITORS: Competitor[] = [
       "<strong>Faturamento TISS forte.</strong> “99% redução de glosa” — KPI mensurável, defensável.",
       "<strong>Migração como serviço.</strong> “32M+ prontuários migrados” como diferencial de aquisição — vence inércia.",
     ],
-    limitsTitle: "Fraquezas · o que o Atom6 deve observar",
+    limitsTitle: "Fraquezas · o que a AtomSix deve observar",
     limits: [
       "<strong>Excesso de feature breadth na home.</strong> ~25 features listadas na primeira tela — produto parece comoditizado.",
       "<strong>Estética “BR-feliz” pode soar light demais</strong> para especialistas seniores ou hospitais.",
@@ -770,7 +770,7 @@ const COMPETITORS: Competitor[] = [
     ],
     special: {
       label: "Contexto especial · WeCann",
-      text: "<strong>CNN é o sistema do qual a WeCann migra dados.</strong> O Relatório de Conformidade v107 confirma <strong>361.926 registros migrados</strong> da CNN via reconciliação <em>FATURAMENTO → PAGAMENTO → MOVIMENTO</em>. Isso significa que muitos médicos que chegam à WeCann Care vêm da CNN — eles têm na cabeça o padrão visual e operacional dela. A Atom6 desenha contra essa memória.",
+      text: "<strong>CNN é o sistema do qual a WeCann migra dados.</strong> O Relatório de Conformidade v107 confirma <strong>361.926 registros migrados</strong> da CNN via reconciliação <em>FATURAMENTO → PAGAMENTO → MOVIMENTO</em>. Isso significa que muitos médicos que chegam à WeCann Care vêm da CNN — eles têm na cabeça o padrão visual e operacional dela. A AtomSix desenha contra essa memória.",
     },
     adopt: [
       "<strong>Migração suave de dados como argumento.</strong> Já temos a infra (361k registros migrados). Comunicar isso na landing reduz a maior barreira de adoção dos médicos CNN.",
@@ -881,7 +881,7 @@ const COMPETITORS: Competitor[] = [
       "<strong>Selos pesados.</strong> KLAS, SBIS, ONA — vence comitê de compras institucional.",
       "<strong>Suporte 35 anos de relacionamento.</strong> Em hospital grande, fornecedor que entra dura décadas.",
     ],
-    limitsTitle: "Fraquezas · onde Atom6 deve se distinguir",
+    limitsTitle: "Fraquezas · onde AtomSix deve se distinguir",
     limits: [
       "<strong>UX clássica de ERP.</strong> Densa, fria, com 8 níveis de menu. Médico individual <em>odeia</em> usar.",
       "<strong>Velocidade de evolução baixa.</strong> Releases anuais, padrão enterprise — não absorve IA generativa rápido.",
@@ -939,7 +939,7 @@ const MATRIX: string[][] = [
     "BR-feliz verde",
     "Healthtech jovem",
     "ERP enterprise",
-    "Liberdade criativa Atom6",
+    "Liberdade criativa AtomSix",
   ],
   [
     "Profundidade clínica",

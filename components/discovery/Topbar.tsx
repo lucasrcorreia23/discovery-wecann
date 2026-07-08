@@ -9,6 +9,9 @@ type Props = {
 };
 
 export default function Topbar({ activeTab, onTab, onToggleMenu }: Props) {
+  const currentTab = TABS.find((t) => t.id === activeTab);
+  const defaultTabId = TABS.find((t) => !t.hidden)?.id ?? TABS[0].id;
+
   return (
     <div className="topbar has-tabs">
       <button
@@ -31,19 +34,28 @@ export default function Topbar({ activeTab, onTab, onToggleMenu }: Props) {
         Menu
       </button>
 
-      <div className="tabs" role="tablist">
-        {TABS.filter((t) => !t.hidden).map((t) => (
-          <button
-            key={t.id}
-            className={`tab${activeTab === t.id ? " active" : ""}`}
-            role="tab"
-            aria-selected={activeTab === t.id}
-            onClick={() => onTab(t.id)}
-          >
-            {t.label}
+      {currentTab?.hidden ? (
+        <div className="tabs-crumb">
+          <button className="crumb-back" onClick={() => onTab(defaultTabId)}>
+            ← Discovery
           </button>
-        ))}
-      </div>
+          <span className="crumb-current">{currentTab.label}</span>
+        </div>
+      ) : (
+        <div className="tabs" role="tablist">
+          {TABS.filter((t) => !t.hidden).map((t) => (
+            <button
+              key={t.id}
+              className={`tab${activeTab === t.id ? " active" : ""}`}
+              role="tab"
+              aria-selected={activeTab === t.id}
+              onClick={() => onTab(t.id)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="status">
         Discovery Pack · WeCann 2026

@@ -31,10 +31,12 @@ type Props = {
   poolRef: React.RefObject<HTMLDivElement | null>;
 };
 
+const SEARCHABLE_HIDDEN_TABS = new Set(["personas", "referencias-marca"]);
+
 export default function SearchPool({ poolRef }: Props) {
   return (
     <div ref={poolRef} className="search-pool" aria-hidden="true">
-      {TABS.filter((tab) => !tab.hidden).map((tab) => {
+      {TABS.filter((tab) => !tab.hidden || SEARCHABLE_HIDDEN_TABS.has(tab.id)).map((tab) => {
         const Doc = DOC_COMPONENTS[tab.id];
         if (!Doc) return null;
         return (

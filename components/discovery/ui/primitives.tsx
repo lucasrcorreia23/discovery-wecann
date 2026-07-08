@@ -310,7 +310,7 @@ export function ProcJourney({
         <div>
           <div className="proc-journey-title">{title}</div>
           {subtitle && (
-            <p style={{ margin: "4px 0 0", color: "var(--ink-mute)", fontSize: "13.5px" }}>
+            <p style={{ margin: "4px 0 0", color: "var(--ink-mute)", fontSize: "var(--fs-body)" }}>
               {subtitle}
             </p>
           )}
@@ -347,7 +347,7 @@ export function JourneyHeader({
   title,
   children,
 }: {
-  journey: "j1" | "j2" | "j3";
+  journey: "j0" | "j1" | "j2" | "j3";
   tag: string;
   title: React.ReactNode;
   children?: React.ReactNode;

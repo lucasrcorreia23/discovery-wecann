@@ -4,7 +4,7 @@ export default function Doc01Posicionamento() {
   return (
     <div className="tab-view">
       <Hero
-        kicker="Doc 01 · v2 · Pack de Onboarding Atom6 Studio"
+        kicker="Doc 01 · v2 · Pack de Onboarding AtomSix Studio"
         title={
           <>
             Posicionamento <em>Estratégico</em>
@@ -268,7 +268,7 @@ export default function Doc01Posicionamento() {
         <p>
           Esse foco — e a recusa de virar contabilidade/banco/marketplace — é o
           que garante que cada decisão de UX e produto precisa amplificar. A
-          Atom6 está desenhando um produto cuja diferenciação só fica visível
+          AtomSix está desenhando um produto cuja diferenciação só fica visível
           quando a interface deixa o trabalho científico transparecer sem assustar
           o médico.
         </p>
@@ -442,7 +442,7 @@ export default function Doc01Posicionamento() {
                 <div className="v-tag">WeCann Care</div>
                 {dim.usIntro && (
                   <p
-                    style={{ fontSize: 13, marginBottom: 8 }}
+                    style={{ fontSize: "var(--fs-body)", marginBottom: 8 }}
                     dangerouslySetInnerHTML={{ __html: dim.usIntro }}
                   />
                 )}
@@ -453,7 +453,7 @@ export default function Doc01Posicionamento() {
                 </ul>
                 {dim.usOutro && (
                   <p
-                    style={{ fontSize: 13, marginTop: 10 }}
+                    style={{ fontSize: "var(--fs-body)", marginTop: 10 }}
                     dangerouslySetInnerHTML={{ __html: dim.usOutro }}
                   />
                 )}
@@ -518,8 +518,9 @@ export default function Doc01Posicionamento() {
         title="O médico que precisa amar a WeCann Care em 5 minutos"
       >
         <p>
-          A Atom6 vai trabalhar com 5 personas detalhadas no Doc 02 — mas há um
-          denominador comum que vale fixar desde já.
+          A AtomSix vai trabalhar com 5 personas detalhadas mais adiante no
+          material de pesquisa — mas há um denominador comum que vale fixar
+          desde já.
         </p>
         <p>
           É um médico brasileiro adulto (idade média 38–55), formado antes da era
@@ -617,7 +618,7 @@ export default function Doc01Posicionamento() {
 
       <div className="doc-footer">
         <span>Doc 01 · v2 · Posicionamento Estratégico</span>
-        <span>WeCann × Atom6 Studio · Junho 2026</span>
+        <span>WeCann × AtomSix Studio · Junho 2026</span>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import {
+﻿import {
   Hero,
   Section,
   Callout,
@@ -12,6 +12,24 @@ import {
   Tag,
 } from "../ui/primitives";
 import { INTERVIEW_FRAMEWORK } from "@/lib/interview-methodology";
+import {
+  BRAND_REFS,
+  BRAND_REF_SINTESE,
+  BRAND_REF_DESIGN,
+} from "@/lib/brand-refs";
+import { PERSONA_INDEX, PERSONA_INSIGHT_LINKS } from "@/lib/personas-index";
+import {
+  MARKET_VISUAL_CODE,
+  TERRITORY_AXES,
+  COMPETITOR_VISUAL_POSITIONS,
+  FOUNDER_REF_POSITIONS,
+  WORKSHOP_BRAND_DECISION,
+} from "@/lib/competitive-brand";
+import {
+  INTERVIEW_PREP_OBJECTIVES,
+  INTERVIEW_SAMPLE,
+  CONSOLIDATED_INSIGHT_CARDS,
+} from "@/lib/interview-guide";
 
 const ACHIEVEMENTS: { dt: string; dd: string }[] = [
   { dt: "4.000+", dd: "médicos formados · 30+ especialidades · 15 países" },
@@ -548,24 +566,24 @@ export default function DocDiscovery() {
   return (
     <div className="tab-view">
       <Hero
-        kicker="Discovery Pack · Atom6 Studio"
+        kicker="Discovery Pack · AtomSix Studio"
         title={
           <>
             WeCann Care
           </>
         }
-        lead="Sumário único do Discovery: quem é a WeCann, o que o Atom6 foi contratado para entregar, o produto de hoje, as jornadas mapeadas, o posicionamento de marca consolidado, a pesquisa que sustenta as decisões e o registro das reuniões que abriram o projeto."
+        lead="Sumário único do Discovery: quem é a WeCann, o que a AtomSix foi contratada para entregar, o produto de hoje, as jornadas mapeadas, o posicionamento de marca consolidado, a pesquisa que sustenta as decisões e o registro das reuniões que abriram o projeto."
         meta={[
           { dt: "Cliente", dd: "WeCann Academy" },
           { dt: "Produto", dd: "WeCann Care · Prontuário Inteligente" },
           { dt: "Projeto", dd: "WEC01 · Design UX Auditoria" },
-          { dt: "Squad Atom6", dd: "Nádia Morgado · Guilherme Dutra Guedes · Patrick Ferreira Coelho · Gabriel Albrecht" },
+          { dt: "Squad AtomSix", dd: "Nádia Morgado · Guilherme Dutra Guedes · Lucas Rodrigues Correia · Gabriel Albrecht" },
         ]}
       />
 
       {/* 1 · INTRODUÇÃO */}
       <Section id="disc-como-usar" num="1 · INTRODUÇÃO" title="Introdução">
-        <div className="intro-block">
+        <div className="disc-intro">
           <h3>Como usar este documento</h3>
           <p>
             Isto não é um PDF — é um wiki vivo que cresce junto com o
@@ -573,19 +591,20 @@ export default function DocDiscovery() {
             só: use a navegação abaixo para ir direto ao que precisa e volte
             quando quiser.
           </p>
-          <div className="sources-grid">
-            <div className="source-card">
-              <div className="label">Abas & sumário</div>
+
+          <div className="disc-intro-tips">
+            <div className="disc-intro-tip">
+              <div className="disc-intro-label">Abas & sumário</div>
               <h5>Navegue pela estrutura</h5>
               <p>
                 As abas no topo trocam de documento (Discovery, Princípios de
-                UX/UI e IA). O sumário na lateral esquerda lista as seções do
+                UX/UI). O sumário na lateral esquerda lista as seções do
                 documento aberto — clique em qualquer item para pular direto
                 para lá.
               </p>
             </div>
-            <div className="source-card cnf">
-              <div className="label">Busca</div>
+            <div className="disc-intro-tip">
+              <div className="disc-intro-label">Busca</div>
               <h5>Encontre em todo o pacote</h5>
               <p>
                 O campo de busca no topo da lateral não procura só na aba
@@ -594,18 +613,9 @@ export default function DocDiscovery() {
                 letras ou mais.
               </p>
             </div>
-            <div className="source-card aud">
-              <div className="label">Links cruzados</div>
-              <h5>Siga o raciocínio</h5>
-              <p>
-                Trechos sublinhados (como este) levam direto ao ponto exato
-                de outro documento — uma persona, uma entrevista, uma
-                referência de marca — mesmo quando esse documento não
-                aparece nas abas visíveis.
-              </p>
-            </div>
           </div>
-          <p>
+
+          <p className="disc-intro-foot">
             Ordem sugerida para quem está lendo pela primeira vez: comece por{" "}
             <strong>A Empresa</strong> e <strong>O Projeto</strong> (contexto),
             siga para <strong>Jornadas Mapeadas</strong> e{" "}
@@ -646,7 +656,7 @@ export default function DocDiscovery() {
         <h3 id="disc-empresa-momento">O momento</h3>
         <p>
           A Academy chega a este projeto com credibilidade institucional já
-          validada — o que dá ao Atom6 um chão sólido para desenhar em cima:
+          validada — o que dá à AtomSix um chão sólido para desenhar em cima:
         </p>
         <FactGrid cols={4} items={ACHIEVEMENTS} />
         <Callout label="Por que isso importa para o design">
@@ -660,14 +670,14 @@ export default function DocDiscovery() {
       </Section>
 
       {/* 3 · O PROJETO */}
-      <Section id="disc-projeto" num="3 · O PROJETO" title="O que o Atom6 foi contratado para fazer">
+      <Section id="disc-projeto" num="3 · O PROJETO" title="O que a AtomSix foi contratada para fazer">
         <h3 id="disc-projeto-objetivo">Objetivo</h3>
         <p>
           O projeto <strong>WEC01 · Design UX Auditoria</strong> nasce de uma
           constatação da própria fundadora: a WeCann já tinha um produto
           funcional construído, mas o UX estava sobrecarregado de informação —
-          sem hierarquia clara entre o que é essencial e o que é ruído. O
-          Atom6 foi chamado para um projeto de <strong>branding em
+          sem hierarquia clara entre o que é essencial e o que é ruído. A
+          Atom foi chamado para um projeto de <strong>branding identity em
           paralelo com UX</strong>, focado na reestruturação das telas
           centrais do fluxo de consulta — não uma reconstrução do zero.
         </p>
@@ -676,7 +686,7 @@ export default function DocDiscovery() {
         <p>
           O escopo combinado nas reuniões de abertura cobre quatro frentes de
           entrega, nesta ordem: <strong>Discovery</strong> (pesquisa,
-          entrevistas, benchmarking — este pacote), <strong>Branding</strong>{" "}
+          entrevistas, benchmarking — este pacote), <strong>Branding Identity</strong>{" "}
           (workshop de posicionamento e identidade visual),{" "}
           <strong>Design UX</strong> (mapa do site, jornada do usuário,
           documentação) e <strong>Design UI</strong> (telas de alta
@@ -691,7 +701,7 @@ export default function DocDiscovery() {
 
         <h3 id="disc-projeto-frentes">As duas frentes em paralelo</h3>
         <p>
-          Depois da validação do Discovery, <strong>Branding</strong> e{" "}
+          Depois da validação do Discovery, <strong>Branding Identity</strong> e{" "}
           <strong>Design UX</strong> rodam em paralelo — a exploração de
           identidade visual não espera o mapa do site ficar pronto, e
           vice-versa. As duas frentes convergem no Design UI, quando a
@@ -705,11 +715,21 @@ export default function DocDiscovery() {
           de pesquisa e entendimento sobre a qual o branding e o UX vão se
           apoiar. Cobre preparação, entrevistas com médicos, investigação do
           produto atual, benchmarking de marca e de produto, e análise de
-          público — fechando com uma rodada de validação e ajustes.
+          público — fechando com uma rodada de validação e ajustes. As{" "}
+          <a href="#disc-personas">5 personas médicas</a> orientam a
+          priorização de telas e trade-offs de interface ao longo deste pacote.
         </p>
 
         <h3 id="disc-projeto-etapas">Etapas do Discovery</h3>
         <Strip items={DISCOVERY_STEPS} />
+        <p>
+          Entre as etapas de junho/2026, o workshop de marca com os fundadores
+          consolidou quatro referências de narrativa —{" "}
+          <strong>SpaceX</strong>, <strong>Apple</strong>, <strong>Nike</strong>{" "}
+          e <strong>Médicos sem Fronteiras</strong> — que orientam posicionamento
+          e design (detalhadas na{" "}
+          <a href="#disc-ref-marca">seção 6 · Referências de marca</a>).
+        </p>
       </Section>
 
       {/* 4 · PRODUTO: CONTRATOS DE DESIGN */}
@@ -739,7 +759,28 @@ export default function DocDiscovery() {
           </Callout>
         </div>
 
-        <div className="stack" style={{ marginTop: "1.25rem" }}>
+        <h3 id="disc-ref-design">Critérios de marca nos contratos de design</h3>
+        <p>
+          Cada contrato de tela herda critérios das{" "}
+          <a href="#disc-ref-marca">referências de marca</a> — traduzidos em
+          regras de interface antes das jornadas detalhadas. Consulta ao vivo,
+          por exemplo, lidera com a persona Recém-formado (copiloto na
+          consulta); documentos e laudos exigem honestidade clínica (MSF).
+        </p>
+        <div className="grid-2">
+          {BRAND_REF_DESIGN.map((card) => (
+            <Card
+              key={card.refId}
+              eyebrow={card.eyebrow}
+              title={card.title}
+              border={card.border}
+            >
+              <p>{card.body}</p>
+            </Card>
+          ))}
+        </div>
+
+        <div className="carousel" style={{ marginTop: "1.25rem" }}>
           {DESIGN_CONTRACTS.map((c) => (
             <Card
               key={c.name}
@@ -808,6 +849,89 @@ export default function DocDiscovery() {
             </p>
           </JourneyHeader>
         </div>
+
+        <h3 id="disc-jornadas-completo">
+          Comparativo: proposta nova vs. jornada atual
+        </h3>
+        <p>
+          Abaixo comparamos a jornada já documentada com a{" "}
+          <strong>nova proposta</strong> de userflow para médico e
+          secretário. Como bônus, a proposta também mapeia o papel do{" "}
+          <strong>secretário/recepção</strong> — ausente do restante do
+          Discovery.
+        </p>
+
+        <JourneyHeader journey="j0" tag="PROPOSTA NOVA · ONBOARDING" title="Onboarding · cadastro, perfil e primeiros passos">
+          <p>
+            Fase que não existe na jornada atual. Na proposta nova, o médico
+            cria conta, completa o perfil (CRM, preferências clínicas) e
+            convida o secretário — depois conclui os{" "}
+            <em>&ldquo;Primeiros passos no EHR&rdquo;</em> (cadastrar
+            paciente → marcar na agenda → consulta com IA → documentos).
+          </p>
+        </JourneyHeader>
+
+        <h4>Jornada atual vs. proposta nova, fase a fase</h4>
+        <TableFrame
+          head={[
+            "Fase",
+            "Jornada atual (já documentada)",
+            "Proposta nova",
+          ]}
+          rows={[
+            [
+              "Onboarding",
+              "Não documentada",
+              "Nova fase — ver bloco acima",
+            ],
+            [
+              "Pré-consulta",
+              "Agenda do dia, Paciente 360, revisão de pré-anamnese",
+              "Mesma base, mais o bônus do secretário: recebe o lead, cadastra o paciente, agenda a consulta e envia convite por WhatsApp",
+            ],
+            [
+              "Consulta",
+              "Athena hidrata e preenche, conduta terapêutica, receita",
+              "Mesma base, mais o bônus do secretário: confirma presença e recepciona, dá suporte de acesso à teleconsulta, confirma pagamento",
+            ],
+            [
+              "Pós-consulta",
+              "Laudo, orientações, definição de FUP (M1–M12)",
+              "Mesma base, mais o bônus do secretário: envia receita e documentos por WhatsApp, apoia renovação de receita junto à ANVISA, agenda o retorno",
+            ],
+          ]}
+        />
+
+        <Callout variant="teal" label="Bônus: a raia do secretário">
+          <p>
+            A proposta nova é a primeira a formalizar o secretário/recepção
+            como papel de pleno direito no fluxo — hoje inexistente em
+            qualquer persona ou jornada documentada no Discovery. Ele entra
+            pelo link enviado pelo médico, cadastra equipe, ausências e
+            integrações (WhatsApp), e depois acompanha o médico em paralelo
+            nas três fases da consulta, com handoffs explícitos entre as duas
+            raias (ex. busca de paciente por nome/CPF/telefone).
+          </p>
+        </Callout>
+
+        <h3 id="disc-personas">As 5 personas médicas</h3>
+        <p>
+          Quem percorre estas jornadas no produto. As cinco personas convivem no
+          WeCann Care: <strong>70% das decisões de UX servem todas</strong>; os{" "}
+          <strong>30% restantes</strong> exigem escolher qual persona{" "}
+          <em>lidera</em> cada tela.
+        </p>
+        <div className="persona-index">
+          {PERSONA_INDEX.map((p) => (
+            <div key={p.num} className="pi-card">
+              <div className="pi-num">{p.num}</div>
+              <div className="pi-name">{p.name}</div>
+              <div className="pi-age">{p.age}</div>
+              <p className="pi-tagline">{p.tagline}</p>
+              <p className="pi-insight">{p.insight}</p>
+            </div>
+          ))}
+        </div>
       </Section>
 
       {/* 6 · POSICIONAMENTO */}
@@ -872,6 +996,13 @@ export default function DocDiscovery() {
         />
 
         <p>
+          <strong>Para quem desenhamos:</strong> médicos prescritores que se
+          reconhecem nas{" "}
+          <a href="#disc-personas">5 personas do produto</a> — do Pragmático
+          que exige evidência ao Recém-formado que busca copiloto.
+        </p>
+
+        <p>
           Os médicos entrevistados (<a href="#disc-pesquisa-entrevistas">seção
           7.2</a>) validam de forma independente pontos centrais da decisão:
           sobrecarga visual é fadiga, não robustez; a fragmentação já é dor
@@ -879,20 +1010,50 @@ export default function DocDiscovery() {
           velocidade; o encontro humano é território protegido da tecnologia.
         </p>
 
-        <Callout variant="teal" label="Fonte">
-          <p>
-            Consolidado em{" "}
-            <code>inputs/WeCann_Posicionamento_de_Marca.md</code>.
-            Detalhamento completo — território de mercado, visão dos dois
-            fundadores, validação com médicos — na aba{" "}
-            <a href="#referencias-marca">Referências de Marca</a>.
-          </p>
-        </Callout>
+        <h3 id="disc-ref-marca">Referências de marca</h3>
+        <p>
+          Empresas e narrativas que os fundadores sentem ressoar com a WeCann
+          Care — consolidadas no workshop de junho/2026. Cada referência traduz
+          uma intenção de marca em critério de produto e interface.
+        </p>
+        <div className="persona-index brand-ref-index">
+          {BRAND_REFS.map((ref) => (
+            <div key={ref.id} className="pi-card">
+              <div className="pi-num">{ref.num}</div>
+              <div className="pi-name">{ref.name}</div>
+              <p className="pi-tagline">{ref.teaser}</p>
+            </div>
+          ))}
+        </div>
+
+        <h4>O padrão que o setor não estava entregando</h4>
+        <TableFrame
+          head={["Referência", "O que olhou", "O que disse"]}
+          rows={BRAND_REF_SINTESE.map((row) => [
+            <strong key={row.marca}>{row.marca}</strong>,
+            row.olhou,
+            row.disse,
+          ])}
+        />
+
       </Section>
 
       {/* 7 · PESQUISA */}
       <Section id="disc-pesquisa" num="7 · PESQUISA" title="Benchmarking e entrevistas">
         <h3 id="disc-pesquisa-benchmarking">7.1 Benchmarking</h3>
+        <p>
+          A análise competitiva abaixo <strong>não é o documento bruto</strong>{" "}
+          que a WeCann enviou no onboarding — é um{" "}
+          <strong>refinamento</strong> daquela base, cruzando outputs das
+          entrevistas (jun/2026), conversas do workshop de posicionamento
+          (17/06) e reuniões de alinhamento. A lente principal é{" "}
+          <strong>negócio e produto</strong>: o que o médico precisa, onde o
+          mercado falha, o que a WeCann pode roubar ou evitar. Esse foco
+          direcionou decisões de UX no produto; a camada de identidade visual
+          entra como complemento do benchmarking geral.
+        </p>
+
+        <h4 id="disc-bench-produto">7.1.1 Análise Competitiva — Produto</h4>
         <p>
           Seis concorrentes mapeados em dois eixos — escopo (assistente pontual
           → plataforma completa) e profundidade clínica (operação
@@ -901,34 +1062,166 @@ export default function DocDiscovery() {
           profundidade clínica combinada com escopo de plataforma completo.
         </p>
 
-        <h4>As 5 linhas vermelhas estratégicas</h4>
+        <h5>As 5 linhas vermelhas estratégicas</h5>
         <TableFrame
           head={["Não pode parecer", "Por quê"]}
           rows={RED_LINES.map(([a, b]) => [<strong key={a}>{a}</strong>, b])}
         />
 
-        <h4>Cinco coisas que a WeCann Care pode roubar (e refinar)</h4>
+        <h5>Cinco coisas que a WeCann Care pode roubar (e refinar)</h5>
         <TableFrame
           head={["De quem", "O quê aplicar"]}
           rows={STEAL.map(([a, b]) => [<strong key={a}>{a}</strong>, b])}
         />
+
+        <h4 id="disc-bench-marca">7.1.2 Análise Competitiva — Marca</h4>
+        <p>
+          Complemento visual do benchmarking de produto: o cenário competitivo
+          de <strong>identidade visual</strong>, consolidado no workshop de
+          posicionamento (17/06/2026) a partir do código do mercado, dos eixos
+          de território e da decisão dos fundadores.
+        </p>
+
+        <h5>Código visual do mercado</h5>
+        <p>{MARKET_VISUAL_CODE.pattern}</p>
+        <p>{MARKET_VISUAL_CODE.outlierNote}</p>
+        <Callout variant="accent" label="Prova de que dá para romper">
+          <p>{MARKET_VISUAL_CODE.tempusProof}</p>
+        </Callout>
+
+        <h5>Dois eixos de território visual</h5>
+        <div className="stack cols-2">
+          {TERRITORY_AXES.map((axis) => (
+            <Card
+              key={axis.id}
+              eyebrow={axis.label}
+              title={`${axis.poleA.name} ↔ ${axis.poleB.name}`}
+              border="teal"
+            >
+              <p>
+                <strong>{axis.poleA.name}:</strong> {axis.poleA.desc}
+              </p>
+              <p className="muted" style={{ fontSize: "var(--fs-h4-label)" }}>
+                Sinais: {axis.poleA.signals.join(" · ")}
+              </p>
+              <p>
+                <strong>{axis.poleB.name}:</strong> {axis.poleB.desc}
+              </p>
+              <p className="muted" style={{ fontSize: "var(--fs-h4-label)" }}>
+                Sinais: {axis.poleB.signals.join(" · ")}
+              </p>
+            </Card>
+          ))}
+        </div>
+
+        <p className="muted" style={{ fontSize: "var(--fs-h4-label)", marginBottom: "8px" }}>
+          Eixo horizontal: Disruptivo ↔ Conservador · Eixo vertical: Humano ↔
+          Tecnológico
+        </p>
+        <div className="territory-matrix" aria-label="Matriz de território visual">
+          <div className="tm-cell">
+            <div className="tm-label">Disruptivo · Tecnológico</div>
+            <p>Apple · SpaceX · Meta AI</p>
+          </div>
+          <div className="tm-cell">
+            <div className="tm-label">Conservador · Tecnológico</div>
+            <p>iClinic · Amigo · SOUL MV</p>
+          </div>
+          <div className="tm-cell">
+            <div className="tm-label">Disruptivo · Humano</div>
+            <p>Nike · MSF</p>
+          </div>
+          <div className="tm-cell tm-highlight">
+            <div className="tm-label">WeCann Care · por camada</div>
+            <p>
+              Visual disruptivo-tecnológico; experiência e narrativa humanas.
+              CNN ancora o quadrante conservador-humano.
+            </p>
+          </div>
+        </div>
+
+        <h5>Onde os concorrentes caem</h5>
+        <TableFrame
+          head={["Player", "Posição", "Nota"]}
+          rows={COMPETITOR_VISUAL_POSITIONS.map((c) => [
+            <strong key={c.name}>{c.name}</strong>,
+            c.position,
+            c.note,
+          ])}
+        />
+
+        <h5>Referências dos fundadores no mapa</h5>
+        <p>
+          As referências externas ocupam o território disruptivo que nenhum
+          concorrente clínico brasileiro alcança. Detalhe por marca e implicações
+          de design em{" "}
+          <a href="#disc-ref-marca">§6 · Referências de marca</a>.
+        </p>
+        <TableFrame
+          head={["Referência", "Posição no mapa", "Nota"]}
+          rows={FOUNDER_REF_POSITIONS.map((r) => [
+            <strong key={r.name}>{r.name}</strong>,
+            r.position,
+            r.note,
+          ])}
+        />
+
+        <h5>Decisão do workshop</h5>
+        <p>{WORKSHOP_BRAND_DECISION.horizontal}</p>
+        <p>{WORKSHOP_BRAND_DECISION.vertical}</p>
+        <div className="stack cols-2">
+          <Card
+            eyebrow="Camada visual"
+            title="Tecnológica e disruptiva"
+            border="accent"
+          >
+            <p>{WORKSHOP_BRAND_DECISION.layers.visual}</p>
+          </Card>
+          <Card
+            eyebrow="Camada experiência"
+            title="Essencialmente humana"
+            border="teal"
+          >
+            <p>{WORKSHOP_BRAND_DECISION.layers.experience}</p>
+          </Card>
+        </div>
+        <div className="pull">{WORKSHOP_BRAND_DECISION.patriciaQuote}</div>
+        <p className="muted" style={{ fontSize: "var(--fs-h4-label)" }}>
+          — {WORKSHOP_BRAND_DECISION.patriciaAttribution}
+        </p>
+
+        <Callout variant="teal" label="Fonte · workshop">
+          <p>Workshop de posicionamento com os fundadores · 17/06/2026.</p>
+        </Callout>
 
         <h3 id="disc-pesquisa-entrevistas">7.2 Entrevistas</h3>
         <p>
           Pesquisa qualitativa com médicos prescritores de cannabis: três
           entrevistas por blocos e uma sessão de shadowing com a fundadora
           (11–18/06/2026, condução Nádia Morgado · Guilherme Dutra Guedes ·
-          Lucas Correia). Os achados aparecem nas sessões individuais e na
-          síntese consolidada, cruzando com Personas, Análise Competitiva e o
+          Lucas Correia). A abordagem isola tipos de evidência — contexto,
+          rotina, atrito, tecnologia — conforme o{" "}
+          <strong>guia de entrevistas</strong> (roteiro de seis blocos,
+          ~55&nbsp;min). Os achados cruzam Personas, Análise Competitiva e o
           User Flow pré/durante/pós-consulta.
         </p>
 
-        <h4>7.2.1 Metodologia · entrevista por blocos</h4>
+        <h4 id="disc-ent-prep">7.2.1 Preparação das Entrevistas</h4>
         <p>
-          Cada sessão é conduzida em <strong>seis blocos sequenciais</strong>.
-          O roteiro isola tipos de evidência — contexto, rotina, atrito,
-          tecnologia — para não misturar descrição factual com julgamento
-          sobre ferramentas. Duração total: ~55 min.
+          Objetivos principais do guia — o que a pesquisa precisava validar
+          antes de entrar em campo:
+        </p>
+        <BlockList
+          items={INTERVIEW_PREP_OBJECTIVES.map((o) => (
+            <>
+              <strong>{o.title}.</strong> {o.detail}
+            </>
+          ))}
+        />
+        <h5>Estrutura do guia · seis blocos</h5>
+        <p>
+          Cada sessão segue o roteiro sequencial abaixo. Duração total:
+          ~55&nbsp;min.
         </p>
         <div className="framework-grid">
           {INTERVIEW_FRAMEWORK.map((block) => (
@@ -942,47 +1235,52 @@ export default function DocDiscovery() {
           ))}
         </div>
 
-        <h4>7.2.2 Quem entrevistamos</h4>
+        <h4 id="disc-ent-perfis">7.2.2 Perfis dos entrevistados</h4>
         <p>
-          Três perfis distintos de médicos prescritores, deliberadamente
-          contrastantes, mais uma sessão de shadowing com a fundadora validando
-          o protótipo no consultório real. A diversidade é intencional: confirma
-          que a plataforma precisa atender perfis radicalmente diferentes — e
-          que o produto precisa funcionar além do perfil da própria Patricia.
+          Partimos das <strong>cinco personas</strong> enviadas pela WeCann no
+          onboarding (
+          <a href="#disc-personas">§5 · As 5 personas</a>
+          ) — arquétipos pragmáticos já mapeados internamente. A amostra foi
+          consolidada intencionalmente: três entrevistas cobrindo polos
+          contrastantes e um shadowing com a fundadora (Especialista
+          pragmático) para validar o MVP no consultório real. A diversidade
+          confirma que a plataforma precisa funcionar além do perfil da própria
+          Patricia.
         </p>
         <div className="stack cols-2">
-          <Card eyebrow="E1 · 15/06" title="Dr. Tércio" border="accent">
-            <p>
-              62 anos, medicina de família e cannabis, telemedicina. Cético com
-              IA, analógico, paranoico com LGPD. Perfil{" "}
-              <strong>Sênior + Humanista</strong>.
-            </p>
-          </Card>
-          <Card eyebrow="E2 · 16/06" title="Dr. Marco Antônio" border="teal">
-            <p>
-              Residente de psiquiatria, início de carreira, barreira
-              financeira. Quer tela limpa, sem excesso de abas. Perfil{" "}
-              <strong>Recém-formado</strong>.
-            </p>
-          </Card>
-          <Card eyebrow="E3 · 11/06" title="Dra. Bárbara" border="accent">
-            <p>
-              Médica de família há 22 anos, cannabis, detalhista. Usa 6
-              ferramentas e prompts próprios de IA. Perfil{" "}
-              <strong>Humanista + Pragmático</strong>.
-            </p>
-          </Card>
-          <Card eyebrow="E4 · 18/06" title="Dra. Patricia Montagner" border="teal">
-            <p>
-              Neurocirurgiã e fundadora WeCann. Shadowing no consultório com
-              Clínica nas Nuvens + protótipo WeCann. Valida MVP e critica UX da
-              tela de consulta. Perfil{" "}
-              <strong>Especialista pragmático · Fundadora</strong>.
-            </p>
-          </Card>
+          {INTERVIEW_SAMPLE.map((s) => (
+            <Card
+              key={s.code}
+              eyebrow={`${s.code} · ${s.when}`}
+              title={s.name}
+              border={s.border}
+            >
+              <p>{s.blurb}</p>
+              <p>
+                Perfil: <strong>{s.profile}</strong>
+                {s.personaAnchors.length > 0 && (
+                  <>
+                    {" "}
+                    ·{" "}
+                    {s.personaAnchors.map((a, i) => {
+                      const p = PERSONA_INDEX.find(
+                        (x) => x.anchor === a || x.deepDiveAnchor === a
+                      );
+                      return (
+                        <span key={a}>
+                          {i > 0 && " · "}
+                          {p?.short ?? a}
+                        </span>
+                      );
+                    })}
+                  </>
+                )}
+              </p>
+            </Card>
+          ))}
         </div>
 
-        <h4>7.2.3 Formato e logística</h4>
+        <h4 id="disc-ent-logistica">7.2.3 Formato e logística</h4>
         <FactGrid
           cols={4}
           items={[
@@ -990,14 +1288,21 @@ export default function DocDiscovery() {
             { dt: "Duração", dd: "42–58 min por bloco · 2h02 no shadowing" },
             { dt: "Amostra", dd: "3 entrevistas + 1 shadowing" },
             { dt: "Gravação", dd: "Gravada com consentimento prévio" },
+            { dt: "Período", dd: "11–18/06/2026" },
+            {
+              dt: "Condução",
+              dd: "Nádia Morgado · Guilherme Dutra Guedes · Lucas Correia",
+            },
+            { dt: "Método", dd: "Entrevista por blocos + shadowing" },
+            { dt: "Guia", dd: "6 blocos sequenciais · ~55 min" },
           ]}
         />
 
-        <h4>7.2.4 Entrevistas individuais</h4>
+        <h4 id="disc-ent-individuais">7.2.4 Entrevistas individuais</h4>
         <p>
           Cada entrevista é um bloco colapsável com perfil, fluxo de trabalho
           (organizado por pré / durante / pós-consulta, espelhando o User Flow),
-          uso de IA, dores priorizadas, pedidos diretos e a leitura Atom6
+          uso de IA, dores priorizadas, pedidos diretos e a leitura AtomSix
           cruzando com o restante do Discovery.
         </p>
 
@@ -1013,7 +1318,7 @@ export default function DocDiscovery() {
               O entrevistado pediu explicitamente que esta sessão{" "}
               <strong>não seja publicada nem divulgada externamente</strong> (
               &ldquo;só para entendimento de vocês&rdquo;). Manter restrito à
-              equipe Atom6 / WeCann.
+              equipe AtomSix / WeCann.
             </p>
           </Callout>
 
@@ -1157,21 +1462,20 @@ export default function DocDiscovery() {
             ]}
           />
 
-          <h4>Leitura Atom6 · validações e sinais</h4>
+          <h4>Leitura AtomSix · validações e sinais</h4>
           <BlockList
             items={[
               <>
                 <strong>Valida a tese da Atena invisível:</strong> o olhar
                 humano (comportamento, tom de voz, não-ditos) é
                 &ldquo;insubstituível&rdquo;; a IA deve organizar e poupar tempo,
-                não atender. Converge com a persona{" "}
-                <a href="#per-dd-humanista">Humanista</a> e com a referência{" "}
-                <a href="#ref-nike">Nike (médico herói)</a>.
+                não atender. Converge com a persona Humanista e com a
+                referência Nike (médico herói).
               </>,
               <>
                 <strong>Reforça a dor de fragmentação:</strong> Doutoralia +
                 Drive + WhatsApp + email + caderno à mão — mesma fragmentação
-                vista na <a href="#competitiva">análise competitiva</a>.
+                vista na análise competitiva.
               </>,
               <>
                 <strong>Sinal forte de tempo como moeda:</strong> alinhado ao
@@ -1180,8 +1484,8 @@ export default function DocDiscovery() {
               </>,
               <>
                 <strong>Imutabilidade e LGPD</strong> aparecem como requisito de
-                confiança, não só feature — eco da{" "}
-                <a href="#ref-msf">honestidade clínica (MSF)</a>.
+                confiança, não só feature — eco da honestidade clínica
+                (MSF).
               </>,
             ]}
           />
@@ -1296,14 +1600,14 @@ export default function DocDiscovery() {
             ]}
           />
 
-          <h4>Leitura Atom6 · validações e sinais</h4>
+          <h4>Leitura AtomSix · validações e sinais</h4>
           <BlockList
             items={[
               <>
                 <strong>Primeira voz pela simplicidade:</strong> a dor de
                 &ldquo;abas demais&rdquo; é direta contra a plataforma cheia de
-                campos — valida a busca por interface mínima (
-                <a href="#ref-apple">Apple · complexidade invisível</a>).
+                campos — valida a busca por interface mínima (Apple ·
+                complexidade invisível).
               </>,
               <>
                 <strong>Barreira de preço no início de carreira</strong> é um
@@ -1311,16 +1615,15 @@ export default function DocDiscovery() {
               </>,
               <>
                 <strong>iClinic entra no radar competitivo</strong> com
-                personalização de receituário — cruzar com{" "}
-                <a href="#comp-iclinic">iClinic (Doc 03)</a>.
+                personalização de receituário — cruzar com iClinic.
               </>,
               <>
                 <strong>Insights do time na sessão:</strong> editor de consulta
                 tipo Notion / slash (tags que a Atena interpreta e organiza no
                 template), Atena que capta o áudio enquanto o médico foca na
                 pessoa, e a metáfora do &ldquo;olho&rdquo; — médico no lugar onde
-                sempre deveria estar, na frente do paciente. Alinha com a tese da{" "}
-                <a href="#pos-atena">Atena como IA invisível</a>.
+                sempre deveria estar, na frente do paciente. Alinha com a
+                tese da Atena como IA invisível.
               </>,
             ]}
           />
@@ -1453,7 +1756,7 @@ export default function DocDiscovery() {
             ]}
           />
 
-          <h4>Leitura Atom6 · validações e sinais</h4>
+          <h4>Leitura AtomSix · validações e sinais</h4>
           <BlockList
             items={[
               <>
@@ -1464,19 +1767,18 @@ export default function DocDiscovery() {
               <>
                 <strong>Olhar humano insubstituível com exemplo concreto:</strong>{" "}
                 paciente de 96 anos + 2 filhas com relatos contraditórios —
-                &ldquo;como a IA vai interpretar isso?&rdquo;. Reforça a{" "}
-                <a href="#pos-atena">Atena como apoio, nunca decisão</a>.
+                &ldquo;como a IA vai interpretar isso?&rdquo;. Reforça a
+                Atena como apoio, nunca decisão.
               </>,
               <>
                 <strong>Casuística e busca semântica</strong> conectam ao módulo
-                de Casuística / Outcomes do User Flow de pós-consulta e ao{" "}
-                <a href="#arq-rwe">schema RWE (Doc 04)</a>.
+                de Casuística / Outcomes do User Flow de pós-consulta e ao
+                schema RWE.
               </>,
               <>
                 <strong>Concorrentes citados</strong> (Comunique-Aire, Amplimed,
-                Mevo, Memed, Doxy) — enriquecer{" "}
-                <a href="#comp-amplimed">a análise competitiva</a> com prontuários
-                de nicho.
+                Mevo, Memed, Doxy) — enriquecer a análise competitiva com
+                prontuários de nicho.
               </>,
             ]}
           />
@@ -1660,7 +1962,7 @@ export default function DocDiscovery() {
             ]}
           />
 
-          <h4>Leitura Atom6 · validações e sinais</h4>
+          <h4>Leitura AtomSix · validações e sinais</h4>
           <BlockList
             items={[
               <>
@@ -1679,15 +1981,14 @@ export default function DocDiscovery() {
               </>,
               <>
                 <strong>Priorização de produto explícita:</strong> as 7 telas do
-                MVP mapeiam diretamente para os módulos do User Flow e do{" "}
-                <a href="#arq-rwe">schema RWE (Doc 04)</a> — casuística,
-                Paciente 360 e laudos por IA.
+                MVP mapeiam diretamente para os módulos do User Flow e do
+                schema RWE — casuística, Paciente 360 e laudos por IA.
               </>,
               <>
                 <strong>Clínica nas Nuvens como baseline:</strong> fricções de
-                login, agenda pobre e prontuário não estruturado reforçam a{" "}
-                <a href="#competitiva">análise competitiva (Doc 03)</a> — o
-                mercado entrega repositório, não plataforma.
+                login, agenda pobre e prontuário não estruturado reforçam a
+                análise competitiva — o mercado entrega repositório, não
+                plataforma.
               </>,
               <>
                 <strong>Real estate e escala:</strong> desafio de equilibrar
@@ -1699,9 +2000,9 @@ export default function DocDiscovery() {
                 <strong>Visão estratégica:</strong> queda nas vendas da
                 certificação médica como sinal de mudança de comportamento; o
                 prontuário como principal pilar de atualização clínica — alinha
-                com a tese da <a href="#pos-atena">Atena invisível</a> e com a
-                referência <a href="#ref-nike">Nike (médico herói)</a>, desde
-                que a interface não sobrecarregue o perfil típico.
+                com a tese da Atena invisível e com a referência Nike
+                (médico herói), desde que a interface não sobrecarregue o
+                perfil típico.
               </>,
             ]}
           />
@@ -1710,100 +2011,52 @@ export default function DocDiscovery() {
         <h4 id="disc-pesquisa-insights">7.2.5 Insights consolidados</h4>
         <p>
           Síntese consolidada das quatro sessões (três entrevistas + shadowing),
-          cruzando as dores observadas com as{" "}
-          <a href="#personas">Personas (Doc 02)</a>, a{" "}
-          <a href="#competitiva">Análise Competitiva (Doc 03)</a> e o User Flow
-          (pré / durante / pós-consulta).
+          cruzando as dores observadas com as Personas, a Análise
+          Competitiva e o User Flow (pré / durante / pós-consulta).
         </p>
 
-        <h5>Achados consolidados</h5>
-        <BlockList
-          items={[
-            <>
-              <strong>Fragmentação de ferramentas é universal.</strong> Tércio
-              (Doutoralia + Drive + WhatsApp + caderno), Marco (prontuário
-              hospitalar + BIPP + ChatGPT + Google Docs), Bárbara (6
-              ferramentas), Patricia (Clínica nas Nuvens + Meet + WhatsApp +
-              ChatGPT para laudos). Todos gastam tempo &ldquo;juntando
-              tudo&rdquo; — é a validação mais forte da{" "}
-              <strong>plataforma única</strong> como tese da WeCann.
-            </>,
-            <>
-              <strong>IA já é rotina, mas com revisão humana inegociável.</strong>{" "}
-              Os quatro leem e corrigem tudo, exigem fonte/evidência e desconfiam de
-              saída automática. A régua não é &ldquo;automatizar&rdquo;, é{" "}
-              <strong>acelerar com controle</strong> — Patricia exige checks, mas
-              alerta que 10+ validações seguidas cansa.
-            </>,
-            <>
-              <strong>O olhar humano é insubstituível.</strong> Tércio (sinais
-              subliminares, tom de voz), Marco (não digita na frente do
-              paciente), Bárbara (relatos contraditórios que a IA não
-              interpreta), Patricia (validação em tempo real na tele, revisão no
-              final no presencial). Reforça a <strong>Atena invisível</strong>:
-              o médico é o herói, o produto é sombra.
-            </>,
-            <>
-              <strong>Tempo é a moeda.</strong> Tércio (&ldquo;o lance é o
-              tempo&rdquo;), Bárbara (burocracia e fragmentação), Marco (densidade
-              do registro psiquiátrico), Patricia (laudos manuais extremamente
-              demorados). O ganho percebido vem de devolver tempo ao médico.
-            </>,
-            <>
-              <strong>Excesso de cliques é consenso.</strong> Marco (abas SOAP),
-              Bárbara (62 cliques no IJIA), Patricia ao vivo (&ldquo;não tá
-              legal&rdquo; na tela de consulta). Nádia consolidou: os três
-              entrevistados + a fundadora apontam o mesmo padrão — prontuários
-              cheios de campos que ninguém usa.
-            </>,
-          ]}
+        <h5>Personas × achados das entrevistas</h5>
+        <TableFrame
+          head={["Persona", "Como aparece na pesquisa"]}
+          rows={PERSONA_INSIGHT_LINKS.map((row) => [
+            <strong key={row.persona}>{row.persona}</strong>,
+            row.insight,
+          ])}
         />
+        <p>
+          Índice visual completo em{" "}
+          <a href="#disc-personas">§5 · As 5 personas</a>.
+        </p>
 
-        <h5>Sinais consolidados</h5>
-        <BlockList
-          items={[
-            <>
-              <strong>Barreira financeira no início de carreira</strong> (Marco):
-              preço decide adoção — implica modelo de negócio / aquisição.
-            </>,
-            <>
-              <strong>Acessibilidade para idosos</strong> (Tércio): tipografia
-              ampliável e interface sem medo para público 60+.
-            </>,
-            <>
-              <strong>Simplicidade vs. excesso de abas e botões</strong> (Marco,
-              Patricia): tela limpa e box único como diferencial — layout v107+.
-            </>,
-            <>
-              <strong>LGPD, sigilo e imutabilidade do laudo</strong> (Tércio,
-              Marco): requisito de confiança, não só feature. Patricia reforça
-              compliance na geração de laudos por IA (vs. ChatGPT).
-            </>,
-            <>
-              <strong>Acompanhamento hoje é reativo</strong> (os três
-              entrevistados): oportunidade clara de <strong>FUP proativo</strong>{" "}
-              (M1–M12 do User Flow) — Patricia valida o Kanban pós-consulta como
-              diferencial inexistente no mercado.
-            </>,
-            <>
-              <strong>Personalização</strong> (receituário do Marco, prompts da
-              Bárbara, modelos do Tércio, packs de templates da Patricia): cada
-              médico tem o próprio jeito.
-            </>,
-            <>
-              <strong>Produto para o médico típico, não para a fundadora</strong>{" "}
-              (Patricia): notebook + segunda tela ≠ 1 monitor pequeno sem
-              secretária — real estate e densidade de informação precisam
-              escalar para o perfil médio.
-            </>,
-          ]}
-        />
+        <h5>Achados e sinais consolidados</h5>
+        <div className="insight-card-grid">
+          {CONSOLIDATED_INSIGHT_CARDS.map((card) => (
+            <div
+              key={card.id}
+              className={`insight-card border-${card.variant}`}
+            >
+              <div className="insight-card-kind">
+                {card.kind === "achado" ? "Achado" : "Sinal"}
+              </div>
+              <div className="insight-card-title">{card.title}</div>
+              <p className="insight-card-body">{card.body}</p>
+              {card.sources.length > 0 && (
+                <div className="insight-card-tags">
+                  {card.sources.map((src) => (
+                    <span key={src} className="insight-card-tag">
+                      {src}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
 
         <h5>Formas e insights para melhorar</h5>
         <p>
           Oportunidades cruzando as dores observadas com o User Flow
-          (pré / durante / pós-consulta) e a{" "}
-          <a href="#competitiva">análise competitiva</a>.
+          (pré / durante / pós-consulta) e a análise competitiva.
         </p>
         <div className="grid-2">
           <Card eyebrow="Pré-consulta" title="Hidratação + preparo" border="teal">
@@ -1834,8 +2087,7 @@ export default function DocDiscovery() {
             <p>
               Busca semântica na casuística (Bárbara), CID automático, base
               científica confiável (Tércio), FUP proativo e Paciente 360
-              escalável (Patricia) — ligados ao{" "}
-              <a href="#arq-rwe">schema RWE</a>.
+              escalável (Patricia) — ligados ao schema RWE.
             </p>
           </Card>
         </div>
@@ -1852,7 +2104,7 @@ export default function DocDiscovery() {
           <a href="#disc-projeto-escopo">
             mapa do site previsto na fase de Design UX
           </a>{" "}
-          — o Atom6 levantou o que já existe: o inventário completo do menu
+          — a AtomSix levantou o que já existe: o inventário completo do menu
           lateral e das telas do MVP vivo, módulo por módulo, tal como um
           médico encontra hoje ao entrar em app.wecann.clinic.
         </p>
@@ -1874,11 +2126,11 @@ export default function DocDiscovery() {
             },
             {
               dt: "As-is",
-              dd: "reflete o produto vivo hoje, não o redesenho do Atom6",
+              dd: "reflete o produto vivo hoje, não o redesenho da AtomSix",
             },
           ]}
         />
-        <div className="stack" style={{ marginTop: "1.25rem" }}>
+        <div className="carousel" style={{ marginTop: "1.25rem" }}>
           {SITEMAP_ASIS.map((m) => (
             <Card key={m.module} title={m.module}>
               {m.nodes.length > 0 ? (
@@ -1887,7 +2139,7 @@ export default function DocDiscovery() {
                 <p
                   style={{
                     color: "var(--ink-faint)",
-                    fontSize: "13px",
+                    fontSize: "var(--fs-body)",
                     margin: 0,
                   }}
                 >
@@ -1930,7 +2182,10 @@ export default function DocDiscovery() {
               Paleta da <em>marca</em> ≠ obrigatoriamente a do{" "}
               <em>produto</em> (médico olha o dia inteiro). CTA primário
               preto/alto contraste + white space (referência startups
-              SF).
+              SF) — alinhado ao princípio Apple · complexidade invisível e
+              ao critério{" "}
+              <a href="#disc-ref-design">SpaceX · disruptivo sem assustar</a>{" "}
+              na interface do dia a dia.
             </li>
             <li>
               Logo da IA e da marca deveriam ser o mesmo sistema (evitar
@@ -2109,9 +2364,8 @@ export default function DocDiscovery() {
             </li>
             <li>
               O dado gerado durante a consulta vira insumo estruturado para
-              acelerar estudos futuros — a mesma tese do{" "}
-              <a href="#pos-tese">&ldquo;Flatiron da cannabis&rdquo;</a> detalhada no
-              posicionamento estratégico.
+              acelerar estudos futuros — a mesma tese do &ldquo;Flatiron da
+              cannabis&rdquo; detalhada no posicionamento estratégico.
             </li>
             <li>
               Escopo confirmado em ~12 telas do fluxo principal — não inclui

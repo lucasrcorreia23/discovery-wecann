@@ -1,7 +1,7 @@
 # Referências de Marca e Produto · Cliente WeCann
 
 **Fonte:** material enviado pelo cliente (WeCann)  
-**Uso:** consulta de posicionamento, narrativa e critérios de design para Atom6 Studio  
+**Uso:** consulta de posicionamento, narrativa e critérios de design para AtomSix Studio  
 **Produto:** WeCann Care · Prontuário Inteligente  
 **IA:** Atena
 
@@ -115,7 +115,7 @@ Olha o médico digitando às cegas e às pressas no prontuário, enquanto o paci
 
 ---
 
-## Implicações para design (Atom6)
+## Implicações para design (AtomSix)
 
 | Referência | Implicação prática |
 |------------|-------------------|

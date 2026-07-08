@@ -1,10 +1,11 @@
 import { Hero, Section } from "../ui/primitives";
+import { PERSONA_INDEX } from "@/lib/personas-index";
 
 export default function Doc02Personas() {
   return (
     <div className="tab-view">
       <Hero
-        kicker="Doc 02 · v2 · Pack de Onboarding Atom6 Studio"
+        kicker="Doc 02 · v2 · Pack de Onboarding AtomSix Studio"
         title={
           <>
             As 5 Personas <em>Médicas</em>
@@ -37,13 +38,13 @@ export default function Doc02Personas() {
           </p>
           <p>
             As 5 personas convivem no produto. Boa notícia: 70% das decisões de UX
-            servem todas. Má notícia: os 30% restantes exigem que a Atom6 escolha
+            servem todas. Má notícia: os 30% restantes exigem que a AtomSix escolha
             qual persona <em>lidera</em> cada tela.
           </p>
         </div>
 
         <div className="persona-index">
-          {INDEX.map((p) => (
+          {PERSONA_INDEX.map((p) => (
             <div className="pi-card" key={p.num}>
               <div className="pi-num">{p.num}</div>
               <div className="pi-name">{p.name}</div>
@@ -235,7 +236,7 @@ export default function Doc02Personas() {
       >
         <p>
           As cinco personas convivem no produto. A boa notícia: 70% das decisões
-          de UX servem todas. A má notícia: os 30% restantes exigem que a Atom6
+          de UX servem todas. A má notícia: os 30% restantes exigem que a AtomSix
           escolha qual persona <em>lidera</em> cada tela.
         </p>
 
@@ -251,7 +252,7 @@ export default function Doc02Personas() {
 
         <h3>Qual persona lidera cada tela</h3>
         <p>
-          Matriz tática para o Atom6 priorizar trade-offs quando precisarem
+          Matriz tática para a AtomSix priorizar trade-offs quando precisarem
           escolher.
         </p>
         <div className="table-frame">
@@ -296,25 +297,17 @@ export default function Doc02Personas() {
           <strong>a pessoa importa</strong>. O Recém-formado, que{" "}
           <strong>tem caminho</strong>. Quando uma persona entra na WeCann Care e pensa
           &ldquo;isso aqui foi feito pra mim&rdquo; — sem perceber que para as
-          outras 4 também foi — a Atom6 acertou.
+          outras 4 também foi — a AtomSix acertou.
         </p>
       </div>
 
       <div className="doc-footer">
         <span>Doc 02 · v2 · 5 Personas Médicas</span>
-        <span>WeCann × Atom6 Studio · Junho 2026</span>
+        <span>WeCann × AtomSix Studio · Junho 2026</span>
       </div>
     </div>
   );
 }
-
-const INDEX = [
-  { num: "01", name: "Especialista Pragmático", age: "35–55 anos" },
-  { num: "02", name: "Clínico Sobrecarregado", age: "30–55 anos" },
-  { num: "03", name: "Sênior Explorador", age: "55–75 anos" },
-  { num: "04", name: "Humanista Empático", age: "30–60 anos" },
-  { num: "05", name: "Recém-formado", age: "25–35 anos" },
-];
 
 type PbField = { lbl: string; text: string; full?: boolean };
 type Playbook = {

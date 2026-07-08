@@ -20,13 +20,13 @@ export function DocPaper({
     <div className="doc-paper">
       <div className="doc-strip" style={{ background: stripColor }} />
       <h5>{title}</h5>
-      <div style={{ fontSize: 10, color: "var(--ink-faint)", marginBottom: 14 }}>
+      <div style={{ fontSize: "var(--fs-label)", color: "var(--ink-faint)", marginBottom: 14 }}>
         {subtitle}
       </div>
       {rows.map((r, i) => (
         <div className="doc-row" key={i}>
           <span className="doc-label">{r.label}</span>
-          <span style={{ textAlign: "right", fontWeight: 600 }}>{r.value}</span>
+          <span style={{ textAlign: "right", fontWeight: "var(--fw-semibold)" }}>{r.value}</span>
         </div>
       ))}
       {meds && <div className="doc-meds">{meds}</div>}

@@ -243,7 +243,7 @@ export default function Doc05Jornadas() {
   return (
     <div className="tab-view">
       <Hero
-        kicker="Doc 05 · Brief Atom6 Studio · Versão 2"
+        kicker="Doc 05 · Brief AtomSix Studio · Versão 2"
         title={
           <>
             As 3 jornadas da <em>WeCann Care</em>.
@@ -261,7 +261,7 @@ export default function Doc05Jornadas() {
           },
           {
             dt: "Audiência",
-            dd: "Atom6 Studio · time de UX/Design",
+            dd: "AtomSix Studio · time de UX/Design",
           },
         ]}
       />
@@ -271,7 +271,7 @@ export default function Doc05Jornadas() {
           Este documento descreve <strong>arquitetura de jornadas e funções</strong>
           {" "}— não prescreve paleta, tipografia, hierarquia visual ou padrões de
           interação. Toda decisão de design visual, microinteração, motion,
-          ilustração e identidade gráfica fica com a Atom6. Nosso papel aqui é
+          ilustração e identidade gráfica fica com a AtomSix. Nosso papel aqui é
           entregar o <em>mapa do território</em>, não a estética.
         </p>
       </Callout>
@@ -1839,7 +1839,7 @@ export default function Doc05Jornadas() {
           ]}
         />
         <p>
-          Esta é a área que mais vai consumir tempo e iteração da Atom6 e que mais
+          Esta é a área que mais vai consumir tempo e iteração da AtomSix e que mais
           diferencia a WeCann Care do prontuário comum.
         </p>
       </Section>
@@ -1962,14 +1962,14 @@ export default function Doc05Jornadas() {
           {" "}<strong>Pós-consulta</strong> é legado (curadoria e descoberta de padrões).
         </p>
         <p>
-          O trabalho da Atom6 é traduzir essa arquitetura em experiência. Este
+          O trabalho da AtomSix é traduzir essa arquitetura em experiência. Este
           documento é o mapa do território; o próximo passo é o desenho do
           território.
         </p>
       </div>
 
       <div className="doc-footer">
-        <span>Doc 05 · Jornadas UX da WeCann Care · v2 · Brief Atom6 Studio</span>
+        <span>Doc 05 · Jornadas UX da WeCann Care · v2 · Brief AtomSix Studio</span>
         <span>WeCann 2026</span>
       </div>
     </div>

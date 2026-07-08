@@ -1,15 +1,15 @@
 # Userflow · Jornadas da Atena
 
 **WeCann Discovery Pack · Proposta consolidada**  
-**Fontes:** Doc 05 (Jornadas UX) · Imersões Atom6 (`inputs/atom_immersion_*.md`) · Demo v107 · Doc 06 (layout consulta) · Doc 04 (gaps MVP)
+**Fontes:** Doc 05 (Jornadas UX) · Imersões AtomSix (`inputs/atom_immersion_*.md`) · Demo v107 · Doc 06 (layout consulta) · Doc 04 (gaps MVP)
 
 ---
 
 ## 1. Propósito deste documento
 
-Este artefato traduz a arquitetura de jornadas do Doc 05 em **fluxos navegáveis** para design e prototipação. Ele cruza o mapa de 21 telas com decisões da imersão WeCann × Atom6 — incluindo o que **não** entra no escopo Atom6 desta fase.
+Este artefato traduz a arquitetura de jornadas do Doc 05 em **fluxos navegáveis** para design e prototipação. Ele cruza o mapa de 21 telas com decisões da imersão WeCann × AtomSix — incluindo o que **não** entra no escopo AtomSix desta fase.
 
-**Audiência:** Atom6 Studio · UX/Design · Product WeCann
+**Audiência:** AtomSix Studio · UX/Design · Product WeCann
 
 **Regra de ouro (Daniel Montagner, imersão interna):**  
 Desenhar pelo que o médico **se propõe a fazer**, não por “quadradinhos de processo”. A divisão pré / durante / pós organiza o produto; o protótipo valida **jornadas processuais ponta a ponta**.
@@ -21,7 +21,7 @@ Desenhar pelo que o médico **se propõe a fazer**, não por “quadradinhos de 
 | Lente | Uso | Exemplo |
 |-------|-----|---------|
 | **Sistêmica** (Doc 05) | Arquitetura de informação, priorização de telas | J1 · J2 · J3 + telas meta T-18–T-21 |
-| **Processual** (imersão) | Protótipo, teste, escopo Atom6 (~12 telas) | “Hoje vou atender” do login ao fechamento da consulta |
+| **Processual** (imersão) | Protótipo, teste, escopo AtomSix (~12 telas) | “Hoje vou atender” do login ao fechamento da consulta |
 
 ---
 
@@ -42,7 +42,7 @@ flowchart LR
     D --> D1["Agenda → Cadastro → Mensagens → Recall"]
 ```
 
-**Prioridade Atom6 (imersão):** Jornada A — consulta primeiro; depois pré-operacional; depois pós e legado.
+**Prioridade AtomSix (imersão):** Jornada A — consulta primeiro; depois pré-operacional; depois pós e legado.
 
 ---
 
@@ -104,7 +104,7 @@ flowchart TD
 
 | Passo | Tela Doc 05 | Estado típico | Nota dos inputs |
 |-------|-------------|---------------|-----------------|
-| Login | — | LIVE | Fora do escopo redesign Atom6 |
+| Login | — | LIVE | Fora do escopo redesign AtomSix |
 | Pulso do dia | T-18 (Home Atena) | PARCIAL | Modal fullscreen na demo v107; pílulas 3–5 min |
 | Agenda | T-01 | LIVE | Badges de % pré-anamnese (demo v107) |
 | Pré-consulta operacional | T-04, T-05 | LIVE/PARCIAL | Kanban 4×4; uso forte da secretária |
@@ -188,7 +188,7 @@ flowchart LR
 
 ---
 
-## 8. Vertical slice recomendado (escopo Atom6)
+## 8. Vertical slice recomendado (escopo AtomSix)
 
 Protótipo navegável mínimo — **worst case por persona**:
 
@@ -201,7 +201,7 @@ Login → Agenda → Selecionar paciente → Play consulta
   → Mensagem pós-consulta
 ```
 
-**~12 telas** (briefing Atom6 externo) — não cobrir financeiro, app paciente completo, nem todos os 50 estados de cada tela.
+**~12 telas** (briefing AtomSix externo) — não cobrir financeiro, app paciente completo, nem todos os 50 estados de cada tela.
 
 **Critério “nova tela”:** modificação visual > 70% (imersão).
 
@@ -227,10 +227,10 @@ Login → Agenda → Selecionar paciente → Play consulta
 |------|-------|---------|
 | Pulso do dia como entrada do dia | Imersão + demo v107 | J1 começa antes da agenda |
 | Kanban pré-consulta 4×4 | demo v107 | J1 tem visão operacional além de inbox |
-| Conferência humano × IA | briefing Atom6 | Passo ao encerrar consulta |
+| Conferência humano × IA | briefing AtomSix | Passo ao encerrar consulta |
 | Layout 3 colunas | Doc 06 | J2 é composição fixa, não tela única |
 | Episódio > consulta avulsa | Doc 04 (gap) | J2/J3 devem evoluir para episódio + timepoint |
-| Financeiro | Doc 05 Fase 2 | Fora do userflow Atom6 atual |
+| Financeiro | Doc 05 Fase 2 | Fora do userflow AtomSix atual |
 | App do paciente | briefing externo | Pré-anamnese e docs sim; redesign app não |
 | Prontuário que ensina | imersões | Pílulas em J1, cards Atena em J2, insights em J3 |
 
@@ -245,7 +245,7 @@ O userflow proposto **mostra o norte**. O MVP atual ainda diverge em:
 - Chip bifacial de qualidade de dados
 - Wizard de visita basal (campos dispersos hoje)
 
-Esses gaps não bloqueiam o protótipo Atom6, mas devem constar como **evolução** no mapa.
+Esses gaps não bloqueiam o protótipo AtomSix, mas devem constar como **evolução** no mapa.
 
 ---
 
@@ -255,7 +255,7 @@ Esses gaps não bloqueiam o protótipo Atom6, mas devem constar como **evoluçã
 |-------|------|---------------------|
 | 3 tempos clínicos (pré/durante/pós) | Patrícia / Doc 05 | Arquitetura de informação e navegação |
 | Jornadas por intenção do médico | Daniel | Protótipo e teste de usabilidade |
-| Consulta primeiro | Patrícia + Atom6 | Prioridade de redesign |
+| Consulta primeiro | Patrícia + AtomSix | Prioridade de redesign |
 
 **Resultado:** Doc 05 organiza o território; este userflow define **por onde cortar o protótipo**.
 
@@ -268,7 +268,7 @@ Esses gaps não bloqueiam o protótipo Atom6, mas devem constar como **evoluçã
 3. Definir estados do kanban pré-consulta e do Pulso do dia
 4. Especificar passo de conferência médico × IA no fechamento
 5. Documentar fork por especialidade (8) no layout 3 colunas
-6. Planejar evolução episódio/timepoint (pós-Atom6)
+6. Planejar evolução episódio/timepoint (pós-AtomSix)
 
 ---
 

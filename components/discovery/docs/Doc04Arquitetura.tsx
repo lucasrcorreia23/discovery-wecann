@@ -35,7 +35,7 @@ export default function Doc04Arquitetura() {
   return (
     <div className="tab-view">
       <Hero
-        kicker="Doc 04 · v3 · Pack de Onboarding Atom6 Studio"
+        kicker="Doc 04 · v3 · Pack de Onboarding AtomSix Studio"
         title={
           <>
             A arquitetura de <em>dados</em> da WeCann Care
@@ -72,7 +72,7 @@ export default function Doc04Arquitetura() {
           </p>
           <p>
             O delta entre o que está arquitetado e o que está renderizado é o
-            trabalho do Atom6.
+            trabalho da AtomSix.
           </p>
           <div className="sources-grid">
             <div className="source-card">
@@ -768,7 +768,7 @@ export default function Doc04Arquitetura() {
         <h3>Análise arquitetural · MVP vivo vs Design Mestre</h3>
         <p>
           Esta é a análise mais importante deste documento para o trabalho da
-          Atom6. Cada item abaixo refere à seção correspondente deste documento.
+          AtomSix. Cada item abaixo refere à seção correspondente deste documento.
         </p>
         <HtmlTable
           head={["Exigência arquitetural", "Seção", "Estado MVP vivo", "Gap arquitetural"]}
@@ -794,7 +794,7 @@ export default function Doc04Arquitetura() {
               nenhuma está plenamente implementada no MVP vivo
             </strong>
             . Aproximadamente metade está em estado parcial ou backend-only · a
-            outra metade está ausente da UI. O trabalho da Atom6 é exatamente
+            outra metade está ausente da UI. O trabalho da AtomSix é exatamente
             trazer essa arquitetura para a superfície do usuário.
           </p>
         </Callout>
@@ -861,11 +861,11 @@ export default function Doc04Arquitetura() {
       <Section
         id="arq-roteiro"
         num="15 — ROTEIRO DE VALIDAÇÃO"
-        title="Como a Atom6 atravessa esse delta"
+        title="Como a AtomSix atravessa esse delta"
       >
         <p>
           5 sessões guiadas. Patricia nas três primeiras para validar microcopy
-          crítica e estados raros. Atom6 sozinha na quarta para olhar fresco.
+          crítica e estados raros. AtomSix sozinha na quarta para olhar fresco.
           Quinta para síntese e priorização final.
         </p>
         {SESSIONS.map((s) => (
@@ -885,7 +885,7 @@ export default function Doc04Arquitetura() {
         <div className="eyebrow">O brief em uma frase</div>
         <h3>A arquitetura está pronta. O redesign não inventa nada — apenas traduz.</h3>
         <p>
-          A Atom6 não está desenhando do zero. Está fazendo a tradução do{" "}
+          A AtomSix não está desenhando do zero. Está fazendo a tradução do{" "}
           <strong>Design Mestre</strong> (a arquitetura · 100%) e da{" "}
           <strong>v107</strong> (a prova de conceito · 94%) para o produto vivo.{" "}
           <strong>
@@ -893,14 +893,14 @@ export default function Doc04Arquitetura() {
             no v107?”
           </strong>{" "}
           Se sim, o trabalho é renderizar com clareza. Se não, é provavelmente
-          diluição da tese. Quando o Atom6 fechar esse delta, a WeCann Care terá
+          diluição da tese. Quando a AtomSix fechar esse delta, a WeCann Care terá
           atravessado o portal.
         </p>
       </div>
 
       <div className="doc-footer">
         <span>Doc 04 · v3 · Arquitetura de Dados + Gaps UX</span>
-        <span>WeCann × Atom6 Studio · Junho 2026</span>
+        <span>WeCann × AtomSix Studio · Junho 2026</span>
       </div>
     </div>
   );
@@ -1023,9 +1023,9 @@ const P2 = [
 ];
 
 const SESSIONS = [
-  { num: "01", title: "Tokens primeiro · pré-Figma · resolver os 3 críticos", who: "Atom6 + Eng WeCann · 60 min", body: "Antes de qualquer Figma: corrigir <code>--primary</code> → navy, <code>--background</code> → cream, unificar família verde em <code>--color-athena</code>. Re-deploy. Verificar propagação em 13 telas com prints antes/depois.", deliv: "Entregável · 3 tokens corrigidos em produção · 13 telas com mood Pulse imediato" },
-  { num: "02", title: "Walkthrough do Design Mestre · alinhamento de arquitetura", who: "Patricia + Atom6 · 120 min", body: "Leitura conjunta da <strong>seção 13</strong> deste doc — as 6 decisões arquiteturais. Atom6 sai entendendo <em>por que</em> cada coisa existe e o custo de não trazer para a UI.", deliv: "Entregável · alinhamento arquitetural · perguntas resolvidas antes do design" },
-  { num: "03", title: "Caça aos gaps P0 · safety + credibilidade", who: "Patricia + Atom6 + Eng · 90 min", body: "EA Grau 3 em vermelho · markdown raw · variável <code>[Nome]</code> · token <code>--primary</code> · evidence drawer universal · snake_case. <strong>Bugs em produção a resolver antes do redesign visual.</strong>", deliv: "Entregável · 6 P0 fixados e validados em produção" },
-  { num: "04", title: "Redesign sistêmico · P1 arquitetura central", who: "Atom6 sozinha · 2 × 90 min", body: "Patricia se afasta. Atom6 atravessa cada P1: bifacial chip · episódio como entidade · timepoints · catálogo cannabis 13 campos · estrelas universais · TCLE 2 camadas · submodelo pediátrico · dualidade C2/C3.", deliv: "Entregável · 8 P1 desenhados em alta fidelidade · prontos para revisão" },
-  { num: "05", title: "Síntese · backlog priorizado · primeiro sprint", who: "Patricia + Atom6 · 60 min", body: "Consolidar tudo. Priorizar redesigns por ROI estratégico · custo técnico · impacto perceptual por persona. Sair com primeiro sprint Atom6 definido.", deliv: "Entregável · backlog priorizado · marco “Pulse v108 vivo” definido" },
+  { num: "01", title: "Tokens primeiro · pré-Figma · resolver os 3 críticos", who: "AtomSix + Eng WeCann · 60 min", body: "Antes de qualquer Figma: corrigir <code>--primary</code> → navy, <code>--background</code> → cream, unificar família verde em <code>--color-athena</code>. Re-deploy. Verificar propagação em 13 telas com prints antes/depois.", deliv: "Entregável · 3 tokens corrigidos em produção · 13 telas com mood Pulse imediato" },
+  { num: "02", title: "Walkthrough do Design Mestre · alinhamento de arquitetura", who: "Patricia + AtomSix · 120 min", body: "Leitura conjunta da <strong>seção 13</strong> deste doc — as 6 decisões arquiteturais. AtomSix sai entendendo <em>por que</em> cada coisa existe e o custo de não trazer para a UI.", deliv: "Entregável · alinhamento arquitetural · perguntas resolvidas antes do design" },
+  { num: "03", title: "Caça aos gaps P0 · safety + credibilidade", who: "Patricia + AtomSix + Eng · 90 min", body: "EA Grau 3 em vermelho · markdown raw · variável <code>[Nome]</code> · token <code>--primary</code> · evidence drawer universal · snake_case. <strong>Bugs em produção a resolver antes do redesign visual.</strong>", deliv: "Entregável · 6 P0 fixados e validados em produção" },
+  { num: "04", title: "Redesign sistêmico · P1 arquitetura central", who: "AtomSix sozinha · 2 × 90 min", body: "Patricia se afasta. AtomSix atravessa cada P1: bifacial chip · episódio como entidade · timepoints · catálogo cannabis 13 campos · estrelas universais · TCLE 2 camadas · submodelo pediátrico · dualidade C2/C3.", deliv: "Entregável · 8 P1 desenhados em alta fidelidade · prontos para revisão" },
+  { num: "05", title: "Síntese · backlog priorizado · primeiro sprint", who: "Patricia + AtomSix · 60 min", body: "Consolidar tudo. Priorizar redesigns por ROI estratégico · custo técnico · impacto perceptual por persona. Sair com primeiro sprint AtomSix definido.", deliv: "Entregável · backlog priorizado · marco “Pulse v108 vivo” definido" },
 ];

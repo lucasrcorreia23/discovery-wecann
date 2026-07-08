@@ -674,12 +674,12 @@ function PanelPreview({ panel }: { panel: Panel }) {
           <div className="preview-label">Mobile · App do paciente</div>
           <PhoneFrame top={panel.mobile.top}>
             <div className="card" style={{ margin: 0, background: "var(--panel-2)" }}>
-              <div className="card-title" style={{ fontSize: 14 }}>
+              <div className="card-title" style={{ fontSize: "var(--fs-body)" }}>
                 {panel.mobile.title}
               </div>
               <ul style={{ margin: 0, paddingLeft: 18 }}>
                 {panel.mobile.bullets.map((bullet) => (
-                  <li key={bullet} style={{ fontSize: 12.5, marginBottom: 6 }}>
+                  <li key={bullet} style={{ fontSize: "var(--fs-body-sm)", marginBottom: 6 }}>
                     {bullet}
                   </li>
                 ))}

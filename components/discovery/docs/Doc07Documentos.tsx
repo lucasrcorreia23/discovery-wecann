@@ -5,7 +5,7 @@ export default function Doc07Documentos() {
   return (
     <div className="tab-view">
       <Hero
-        kicker="Doc 07 · Pack de Onboarding Atom6 Studio"
+        kicker="Doc 07 · Pack de Onboarding AtomSix Studio"
         title={
           <>
             Documentos <em>Imprimíveis + Digitais</em>
@@ -52,7 +52,7 @@ export default function Doc07Documentos() {
 
       <div className="doc-footer">
         <span>Doc 07 · Documentos Imprimíveis + Digitais</span>
-        <span>WeCann × Atom6 Studio · Junho 2026</span>
+        <span>WeCann × AtomSix Studio · Junho 2026</span>
       </div>
     </div>
   );

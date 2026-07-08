@@ -54,6 +54,7 @@ export default function DiscoveryWiki() {
   const contentRef = useRef<HTMLDivElement>(null);
   const searchPoolRef = useRef<HTMLDivElement>(null);
   const pinReleaseRef = useRef<number | null>(null);
+  const activeTabRef = useRef(activeTab);
 
   const tab = useMemo(
     () => TABS.find((t) => t.id === activeTab) ?? TABS[0],
@@ -91,6 +92,10 @@ export default function DiscoveryWiki() {
 
   useEffect(() => () => clearPinTimer(), [clearPinTimer]);
 
+  useEffect(() => {
+    activeTabRef.current = activeTab;
+  }, [activeTab]);
+
   const { results, loading } = useGlobalSearch(
     globalQuery,
     searchPoolRef,
@@ -114,6 +119,7 @@ export default function DiscoveryWiki() {
   }, [searchInput]);
 
   const handleTab = useCallback((id: string) => {
+    const tabChanged = activeTabRef.current !== id;
     clearPinTimer();
     setPinnedSection(null);
     setActiveTab(id);
@@ -122,7 +128,11 @@ export default function DiscoveryWiki() {
     setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: "auto" });
     if (typeof history !== "undefined") {
-      history.replaceState(null, "", `#${id}`);
+      if (tabChanged) {
+        history.pushState(null, "", `#${id}`);
+      } else {
+        history.replaceState(null, "", `#${id}`);
+      }
     }
   }, [clearPinTimer]);
 
@@ -165,14 +175,23 @@ export default function DiscoveryWiki() {
   }, []);
 
   const navigateToHash = useCallback(
-    (hash: string, behavior: ScrollBehavior = "smooth") => {
+    (hash: string, behavior: ScrollBehavior = "smooth", updateHistory = true) => {
       const target = resolveHashTarget(hash);
       if (!target) return false;
+
+      const tabChanged = activeTabRef.current !== target.tabId;
 
       setSearchInput("");
       setGlobalQuery("");
       setMenuOpen(false);
       setActiveTab(target.tabId);
+
+      // Registra uma entrada de histórico só ao trocar de documento — evita que
+      // o botão Voltar do navegador saia do app ao sair de uma aba oculta
+      // (personas, competitiva, posicionamento…) alcançada por link cruzado.
+      if (updateHistory && tabChanged && typeof history !== "undefined") {
+        history.pushState(null, "", `#${target.sectionId ?? target.tabId}`);
+      }
 
       if (target.sectionId) {
         pinSection(target.sectionId, behavior === "auto" ? 200 : 900);
@@ -182,7 +201,7 @@ export default function DiscoveryWiki() {
         clearPinTimer();
         setPinnedSection(null);
         window.scrollTo({ top: 0, behavior });
-        if (typeof history !== "undefined") {
+        if (!tabChanged && typeof history !== "undefined") {
           history.replaceState(null, "", `#${target.tabId}`);
         }
       }
@@ -193,10 +212,14 @@ export default function DiscoveryWiki() {
 
   const handleSelectResult = useCallback(
     (tabId: string, sectionId: string) => {
+      const tabChanged = activeTabRef.current !== tabId;
       setSearchInput("");
       setGlobalQuery("");
       setActiveTab(tabId);
       setMenuOpen(false);
+      if (tabChanged && typeof history !== "undefined") {
+        history.pushState(null, "", `#${sectionId}`);
+      }
       pinSection(sectionId);
       window.scrollTo({ top: 0, behavior: "auto" });
       scrollToSection(sectionId);
@@ -207,18 +230,31 @@ export default function DiscoveryWiki() {
   // boot a partir do hash (#tab ou #section)
   useEffect(() => {
     const hash = window.location.hash;
-    if (hash) navigateToHash(hash, "auto");
+    if (hash) navigateToHash(hash, "auto", false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Voltar/Avançar do navegador (e edições manuais da URL) já atualizam
+  // location.hash sozinhos — aqui só sincronizamos o estado, sem empilhar
+  // uma nova entrada de histórico por cima.
   useEffect(() => {
     const onHashChange = () => {
       const hash = window.location.hash;
-      if (hash) navigateToHash(hash, "auto");
+      if (hash) {
+        navigateToHash(hash, "auto", false);
+        return;
+      }
+      // Voltou até a entrada inicial (sem hash) — trata como "home".
+      clearPinTimer();
+      setPinnedSection(null);
+      setSearchInput("");
+      setGlobalQuery("");
+      setActiveTab(TABS.find((t) => !t.hidden)?.id ?? TABS[0].id);
+      window.scrollTo({ top: 0, behavior: "auto" });
     };
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
-  }, [navigateToHash]);
+  }, [navigateToHash, clearPinTimer]);
 
   useEffect(() => {
     const root = contentRef.current;

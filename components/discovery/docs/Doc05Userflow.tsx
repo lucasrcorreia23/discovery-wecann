@@ -9,11 +9,11 @@ import {
 
 const INPUT_SOURCES = [
   { label: "Doc 05", desc: "21 telas · 3 jornadas sistêmicas" },
-  { label: "Imersão interna", desc: "Visão produto · prioridades · 12 telas Atom6" },
-  { label: "Imersão externa", desc: "Briefing Atom6 · prontuário que ensina" },
+  { label: "Imersão interna", desc: "Visão produto · prioridades · 12 telas AtomSix" },
+  { label: "Imersão externa", desc: "Briefing AtomSix · prontuário que ensina" },
   { label: "Demo v107", desc: "Pulso do dia · kanban pré-consulta" },
-  { label: "Doc 06", desc: "Layout 3 colunas · 8 especialidades" },
-  { label: "Doc 04", desc: "Gaps MVP · episódios · timepoints" },
+  { label: "Referências de marca", desc: "Layout 3 colunas · 8 especialidades" },
+  { label: "Arquitetura de dados", desc: "Gaps MVP · episódios · timepoints" },
 ];
 
 const DECISIONS = [
@@ -29,23 +29,23 @@ const DECISIONS = [
   },
   {
     tema: "Conferência humano × IA",
-    fonte: "Briefing Atom6",
+    fonte: "Briefing AtomSix",
     impacto: "Passo explícito ao encerrar a consulta",
   },
   {
     tema: "Layout 3 colunas",
-    fonte: "Doc 06",
+    fonte: "Referências de marca",
     impacto: "J2 = Anamnese/EF | Notas | Atena — composição fixa",
   },
   {
     tema: "Episódio > consulta",
-    fonte: "Doc 04 (gap)",
+    fonte: "Arquitetura de dados (gap)",
     impacto: "Norte de evolução: timepoints M1/M3/M6/M12",
   },
   {
     tema: "Financeiro",
     fonte: "Doc 05 · Fase 2",
-    impacto: "Fora do userflow Atom6 desta fase",
+    impacto: "Fora do userflow AtomSix desta fase",
   },
 ];
 
@@ -58,8 +58,7 @@ export default function Doc05Userflow() {
     >
       <p className="intro">
         Este capítulo consolida o mapa de jornadas com decisões da imersão WeCann ×
-        Atom6 e dos protótipos em <code>inputs/</code>. O artefato completo está em{" "}
-        <code>docs/Userflow_Jornadas_Proposta.md</code>.
+        AtomSix e dos protótipos explorados durante a pesquisa.
       </p>
 
       <Callout variant="teal" label="Regra de ouro · imersão">
@@ -77,7 +76,7 @@ export default function Doc05Userflow() {
             J1 · J2 · J3 + telas meta T-18–T-21. Mapa do território — 21 telas.
           </p>
         </Card>
-        <Card eyebrow="Processual · imersão" title="Protótipo Atom6 (~12 telas)" border="accent">
+        <Card eyebrow="Processual · imersão" title="Protótipo AtomSix (~12 telas)" border="accent">
           <p>
             Fluxo “hoje vou atender” do login ao fechamento. Estados usados no
             fluxo, não todos os estados possíveis de cada tela.
@@ -97,14 +96,14 @@ export default function Doc05Userflow() {
       <h3>Quatro jornadas processuais</h3>
       <p>
         Além das três jornadas sistêmicas (pré / consulta / pós), a imersão
-        define <strong>quatro intenções</strong> do usuário. Prioridade Atom6:
+        define <strong>quatro intenções</strong> do usuário. Prioridade AtomSix:
         consulta primeiro.
       </p>
 
       <ProcJourney
         num={1}
         title="Jornada A · Dia de atendimentos"
-        subtitle="Fluxo principal · prioridade #1 Atom6"
+        subtitle="Fluxo principal · prioridade #1 AtomSix"
         flow={[
           "Login",
           "Pulso do dia",
@@ -156,8 +155,9 @@ export default function Doc05Userflow() {
         ]}
       >
         <p>
-          Pragmático e Sênior entram por aqui. Doc 04 antecipa episódios e
-          timepoints M1/M3/M6 — gap no MVP, norte do desenho.
+          Pragmático e Sênior entram por aqui. A arquitetura de dados
+          antecipa episódios e timepoints M1/M3/M6 — gap no MVP, norte do
+          desenho.
         </p>
       </ProcJourney>
 
@@ -180,7 +180,7 @@ export default function Doc05Userflow() {
         </p>
       </ProcJourney>
 
-      <h3>Vertical slice · protótipo Atom6</h3>
+      <h3>Vertical slice · protótipo AtomSix</h3>
       <Callout label="Worst case por persona">
         <p>
           Login → Agenda → Paciente → Play → [Pré-anamnese ou Paciente 360] →
@@ -191,7 +191,7 @@ export default function Doc05Userflow() {
 
       <h3>J2 · Consulta · composição fixa</h3>
       <div className="callout purple">
-        <div className="c-label">Layout Doc 06</div>
+        <div className="c-label">Layout de referência</div>
         <p>
           <strong>Coluna 1</strong> · Anamnese ↔ Exame Físico (generativo, por
           especialidade)
@@ -286,7 +286,7 @@ export default function Doc05Userflow() {
           "Especificar Pulso do dia e kanban pré-consulta",
           "Definir passo de conferência médico × IA",
           "Documentar fork por 8 especialidades no layout 3 colunas",
-          "Planejar evolução episódio/timepoint pós-Atom6",
+          "Planejar evolução episódio/timepoint pós-AtomSix",
         ]}
       />
     </Section>

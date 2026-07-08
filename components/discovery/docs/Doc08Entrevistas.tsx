@@ -105,7 +105,7 @@ export default function Doc08Entrevistas() {
         <p>
           Cada entrevista é um bloco colapsável com perfil, fluxo de trabalho
           (organizado por pré / durante / pós-consulta, espelhando o User Flow),
-          uso de IA, dores priorizadas, pedidos diretos e a leitura Atom6
+          uso de IA, dores priorizadas, pedidos diretos e a leitura AtomSix
           cruzando com o restante do Discovery.
         </p>
 
@@ -121,7 +121,7 @@ export default function Doc08Entrevistas() {
               O entrevistado pediu explicitamente que esta sessão{" "}
               <strong>não seja publicada nem divulgada externamente</strong> (
               &ldquo;só para entendimento de vocês&rdquo;). Manter restrito à
-              equipe Atom6 / WeCann.
+              equipe AtomSix / WeCann.
             </p>
           </Callout>
 
@@ -265,21 +265,20 @@ export default function Doc08Entrevistas() {
             ]}
           />
 
-          <h4>Leitura Atom6 · validações e sinais</h4>
+          <h4>Leitura AtomSix · validações e sinais</h4>
           <BlockList
             items={[
               <>
                 <strong>Valida a tese da Atena invisível:</strong> o olhar
                 humano (comportamento, tom de voz, não-ditos) é
                 &ldquo;insubstituível&rdquo;; a IA deve organizar e poupar tempo,
-                não atender. Converge com a persona{" "}
-                <a href="#per-dd-humanista">Humanista</a> e com a referência{" "}
-                <a href="#ref-nike">Nike (médico herói)</a>.
+                não atender. Converge com a persona Humanista e com a
+                referência Nike (médico herói).
               </>,
               <>
                 <strong>Reforça a dor de fragmentação:</strong> Doutoralia +
                 Drive + WhatsApp + email + caderno à mão — mesma fragmentação
-                vista na <a href="#competitiva">análise competitiva</a>.
+                vista na análise competitiva.
               </>,
               <>
                 <strong>Sinal forte de tempo como moeda:</strong> alinhado ao
@@ -288,8 +287,8 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Imutabilidade e LGPD</strong> aparecem como requisito de
-                confiança, não só feature — eco da{" "}
-                <a href="#ref-msf">honestidade clínica (MSF)</a>.
+                confiança, não só feature — eco da honestidade clínica
+                (MSF).
               </>,
             ]}
           />
@@ -404,14 +403,14 @@ export default function Doc08Entrevistas() {
             ]}
           />
 
-          <h4>Leitura Atom6 · validações e sinais</h4>
+          <h4>Leitura AtomSix · validações e sinais</h4>
           <BlockList
             items={[
               <>
                 <strong>Primeira voz pela simplicidade:</strong> a dor de
                 &ldquo;abas demais&rdquo; é direta contra a plataforma cheia de
-                campos — valida a busca por interface mínima (
-                <a href="#ref-apple">Apple · complexidade invisível</a>).
+                campos — valida a busca por interface mínima (Apple ·
+                complexidade invisível).
               </>,
               <>
                 <strong>Barreira de preço no início de carreira</strong> é um
@@ -419,16 +418,15 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>iClinic entra no radar competitivo</strong> com
-                personalização de receituário — cruzar com{" "}
-                <a href="#comp-iclinic">iClinic (Doc 03)</a>.
+                personalização de receituário — cruzar com iClinic.
               </>,
               <>
                 <strong>Insights do time na sessão:</strong> editor de consulta
                 tipo Notion / slash (tags que a Atena interpreta e organiza no
                 template), Atena que capta o áudio enquanto o médico foca na
                 pessoa, e a metáfora do &ldquo;olho&rdquo; — médico no lugar onde
-                sempre deveria estar, na frente do paciente. Alinha com a tese da{" "}
-                <a href="#pos-atena">Atena como IA invisível</a>.
+                sempre deveria estar, na frente do paciente. Alinha com a
+                tese da Atena como IA invisível.
               </>,
             ]}
           />
@@ -561,7 +559,7 @@ export default function Doc08Entrevistas() {
             ]}
           />
 
-          <h4>Leitura Atom6 · validações e sinais</h4>
+          <h4>Leitura AtomSix · validações e sinais</h4>
           <BlockList
             items={[
               <>
@@ -572,19 +570,18 @@ export default function Doc08Entrevistas() {
               <>
                 <strong>Olhar humano insubstituível com exemplo concreto:</strong>{" "}
                 paciente de 96 anos + 2 filhas com relatos contraditórios —
-                &ldquo;como a IA vai interpretar isso?&rdquo;. Reforça a{" "}
-                <a href="#pos-atena">Atena como apoio, nunca decisão</a>.
+                &ldquo;como a IA vai interpretar isso?&rdquo;. Reforça a
+                Atena como apoio, nunca decisão.
               </>,
               <>
                 <strong>Casuística e busca semântica</strong> conectam ao módulo
-                de Casuística / Outcomes do User Flow de pós-consulta e ao{" "}
-                <a href="#arq-rwe">schema RWE (Doc 04)</a>.
+                de Casuística / Outcomes do User Flow de pós-consulta e ao
+                schema RWE.
               </>,
               <>
                 <strong>Concorrentes citados</strong> (Comunique-Aire, Amplimed,
-                Mevo, Memed, Doxy) — enriquecer{" "}
-                <a href="#comp-amplimed">a análise competitiva</a> com prontuários
-                de nicho.
+                Mevo, Memed, Doxy) — enriquecer a análise competitiva com
+                prontuários de nicho.
               </>,
             ]}
           />
@@ -768,7 +765,7 @@ export default function Doc08Entrevistas() {
             ]}
           />
 
-          <h4>Leitura Atom6 · validações e sinais</h4>
+          <h4>Leitura AtomSix · validações e sinais</h4>
           <BlockList
             items={[
               <>
@@ -787,15 +784,14 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Priorização de produto explícita:</strong> as 7 telas do
-                MVP mapeiam diretamente para os módulos do User Flow e do{" "}
-                <a href="#arq-rwe">schema RWE (Doc 04)</a> — casuística,
-                Paciente 360 e laudos por IA.
+                MVP mapeiam diretamente para os módulos do User Flow e do
+                schema RWE — casuística, Paciente 360 e laudos por IA.
               </>,
               <>
                 <strong>Clínica nas Nuvens como baseline:</strong> fricções de
-                login, agenda pobre e prontuário não estruturado reforçam a{" "}
-                <a href="#competitiva">análise competitiva (Doc 03)</a> — o
-                mercado entrega repositório, não plataforma.
+                login, agenda pobre e prontuário não estruturado reforçam a
+                análise competitiva — o mercado entrega repositório, não
+                plataforma.
               </>,
               <>
                 <strong>Real estate e escala:</strong> desafio de equilibrar
@@ -807,9 +803,9 @@ export default function Doc08Entrevistas() {
                 <strong>Visão estratégica:</strong> queda nas vendas da
                 certificação médica como sinal de mudança de comportamento; o
                 prontuário como principal pilar de atualização clínica — alinha
-                com a tese da <a href="#pos-atena">Atena invisível</a> e com a
-                referência <a href="#ref-nike">Nike (médico herói)</a>, desde
-                que a interface não sobrecarregue o perfil típico.
+                com a tese da Atena invisível e com a referência Nike
+                (médico herói), desde que a interface não sobrecarregue o
+                perfil típico.
               </>,
             ]}
           />
@@ -823,9 +819,8 @@ export default function Doc08Entrevistas() {
       >
         <p>
           Síntese consolidada das quatro sessões (três entrevistas + shadowing),
-          cruzando as dores observadas com as <a href="#personas">Personas (Doc 02)</a>, a{" "}
-          <a href="#competitiva">Análise Competitiva (Doc 03)</a> e o User Flow
-          (pré / durante / pós-consulta).
+          cruzando as dores observadas com as Personas, a Análise
+          Competitiva e o User Flow (pré / durante / pós-consulta).
         </p>
 
         <h3>Achados consolidados</h3>
@@ -914,8 +909,7 @@ export default function Doc08Entrevistas() {
         <h3>Formas e insights para melhorar</h3>
         <p>
           Oportunidades cruzando as dores observadas com o User Flow
-          (pré / durante / pós-consulta) e a{" "}
-          <a href="#competitiva">análise competitiva</a>.
+          (pré / durante / pós-consulta) e a análise competitiva.
         </p>
         <div className="grid-2">
           <Card eyebrow="Pré-consulta" title="Hidratação + preparo" border="teal">
@@ -946,8 +940,7 @@ export default function Doc08Entrevistas() {
             <p>
               Busca semântica na casuística (Bárbara), CID automático, base
               científica confiável (Tércio), FUP proativo e Paciente 360
-              escalável (Patricia) — ligados ao{" "}
-              <a href="#arq-rwe">schema RWE</a>.
+              escalável (Patricia) — ligados ao schema RWE.
             </p>
           </Card>
         </div>
