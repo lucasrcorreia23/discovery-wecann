@@ -1042,13 +1042,11 @@ export default function DocDiscovery() {
       <Section id="disc-pesquisa" num="7 · PESQUISA" title="Benchmarking e entrevistas">
         <h3 id="disc-pesquisa-benchmarking">7.1 Benchmarking</h3>
         <p>
-          A análise competitiva abaixo <strong>não é o documento bruto</strong>{" "}
-          que a WeCann enviou no onboarding — é um{" "}
-          <strong>refinamento</strong> daquela base, cruzando outputs das
-          entrevistas (jun/2026), conversas do workshop de posicionamento
-          (17/06) e reuniões de alinhamento. A lente principal é{" "}
+          A análise competitiva a seguir cruza os outputs das entrevistas
+          (jun/2026), as conversas do workshop de posicionamento (17/06) e as
+          reuniões de alinhamento. A lente principal é{" "}
           <strong>negócio e produto</strong>: o que o médico precisa, onde o
-          mercado falha, o que a WeCann pode roubar ou evitar. Esse foco
+          mercado falha, o que a WeCann Care pode roubar ou evitar. Esse foco
           direcionou decisões de UX no produto; a camada de identidade visual
           entra como complemento do benchmarking geral.
         </p>
