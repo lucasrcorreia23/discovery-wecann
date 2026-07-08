@@ -26,7 +26,7 @@ export default function Sidebar({
     <aside className={`sidebar${open ? " open" : ""}`}>
       <div className="brand">
         <Image
-          src="/logo-light.svg"
+          src="/logo.svg"
           alt="Atomsix"
           width={229}
           height={64}
@@ -73,9 +73,11 @@ export default function Sidebar({
       </nav>
 
       <div className="sidebar-foot">
-        WeCann Care · Prontuário Inteligente
+        Documento · v1.5.3
         <br />
-        Brief para Atom6 Studio
+        Editado por <b style={{ color: "var(--ink-soft)" }}>Atomsix</b>
+        <br />
+        Atualizado em 08/07/2026
       </div>
     </aside>
   );

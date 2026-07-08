@@ -64,9 +64,15 @@ export function Callout({
   children: React.ReactNode;
 }) {
   const cls = variant === "accent" ? "callout" : `callout ${variant}`;
+  const icon = variant === "warn" ? "! " : variant === "ok" ? "✓ " : "";
   return (
     <div className={cls}>
-      {label && <div className="c-label">{label}</div>}
+      {label && (
+        <div className="c-label">
+          {icon}
+          {label}
+        </div>
+      )}
       {children}
     </div>
   );

@@ -32,7 +32,7 @@ export default function Topbar({ activeTab, onTab, onToggleMenu }: Props) {
       </button>
 
       <div className="tabs" role="tablist">
-        {TABS.map((t) => (
+        {TABS.filter((t) => !t.hidden).map((t) => (
           <button
             key={t.id}
             className={`tab${activeTab === t.id ? " active" : ""}`}
@@ -46,7 +46,7 @@ export default function Topbar({ activeTab, onTab, onToggleMenu }: Props) {
       </div>
 
       <div className="status">
-        <span className="dot" /> Discovery Pack · WeCann 2026
+        Discovery Pack · WeCann 2026
       </div>
     </div>
   );

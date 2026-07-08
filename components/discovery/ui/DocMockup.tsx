@@ -20,7 +20,7 @@ export function DocPaper({
     <div className="doc-paper">
       <div className="doc-strip" style={{ background: stripColor }} />
       <h5>{title}</h5>
-      <div style={{ fontSize: 10, color: "#8a8578", marginBottom: 14 }}>
+      <div style={{ fontSize: 10, color: "var(--ink-faint)", marginBottom: 14 }}>
         {subtitle}
       </div>
       {rows.map((r, i) => (

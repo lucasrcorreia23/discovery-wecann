@@ -9,11 +9,67 @@ export type DocTab = {
   label: string;
   navLabel: string;
   sections: NavItem[];
+  /** Fora da navegação (Topbar/Sidebar/busca), mas o conteúdo continua no código e acessível por link direto. */
+  hidden?: boolean;
 };
 
 export const TABS: DocTab[] = [
   {
+    id: "discovery",
+    label: "Discovery",
+    navLabel: "Sumário",
+    sections: [
+      { id: "disc-como-usar", label: "1 · Introdução" },
+      { id: "disc-empresa", label: "2 · A Empresa" },
+      { id: "disc-empresa-quem", label: "Quem é a WeCann", sub: true },
+      { id: "disc-empresa-momento", label: "O momento", sub: true },
+      { id: "disc-projeto", label: "3 · O Projeto" },
+      { id: "disc-projeto-objetivo", label: "Objetivo", sub: true },
+      { id: "disc-projeto-escopo", label: "Escopo & entregáveis", sub: true },
+      { id: "disc-projeto-frentes", label: "As duas frentes", sub: true },
+      { id: "disc-projeto-foco", label: "Foco da primeira entrega", sub: true },
+      { id: "disc-projeto-etapas", label: "Etapas do Discovery", sub: true },
+      { id: "disc-produto", label: "4 · Produto: contratos de design" },
+      { id: "disc-jornadas", label: "5 · Jornadas mapeadas" },
+      { id: "disc-jornadas-pre", label: "Pré-consulta", sub: true },
+      { id: "disc-jornadas-consulta", label: "Consulta", sub: true },
+      { id: "disc-jornadas-pos", label: "Pós-consulta", sub: true },
+      { id: "disc-posicionamento", label: "6 · Posicionamento" },
+      { id: "disc-pesquisa", label: "7 · Pesquisa" },
+      { id: "disc-pesquisa-benchmarking", label: "7.1 Benchmarking", sub: true },
+      { id: "disc-pesquisa-entrevistas", label: "7.2 Entrevistas", sub: true },
+      { id: "disc-ent-tercio", label: "7.2.4.1 Dr. Tércio", sub: true },
+      { id: "disc-ent-marco", label: "7.2.4.2 Dr. Marco Antônio", sub: true },
+      { id: "disc-ent-barbara", label: "7.2.4.3 Dra. Bárbara", sub: true },
+      { id: "disc-ent-patricia", label: "7.2.4.4 Dra. Patricia", sub: true },
+      { id: "disc-pesquisa-insights", label: "7.2.5 Insights", sub: true },
+      { id: "disc-sitemap", label: "8 · Sitemap" },
+      { id: "disc-reunioes", label: "Registro de Reuniões" },
+      { id: "reuniao-2026-07-03", label: "03/07 · Design de UI", sub: true },
+      { id: "reuniao-2026-06-26", label: "26/06 · Validação conceito", sub: true },
+      { id: "reuniao-2026-06-18", label: "18/06 · Shadowing", sub: true },
+      { id: "reuniao-2026-06-01-imersao", label: "01/06 · Imersão", sub: true },
+    ],
+  },
+  {
+    id: "principios",
+    label: "Princípios de UX/UI e IA",
+    navLabel: "Princípios",
+    sections: [
+      { id: "princ-ux", label: "Princípios de UX/UI" },
+      { id: "princ-ia", label: "Princípios de IA" },
+    ],
+  },
+  {
+    id: "funcionalidades",
+    label: "Funcionalidades",
+    navLabel: "Funcionalidades",
+    hidden: true,
+    sections: [{ id: "func-tabela", label: "Tabela completa" }],
+  },
+  {
     id: "posicionamento",
+    hidden: true,
     label: "Posicionamento",
     navLabel: "01 · Posicionamento",
     sections: [
@@ -30,6 +86,7 @@ export const TABS: DocTab[] = [
   },
   {
     id: "referencias-marca",
+    hidden: true,
     label: "Ref. Marca",
     navLabel: "06 · Referências de Marca",
     sections: [
@@ -45,6 +102,7 @@ export const TABS: DocTab[] = [
   },
   {
     id: "personas",
+    hidden: true,
     label: "Personas",
     navLabel: "02 · Personas Médicas",
     sections: [
@@ -65,6 +123,7 @@ export const TABS: DocTab[] = [
   },
   {
     id: "competitiva",
+    hidden: true,
     label: "Competitiva",
     navLabel: "03 · Análise Competitiva",
     sections: [
@@ -80,6 +139,7 @@ export const TABS: DocTab[] = [
   },
   {
     id: "arquitetura",
+    hidden: true,
     label: "Arquitetura",
     navLabel: "04 · Arquitetura de Dados",
     sections: [
@@ -103,6 +163,7 @@ export const TABS: DocTab[] = [
   },
   {
     id: "jornadas",
+    hidden: true,
     label: "Jornadas",
     navLabel: "05 · Jornadas UX",
     sections: [
@@ -121,6 +182,7 @@ export const TABS: DocTab[] = [
   },
   {
     id: "documentos",
+    hidden: true,
     label: "Documentos",
     navLabel: "07 · Documentos",
     sections: [
@@ -145,6 +207,7 @@ export const TABS: DocTab[] = [
   },
   {
     id: "entrevistas",
+    hidden: true,
     label: "Entrevistas",
     navLabel: "08 · Entrevistas",
     sections: [

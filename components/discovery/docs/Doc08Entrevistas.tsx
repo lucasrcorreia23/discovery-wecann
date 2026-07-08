@@ -64,7 +64,7 @@ export default function Doc08Entrevistas() {
           que a plataforma precisa atender perfis radicalmente diferentes — e
           que o produto precisa funcionar além do perfil da própria Patricia.
         </p>
-        <div className="stack">
+        <div className="stack cols-2">
           <Card eyebrow="E1 · 15/06" title="Dr. Tércio" border="accent">
             <p>
               62 anos, medicina de família e cannabis, telemedicina. Cético com
@@ -597,7 +597,7 @@ export default function Doc08Entrevistas() {
           title="Dra. Patricia Montagner · Shadowing no consultório"
           sub="18/06/2026 · 2h 02min · presencial · shadowing · perfil: Especialista pragmático · Fundadora"
         >
-          <Callout variant="info" label="Shadowing · não é entrevista por blocos">
+          <Callout variant="teal" label="Shadowing · não é entrevista por blocos">
             <p>
               Sessão de observação guiada no consultório real: Patricia opera o{" "}
               <strong>Clínica nas Nuvens</strong> (EHR atual) e valida telas do

@@ -53,7 +53,7 @@ const PANELS: Panel[] = [
     alert:
       "Antibióticos em receita simples exigem retenção em farmácia conforme RDC 471/2021; a Atena sinaliza automaticamente.",
     paper: {
-      stripColor: "#64748b",
+      stripColor: "#d4d4d8",
       title: "Receita Médica",
       subtitle: "Simples · 1a via paciente",
       rows: [
@@ -97,7 +97,7 @@ const PANELS: Panel[] = [
     alert:
       "Cannabis CBD é marcada como C1 quando produto possui registro ANVISA (RDC 660/2022).",
     paper: {
-      stripColor: "#10b981",
+      stripColor: "#a1a1aa",
       title: "C1 · Controle Especial",
       subtitle: "1a via farmácia · 2a via paciente",
       rows: [
@@ -142,7 +142,7 @@ const PANELS: Panel[] = [
     alert:
       "Numeração sequencial obrigatória vinculada ao médico/UF, com geração automática pela Atena.",
     paper: {
-      stripColor: "#2563eb",
+      stripColor: "#71717a",
       title: "B1 · Notificação Azul",
       subtitle: "N 0042819 · UF SC",
       rows: [
@@ -183,7 +183,7 @@ const PANELS: Panel[] = [
     alert:
       "RDC 50/2014 + CFM 2.131/2015: uso restrito por IMC/comorbidades e TCLE obrigatório em documento separado.",
     paper: {
-      stripColor: "#db2777",
+      stripColor: "#52525b",
       title: "B2 · Notificação Rosa",
       subtitle: "N 0028104 · UF SC",
       rows: [
@@ -224,7 +224,7 @@ const PANELS: Panel[] = [
     alert:
       "Controle SNGPC rigoroso; perda de talonário deve ser comunicada à VISA em até 24h.",
     paper: {
-      stripColor: "#f59e0b",
+      stripColor: "#3f3f46",
       title: "A3 · Notificação Amarela",
       subtitle: "N 0015342 · UF SC",
       rows: [
@@ -266,7 +266,7 @@ const PANELS: Panel[] = [
       "Combos inteligentes para rastreio metabólico anual (glicemia, lipídico, função renal e hepática).",
     desktopOnly: true,
     paper: {
-      stripColor: "#0ea5e9",
+      stripColor: "#d4d4d8",
       title: "REQ · Exames Complementares",
       subtitle: "1 via laboratório",
       rows: [
@@ -303,7 +303,7 @@ const PANELS: Panel[] = [
       "Auditoria exige justificativa técnica completa e falha de tratamento conservador documentada.",
     desktopOnly: true,
     paper: {
-      stripColor: "#0891b2",
+      stripColor: "#a1a1aa",
       title: "REQ · Procedimento Cirúrgico",
       subtitle: "Auditoria do convênio",
       rows: [
@@ -340,7 +340,7 @@ const PANELS: Panel[] = [
       "Solicitação OPME deve listar ao menos três fabricantes equivalentes com justificativa técnica da escolha primária.",
     desktopOnly: true,
     paper: {
-      stripColor: "#0f766e",
+      stripColor: "#71717a",
       title: "OPME · Materiais Especiais",
       subtitle: "Anexo da solicitação cirúrgica",
       rows: [
@@ -377,7 +377,7 @@ const PANELS: Panel[] = [
       "Atena rascunha história, exame e hipóteses; médico revisa antes do envio ao colega.",
     desktopOnly: true,
     paper: {
-      stripColor: "#0284c7",
+      stripColor: "#52525b",
       title: "REQ · Encaminhamento Médico",
       subtitle: "Eletivo · prioridade média",
       rows: [
@@ -413,7 +413,7 @@ const PANELS: Panel[] = [
     alert:
       "CFM 1.851/2008: CID somente com autorização explícita do paciente; Atena exige confirmação.",
     paper: {
-      stripColor: "#7c3aed",
+      stripColor: "#3f3f46",
       title: "Atestado Médico · Afastamento",
       subtitle: "1 via paciente",
       rows: [
@@ -457,7 +457,7 @@ const PANELS: Panel[] = [
     alert:
       "CFM 1.658/2002: documento técnico circunstanciado para subsidiar decisões previdenciárias e judiciais.",
     paper: {
-      stripColor: "#6d28d9",
+      stripColor: "#d4d4d8",
       title: "Laudo Médico Circunstanciado",
       subtitle: "Finalidade: perícia INSS",
       rows: [
@@ -502,7 +502,7 @@ const PANELS: Panel[] = [
     alert:
       "Entregue em até 5 minutos após consulta, com visão acolhedora para paciente e acesso técnico sob demanda.",
     paper: {
-      stripColor: "#8b5cf6",
+      stripColor: "#a1a1aa",
       title: "Sumário Clínico · Consulta de hoje",
       subtitle: "Linguagem natural para paciente",
       rows: [
@@ -547,7 +547,7 @@ const PANELS: Panel[] = [
     alert:
       "Atena gera texto personalizado por perfil clínico; médico revisa em segundos antes do envio.",
     paper: {
-      stripColor: "#a855f7",
+      stripColor: "#71717a",
       title: "Orientações para casa",
       subtitle: "Primeiros 30 dias de tratamento",
       rows: [
@@ -592,7 +592,7 @@ const PANELS: Panel[] = [
     alert:
       "CFM 2.227/2018 + LGPD + Res. CNS 466/2012: separação formal entre cuidado clínico e cessão de dados para pesquisa.",
     paper: {
-      stripColor: "#9333ea",
+      stripColor: "#52525b",
       title: "TCLE · Consentimento Livre e Esclarecido",
       subtitle: "Versão v3.2 · 2 camadas",
       rows: [
@@ -658,7 +658,7 @@ function PanelPreview({ panel }: { panel: Panel }) {
             panel.paper.meds && (
               <ul style={{ margin: 0, paddingLeft: 16 }}>
                 {panel.paper.meds.map((m) => (
-                  <li key={m} style={{ marginBottom: 4, color: "#374151" }}>
+                  <li key={m} style={{ marginBottom: 4, color: "var(--ink-soft)" }}>
                     {m}
                   </li>
                 ))}

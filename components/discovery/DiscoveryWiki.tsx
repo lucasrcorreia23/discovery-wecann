@@ -6,8 +6,11 @@ import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 import SearchPool from "./SearchPool";
 import SearchResults from "./SearchResults";
-import { useScrollSpy } from "./hooks/useScrollSpy";
+import { getScrollOffset, useScrollSpy } from "./hooks/useScrollSpy";
 import { useGlobalSearch } from "./hooks/useGlobalSearch";
+import DocDiscovery from "./docs/DocDiscovery";
+import DocPrincipios from "./docs/DocPrincipios";
+import DocFuncionalidades from "./docs/DocFuncionalidades";
 import Doc01Posicionamento from "./docs/Doc01Posicionamento";
 import Doc06ReferenciasMarca from "./docs/Doc06ReferenciasMarca";
 import Doc02Personas from "./docs/Doc02Personas";
@@ -18,6 +21,9 @@ import Doc07Documentos from "./docs/Doc07Documentos";
 import Doc08Entrevistas from "./docs/Doc08Entrevistas";
 
 const DOC_COMPONENTS: Record<string, React.ComponentType> = {
+  discovery: DocDiscovery,
+  principios: DocPrincipios,
+  funcionalidades: DocFuncionalidades,
   posicionamento: Doc01Posicionamento,
   "referencias-marca": Doc06ReferenciasMarca,
   personas: Doc02Personas,
@@ -28,17 +34,26 @@ const DOC_COMPONENTS: Record<string, React.ComponentType> = {
   entrevistas: Doc08Entrevistas,
 };
 
-const WIDE_TABS = new Set(["competitiva", "documentos"]);
+const WIDE_TABS = new Set([
+  "discovery",
+  "principios",
+  "competitiva",
+  "documentos",
+]);
 const MIN_SEARCH_LEN = 2;
 const SEARCH_DEBOUNCE_MS = 350;
 
 export default function DiscoveryWiki() {
-  const [activeTab, setActiveTab] = useState<string>(TABS[0].id);
+  const [activeTab, setActiveTab] = useState<string>(
+    () => TABS.find((t) => !t.hidden)?.id ?? TABS[0].id,
+  );
   const [searchInput, setSearchInput] = useState("");
   const [globalQuery, setGlobalQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [pinnedSection, setPinnedSection] = useState<string | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const searchPoolRef = useRef<HTMLDivElement>(null);
+  const pinReleaseRef = useRef<number | null>(null);
 
   const tab = useMemo(
     () => TABS.find((t) => t.id === activeTab) ?? TABS[0],
@@ -50,7 +65,31 @@ export default function DiscoveryWiki() {
   );
 
   const showSearch = globalQuery.trim().length >= MIN_SEARCH_LEN;
-  const activeSection = useScrollSpy(showSearch ? [] : sectionIds);
+  const activeSection = useScrollSpy(
+    showSearch ? [] : sectionIds,
+    showSearch ? null : pinnedSection,
+  );
+
+  const clearPinTimer = useCallback(() => {
+    if (pinReleaseRef.current !== null) {
+      window.clearTimeout(pinReleaseRef.current);
+      pinReleaseRef.current = null;
+    }
+  }, []);
+
+  const pinSection = useCallback(
+    (sectionId: string, releaseMs = 900) => {
+      clearPinTimer();
+      setPinnedSection(sectionId);
+      pinReleaseRef.current = window.setTimeout(() => {
+        setPinnedSection(null);
+        pinReleaseRef.current = null;
+      }, releaseMs);
+    },
+    [clearPinTimer],
+  );
+
+  useEffect(() => () => clearPinTimer(), [clearPinTimer]);
 
   const { results, loading } = useGlobalSearch(
     globalQuery,
@@ -75,6 +114,8 @@ export default function DiscoveryWiki() {
   }, [searchInput]);
 
   const handleTab = useCallback((id: string) => {
+    clearPinTimer();
+    setPinnedSection(null);
     setActiveTab(id);
     setSearchInput("");
     setGlobalQuery("");
@@ -83,7 +124,7 @@ export default function DiscoveryWiki() {
     if (typeof history !== "undefined") {
       history.replaceState(null, "", `#${id}`);
     }
-  }, []);
+  }, [clearPinTimer]);
 
   const scrollToSection = useCallback(
     (sectionId: string, behavior: ScrollBehavior = "smooth") => {
@@ -91,8 +132,10 @@ export default function DiscoveryWiki() {
         const el = contentRef.current?.querySelector(
           `#${CSS.escape(sectionId)}`,
         );
-        if (el) {
-          el.scrollIntoView({ behavior, block: "start" });
+        if (el instanceof HTMLElement) {
+          const top =
+            el.getBoundingClientRect().top + window.scrollY - getScrollOffset();
+          window.scrollTo({ top: Math.max(0, top), behavior });
           history.replaceState(null, "", `#${sectionId}`);
           return;
         }
@@ -110,9 +153,10 @@ export default function DiscoveryWiki() {
       setMenuOpen(false);
       setSearchInput("");
       setGlobalQuery("");
+      pinSection(sectionId);
       scrollToSection(sectionId);
     },
-    [scrollToSection],
+    [pinSection, scrollToSection],
   );
 
   const handleClearSearch = useCallback(() => {
@@ -131,9 +175,12 @@ export default function DiscoveryWiki() {
       setActiveTab(target.tabId);
 
       if (target.sectionId) {
+        pinSection(target.sectionId, behavior === "auto" ? 200 : 900);
         window.scrollTo({ top: 0, behavior: "auto" });
         scrollToSection(target.sectionId, behavior);
       } else {
+        clearPinTimer();
+        setPinnedSection(null);
         window.scrollTo({ top: 0, behavior });
         if (typeof history !== "undefined") {
           history.replaceState(null, "", `#${target.tabId}`);
@@ -141,7 +188,7 @@ export default function DiscoveryWiki() {
       }
       return true;
     },
-    [scrollToSection],
+    [clearPinTimer, pinSection, scrollToSection],
   );
 
   const handleSelectResult = useCallback(
@@ -150,10 +197,11 @@ export default function DiscoveryWiki() {
       setGlobalQuery("");
       setActiveTab(tabId);
       setMenuOpen(false);
+      pinSection(sectionId);
       window.scrollTo({ top: 0, behavior: "auto" });
       scrollToSection(sectionId);
     },
-    [scrollToSection],
+    [pinSection, scrollToSection],
   );
 
   // boot a partir do hash (#tab ou #section)

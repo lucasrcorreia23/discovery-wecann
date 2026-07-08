@@ -322,8 +322,8 @@ export default function Doc03Competitiva() {
 }
 
 function PositioningMap() {
-  const ink = "#ededf0";
-  const faint = "#6c6c78";
+  const ink = "#17171a";
+  const faint = "#71717a";
   return (
     <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -331,7 +331,7 @@ function PositioningMap() {
           <path
             d="M 60 0 L 0 0 0 60"
             fill="none"
-            stroke="#22222b"
+            stroke="#ececed"
             strokeWidth="0.5"
           />
         </pattern>
@@ -353,7 +353,7 @@ function PositioningMap() {
       <text
         x="50"
         y="40"
-        fontFamily="var(--font-mono), monospace"
+        fontFamily="var(--font-sans)"
         fontSize="10"
         fill={ink}
         fontWeight="600"
@@ -364,7 +364,7 @@ function PositioningMap() {
       <text
         x="450"
         y="510"
-        fontFamily="var(--font-mono), monospace"
+        fontFamily="var(--font-sans)"
         fontSize="10"
         fill={ink}
         fontWeight="600"
@@ -386,22 +386,22 @@ function PositioningMap() {
         plataforma
       </text>
 
-      <text x="200" y="100" fontSize="11" fill="#4b4b57" fontStyle="italic">
+      <text x="200" y="100" fontSize="11" fill="#a1a1aa" fontStyle="italic">
         Assistente clínico
       </text>
-      <text x="470" y="100" fontSize="11" fill="#4b4b57" fontStyle="italic">
+      <text x="470" y="100" fontSize="11" fill="#a1a1aa" fontStyle="italic">
         Plataforma clínico-científica
       </text>
-      <text x="200" y="450" fontSize="11" fill="#4b4b57" fontStyle="italic">
+      <text x="200" y="450" fontSize="11" fill="#a1a1aa" fontStyle="italic">
         Ferramenta auxiliar
       </text>
-      <text x="500" y="450" fontSize="11" fill="#4b4b57" fontStyle="italic">
+      <text x="500" y="450" fontSize="11" fill="#a1a1aa" fontStyle="italic">
         ERP operacional
       </text>
 
       {/* Voa */}
-      <circle cx="200" cy="180" r="32" fill="#818cf8" opacity="0.18" />
-      <circle cx="200" cy="180" r="8" fill="#818cf8" />
+      <circle cx="200" cy="180" r="32" fill="#d4d4d8" opacity="0.4" />
+      <circle cx="200" cy="180" r="8" fill="#d4d4d8" />
       <text x="220" y="178" fontSize="16" fill={ink} fontWeight="600">
         Voa
       </text>
@@ -410,8 +410,8 @@ function PositioningMap() {
       </text>
 
       {/* iClinic */}
-      <circle cx="380" cy="330" r="32" fill="#60a5fa" opacity="0.18" />
-      <circle cx="380" cy="330" r="7" fill="#60a5fa" />
+      <circle cx="380" cy="330" r="32" fill="#a1a1aa" opacity="0.3" />
+      <circle cx="380" cy="330" r="7" fill="#a1a1aa" />
       <text x="395" y="328" fontSize="14" fill={ink} fontWeight="600">
         iClinic
       </text>
@@ -420,8 +420,8 @@ function PositioningMap() {
       </text>
 
       {/* CNN */}
-      <circle cx="340" cy="372" r="30" fill="#38bdf8" opacity="0.18" />
-      <circle cx="340" cy="372" r="7" fill="#38bdf8" />
+      <circle cx="340" cy="372" r="30" fill="#8a8a91" opacity="0.28" />
+      <circle cx="340" cy="372" r="7" fill="#8a8a91" />
       <text x="250" y="388" fontSize="14" fill={ink} fontWeight="600">
         CNN
       </text>
@@ -430,8 +430,8 @@ function PositioningMap() {
       </text>
 
       {/* Amigo */}
-      <circle cx="430" cy="270" r="34" fill="#fbbf24" opacity="0.18" />
-      <circle cx="430" cy="270" r="7" fill="#fbbf24" />
+      <circle cx="430" cy="270" r="34" fill="#52525b" opacity="0.16" />
+      <circle cx="430" cy="270" r="7" fill="#52525b" />
       <text x="445" y="268" fontSize="14" fill={ink} fontWeight="600">
         Amigo Tech
       </text>
@@ -440,8 +440,8 @@ function PositioningMap() {
       </text>
 
       {/* Amplimed */}
-      <circle cx="490" cy="375" r="40" fill="#34d399" opacity="0.18" />
-      <circle cx="490" cy="375" r="7" fill="#34d399" />
+      <circle cx="490" cy="375" r="40" fill="#71717a" opacity="0.2" />
+      <circle cx="490" cy="375" r="7" fill="#71717a" />
       <text x="505" y="373" fontSize="14" fill={ink} fontWeight="600">
         Amplimed
       </text>
@@ -450,8 +450,8 @@ function PositioningMap() {
       </text>
 
       {/* SOUL MV */}
-      <circle cx="610" cy="425" r="56" fill="#f87171" opacity="0.16" />
-      <circle cx="610" cy="425" r="8" fill="#f87171" />
+      <circle cx="610" cy="425" r="56" fill="#3f3f46" opacity="0.14" />
+      <circle cx="610" cy="425" r="8" fill="#3f3f46" />
       <text x="540" y="450" fontSize="16" fill={ink} fontWeight="600">
         SOUL MV
       </text>
@@ -460,21 +460,21 @@ function PositioningMap() {
       </text>
 
       {/* WeCann Care */}
-      <circle cx="520" cy="160" r="38" fill="#2dd4bf" opacity="0.22" />
-      <circle cx="520" cy="160" r="10" fill="#2dd4bf" />
-      <text x="540" y="158" fontSize="16" fill="#2dd4bf" fontWeight="700">
+      <circle cx="520" cy="160" r="38" fill="#17171a" opacity="0.12" />
+      <circle cx="520" cy="160" r="10" fill="#17171a" />
+      <text x="540" y="158" fontSize="16" fill="#17171a" fontWeight="700">
         WeCann Care
       </text>
-      <text x="540" y="174" fontSize="10" fill="#2dd4bf" fontWeight="600">
+      <text x="540" y="174" fontSize="10" fill="#17171a" fontWeight="600">
         RWE + IA clínica + cannabis
       </text>
 
       <text
         x="360"
         y="210"
-        fontFamily="var(--font-mono), monospace"
+        fontFamily="var(--font-sans)"
         fontSize="9"
-        fill="#4b4b57"
+        fill="#a1a1aa"
         letterSpacing="1"
       >
         ↑ ESPAÇO VAZIO ↑
