@@ -1,4 +1,6 @@
 import { Hero, Section } from "../ui/primitives";
+import { SourceBadge, SourceRow, StarBlock } from "../ui/evidence";
+import type { EvidenceId } from "@/lib/evidence";
 
 export default function Doc03Competitiva() {
   return (
@@ -12,7 +14,7 @@ export default function Doc03Competitiva() {
             UX · Design · Branding
           </>
         }
-        lead="Voa, iClinic, Amplimed, SOUL MV — quatro vizinhos no mapa, quatro lógicas de produto distintas. Onde a WeCann Care entra sem ser confundida com nenhum deles."
+        lead="Voa, iClinic, Amplimed, SOUL MV: quatro vizinhos no mapa, quatro lógicas de produto distintas. Onde a WeCann Care entra sem ser confundida com nenhum deles."
         meta={[
           { dt: "Concorrentes analisados", dd: "6" },
           { dt: "Lente", dd: "UX · design · branding · tom" },
@@ -22,14 +24,14 @@ export default function Doc03Competitiva() {
 
       <div id="comp-overview-block">
         <div className="intro-block">
-          <h3>Por que esses 6 — e por que separados</h3>
+          <h3>Por que esses 6, e por que separados</h3>
           <p>
             Os seis concorrentes selecionados representam{" "}
             <strong>arquétipos distintos</strong> do mercado brasileiro de
             prontuários, não competidores diretos entre si. <strong>Voa</strong> é
             o AI scribe puro (não EHR). <strong>iClinic</strong> é o software de
             gestão clínica para consultório. <strong>Clínica nas Nuvens</strong> é
-            o SaaS de consultório clássico — sistema histórico do mercado e{" "}
+            o SaaS de consultório clássico: sistema histórico do mercado e{" "}
             <em>de onde a WeCann migra dados</em>. <strong>Amplimed</strong> é o
             EHR-plus, com gestão financeira e operadoras de saúde.{" "}
             <strong>Amigo Tech</strong> é o SaaS com IA nativa e foco mobile ·
@@ -57,6 +59,13 @@ export default function Doc03Competitiva() {
             </div>
           ))}
         </div>
+        <SourceRow>
+          <SourceBadge
+            id="bench-sites"
+            compact
+            detail="números de escala divulgados publicamente pelos próprios players"
+          />
+        </SourceRow>
       </div>
 
       {/* MAPA */}
@@ -66,15 +75,94 @@ export default function Doc03Competitiva() {
         title="Onde cada um vive no mercado"
       >
         <p>
-          Eixo horizontal: <strong>escopo</strong> — de assistente pontual à
+          Eixo horizontal: <strong>escopo</strong>, de assistente pontual à
           plataforma completa. Eixo vertical:{" "}
-          <strong>profundidade clínica</strong> — de operação administrativa a
+          <strong>profundidade clínica</strong>, de operação administrativa a
           inteligência clínica especializada. A WeCann Care vive no quadrante
           superior-direito, sozinha.
         </p>
         <div className="map-frame">
           <PositioningMap />
         </div>
+
+        <h4>Método e rubrica</h4>
+        <p>
+          Como esta análise foi feita: navegação nos sites oficiais, demos e
+          material público de cada player, em junho/2026, com lente de negócio
+          e produto (UX, arquitetura de oferta, design, branding, tom de voz).
+          Não é lista de features; é leitura de <strong>posicionamento</strong>:
+          o que cada marca promete, para quem, e o que o produto entrega de
+          fato na superfície visível.
+        </p>
+        <p>
+          As avaliações por estrelas ao longo do documento seguem uma rubrica
+          única; sem ela, estrela é opinião solta.
+        </p>
+        <div className="table-frame">
+          <table>
+            <thead>
+              <tr>
+                <th>Nível</th>
+                <th>Leitura</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>★</strong>
+                </td>
+                <td>
+                  Ausente ou fraco: não existe, ou existe só como promessa de
+                  marketing.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>★★</strong>
+                </td>
+                <td>
+                  Básico funcional: existe e funciona, mas cumpre apenas o
+                  mínimo da categoria.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>★★★</strong>
+                </td>
+                <td>
+                  Maduro e competitivo: bem resolvido, no nível do que o
+                  mercado já espera.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>★★★★</strong>
+                </td>
+                <td>
+                  Referência de mercado: padrão que os outros players copiam e
+                  que o médico reconhece.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>★★★★★</strong>
+                </td>
+                <td>
+                  Estado da arte: o melhor que encontramos em qualquer
+                  categoria; raro por definição.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Ressalva honesta: é uma <strong>avaliação qualitativa da equipe
+          AtomSix</strong>, não uma auditoria técnica; não testamos os sistemas
+          em produção nem auditamos código, segurança ou desempenho.
+        </p>
+        <SourceRow>
+          <SourceBadge id="bench-sites" />
+        </SourceRow>
       </Section>
 
       {/* COMPETIDORES */}
@@ -103,6 +191,12 @@ export default function Doc03Competitiva() {
               </div>
             ))}
           </div>
+
+          <SourceRow>
+            {c.sources.map((s) => (
+              <SourceBadge id={s.id} compact detail={s.detail} key={s.id} />
+            ))}
+          </SourceRow>
 
           <div className="identity-row">
             {c.identity.map((id, i) => (
@@ -139,6 +233,13 @@ export default function Doc03Competitiva() {
             <div className="callout-internal">
               <div className="ci-label">{c.special.label}</div>
               <p dangerouslySetInnerHTML={{ __html: c.special.text }} />
+              {c.special.sources && (
+                <SourceRow>
+                  {c.special.sources.map((s) => (
+                    <SourceBadge id={s} compact key={s} />
+                  ))}
+                </SourceRow>
+              )}
             </div>
           )}
 
@@ -179,7 +280,7 @@ export default function Doc03Competitiva() {
         <p>
           A matriz a seguir compara as 6 marcas em 10 dimensões de
           UX/produto/branding. A última coluna (WeCann Care) é o &ldquo;norte
-          magnético&rdquo; para a AtomSix — onde queremos estar quando o brief virar
+          magnético&rdquo; para a AtomSix: onde queremos estar quando o brief virar
           tela.
         </p>
 
@@ -214,10 +315,22 @@ export default function Doc03Competitiva() {
           </table>
         </div>
 
+        <p>
+          Duas linhas da matriz merecem leitura demorada. Em{" "}
+          <strong>Ciclo de cuidado</strong>, nenhum dos seis estrutura o
+          pós-consulta: é exatamente o follow-up reativo que a pesquisa
+          documentou no consultório real (
+          <a href="#disc-descobertas">D-10</a>). Em{" "}
+          <strong>Categoria-mãe</strong>, cada player resolve um pedaço do
+          fluxo e empurra o resto para outra ferramenta; a fragmentação que o
+          médico vive hoje (<a href="#disc-descobertas">D-01</a>) é, em parte,
+          consequência desse mercado.
+        </p>
+
         <h3>As 5 linhas vermelhas estratégicas</h3>
         <p>
           Sintetizado das observações acima, cinco coisas que a WeCann Care{" "}
-          <em>não pode</em> parecer — para não ser confundida com nenhum dos 6.
+          <em>não pode</em> parecer, para não ser confundida com nenhum dos 6.
         </p>
         <div className="table-frame">
           <table>
@@ -242,7 +355,7 @@ export default function Doc03Competitiva() {
 
         <h3>Cinco coisas que a WeCann Care pode roubar (e refinar)</h3>
         <p>
-          O que cada concorrente faz bem que merece ser absorvido — com
+          O que cada concorrente faz bem que merece ser absorvido, com
           reinterpretação Pulse Design.
         </p>
         <div className="table-frame">
@@ -295,7 +408,7 @@ export default function Doc03Competitiva() {
       <div className="verdict">
         <div className="eyebrow">O brief em uma frase</div>
         <h3>
-          WeCann Care é o quadrante vazio do mapa — alta profundidade clínica + escopo
+          WeCann Care é o quadrante vazio do mapa: alta profundidade clínica + escopo
           de plataforma completo.
         </h3>
         <p>
@@ -522,6 +635,8 @@ const INDEX = [
   },
 ];
 
+type CompetitorSource = { id: EvidenceId; detail?: string };
+
 type Competitor = {
   anchor: string;
   num: number;
@@ -532,6 +647,7 @@ type Competitor = {
   name: string;
   tagline: string;
   snap: { label: string; value: string }[];
+  sources: CompetitorSource[];
   identity: { label: string; content: string }[];
   strengthsTitle: string;
   strengths: string[];
@@ -539,7 +655,7 @@ type Competitor = {
   limits: string[];
   adopt: string[];
   avoid: string[];
-  special?: { label: string; text: string };
+  special?: { label: string; text: string; sources?: EvidenceId[] };
 };
 
 const COMPETITORS: Competitor[] = [
@@ -558,11 +674,14 @@ const COMPETITORS: Competitor[] = [
       { label: "Escala", value: "60k+ médicos · 1M+ consultas" },
       { label: "Modelo", value: "Standalone · plug-in em qualquer EHR" },
     ],
+    sources: [
+      { id: "bench-sites", detail: "números de escala divulgados pelo player" },
+    ],
     identity: [
       {
         label: "Identidade visual",
         content:
-          "Estética <strong>aspiracional minimal</strong>. Logo light-mode, ícones lifestyle (lâmpada, coração, cadeado). Tipografia sans neutra, fundo claro, foto de médico em ambientes amplos e bem iluminados. Próxima da estética “calm tech” — Notion / Apple Health.",
+          "Estética <strong>aspiracional minimal</strong>. Logo light-mode, ícones lifestyle (lâmpada, coração, cadeado). Tipografia sans neutra, fundo claro, foto de médico em ambientes amplos e bem iluminados. Próxima da estética “calm tech”: Notion / Apple Health.",
       },
       {
         label: "Tom de voz",
@@ -572,31 +691,31 @@ const COMPETITORS: Competitor[] = [
       {
         label: "IA personificada",
         content:
-          "Voa não tem nome humano para a IA — a marca <em>é</em> a IA. Produto-irmão “<strong>Charcot IA</strong>” (referência neurológica) sinaliza ambição clínica.",
+          "Voa não tem nome humano para a IA; a marca <em>é</em> a IA. Produto-irmão “<strong>Charcot IA</strong>” (referência neurológica) sinaliza ambição clínica.",
       },
     ],
     strengthsTitle: "Forças UX · o que funciona",
     strengths: [
       "<strong>Foco brutal.</strong> Faz uma coisa só. Transcreve e estrutura. A homepage não tem ruído.",
-      "<strong>Prova social numérica em destaque.</strong> “60k médicos”, “1M de atendimentos” — direto no hero.",
+      "<strong>Prova social numérica em destaque.</strong> “60k médicos”, “1M de atendimentos”, direto no hero.",
       "<strong>Onboarding leve.</strong> “Teste sem compromisso” como CTA primário, sem fricção.",
-      "<strong>Mobilidade real.</strong> Funciona em qualquer EHR — não exige migração.",
+      "<strong>Mobilidade real.</strong> Funciona em qualquer EHR; não exige migração.",
       "<strong>Posicionamento de “produtividade” e não de prontuário.</strong> Foge da categoria saturada.",
     ],
     limitsTitle: "Limites · onde o produto se trai",
     limits: [
-      "É apenas <strong>scribe</strong> — não conhece o paciente, não tem memória longa, não faz pesquisa.",
+      "É apenas <strong>scribe</strong>: não conhece o paciente, não tem memória longa, não faz pesquisa.",
       "Áudio <strong>descartado</strong> automaticamente. Não há retro-análise possível.",
-      "Não é especializado em nenhuma terapia — útil em qualquer consulta, mestre em nenhuma.",
+      "Não é especializado em nenhuma terapia: útil em qualquer consulta, mestre em nenhuma.",
       "Não faz pré nem pós-consulta. O ciclo clínico não fecha.",
-      "Estética genérica de SaaS internacional — em médicos seniores brasileiros, pode soar “young tech demais”.",
+      "Estética genérica de SaaS internacional: em médicos seniores brasileiros, pode soar “young tech demais”.",
     ],
     adopt: [
       "<strong>Foco editorial brutal.</strong> A landing page do Voa não fala de 20 features. A WeCann Care deve fazer o mesmo: vender 3 coisas, não 30.",
       "<strong>Prova social numérica em destaque.</strong> A WeCann Care pode usar “X médicos · Y pacientes · Z artigos publicados”.",
     ],
     avoid: [
-      "<strong>Comoditização do scribe.</strong> A WeCann Care <em>não é</em> mais um Voa em verde. Precisa carregar peso clínico e científico desde o primeiro segundo de tela.",
+      "<strong>Comoditização do scribe.</strong> A WeCann Care <em>não é</em> mais um Voa em verde. Precisa carregar peso clínico e científico desde o primeiro segundo de tela. E o ciclo que o Voa não fecha, o pós-consulta estruturado, é exatamente a lacuna que a pesquisa mapeou (<a href=\"#disc-descobertas\">D-10</a>).",
       "<strong>Estética “calm tech” genérica.</strong> Brand-twin de qualquer fintech. A WeCann Care precisa de identidade carregando ofício médico, não startup.",
     ],
   },
@@ -616,11 +735,18 @@ const COMPETITORS: Competitor[] = [
       { label: "Audiência", value: "Clínicas pequenas e médias" },
       { label: "Marketing", value: "Black Friday · cursos · podcast" },
     ],
+    sources: [
+      { id: "bench-sites" },
+      {
+        id: "e2-marco",
+        detail: "citou o receituário personalizado como referência positiva",
+      },
+    ],
     identity: [
       {
         label: "Identidade visual",
         content:
-          "Paleta <strong>azul corporativo</strong> tradicional brasileira. Ícones flat, dashboards densos, cards com sombra suave. Estética de SaaS B2B “Hubspot-like” — funcional, mas sem assinatura forte. <strong>Comprada pela Afya</strong> (edtech médica de capital aberto) — perdeu carga startup.",
+          "Paleta <strong>azul corporativo</strong> tradicional brasileira. Ícones flat, dashboards densos, cards com sombra suave. Estética de SaaS B2B “Hubspot-like”: funcional, mas sem assinatura forte. <strong>Comprada pela Afya</strong> (edtech médica de capital aberto), perdeu carga startup.",
       },
       {
         label: "Tom de voz",
@@ -630,31 +756,31 @@ const COMPETITORS: Competitor[] = [
       {
         label: "Compliance highlight",
         content:
-          "Carrega a <strong>LGPD como pilar de marca</strong> — selo no topo, página dedicada, DPO contratado. Para médicos pragmáticos, é tranquilizante. Para a WeCann Care: lição importante de <em>colocar compliance no front</em>, não escondido em rodapé.",
+          "Carrega a <strong>LGPD como pilar de marca</strong>: selo no topo, página dedicada, DPO contratado. Para médicos pragmáticos, é tranquilizante. Para a WeCann Care: lição importante de <em>colocar compliance no front</em>, não escondido em rodapé.",
       },
     ],
     strengthsTitle: "Forças UX · o que funciona",
     strengths: [
-      "<strong>Prontuário personalizável.</strong> “Cada especialidade configura sua anamnese” — flexibilidade alta, vital para médicos veteranos.",
-      "<strong>Single-screen claim.</strong> “Tudo em uma só tela” — alinha com o princípio P1 da WeCann Care.",
-      "<strong>Cronologia clara.</strong> Prontuário em ordem cronológica com filtros — padrão consolidado, médico já espera.",
-      "<strong>Assinatura digital ICP-Brasil</strong> embutida — peso jurídico.",
-      "<strong>Compartilhamento granular.</strong> Médico-com-médico, paciente-com-médico — controle fino.",
+      "<strong>Prontuário personalizável.</strong> “Cada especialidade configura sua anamnese”: flexibilidade alta, vital para médicos veteranos.",
+      "<strong>Single-screen claim.</strong> “Tudo em uma só tela”, alinha com o princípio P1 da WeCann Care.",
+      "<strong>Cronologia clara.</strong> Prontuário em ordem cronológica com filtros: padrão consolidado, médico já espera.",
+      "<strong>Assinatura digital ICP-Brasil</strong> embutida: peso jurídico.",
+      "<strong>Compartilhamento granular.</strong> Médico-com-médico, paciente-com-médico: controle fino.",
     ],
     limitsTitle: "Fraquezas · o que a AtomSix deve evitar copiar",
     limits: [
-      "<strong>UX pesada de growth.</strong> Pop-ups, “fale conosco”, WhatsApp flutuante — produto se transforma em funil.",
-      "<strong>IA tímida ou ausente.</strong> O posicionamento de IA é fraco — não há “agente” próprio com identidade.",
-      "<strong>Estética datada.</strong> Visualmente parece SaaS 2018 — gradiente azul, sombras suaves, cards genéricos.",
-      "<strong>Não há especialização.</strong> Vale para qualquer médico — daí, mestre em nenhuma área.",
+      "<strong>UX pesada de growth.</strong> Pop-ups, “fale conosco”, WhatsApp flutuante: produto se transforma em funil.",
+      "<strong>IA tímida ou ausente.</strong> O posicionamento de IA é fraco; não há “agente” próprio com identidade.",
+      "<strong>Estética datada.</strong> Visualmente parece SaaS 2018: gradiente azul, sombras suaves, cards genéricos.",
+      "<strong>Não há especialização.</strong> Vale para qualquer médico; daí, mestre em nenhuma área.",
       "<strong>Marketing &gt; produto.</strong> O site fala mais de “Black Friday” do que de capacidade clínica real.",
     ],
     adopt: [
       "<strong>LGPD/compliance como pilar visível.</strong> A WeCann Care também precisa carimbar conformidade no front, não esconder em rodapé.",
-      "<strong>Personalização do prontuário por especialidade.</strong> Já é o P2 da WeCann Care (pack universal + módulos). Confirma o caminho.",
+      "<strong>Personalização do prontuário por especialidade.</strong> Já é o P2 da WeCann Care (pack universal + módulos). Confirma o caminho; na pesquisa, o Dr. Marco (E2) citou o receituário personalizado do iClinic como referência positiva.",
     ],
     avoid: [
-      "<strong>Linguagem de growth dentro do produto.</strong> “Você ganhou um badge!” · “Black Friday do prontuário!” — letal para a categoria da WeCann Care.",
+      "<strong>Linguagem de growth dentro do produto.</strong> “Você ganhou um badge!” · “Black Friday do prontuário!”: letal para a categoria da WeCann Care.",
       "<strong>Estética azul corporativa flat.</strong> A WeCann Care precisa parecer feita por gente que entende ofício médico, não by SaaS playbook.",
     ],
   },
@@ -674,37 +800,40 @@ const COMPETITORS: Competitor[] = [
       { label: "Escala", value: "70k+ pros · 51M+ pacientes · 32M+ migrados" },
       { label: "Segmentos", value: "Consultório · clínica · operadora" },
     ],
+    sources: [
+      { id: "bench-sites", detail: "números de escala divulgados pelo player" },
+    ],
     identity: [
       {
         label: "Identidade visual",
         content:
-          "Paleta verde + branco + ilustração corporativa, fotos lifestyle de médicos sorridentes, layout cheio de cards. Estética <strong>“healthtech BR-feliz”</strong> — diferente do azul iClinic, mais quente. Logo em verde sólido, ícones cheios, fotos AVIF de profissionais em ambiente claro.",
+          "Paleta verde + branco + ilustração corporativa, fotos lifestyle de médicos sorridentes, layout cheio de cards. Estética <strong>“healthtech BR-feliz”</strong>, diferente do azul iClinic, mais quente. Logo em verde sólido, ícones cheios, fotos AVIF de profissionais em ambiente claro.",
       },
       {
         label: "Tom de voz",
         content:
-          "Operacional e otimista. <em>“Da agenda ao faturamento”</em>, <em>“99% de redução das glosas”</em>, <em>“automatize sua clínica”</em>. Fala muito de <strong>controle, automação, gestão</strong> — o lado administrativo predomina. Pouco peso clínico-científico.",
+          "Operacional e otimista. <em>“Da agenda ao faturamento”</em>, <em>“99% de redução das glosas”</em>, <em>“automatize sua clínica”</em>. Fala muito de <strong>controle, automação, gestão</strong>; o lado administrativo predomina. Pouco peso clínico-científico.",
       },
       {
         label: "IA personificada · “Amélia”",
         content:
-          "<strong>Mesma estratégia da Atena</strong> — IA com nome feminino, três submarcas (Amélia Agendamento, Copilot, Transcrição). Posicionada como <em>secretária digital</em> + assistente de busca. <strong>Não</strong> como colega clínica. Diferença crucial.",
+          "<strong>Mesma estratégia da Atena</strong>: IA com nome feminino, três submarcas (Amélia Agendamento, Copilot, Transcrição). Posicionada como <em>secretária digital</em> + assistente de busca. <strong>Não</strong> como colega clínica. Diferença crucial.",
       },
     ],
     strengthsTitle: "Forças UX · o que funciona",
     strengths: [
-      "<strong>Segmentação clara por porte.</strong> Consultório / clínica / operadora — cada um vê produto diferente.",
-      "<strong>Amélia com submarcas funcionais.</strong> Cada papel da IA tem nome próprio — facilita marketing e expectativa.",
-      "<strong>AmpliSaúde paralelo.</strong> Wallet de saúde para o paciente — fecha ciclo paciente-médico.",
-      "<strong>Faturamento TISS forte.</strong> “99% redução de glosa” — KPI mensurável, defensável.",
-      "<strong>Migração como serviço.</strong> “32M+ prontuários migrados” como diferencial de aquisição — vence inércia.",
+      "<strong>Segmentação clara por porte.</strong> Consultório / clínica / operadora; cada um vê produto diferente.",
+      "<strong>Amélia com submarcas funcionais.</strong> Cada papel da IA tem nome próprio; facilita marketing e expectativa.",
+      "<strong>AmpliSaúde paralelo.</strong> Wallet de saúde para o paciente: fecha ciclo paciente-médico.",
+      "<strong>Faturamento TISS forte.</strong> “99% redução de glosa”: KPI mensurável, defensável.",
+      "<strong>Migração como serviço.</strong> “32M+ prontuários migrados” como diferencial de aquisição: vence inércia.",
     ],
     limitsTitle: "Fraquezas · o que a AtomSix deve observar",
     limits: [
-      "<strong>Excesso de feature breadth na home.</strong> ~25 features listadas na primeira tela — produto parece comoditizado.",
+      "<strong>Excesso de feature breadth na home.</strong> ~25 features listadas na primeira tela; produto parece comoditizado.",
       "<strong>Estética “BR-feliz” pode soar light demais</strong> para especialistas seniores ou hospitais.",
-      "<strong>Amélia é genérica.</strong> Faz tudo, mas não tem opinião clínica — é “secretária boa”, não “colega médica”.",
-      "<strong>Atrelamento à Raia Drogasil</strong> — pode gerar desconforto de compliance/conflito de interesse para pesquisa farmacêutica.",
+      "<strong>Amélia é genérica.</strong> Faz tudo, mas não tem opinião clínica: é “secretária boa”, não “colega médica”.",
+      "<strong>Atrelamento à Raia Drogasil</strong>: pode gerar desconforto de compliance/conflito de interesse para pesquisa farmacêutica.",
       "<strong>Nenhum diferencial científico.</strong> Não há schema RWE, não há mention de OMOP, FHIR ou publicação. É operação, não ciência.",
     ],
     adopt: [
@@ -735,6 +864,13 @@ const COMPETITORS: Competitor[] = [
       { label: "Recursos", value: "200+ recursos · plano único" },
       { label: "Postura", value: "Mercado consolidado · conservador" },
     ],
+    sources: [
+      { id: "bench-sites", detail: "números de escala divulgados pelo player" },
+      {
+        id: "e4-shadowing",
+        detail: "a fundadora usa a CNN há anos; uso real observado ao vivo",
+      },
+    ],
     identity: [
       {
         label: "Identidade visual",
@@ -744,7 +880,7 @@ const COMPETITORS: Competitor[] = [
       {
         label: "Tom de voz",
         content:
-          "<em>“Verdadeiro sistema amigo do médico”</em> · ataque velado a competidores que se vendem como “amigos”. Foco em <strong>facilidade · estabilidade · longevidade</strong>. Não fala de IA como pilar — fala de <em>“organizar a clínica”</em>.",
+          "<em>“Verdadeiro sistema amigo do médico”</em> · ataque velado a competidores que se vendem como “amigos”. Foco em <strong>facilidade · estabilidade · longevidade</strong>. Não fala de IA como pilar; fala de <em>“organizar a clínica”</em>.",
       },
       {
         label: "IA personificada",
@@ -770,7 +906,8 @@ const COMPETITORS: Competitor[] = [
     ],
     special: {
       label: "Contexto especial · WeCann",
-      text: "<strong>CNN é o sistema do qual a WeCann migra dados.</strong> O Relatório de Conformidade v107 confirma <strong>361.926 registros migrados</strong> da CNN via reconciliação <em>FATURAMENTO → PAGAMENTO → MOVIMENTO</em>. Isso significa que muitos médicos que chegam à WeCann Care vêm da CNN — eles têm na cabeça o padrão visual e operacional dela. A AtomSix desenha contra essa memória.",
+      text: "<strong>CNN é o sistema do qual a WeCann migra dados.</strong> O Relatório de Conformidade v107 confirma <strong>361.926 registros migrados</strong> da CNN via reconciliação <em>FATURAMENTO → PAGAMENTO → MOVIMENTO</em>. Isso significa que muitos médicos que chegam à WeCann Care vêm da CNN; eles têm na cabeça o padrão visual e operacional dela. A AtomSix desenha contra essa memória.",
+      sources: ["conformidade-v107"],
     },
     adopt: [
       "<strong>Migração suave de dados como argumento.</strong> Já temos a infra (361k registros migrados). Comunicar isso na landing reduz a maior barreira de adoção dos médicos CNN.",
@@ -778,7 +915,7 @@ const COMPETITORS: Competitor[] = [
     ],
     avoid: [
       "<strong>“Sistema amigo do médico” como narrativa.</strong> Genérico, vago, sem categoria. Atena é colega clínica, não amigo simpático.",
-      "<strong>200+ recursos como métrica de venda.</strong> Quantidade ≠ qualidade. A WeCann Care vende 7 entregáveis diferenciados · não 200 features comoditizadas.",
+      "<strong>200+ recursos como métrica de venda.</strong> Quantidade ≠ qualidade. A WeCann Care vende 7 entregáveis diferenciados · não 200 features comoditizadas. O excesso de campos e cliques é dor documentada na pesquisa (<a href=\"#disc-descobertas\">D-05</a>).",
     ],
   },
   {
@@ -796,6 +933,12 @@ const COMPETITORS: Competitor[] = [
       { label: "Funding", value: "R$ 10M HealthTech (rodada VC)" },
       { label: "Stack", value: "Web · Mobile (Amigo One) · IA nativa" },
       { label: "Modelo", value: "Freemium · prontuário grátis como entrada" },
+    ],
+    sources: [
+      {
+        id: "bench-sites",
+        detail: "escala e funding divulgados pelo player e por cobertura pública",
+      },
     ],
     identity: [
       {
@@ -817,7 +960,7 @@ const COMPETITORS: Competitor[] = [
     strengthsTitle: "Forças UX · o que funciona",
     strengths: [
       "<strong>40M atendimentos · escala real.</strong> Comprovação de mercado. Reduz dúvida de adoção · vendido como “já estamos provados”.",
-      "<strong>Mobile-first com Amigo One.</strong> Único concorrente que trata mobile como produto-primário, não secundário. Teleconsulta, assinatura digital, prescrições — tudo no celular. Forte para Recém-formado.",
+      "<strong>Mobile-first com Amigo One.</strong> Único concorrente que trata mobile como produto-primário, não secundário. Teleconsulta, assinatura digital, prescrições: tudo no celular. Forte para Recém-formado.",
       "<strong>Freemium agressivo.</strong> Prontuário grátis como porta de entrada · onboarding sem fricção · monetiza no upsell de IA/CRM/contabilidade.",
       "<strong>IA + transcrição nativos.</strong> Não é feature bolada, é parte do produto desde o design.",
       "<strong>Funding VC de R$ 10M.</strong> Tem dinheiro para investir em marketing e produto · vai pressionar mercado nos próximos 24 meses.",
@@ -836,7 +979,7 @@ const COMPETITORS: Competitor[] = [
       "<strong>Freemium / trial para reduzir fricção.</strong> Considerar caminho de entrada gratuito (modo individual · sem RWE · sem cannabis) para Recém-formado experimentar antes de migrar.",
     ],
     avoid: [
-      "<strong>“All-in-one” como narrativa.</strong> Comoditiza. A WeCann Care vende profundidade clínica em cannabis + RWE · não amplitude operacional.",
+      "<strong>“All-in-one” como narrativa.</strong> Comoditiza. A WeCann Care vende profundidade clínica em cannabis + RWE · não amplitude operacional. A dor da fragmentação é real (<a href=\"#disc-descobertas\">D-01</a>); a resposta é integração com profundidade, não catálogo.",
       "<strong>IA invisível / sem personagem.</strong> Amigo Tech tem IA boa, mas anônima. Atena vence pelo personagem · não pode imitar a Amigo.",
     ],
   },
@@ -849,52 +992,55 @@ const COMPETITORS: Competitor[] = [
     url: "mv.com.br",
     name: "SOUL MV",
     tagline:
-      "“O sistema de gestão hospitalar mais usado do País. PEP MV — melhor da América Latina.”",
+      "“O sistema de gestão hospitalar mais usado do País. PEP MV, melhor da América Latina.”",
     snap: [
       { label: "Origem", value: "Recife/PE · 1987 · 39 anos" },
       { label: "Categoria", value: "ERP hospitalar enterprise" },
       { label: "Escala", value: "2.000+ instituições · 50+ módulos" },
       { label: "Reconhecimento", value: "KLAS LATAM 8× · SBIS certificado" },
     ],
+    sources: [
+      { id: "bench-sites", detail: "números de escala divulgados pelo player" },
+    ],
     identity: [
       {
         label: "Identidade visual",
         content:
-          "Estética <strong>enterprise institucional</strong> — vermelho/marrom MV como cor primária, layout corporativo, fotos de hospital, presença em feiras (Hospitalar Hub). Nada de “wow” — comunica <strong>peso, longevidade, segurança</strong>. PDFs, whitepapers, case studies dominam o conteúdo.",
+          "Estética <strong>enterprise institucional</strong>: vermelho/marrom MV como cor primária, layout corporativo, fotos de hospital, presença em feiras (Hospitalar Hub). Nada de “wow”: comunica <strong>peso, longevidade, segurança</strong>. PDFs, whitepapers, case studies dominam o conteúdo.",
       },
       {
         label: "Tom de voz",
         content:
-          "Institucional, denso, técnico. <em>“Excelência operacional”</em>, <em>“gestão integrada”</em>, <em>“experiência reconhecida”</em>. Não fala com o médico final — fala com o <strong>diretor de TI</strong>, o <strong>CFO hospitalar</strong>, o <strong>gestor regulatório</strong>. Linguagem de compra B2B grande, não de produto-amor.",
+          "Institucional, denso, técnico. <em>“Excelência operacional”</em>, <em>“gestão integrada”</em>, <em>“experiência reconhecida”</em>. Não fala com o médico final; fala com o <strong>diretor de TI</strong>, o <strong>CFO hospitalar</strong>, o <strong>gestor regulatório</strong>. Linguagem de compra B2B grande, não de produto-amor.",
       },
       {
         label: "Modernização HTML5",
         content:
-          "SOUL MV passou por <strong>migração HTML5</strong> recente — declaradamente “mais moderno e visualmente mais leve”. Reconhece que a estética antiga estava pesada. Concorrentes enterprise envelhecem rápido visualmente.",
+          "SOUL MV passou por <strong>migração HTML5</strong> recente: declaradamente “mais moderno e visualmente mais leve”. Reconhece que a estética antiga estava pesada. Concorrentes enterprise envelhecem rápido visualmente.",
       },
     ],
     strengthsTitle: "Forças UX · o que funciona",
     strengths: [
       "<strong>Profundidade absurda.</strong> 50+ módulos cobrem tudo (assistencial, financeiro, suprimentos, regulatório). É a verdade do hospital grande.",
-      "<strong>Integração multi-setor.</strong> Médico, enfermagem, farmácia, faturamento, regulatório — todos na mesma base. Sonho de gestor.",
-      "<strong>Mobilidade bedside.</strong> Registro à beira-leito em mobile — feature que respeita o fluxo real do hospital.",
-      "<strong>Selos pesados.</strong> KLAS, SBIS, ONA — vence comitê de compras institucional.",
+      "<strong>Integração multi-setor.</strong> Médico, enfermagem, farmácia, faturamento, regulatório: todos na mesma base. Sonho de gestor.",
+      "<strong>Mobilidade bedside.</strong> Registro à beira-leito em mobile: feature que respeita o fluxo real do hospital.",
+      "<strong>Selos pesados.</strong> KLAS, SBIS, ONA: vence comitê de compras institucional.",
       "<strong>Suporte 35 anos de relacionamento.</strong> Em hospital grande, fornecedor que entra dura décadas.",
     ],
     limitsTitle: "Fraquezas · onde AtomSix deve se distinguir",
     limits: [
       "<strong>UX clássica de ERP.</strong> Densa, fria, com 8 níveis de menu. Médico individual <em>odeia</em> usar.",
-      "<strong>Velocidade de evolução baixa.</strong> Releases anuais, padrão enterprise — não absorve IA generativa rápido.",
-      "<strong>Não tem IA própria de marca.</strong> Não há Atena/Amélia/Voa — IA é feature, não personagem.",
-      "<strong>Cliente não é o médico</strong> — é o hospital. O médico é usuário forçado, não comprador. Daí a UX nunca foi feita para “encantar”.",
-      "<strong>Estética corporativa cansada.</strong> Mesmo após HTML5, o “DNA enterprise” persiste — não convence consultório nem clínica boutique.",
+      "<strong>Velocidade de evolução baixa.</strong> Releases anuais, padrão enterprise: não absorve IA generativa rápido.",
+      "<strong>Não tem IA própria de marca.</strong> Não há Atena/Amélia/Voa; IA é feature, não personagem.",
+      "<strong>Cliente não é o médico</strong>; é o hospital. O médico é usuário forçado, não comprador. Daí a UX nunca foi feita para “encantar”.",
+      "<strong>Estética corporativa cansada.</strong> Mesmo após HTML5, o “DNA enterprise” persiste; não convence consultório nem clínica boutique.",
     ],
     adopt: [
       "<strong>Selos institucionais visíveis.</strong> SBIS, ONA, certificações são senhas de entrada em vendas para clínicas maiores. A WeCann Care deve buscar e exibir.",
-      "<strong>Profundidade como diferenciação.</strong> O schema RWE da WeCann Care é tão profundo quanto qualquer ERP — só que <em>encapsulado</em> em UX que respira.",
+      "<strong>Profundidade como diferenciação.</strong> O schema RWE da WeCann Care é tão profundo quanto qualquer ERP, só que <em>encapsulado</em> em UX que respira.",
     ],
     avoid: [
-      "<strong>Densidade de ERP.</strong> A WeCann Care tem profundidade comparável, mas precisa <em>esconder</em> a complexidade. Tela só mostra 5% do schema por vez.",
+      "<strong>Densidade de ERP.</strong> A WeCann Care tem profundidade comparável, mas precisa <em>esconder</em> a complexidade. Tela só mostra 5% do schema por vez; o excesso de cliques é dor documentada na pesquisa (<a href=\"#disc-descobertas\">D-05</a>).",
       "<strong>Tom institucional para gestor.</strong> A WeCann Care fala com o <em>médico</em>, não com o CFO hospitalar. Linguagem clínica e pessoal sempre.",
     ],
   },
@@ -924,11 +1070,11 @@ const MATRIX: string[][] = [
   [
     "Personagem da IA",
     "Voa (a marca é a IA)",
-    "—",
+    "-",
     "IA emergente · sem nome",
     "Amélia (secretária)",
     "IA nativa · sem nome",
-    "—",
+    "-",
     "Atena (colega clínica)",
   ],
   [
@@ -983,11 +1129,11 @@ const MATRIX: string[][] = [
   ],
   [
     "Pesquisa / RWE",
-    "—",
-    "—",
-    "—",
-    "—",
-    "—",
+    "-",
+    "-",
+    "-",
+    "-",
+    "-",
     "Limitado",
     "Subproduto automático · OMOP + FHIR",
   ],
@@ -1020,7 +1166,7 @@ const RED_LINES: string[][] = [
   ],
   [
     "Não parecer SaaS de consultório",
-    "iClinic é o template visual desse arquétipo. Azul flat, ícones genéricos, sombras suaves, dashboards “Hubspot-like” — tudo isso afasta da categoria da WeCann Care.",
+    "iClinic é o template visual desse arquétipo. Azul flat, ícones genéricos, sombras suaves, dashboards “Hubspot-like”: tudo isso afasta da categoria da WeCann Care.",
   ],
   [
     "Não parecer “healthtech BR-feliz”",
@@ -1045,22 +1191,22 @@ const STEAL: string[][] = [
   [
     "iClinic",
     "Compliance como pilar de marca",
-    "LGPD, CEP, RDC 1.015 carimbados visíveis — não escondidos em “termos”.",
+    "LGPD, CEP, RDC 1.015 carimbados visíveis; não escondidos em “termos”.",
   ],
   [
     "Amplimed",
     "Migração como argumento de aquisição",
-    "“Migramos seu prontuário Voa/iClinic/Amplimed em X dias” — derruba inércia.",
+    "“Migramos seu prontuário Voa/iClinic/Amplimed em X dias”: derruba inércia.",
   ],
   [
     "Amplimed",
     "Submarcas funcionais da IA",
-    "“Atena pré-consulta”, “Atena copiloto”, “Atena pós-consulta” — facilita leitura sem fragmentar a marca.",
+    "“Atena pré-consulta”, “Atena copiloto”, “Atena pós-consulta”: facilita leitura sem fragmentar a marca.",
   ],
   [
     "SOUL MV",
     "Selos institucionais ostensivos",
-    "CEP, CAAE, SBIS, ANVISA, OMOP, FHIR como badges visíveis — vencem comitês de compras de clínicas grandes.",
+    "CEP, CAAE, SBIS, ANVISA, OMOP, FHIR como badges visíveis; vencem comitês de compras de clínicas grandes.",
   ],
 ];
 
@@ -1071,7 +1217,7 @@ const ARGUMENTS: string[][] = [
   ],
   [
     "iClinic",
-    "“iClinic é onde você <strong>guarda</strong> o prontuário. A WeCann Care é onde o prontuário <strong>trabalha por você</strong> — em tempo real, com 5 memórias persistentes.”",
+    "“iClinic é onde você <strong>guarda</strong> o prontuário. A WeCann Care é onde o prontuário <strong>trabalha por você</strong>, em tempo real, com 5 memórias persistentes.”",
   ],
   [
     "Clínica nas Nuvens",
@@ -1079,7 +1225,7 @@ const ARGUMENTS: string[][] = [
   ],
   [
     "Amplimed",
-    "“Amélia é a secretária digital. Atena é a <strong>colega médica</strong> — sugere CID com evidência da literatura, audita interação, acompanha o paciente em M1/M3/M6/M12.”",
+    "“Amélia é a secretária digital. Atena é a <strong>colega médica</strong>: sugere CID com evidência da literatura, audita interação, acompanha o paciente em M1/M3/M6/M12.”",
   ],
   [
     "Amigo Tech",
@@ -1087,6 +1233,6 @@ const ARGUMENTS: string[][] = [
   ],
   [
     "SOUL MV",
-    "“SOUL MV foi feito para o gestor do hospital. A WeCann Care foi feita <strong>para o médico</strong> — com a mesma profundidade clínica de um ERP, mas em uma superfície que respeita 12 minutos de consulta.”",
+    "“SOUL MV foi feito para o gestor do hospital. A WeCann Care foi feita <strong>para o médico</strong>, com a mesma profundidade clínica de um ERP, mas em uma superfície que respeita 12 minutos de consulta.” O limite de tempo é dado da pesquisa (<a href=\"#disc-descobertas\">D-04</a>).",
   ],
 ];

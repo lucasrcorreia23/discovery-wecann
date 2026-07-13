@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "WeCann Care — Discovery",
+  title: "WeCann Care · Discovery",
   description:
     "Documentação viva do Discovery da WeCann Care · Prontuário Inteligente da WeCann.",
 };

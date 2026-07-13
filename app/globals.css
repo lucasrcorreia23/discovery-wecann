@@ -155,7 +155,7 @@
   padding: 4px 8px;
 }
 
-/* versus (them vs us) — doc 01/03 */
+/* versus (them vs us) · doc 01/03 */
 .versus {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -317,7 +317,7 @@
 }
 
 /* ============================================================
-   ATENA · WIKI — design system (tema escuro, identidade Discovery)
+   ATENA · WIKI: design system (tema escuro, identidade Discovery)
    Portado de docs/Documentação - Discovery.html
    ============================================================ */
 
@@ -325,7 +325,7 @@
   --font-sans: var(--font-inter), system-ui, sans-serif;
 
   /*
-   * escala tipográfica — única fonte da verdade para tamanho, peso,
+   * escala tipográfica: única fonte da verdade para tamanho, peso,
    * tracking e leading de todo o documento. Qualquer novo componente deve
    * escolher um destes tokens em vez de inventar um valor solto.
    */
@@ -355,7 +355,7 @@
   --lh-normal: 1.5; /* body-sm, texto denso em card */
   --lh-relaxed: 1.7; /* body-lg, parágrafos correntes */
 
-  /* base neutra — tema claro */
+  /* base neutra: tema claro */
   --bg: #ffffff;
   --bg-soft: #fafafa;
   --panel: #f6f6f7;
@@ -368,7 +368,7 @@
   --line-strong: #dcdce0;
 
   /*
-   * tokens semânticos herdados dos documentos — mantidos por nome para não
+   * tokens semânticos herdados dos documentos, mantidos por nome para não
    * precisar tocar cada chamada de variant=/border= nos componentes, mas
    * remapeados para tons de cinza (sem matiz). O peso relativo entre eles
    * (mais escuro = mais ênfase) é o que resta para diferenciar categorias.
@@ -392,7 +392,7 @@
   --emerald: #3f3f46;
   --emerald-soft: var(--panel);
 
-  /* trio de marca — reservado ao estado ativo da navegação da sidebar */
+  /* trio de marca: reservado ao estado ativo da navegação da sidebar */
   --brand-blue: #3d45aa;
   --brand-orange: #e64f29;
   --brand-yellow: #fcb53b;
@@ -1725,7 +1725,7 @@ mark {
   margin-top: 0;
 }
 
-/* Discovery · §1 Introdução — layout aberto, fundo branco */
+/* Discovery · §1 Introdução: layout aberto, fundo branco */
 .disc-intro {
   margin: 4px 0 0;
   background: var(--bg);
@@ -3903,4 +3903,310 @@ code {
   .framework-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===== EVIDÊNCIA & STAR (rework do discovery) ===== */
+
+/* selo de fonte: rastreabilidade visível de cada afirmação */
+.src-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: var(--fs-micro);
+  line-height: var(--lh-normal);
+  color: var(--ink-mute);
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 2px 10px;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+a.src-badge:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+.src-badge .src-kind {
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+/* material do cliente / fala construída: borda tracejada = não auditado */
+.src-badge.src-brief,
+.src-badge.src-sintese {
+  border-style: dashed;
+  background: var(--bg-soft);
+}
+.src-badge.src-sintese {
+  font-style: italic;
+}
+.src-badge.src-norma {
+  background: var(--panel-2);
+}
+.src-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 0;
+}
+
+/* bloco STAR: uma descoberta narrada de ponta a ponta */
+.starblock {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.starblock .sb-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.starblock .sb-num {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+.starblock h4.sb-title {
+  font-size: var(--fs-h4-heading);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-normal);
+  text-transform: none;
+  color: var(--ink);
+  margin: 0;
+}
+.starblock .sb-row {
+  display: grid;
+  grid-template-columns: 148px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+.starblock .sb-label strong {
+  display: block;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.starblock .sb-hint {
+  display: block;
+  font-size: var(--fs-micro);
+  line-height: var(--lh-normal);
+  color: var(--ink-faint);
+}
+.starblock .sb-text {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--ink-soft);
+}
+.starblock .sb-row.resultado {
+  border-left: 2px solid var(--accent);
+  padding-left: 12px;
+}
+.starblock .sb-row.resultado .sb-text {
+  color: var(--ink);
+}
+.starblock .sb-src {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 760px) {
+  .starblock .sb-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* tags de audiência: quais áreas uma seção atende */
+.aud-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+.aud-tag {
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  background: var(--panel-2);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+/* trilhas de leitura por área */
+.trail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+.trail-card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 20px;
+}
+.trail-card .trail-intro {
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-normal);
+  color: var(--ink-mute);
+  margin: 0 0 12px;
+}
+.trail-card .trail-stops {
+  margin: 0;
+  padding-left: 18px;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-normal);
+  color: var(--ink-soft);
+}
+.trail-card .trail-stops li {
+  margin-bottom: 6px;
+}
+.trail-card .trail-stops a {
+  color: var(--ink);
+  font-weight: var(--fw-semibold);
+}
+@media (max-width: 760px) {
+  .trail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* modal dos contratos de design: requisitos do cliente desde o começo */
+.cm-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(23, 23, 26, 0.45);
+  padding: 24px;
+}
+.cm-overlay.open {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.contracts-modal {
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  max-width: 880px;
+  width: 100%;
+  max-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.contracts-modal .cm-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.contracts-modal .cm-title {
+  font-size: var(--fs-h4-heading);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  color: var(--ink);
+}
+.contracts-modal .cm-close {
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  color: var(--ink-soft);
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  font-size: var(--fs-h4-heading);
+  line-height: 1;
+  cursor: pointer;
+}
+.contracts-modal .cm-close:hover {
+  color: var(--ink);
+}
+.contracts-modal .cm-body {
+  padding: 8px 24px 24px;
+  overflow-y: auto;
+}
+td .src-row {
+  margin: 0;
+}
+.cm-open-btn {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-normal);
+  line-height: var(--lh-normal);
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 4px 0 8px;
+}
+.cm-open-btn:hover {
+  background: var(--ink-soft);
+  border-color: var(--ink-soft);
+}
+
+/* rodapé "por que esta tela": amarra cada ScreenCard à descoberta e à fonte */
+.screen-why {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-strong);
+}
+.screen-why-label {
+  display: inline-block;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+.screen-why-note {
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-normal);
+  color: var(--ink-mute);
+  margin: 0;
+}
+.screen-why-refs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-left: 8px;
+  vertical-align: baseline;
+}
+.screen-why-refs a {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  color: var(--accent);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 1px 7px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.screen-why-refs a:hover {
+  border-color: var(--accent);
 }

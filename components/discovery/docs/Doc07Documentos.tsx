@@ -1,4 +1,5 @@
 import { Hero, Section, Callout, CatSep } from "../ui/primitives";
+import { SourceBadge } from "../ui/evidence";
 import Doc07Tabs from "./Doc07Tabs";
 
 export default function Doc07Documentos() {
@@ -21,12 +22,27 @@ export default function Doc07Documentos() {
         ]}
       />
 
-      <Section id="doc-overview" num="00 — VISÃO GERAL" title="Pack completo de documentação clínica">
+      <Section id="doc-overview" num="00 · VISÃO GERAL" title="Pack completo de documentação clínica">
         <p>
-          Todo documento emitido pelo médico no prontuário WeCann Care possui trilha
-          de auditoria e assinatura digital ICP-Brasil. Os receituários seguem
-          Portaria SVS/MS 344/98 e RDC 471/2021; os documentos clínicos seguem
-          CFM 1.658/2002, CFM 2.227/2018 e LGPD.
+          Os 14 documentos deste pack nascem de duas fontes que se completam:
+          a regulação, que define o que a lei exige de cada emissão{" "}
+          <SourceBadge id="normas" compact />, e a pesquisa do discovery, que
+          define o que os médicos pediram no dia a dia. O escopo veio do brief
+          do cliente <SourceBadge id="brief-wecann" compact /> e foi confrontado
+          com entrevistas e shadowing. Todo documento emitido no prontuário
+          WeCann Care possui trilha de auditoria e assinatura digital
+          ICP-Brasil: os receituários seguem Portaria SVS/MS 344/98 e RDC
+          471/2021; os documentos clínicos seguem CFM 1.658/2002, CFM 2.227/2018
+          e LGPD.
+        </p>
+        <p>
+          Três pedidos da pesquisa atravessam o pack: receita digital limpa,
+          sem ruído comercial <SourceBadge id="e3-barbara" compact />; laudo
+          imutável, com retificação apenas por anexo datado{" "}
+          <SourceBadge id="e1-tercio" compact />; e laudo gerado por IA dentro
+          do compliance <SourceBadge id="e4-shadowing" compact />, respondendo
+          às descobertas <a href="#disc-descobertas">D-04 (tempo é a moeda)</a>{" "}
+          e <a href="#disc-descobertas">D-09 (LGPD e imutabilidade)</a>.
         </p>
         <p>
           O objetivo deste doc é definir estrutura visual e conteúdo mínimo para
@@ -42,7 +58,7 @@ export default function Doc07Documentos() {
         </Callout>
       </Section>
 
-      <Section id="doc-receituarios" num="01 — DOCUMENTOS" title="Tab set operacional do MVP">
+      <Section id="doc-receituarios" num="01 · DOCUMENTOS" title="Tab set operacional do MVP">
         <CatSep
           title="14 documentos · 5 Receituários · 4 Solicitações · 5 Paciente"
           count="Desktop + Mobile"

@@ -1,4 +1,6 @@
-﻿/** Análise competitiva de marca / identidade visual — workshop 17/06/2026. */
+﻿/** Análise competitiva de marca / identidade visual, workshop 17/06/2026. */
+
+import type { EvidenceId } from "./evidence";
 
 export type TerritoryPole = {
   name: string;
@@ -34,7 +36,7 @@ export const TERRITORY_AXES: TerritoryAxis[] = [
     label: "Eixo vertical",
     poleA: {
       name: "Humano",
-      desc: "A marca coloca a pessoa no centro — calor e cuidado antes da máquina.",
+      desc: "A marca coloca a pessoa no centro: calor e cuidado antes da máquina.",
       signals: [
         "Fotografia de pessoas",
         "Formas arredondadas",
@@ -45,7 +47,7 @@ export const TERRITORY_AXES: TerritoryAxis[] = [
     },
     poleB: {
       name: "Tecnológico",
-      desc: "A marca coloca a inteligência e a engenharia no centro — precisão e capacidade vêm primeiro.",
+      desc: "A marca coloca a inteligência e a engenharia no centro; precisão e capacidade vêm primeiro.",
       signals: [
         "Interface como herói",
         "Dados e gráficos",
@@ -60,7 +62,7 @@ export const TERRITORY_AXES: TerritoryAxis[] = [
     label: "Eixo horizontal",
     poleA: {
       name: "Disruptivo",
-      desc: "A identidade se permite parecer de outra categoria — quebra o código esperado do setor.",
+      desc: "A identidade se permite parecer de outra categoria: quebra o código esperado do setor.",
       signals: [
         "Paleta fora do azul/verde",
         "Tipografia com voz própria",
@@ -70,7 +72,7 @@ export const TERRITORY_AXES: TerritoryAxis[] = [
     },
     poleB: {
       name: "Conservador",
-      desc: "A identidade veste o uniforme do setor — joga seguro dentro do que já se espera de um software de saúde.",
+      desc: "A identidade veste o uniforme do setor: joga seguro dentro do que já se espera de um software de saúde.",
       signals: [
         "Azul ou verde",
         "Sans-serif previsível",
@@ -95,7 +97,7 @@ export const COMPETITOR_VISUAL_POSITIONS: CompetitorVisualPosition[] = [
   {
     name: "Clínica nas Nuvens",
     position: "Humano-conservador",
-    note: "Calor clínico previsível — o SaaS de consultório clássico.",
+    note: "Calor clínico previsível: o SaaS de consultório clássico.",
   },
 ];
 
@@ -113,20 +115,21 @@ export const FOUNDER_REF_POSITIONS: CompetitorVisualPosition[] = [
   {
     name: "Yaya · OpenEvidence",
     position: "Centro tecnológico-disruptivo",
-    note: "OpenEvidence pendula um pouco para o humano — combinação rara.",
+    note: "OpenEvidence pendula um pouco para o humano, combinação rara.",
   },
 ];
 
 export const WORKSHOP_BRAND_DECISION = {
+  sourceId: "ws-posicionamento" as const satisfies EvidenceId,
   horizontal:
-    "Disruptivo, sem ambiguidade — nenhuma divergência entre os sócios neste ponto.",
+    "Disruptivo, sem ambiguidade: nenhuma divergência entre os sócios neste ponto.",
   vertical:
-    "Equilíbrio entre humano e tecnológico, resolvido por camada de aplicação — não por um ponto fixo único.",
+    "Equilíbrio entre humano e tecnológico, resolvido por camada de aplicação, não por um ponto fixo único.",
   layers: {
     visual:
-      "Paleta, tipografia e sistema visual rompem com o código do mercado — apresentação tecnológica e disruptiva.",
+      "Paleta, tipografia e sistema visual rompem com o código do mercado: apresentação tecnológica e disruptiva.",
     experience:
-      "Voz, tom e comportamento da IA colocam o médico no centro — experiência e narrativa essencialmente humanas.",
+      "Voz, tom e comportamento da IA colocam o médico no centro: experiência e narrativa essencialmente humanas.",
   },
   patriciaQuote:
     "Eu acho que em termos de apresentação visual a gente tem que ser mais tecnológico, disruptivo, mas em termos de experiência a gente tem que ser essencialmente humano. Sentir, usar, perceber o produto, falar do produto, a narrativa do produto é humana, mas a apresentação visual eu penso que tem que ser realmente tecnológica e disruptiva.",

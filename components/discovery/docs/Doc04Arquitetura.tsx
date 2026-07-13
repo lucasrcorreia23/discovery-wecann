@@ -1,4 +1,5 @@
 import { Hero, Section, Callout, PartHeader } from "../ui/primitives";
+import { SourceBadge, SourceRow, StarBlock } from "../ui/evidence";
 
 function HtmlTable({
   head,
@@ -42,7 +43,7 @@ export default function Doc04Arquitetura() {
             <br />e o que <em>falta</em> no UX
           </>
         }
-        lead="Quão profunda é a estrutura de dados que a WeCann Care foi projetada para endereçar — e quanto disso ainda não atravessou o portal da experiência do usuário no produto vivo."
+        lead="Quão profunda é a estrutura de dados que a WeCann Care foi projetada para endereçar; e quanto disso ainda não atravessou o portal da experiência do usuário no produto vivo."
         meta={[
           {
             dt: "Fonte 1",
@@ -64,11 +65,11 @@ export default function Doc04Arquitetura() {
               (1) O que a WeCann Care foi projetada para endereçar em termos de
               granularidade, complexidade e organização de dados?
             </strong>{" "}
-            — resposta no Design Mestre.{" "}
+            Resposta no Design Mestre.{" "}
             <strong>
               (2) O que disso já atravessou o portal da UX e o que ainda falta?
             </strong>{" "}
-            — triangulação com Conformidade v107 e Auditoria do MVP vivo.
+            Triangulação com Conformidade v107 e Auditoria do MVP vivo.
           </p>
           <p>
             O delta entre o que está arquitetado e o que está renderizado é o
@@ -112,19 +113,22 @@ export default function Doc04Arquitetura() {
 
       <PartHeader eyebrow="Parte A · 01–10" title="A arquitetura de dados que a WeCann Care endereça">
         <p>
-          Granularidade, complexidade e organização — direto do Design Mestre,
+          Granularidade, complexidade e organização: direto do Design Mestre,
           fonte canônica do projeto.
         </p>
+        <SourceRow>
+          <SourceBadge id="design-mestre" detail="Parte A · seções 01-10" />
+        </SourceRow>
       </PartHeader>
 
       {/* 01 */}
       <Section
         id="arq-escala"
-        num="01 — A ESCALA DO PROBLEMA"
+        num="01 · A ESCALA DO PROBLEMA"
         title="27 condições · 13 áreas clínicas · 33 especialidades"
       >
         <p>
-          A WeCann Care não é um prontuário de cannabis — é uma plataforma RWE de
+          A WeCann Care não é um prontuário de cannabis; é uma plataforma RWE de
           cannabis medicinal cobrindo praticamente todo o espectro de doenças
           crônicas refratárias no Brasil. Esta escala é o problema que a
           arquitetura de dados precisa carregar.
@@ -166,7 +170,7 @@ export default function Doc04Arquitetura() {
       {/* 02 */}
       <Section
         id="arq-principios"
-        num="02 — OS 4 PRINCÍPIOS FUNDADORES"
+        num="02 · OS 4 PRINCÍPIOS FUNDADORES"
         title="Inegociáveis · regulam toda decisão de produto"
       >
         <p>
@@ -184,12 +188,12 @@ export default function Doc04Arquitetura() {
             [
               "P2 · spec v1.0",
               "Pack cannabis UNIVERSAL",
-              "Os campos cannabis existem para todos os médicos — sempre. A Atena destaca conforme tier configurado em Configurações > Perfil profissional. Independência: o pack não muda; o que muda é a proatividade da assistência.",
+              "Os campos cannabis existem para todos os médicos, sempre. A Atena destaca conforme tier configurado em Configurações > Perfil profissional. Independência: o pack não muda; o que muda é a proatividade da assistência.",
             ],
             [
               "P3 · proposta unificada",
               "Infra metodológica universal em linguagem natural",
-              "Estrelas, episódio terapêutico, completude, baseline, janelas analíticas (M1/M3/M6/M12), MCID — tudo visível em toda interface (Camada 2). Vocabulário técnico explícito é opt-in (Camada 3). Médico não precisa entender “OMOP CDM” para gerar dados ★★.",
+              "Estrelas, episódio terapêutico, completude, baseline, janelas analíticas (M1/M3/M6/M12), MCID: tudo visível em toda interface (Camada 2). Vocabulário técnico explícito é opt-in (Camada 3). Médico não precisa entender “OMOP CDM” para gerar dados ★★.",
             ],
             [
               "P4 · Design Mestre",
@@ -209,11 +213,11 @@ export default function Doc04Arquitetura() {
       {/* 03 */}
       <Section
         id="arq-hierarquia"
-        num="03 — ARQUITETURA HIERÁRQUICA"
+        num="03 · ARQUITETURA HIERÁRQUICA"
         title="Paciente → Episódio → Visita → Evento"
       >
         <p>
-          A estrutura hierárquica dos dados não é um detalhe de banco — é o que
+          A estrutura hierárquica dos dados não é um detalhe de banco; é o que
           torna possível análises de persistência, switching de produto,
           descontinuação e dose-resposta. O Design Mestre fecha cada nível com
           regras operativas explícitas.
@@ -287,12 +291,12 @@ export default function Doc04Arquitetura() {
       {/* 04 */}
       <Section
         id="arq-bifacial"
-        num="04 — BIFACIAL · A DECISÃO ARQUITETURAL MAIS CRÍTICA"
+        num="04 · BIFACIAL · A DECISÃO ARQUITETURAL MAIS CRÍTICA"
         title="Base prospectiva ★ vs base retrospectiva A–D"
       >
         <p>
           São duas camadas de dados completamente distintas. Confundi-las é o erro
-          mais grave que pode ocorrer na implementação — e o erro mais sutil. Toda
+          mais grave que pode ocorrer na implementação, e o erro mais sutil. Toda
           decisão de UX precisa preservar essa separação visual.
         </p>
         <div className="bifacial">
@@ -328,7 +332,7 @@ export default function Doc04Arquitetura() {
             <h4>A–D Qualidade declarada · descritiva</h4>
             <p>
               <strong>Objetivo:</strong> aproveitar dados clínicos históricos
-              importados para valor imediato ao médico e inteligência descritiva —
+              importados para valor imediato ao médico e inteligência descritiva,
               com declaração explícita das limitações.
             </p>
             <p>
@@ -368,13 +372,13 @@ export default function Doc04Arquitetura() {
       {/* 05 */}
       <Section
         id="arq-cannabis"
-        num="05 — GRANULARIDADE CANNABIS · DC1"
+        num="05 · GRANULARIDADE CANNABIS · DC1"
         title="13 campos obrigatórios para cada exposição"
       >
         <p>
           A correção crítica DC1 do Design Mestre exige granularidade
-          farmacológica completa para cada exposição cannabis. Não é “tomou óleo”
-          — é mg/mL de CBD, mg/mL de THC, quimiotipo declarado, ratio calculado,
+          farmacológica completa para cada exposição cannabis. Não é “tomou óleo”;
+          é mg/mL de CBD, mg/mL de THC, quimiotipo declarado, ratio calculado,
           via padronizada, doses D0/Dt/Dmédia. Sem isso, análises dose-resposta
           são impossíveis.
         </p>
@@ -401,7 +405,7 @@ export default function Doc04Arquitetura() {
             Análises dose-resposta exigem mg CBD/dia parseado, não “20 gotas
             3×/dia”. Comparativos entre produtos exigem ratio + quimiotipo.
             Farmacoeconomia exige custo mensal. Sem esses 13 campos, a WeCann Care vira
-            “prontuário com nota textual” — exatamente o que ela existe para
+            “prontuário com nota textual”, exatamente o que ela existe para
             superar.
           </p>
         </Callout>
@@ -410,7 +414,7 @@ export default function Doc04Arquitetura() {
       {/* 06 */}
       <Section
         id="arq-basal"
-        num="06 — VISITA BASAL · 12 BLOCOS"
+        num="06 · VISITA BASAL · 12 BLOCOS"
         title="A estrutura ideal do primeiro encontro"
       >
         <p>
@@ -433,13 +437,13 @@ export default function Doc04Arquitetura() {
             ['<span class="mono">8</span>', "EQ-5D-5L / PROMIS GH (provisional)", "PRO", "Essencial", '<span class="mono">3 min</span>'],
             ['<span class="mono">9</span>', "CGI-S basal", "ClinRO", "Essencial", '<span class="mono">1 min</span>'],
             ['<span class="mono">10</span>', "Custo mensal do tratamento (H4)", "PRO", "Essencial", '<span class="mono">2 min</span>'],
-            ['<span class="mono">11</span>', "Farmacogenômica (upload de laudo)", "Lab", "Opcional", "—"],
-            ['<span class="mono">12</span>', "Notas clínicas livres", "ClinRO", "Opcional", "—"],
+            ['<span class="mono">11</span>', "Farmacogenômica (upload de laudo)", "Lab", "Opcional", "-"],
+            ['<span class="mono">12</span>', "Notas clínicas livres", "ClinRO", "Opcional", "-"],
           ]}
         />
         <h3>DC5 · um bloco crítico camuflado de detalhe</h3>
         <p>
-          O Bloco 4 contém DC5 (decisão crítica 5) — captura do tratamento prévio.
+          O Bloco 4 contém DC5 (decisão crítica 5): captura do tratamento prévio.
           A interface deve nunca misturar pacientes{" "}
           <strong>“naïve” (sem tratamento prévio)</strong> com{" "}
           <strong>“em uso prévio”</strong> sem estratificação declarada. O{" "}
@@ -452,11 +456,11 @@ export default function Doc04Arquitetura() {
       {/* 07 */}
       <Section
         id="arq-instrumentos"
-        num="07 — INSTRUMENTOS CLÍNICOS"
+        num="07 · INSTRUMENTOS CLÍNICOS"
         title="+50 instrumentos validados · 5 universais · 6 proprietários"
       >
         <p>
-          A WeCann Care não é uma plataforma de questionários — é uma plataforma que
+          A WeCann Care não é uma plataforma de questionários; é uma plataforma que
           aplica instrumentos validados internacionalmente no timepoint correto,
           com versões PT-BR verificadas. Universais aplicam em <em>toda</em>{" "}
           visita. Específicos por indicação aplicam quando o módulo de sintoma
@@ -489,7 +493,7 @@ export default function Doc04Arquitetura() {
         />
         <h3>Instrumentos proprietários · plano de incorporação por fase</h3>
         <p>
-          EQ-5D-5L (EuroQol Group) é o caso crítico — indispensável para QALY/HTA.
+          EQ-5D-5L (EuroQol Group) é o caso crítico: indispensável para QALY/HTA.
           PROMIS GH é a alternativa livre no MVP, mas{" "}
           <strong>não gera índice de utilidade</strong>. Prazo máximo de 6 meses
           pós-MVP para resolver a licença comercial.
@@ -499,7 +503,7 @@ export default function Doc04Arquitetura() {
       {/* 08 */}
       <Section
         id="arq-qualidade"
-        num="08 — SISTEMA DE QUALIDADE DUAL"
+        num="08 · SISTEMA DE QUALIDADE DUAL"
         title="★ para prospectivo · A–D para retrospectivo · sem mistura"
       >
         <p>
@@ -547,7 +551,7 @@ export default function Doc04Arquitetura() {
           <p>
             O sistema deve <strong>impedir tecnicamente</strong> que análises de
             nível ★★ ou ★★★ incluam episódios que não atingem o nível mínimo. Esta
-            não é convenção — é filtro obrigatório no motor analítico. Análise ★★★
+            não é convenção; é filtro obrigatório no motor analítico. Análise ★★★
             exclui ★☆☆ e ★★☆ silenciosamente.
           </p>
         </Callout>
@@ -566,11 +570,11 @@ export default function Doc04Arquitetura() {
       {/* 09 */}
       <Section
         id="arq-submodelos"
-        num="09 — SUBMODELOS ESPECIAIS"
+        num="09 · SUBMODELOS ESPECIAIS"
         title="Pediátrico · Gestacional · variações por contexto"
       >
         <p>
-          Não é “esquema único” — a Atena ativa submodelos automáticos por
+          Não é “esquema único”; a Atena ativa submodelos automáticos por
           contexto, mantendo o pack universal e adicionando camadas. Pediátrico
           exige fontes distintas de informação (ObsRO cuidador vs PRO paciente).
           Gestacional bloqueia cannabis e adapta toda a UI.
@@ -587,7 +591,7 @@ export default function Doc04Arquitetura() {
         <Callout variant="rose" label="Regra inegociável · dados pediátricos">
           <p>
             Dados pediátricos são analisados{" "}
-            <strong>sempre em subgrupo separado</strong> — nunca misturados com
+            <strong>sempre em subgrupo separado</strong>; nunca misturados com
             adultos no análise primário. O dashboard separa visualmente.
           </p>
         </Callout>
@@ -595,7 +599,7 @@ export default function Doc04Arquitetura() {
         <p>
           Ativação automática quando paciente gestante é declarada.{" "}
           <strong>Cannabis é contraindicação absoluta na gestação</strong> (ACOG
-          2022 + SBP 2022) — a Atena bloqueia prescrição cannabis e adapta toda a
+          2022 + SBP 2022); a Atena bloqueia prescrição cannabis e adapta toda a
           microcopy. UI ganha banners de alerta e o módulo de farmacovigilância usa
           schema E2B-R3 para exposição gestacional.
         </p>
@@ -604,12 +608,12 @@ export default function Doc04Arquitetura() {
       {/* 10 */}
       <Section
         id="arq-rwe"
-        num="10 — SCHEMA RWE + FARMACOVIGILÂNCIA"
+        num="10 · SCHEMA RWE + FARMACOVIGILÂNCIA"
         title="A camada de pesquisa · onde nenhum concorrente chega"
       >
         <p>
           O schema <code>rwe.*</code> é uma infraestrutura de pesquisa clínica
-          completa — dezenas de tabelas especializadas, funções automatizadas,
+          completa: dezenas de tabelas especializadas, funções automatizadas,
           triggers de integridade. Auditada pelo coordenador científico.
           Integralmente versionada.{" "}
           <strong>Concorrentes genéricos levariam 24-36 meses para replicar.</strong>
@@ -654,11 +658,11 @@ export default function Doc04Arquitetura() {
       {/* 11 */}
       <Section
         id="arq-interop"
-        num="11 — INTEROPERABILIDADE"
+        num="11 · INTEROPERABILIDADE"
         title="OMOP CDM v5.4 + FHIR R4 + SNOMED"
       >
         <p>
-          A WeCann Care não é “exportável” — ela <em>nasce</em> em padrões
+          A WeCann Care não é “exportável”; ela <em>nasce</em> em padrões
           internacionais. Cada paciente registrado já está em OMOP. Cada documento
           clínico já está em FHIR. Cada CID/escala já é mapeável para SNOMED. Sem
           migração futura, sem retrabalho.
@@ -686,12 +690,17 @@ export default function Doc04Arquitetura() {
           Análise arquitetural independente · Design Mestre × Conformidade v107 ×
           MVP vivo · gaps priorizados.
         </p>
+        <SourceRow>
+          <SourceBadge id="design-mestre" />
+          <SourceBadge id="conformidade-v107" />
+          <SourceBadge id="demo-v107" />
+        </SourceRow>
       </PartHeader>
 
       {/* 12 */}
       <Section
         id="arq-triangulacao"
-        num="12 — A TRIANGULAÇÃO ARQUITETURAL"
+        num="12 · A TRIANGULAÇÃO ARQUITETURAL"
         title="Design Mestre · v107 · MVP vivo · três níveis de fidelidade"
       >
         <p>
@@ -741,11 +750,15 @@ export default function Doc04Arquitetura() {
             <strong>
               quanto da arquitetura definida nas seções 01-10 já está implementado
               e funcionando no produto vivo
-            </strong>{" "}
-            — independentemente de como esteja visualmente apresentado.
+            </strong>
+            , independentemente de como esteja visualmente apresentado.
           </p>
         </Callout>
         <h3>Análise arquitetural · v107 vs Design Mestre</h3>
+        <SourceRow>
+          <SourceBadge id="conformidade-v107" />
+          <SourceBadge id="design-mestre" />
+        </SourceRow>
         <p>
           A v107 cobre 94% do Design Mestre. Os 6% restantes não são triviais e
           precisam ser nomeados para que a Atom os incorpore no redesign:
@@ -757,7 +770,7 @@ export default function Doc04Arquitetura() {
             ["Schema RWE · 16 tabelas", "10", "15/16 implementadas", '<span class="mono">rwe.product_catalog</span> · estrutura existe, mas catálogo cannabis não totalmente populado.'],
             ["Submodelos · pediátrico/gestacional", "09", "Auto-detecção implementada", "Validação clínica do conjunto ObsRO/PRO/Z-scores WHO pendente de revisão metodológica final."],
             ["Bloco 11 da basal · farmacogenômica", "06", "Não implementado", "L12 · bloco opcional · upload de laudo farmacogenômico não exposto na UI do wizard."],
-            ["Performance · sub-1.5s primeira interação", "—", "Não mensurado", "Requer load testing em ambiente de produção (Lighthouse, WebPageTest)."],
+            ["Performance · sub-1.5s primeira interação", "-", "Não mensurado", "Requer load testing em ambiente de produção (Lighthouse, WebPageTest)."],
           ]}
         />
         <p>
@@ -766,6 +779,10 @@ export default function Doc04Arquitetura() {
           As lacunas existentes são pontuais e bem documentadas.
         </p>
         <h3>Análise arquitetural · MVP vivo vs Design Mestre</h3>
+        <SourceRow>
+          <SourceBadge id="demo-v107" detail="MVP vivo · app.wecann.clinic" />
+          <SourceBadge id="design-mestre" />
+        </SourceRow>
         <p>
           Esta é a análise mais importante deste documento para o trabalho da
           AtomSix. Cada item abaixo refere à seção correspondente deste documento.
@@ -781,7 +798,7 @@ export default function Doc04Arquitetura() {
             ["Timepoints estruturais · M1/M3/M6/M12", "03 · 07 · 10", "Ausente", "<strong>Linha do tempo é cronológica</strong>, não estruturada por timepoints. Sistema não sabe se a aplicação de escala é “M3 do episódio X” ou “evento solto”."],
             ["Qualidade dual · estrelas ★ + letras A-D", "08", "Restrito a algumas telas", "Estrelas visíveis na Consulta e parcialmente em Casuística. <strong>Ausentes</strong> na lista de pacientes, Paciente 360, pós-consulta. Letras A-D não implementadas."],
             ["Submodelos · pediátrico e gestacional", "09", "Ausente", "<strong>Auto-detecção por idade/gestação inexistente.</strong> Pediatra usa as mesmas telas do adulto. Sem ObsRO cuidador, sem Z-scores WHO."],
-            ["Schema RWE · 16 tabelas", "10", "Backend parcial · UI inexistente", '<span class="mono">rwe.condition_episodes</span>, <span class="mono">rwe.timepoints</span>, <span class="mono">rwe.outcomes</span> são invisíveis ao médico — quando deveriam ser entidades primárias de navegação.'],
+            ["Schema RWE · 16 tabelas", "10", "Backend parcial · UI inexistente", '<span class="mono">rwe.condition_episodes</span>, <span class="mono">rwe.timepoints</span>, <span class="mono">rwe.outcomes</span> são invisíveis ao médico, quando deveriam ser entidades primárias de navegação.'],
             ["Consentimento em 2 camadas com versão", "10", "Parcial", "TCLE genérico sem distinção visual entre clínico (obrigatório) e pesquisa (opt-in granular). Versão e timestamp <strong>não expostos ao médico</strong>."],
             ["Dualidade C2 (natural) / C3 (técnica)", "02 · 08", "Inconsistente", 'Sem regra clara. Snake_case técnico vazando em pelo menos um label (<span class="mono">controle_especial</span>).'],
             ["Interoperabilidade OMOP / FHIR / SNOMED", "11", "Backend · não exposto", "Mapeamentos existem, mas o médico não tem evidência visual de que os dados são interoperáveis. Ausência de indicador de “qualidade de codificação”."],
@@ -803,13 +820,13 @@ export default function Doc04Arquitetura() {
       {/* 13 */}
       <Section
         id="arq-walkthrough"
-        num="13 — WALKTHROUGH DETALHADO DO DESIGN MESTRE"
+        num="13 · WALKTHROUGH DETALHADO DO DESIGN MESTRE"
         title="Por que cada decisão arquitetural existe"
       >
         <p>
           Esta seção é a leitura guiada das seções 01-10 para a Atom. Para cada
           decisão estrutural, explicamos{" "}
-          <strong>o problema clínico ou metodológico que ela resolve</strong> — e
+          <strong>o problema clínico ou metodológico que ela resolve</strong>, e
           portanto o que se perde se ela não atravessar para a UI. Foco em seis
           blocos arquiteturais críticos:{" "}
           <strong>
@@ -819,17 +836,20 @@ export default function Doc04Arquitetura() {
           .
         </p>
         {WALKTHROUGH.map((w) => (
-          <div key={w.title}>
-            <h3>{w.title}</h3>
-            {w.paras.map((p, i) => (
-              <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
-            ))}
-          </div>
+          <StarBlock
+            key={w.title}
+            title={w.title}
+            situacao={<span dangerouslySetInnerHTML={{ __html: w.star.situacao }} />}
+            tarefa={<span dangerouslySetInnerHTML={{ __html: w.star.tarefa }} />}
+            acao={<span dangerouslySetInnerHTML={{ __html: w.star.acao }} />}
+            resultado={<span dangerouslySetInnerHTML={{ __html: w.star.resultado }} />}
+            sources={["design-mestre"]}
+          />
         ))}
         <Callout label="Síntese · o que a Atom leva deste walkthrough">
           <p>
             Cada uma dessas seis decisões arquiteturais responde a um{" "}
-            <em>problema científico real</em> da medicina canabinoide brasileira —
+            <em>problema científico real</em> da medicina canabinoide brasileira,
             não a uma preferência estética. Quando a Atom desenha qualquer tela, a
             pergunta certa não é “isso fica bonito?” mas{" "}
             <strong>“isso preserva a fidelidade arquitetural?”</strong>. Se a
@@ -841,7 +861,7 @@ export default function Doc04Arquitetura() {
       {/* 14 */}
       <Section
         id="arq-gaps"
-        num="14 — GAPS PRIORIZADOS · O QUE FALTA NA UX"
+        num="14 · GAPS PRIORIZADOS · O QUE FALTA NA UX"
         title="P0 · P1 · P2 · o que não chegou ao portal"
       >
         <p>
@@ -860,7 +880,7 @@ export default function Doc04Arquitetura() {
       {/* 15 */}
       <Section
         id="arq-roteiro"
-        num="15 — ROTEIRO DE VALIDAÇÃO"
+        num="15 · ROTEIRO DE VALIDAÇÃO"
         title="Como a AtomSix atravessa esse delta"
       >
         <p>
@@ -883,7 +903,7 @@ export default function Doc04Arquitetura() {
 
       <div className="verdict">
         <div className="eyebrow">O brief em uma frase</div>
-        <h3>A arquitetura está pronta. O redesign não inventa nada — apenas traduz.</h3>
+        <h3>A arquitetura está pronta. O redesign não inventa nada, apenas traduz.</h3>
         <p>
           A AtomSix não está desenhando do zero. Está fazendo a tradução do{" "}
           <strong>Design Mestre</strong> (a arquitetura · 100%) e da{" "}
@@ -931,65 +951,82 @@ function GapCards({
 
 const WALKTHROUGH = [
   {
-    title: "1 · Bifacial — por que prospectivo e retrospectivo nunca se misturam",
-    paras: [
-      "<strong>O problema clínico-metodológico:</strong> em medicina canabinoide brasileira, a maior parte dos dados disponíveis é histórica e foi coletada de forma não-padronizada. Esses dados têm valor (descrevem realidade clínica), mas não têm qualidade para inferência causal, farmacovigilância formal ou submissão regulatória.",
-      "Ao mesmo tempo, queremos gerar <em>novos</em> dados com qualidade de RWE publicável e potencialmente regulatório — coletados prospectivamente, com pré-registro, consentimento em 2 camadas, instrumentos validados em janelas analíticas, plano estatístico definido <em>antes</em> da análise.",
-      "Se os dois universos se misturam silenciosamente em qualquer análise, o trabalho científico se torna inválido. Pior: ANVISA e peer review rejeitarão o conjunto.",
-      "<strong>A decisão arquitetural:</strong> bifacialidade obrigatória. Prospectivos recebem estrelas (★☆☆ / ★★☆ / ★★★); retrospectivos recebem letras (A / B / C / D). <strong>Os dois nunca aparecem no mesmo agregado sem declaração ativa do usuário</strong>. A flag de origem é permanente e visualmente persistente.",
-      "<strong>Implicação para a UI:</strong> qualquer tela que mostra agregados (Casuística, dashboards, exports) precisa de um <em>bifacial chip</em> visível e não-removível. Filtros precisam alternar entre “só prospectivo”, “só retrospectivo” ou “ambos com declaração”.",
-      "<strong>Custo de não trazer isto à UI:</strong> publicação rejeitada · regulatório bloqueado · risco de litígio científico · perda de credibilidade junto a CEP.",
-    ],
+    title: "1 · Bifacial: por que prospectivo e retrospectivo nunca se misturam",
+    star: {
+      situacao:
+        "Em medicina canabinoide brasileira, a maior parte dos dados disponíveis é histórica e foi coletada de forma não-padronizada. Esses dados têm valor (descrevem realidade clínica), mas não têm qualidade para inferência causal, farmacovigilância formal ou submissão regulatória.",
+      tarefa:
+        "Ao mesmo tempo, queremos gerar <em>novos</em> dados com qualidade de RWE publicável e potencialmente regulatório: coletados prospectivamente, com pré-registro, consentimento em 2 camadas, instrumentos validados em janelas analíticas, plano estatístico definido <em>antes</em> da análise. Se os dois universos se misturam silenciosamente em qualquer análise, o trabalho científico se torna inválido. Pior: ANVISA e peer review rejeitarão o conjunto.",
+      acao:
+        "Bifacialidade obrigatória. Prospectivos recebem estrelas (★☆☆ / ★★☆ / ★★★); retrospectivos recebem letras (A / B / C / D). <strong>Os dois nunca aparecem no mesmo agregado sem declaração ativa do usuário</strong>. A flag de origem é permanente e visualmente persistente.",
+      resultado:
+        "<strong>Implicação para a UI:</strong> qualquer tela que mostra agregados (Casuística, dashboards, exports) precisa de um <em>bifacial chip</em> visível e não-removível. Filtros precisam alternar entre “só prospectivo”, “só retrospectivo” ou “ambos com declaração”. <strong>Custo de não trazer isto à UI:</strong> publicação rejeitada · regulatório bloqueado · risco de litígio científico · perda de credibilidade junto a CEP.",
+    },
   },
   {
-    title: "2 · Episódio terapêutico — por que paciente não é a unidade de análise",
-    paras: [
-      "<strong>O problema clínico-metodológico:</strong> em prontuários convencionais, a unidade de análise é o paciente. Isso funciona para cuidado individual, mas <em>quebra</em> análises científicas. Um paciente, ao longo de 3 anos, pode ter usado três produtos diferentes — misturar essas fases perde toda informação relevante: <em>qual</em> produto, em <em>qual</em> dose, por <em>quanto tempo</em>, com <em>qual</em> resposta.",
-      "A unidade científica correta é o <strong>episódio terapêutico</strong>: produto + indicação principal + data de início. Um paciente pode ter múltiplos episódios sequenciais (switching) ou concorrentes (uso simultâneo). Cada episódio tem suas próprias visitas, instrumentos, eventos adversos e fechamento.",
-      "<strong>A decisão arquitetural:</strong> hierarquia Paciente → Episódio → Visita → Evento. Episódio fecha com descontinuação documentada ou ausência &gt; 180 dias. Mudança de produto = novo episódio; mudança de dose = evento dentro do episódio.",
-      "<strong>Implicação para a UI:</strong> ao abrir um paciente, a primeira entidade visível não é “lista de consultas” — é “lista de episódios”. Cada episódio é um cartão expansível com produto, indicação, datas, visitas M1/M3/M6/M12, status e completude.",
-      "<strong>Custo de não trazer isto à UI:</strong> análises de switching impossíveis · curvas de persistência distorcidas · farmacovigilância confunde EA do produto A com B · médico não percebe tratamentos concorrentes.",
-    ],
+    title: "2 · Episódio terapêutico: por que paciente não é a unidade de análise",
+    star: {
+      situacao:
+        "Em prontuários convencionais, a unidade de análise é o paciente. Isso funciona para cuidado individual, mas <em>quebra</em> análises científicas. Um paciente, ao longo de 3 anos, pode ter usado três produtos diferentes; misturar essas fases perde toda informação relevante: <em>qual</em> produto, em <em>qual</em> dose, por <em>quanto tempo</em>, com <em>qual</em> resposta.",
+      tarefa:
+        "A unidade científica correta é o <strong>episódio terapêutico</strong>: produto + indicação principal + data de início. Um paciente pode ter múltiplos episódios sequenciais (switching) ou concorrentes (uso simultâneo). Cada episódio tem suas próprias visitas, instrumentos, eventos adversos e fechamento.",
+      acao:
+        "Hierarquia Paciente → Episódio → Visita → Evento. Episódio fecha com descontinuação documentada ou ausência &gt; 180 dias. Mudança de produto = novo episódio; mudança de dose = evento dentro do episódio.",
+      resultado:
+        "<strong>Implicação para a UI:</strong> ao abrir um paciente, a primeira entidade visível não é “lista de consultas”; é “lista de episódios”. Cada episódio é um cartão expansível com produto, indicação, datas, visitas M1/M3/M6/M12, status e completude. <strong>Custo de não trazer isto à UI:</strong> análises de switching impossíveis · curvas de persistência distorcidas · farmacovigilância confunde EA do produto A com B · médico não percebe tratamentos concorrentes.",
+    },
   },
   {
-    title: "3 · Timepoints estruturais — por que M1, M3, M6, M12 não são datas soltas",
-    paras: [
-      "<strong>O problema clínico-metodológico:</strong> para análises longitudinais (MMRM, mixed models, GEE) funcionarem em RWE, os pontos de medida precisam ser <em>estruturalmente comparáveis</em>. Uma data solta é informação cronológica — mas não analítica até que se saiba que é a basal e a outra é M6.",
-      "Timepoints estruturais permitem responder “qual a redução média de PHQ-9 em M3 dos pacientes com depressão refratária no produto X?”. Sem timepoints, só dá para responder a média em algum momento — quase sem valor.",
-      "<strong>A decisão arquitetural:</strong> cada episódio tem janelas pré-definidas — pré-basal, basal (D0), M1 (30±7), M3 (90±14), M6 (180±21), M12 (365±28). Ao aplicar um instrumento dentro da janela, o sistema vincula automaticamente ao timepoint.",
-      "<strong>Implicação para a UI:</strong> a consulta mostra o <em>timepoint atual</em> (“você está em M3 · janela termina em 4 dias”). A coluna da Atena sinaliza escala esperada não aplicada. A timeline mostra pontos discretos M1/M3/M6/M12.",
-      "<strong>Custo de não trazer isto à UI:</strong> impossibilidade de análise MMRM · publicações longitudinais inviáveis · escala aplicada fora da janela perde valor.",
-    ],
+    title: "3 · Timepoints estruturais: por que M1, M3, M6, M12 não são datas soltas",
+    star: {
+      situacao:
+        "Para análises longitudinais (MMRM, mixed models, GEE) funcionarem em RWE, os pontos de medida precisam ser <em>estruturalmente comparáveis</em>. Uma data solta é informação cronológica, mas não analítica até que se saiba que é a basal e a outra é M6.",
+      tarefa:
+        "Timepoints estruturais permitem responder “qual a redução média de PHQ-9 em M3 dos pacientes com depressão refratária no produto X?”. Sem timepoints, só dá para responder a média em algum momento, quase sem valor.",
+      acao:
+        "Cada episódio tem janelas pré-definidas: pré-basal, basal (D0), M1 (30±7), M3 (90±14), M6 (180±21), M12 (365±28). Ao aplicar um instrumento dentro da janela, o sistema vincula automaticamente ao timepoint.",
+      resultado:
+        "<strong>Implicação para a UI:</strong> a consulta mostra o <em>timepoint atual</em> (“você está em M3 · janela termina em 4 dias”). A coluna da Atena sinaliza escala esperada não aplicada. A timeline mostra pontos discretos M1/M3/M6/M12. <strong>Custo de não trazer isto à UI:</strong> impossibilidade de análise MMRM · publicações longitudinais inviáveis · escala aplicada fora da janela perde valor.",
+    },
   },
   {
-    title: "4 · Schema RWE — por que 16 tabelas e não um único formulário",
-    paras: [
-      "<strong>O problema clínico-metodológico:</strong> dados clínicos convencionais são amorfos — texto livre, datas dispersas, sem mapeamento ontológico. Para servir a RWE, precisam ser <em>estruturados</em> em entidades reconhecíveis por padrões internacionais (OMOP, FHIR, SNOMED).",
-      "Sem essa estrutura, a WeCann Care é só mais um prontuário bonito. Com ela, é uma fonte de evidência mundial sobre medicina canabinoide. A diferença é técnica, mas o efeito comercial e científico é absoluto.",
-      "<strong>A decisão arquitetural:</strong> 16 tabelas no schema RWE — <span class='mono'>condition_episodes</span>, <span class='mono'>exposures</span>, <span class='mono'>instruments</span>, <span class='mono'>timepoints</span>, <span class='mono'>outcomes</span>, <span class='mono'>adverse_events</span>, <span class='mono'>research_consent</span>, <span class='mono'>research_subjects</span>, <span class='mono'>product_catalog</span>, <span class='mono'>data_lineage</span>, entre outras.",
-      "<strong>Implicação para a UI:</strong> o médico nunca vê o nome das tabelas, mas as entidades correspondentes precisam estar acessíveis: episódios como cartões, exposições como blocos, instrumentos como aplicações vinculadas, EA com CTCAE visível. <strong>Cada tabela do schema deve ter uma “manifestação visual”</strong>.",
-      "<strong>Custo de não trazer isto à UI:</strong> o backend acumula dados estruturados que o frontend não aproveita. Conversão para OMOP exige retrabalho manual. Casuística perde resolução analítica.",
-    ],
+    title: "4 · Schema RWE: por que 16 tabelas e não um único formulário",
+    star: {
+      situacao:
+        "Dados clínicos convencionais são amorfos: texto livre, datas dispersas, sem mapeamento ontológico. Para servir a RWE, precisam ser <em>estruturados</em> em entidades reconhecíveis por padrões internacionais (OMOP, FHIR, SNOMED).",
+      tarefa:
+        "Sem essa estrutura, a WeCann Care é só mais um prontuário bonito. Com ela, é uma fonte de evidência mundial sobre medicina canabinoide. A diferença é técnica, mas o efeito comercial e científico é absoluto.",
+      acao:
+        "16 tabelas no schema RWE: <span class='mono'>condition_episodes</span>, <span class='mono'>exposures</span>, <span class='mono'>instruments</span>, <span class='mono'>timepoints</span>, <span class='mono'>outcomes</span>, <span class='mono'>adverse_events</span>, <span class='mono'>research_consent</span>, <span class='mono'>research_subjects</span>, <span class='mono'>product_catalog</span>, <span class='mono'>data_lineage</span>, entre outras.",
+      resultado:
+        "<strong>Implicação para a UI:</strong> o médico nunca vê o nome das tabelas, mas as entidades correspondentes precisam estar acessíveis: episódios como cartões, exposições como blocos, instrumentos como aplicações vinculadas, EA com CTCAE visível. <strong>Cada tabela do schema deve ter uma “manifestação visual”</strong>. <strong>Custo de não trazer isto à UI:</strong> o backend acumula dados estruturados que o frontend não aproveita. Conversão para OMOP exige retrabalho manual. Casuística perde resolução analítica.",
+    },
   },
   {
-    title: "5 · Qualidade dual — por que dois sistemas (estrelas e letras) coexistem",
-    paras: [
-      "<strong>O problema clínico-metodológico:</strong> qualidade de dado prospectivo e retrospectivo se medem por critérios diferentes. Prospectivo: “preencheu todos os campos do protocolo + dentro da janela + com consentimento de pesquisa”. Retrospectivo: “o dado importado é completo o suficiente para descrição clínica”.",
-      "Se usássemos um único sistema, dados retrospectivos sempre apareceriam como ★☆☆ (injusto — têm valor clínico real) e prospectivos seriam comparados numa régua sem distinção de qualidades intermediárias.",
-      "<strong>A decisão arquitetural:</strong> sistema dual. Prospectivo: ★☆☆ (clínico) · ★★☆ (publicável, default) · ★★★ (regulatório). Retrospectivo: A (quase-prospectivo) · B (completude alta) · C (limitado) · D (só descritivo).",
-      "<strong>Implicação para a UI:</strong> em toda tela de agregado, o usuário vê quantos pacientes em cada estrela <em>e</em> em cada letra. Filtros cruzam (“só ★★★ e A”). Cada paciente tem chip de qualidade visível.",
-      "<strong>Custo de não trazer isto à UI:</strong> o P4 (empurrar ★★ por defeito) só funciona se o médico vê a estrela. Sem visibilidade, o incentivo se perde e decisões de coorte ficam às cegas.",
-    ],
+    title: "5 · Qualidade dual: por que dois sistemas (estrelas e letras) coexistem",
+    star: {
+      situacao:
+        "Qualidade de dado prospectivo e retrospectivo se medem por critérios diferentes. Prospectivo: “preencheu todos os campos do protocolo + dentro da janela + com consentimento de pesquisa”. Retrospectivo: “o dado importado é completo o suficiente para descrição clínica”.",
+      tarefa:
+        "Se usássemos um único sistema, dados retrospectivos sempre apareceriam como ★☆☆ (injusto: têm valor clínico real) e prospectivos seriam comparados numa régua sem distinção de qualidades intermediárias.",
+      acao:
+        "Sistema dual. Prospectivo: ★☆☆ (clínico) · ★★☆ (publicável, default) · ★★★ (regulatório). Retrospectivo: A (quase-prospectivo) · B (completude alta) · C (limitado) · D (só descritivo).",
+      resultado:
+        "<strong>Implicação para a UI:</strong> em toda tela de agregado, o usuário vê quantos pacientes em cada estrela <em>e</em> em cada letra. Filtros cruzam (“só ★★★ e A”). Cada paciente tem chip de qualidade visível. <strong>Custo de não trazer isto à UI:</strong> o P4 (empurrar ★★ por defeito) só funciona se o médico vê a estrela. Sem visibilidade, o incentivo se perde e decisões de coorte ficam às cegas.",
+    },
   },
   {
-    title: "6 · Submodelos — por que pediátrico e gestacional não são “presets”",
-    paras: [
-      "<strong>O problema clínico-metodológico:</strong> um paciente pediátrico (&lt;12 anos) não é um adulto pequeno. Mede-se de forma diferente — escalas próprias, ObsRO (cuidador) em vez de PRO, Z-scores WHO em vez de IMC. Para 12-17 anos, dupla coleta. Para gestantes, módulo próprio com idade gestacional, DUM, paridade.",
-      "Se a WeCann Care oferece “preset pediátrico” como toggle, o médico esquece de ativar e os dados corrompem. Se <em>detecta</em> e ativa automaticamente, o submodelo se torna estrutural.",
-      "<strong>A decisão arquitetural:</strong> auto-detecção. <span class='mono'>WCN.detectSubmodel(idade &lt; 12 → pediatric)</span>; <span class='mono'>(idade 12-17 → adolescent_dual)</span>; <span class='mono'>(gestante = true → gestational)</span>. Cada submodelo carrega instrumentos, blocos e regras próprias.",
-      "<strong>Implicação para a UI:</strong> ao abrir o paciente, banner discreto sinaliza submodelo ativo. Telas adaptam automaticamente — escalas válidas para a faixa, antropometria em Z-score. Nenhuma ação do médico para ativar.",
-      "<strong>Custo de não trazer isto à UI:</strong> pediatras usam telas de adulto e geram dados inválidos. Estudos pediátricos impossíveis. Risco regulatório em gestantes.",
-    ],
+    title: "6 · Submodelos: por que pediátrico e gestacional não são “presets”",
+    star: {
+      situacao:
+        "Um paciente pediátrico (&lt;12 anos) não é um adulto pequeno. Mede-se de forma diferente: escalas próprias, ObsRO (cuidador) em vez de PRO, Z-scores WHO em vez de IMC. Para 12-17 anos, dupla coleta. Para gestantes, módulo próprio com idade gestacional, DUM, paridade.",
+      tarefa:
+        "Se a WeCann Care oferece “preset pediátrico” como toggle, o médico esquece de ativar e os dados corrompem. Se <em>detecta</em> e ativa automaticamente, o submodelo se torna estrutural.",
+      acao:
+        "Auto-detecção. <span class='mono'>WCN.detectSubmodel(idade &lt; 12 → pediatric)</span>; <span class='mono'>(idade 12-17 → adolescent_dual)</span>; <span class='mono'>(gestante = true → gestational)</span>. Cada submodelo carrega instrumentos, blocos e regras próprias.",
+      resultado:
+        "<strong>Implicação para a UI:</strong> ao abrir o paciente, banner discreto sinaliza submodelo ativo. Telas adaptam automaticamente: escalas válidas para a faixa, antropometria em Z-score. Nenhuma ação do médico para ativar. <strong>Custo de não trazer isto à UI:</strong> pediatras usam telas de adulto e geram dados inválidos. Estudos pediátricos impossíveis. Risco regulatório em gestantes.",
+    },
   },
 ];
 
@@ -1017,14 +1054,14 @@ const P2 = [
   { prio: "P2-A", title: "Cannabinoides minoritários (CBN/CBG/THCV/CBC)", sub: "DC1 · refinamento de catálogo", body: "Mencionados em dados mas sem campo dedicado no bulário. Importante para análises de “efeito comitiva” e dose-resposta refinada." },
   { prio: "P2-B", title: "Custo mensal BRL chip explícito", sub: "Bloco 10 da basal · farmacoeconomia", body: "Capturado em texto livre na v107 mas sem chip dedicado na sub-bandeja. Bloqueia análises de farmacoeconomia." },
   { prio: "P2-C", title: "Cmd+K palette com 40 comandos", sub: "Cmd+K · A5 · v107 Sprint 2", body: "v107: implementado · 6 seções. <strong>MVP vivo: nenhum atalho de teclado</strong>. Sobrecarregado perde 20 min por dia." },
-  { prio: "P2-D", title: "Ranking anônimo de completude", sub: "Incentivo · P4 · seção 10 Design Mestre", body: "Médico vê sua posição em percentil em relação à sua indicação principal — não a identidade dos outros. Incentivo sem competição negativa. <strong>MVP vivo: ausente.</strong>" },
+  { prio: "P2-D", title: "Ranking anônimo de completude", sub: "Incentivo · P4 · seção 10 Design Mestre", body: "Médico vê sua posição em percentil em relação à sua indicação principal, não a identidade dos outros. Incentivo sem competição negativa. <strong>MVP vivo: ausente.</strong>" },
   { prio: "P2-E", title: "Farmacogenômica · bloco 11", sub: "Visita basal · opcional", body: "Upload de laudo farmacogenômico. Bloco opcional no Design Mestre. Pode ser deixado para fase avançada." },
   { prio: "P2-F", title: "Performance &lt; 1.5s primeira interação", sub: "Não funcional · requer load testing", body: "Não mensurado. Requer load testing externo (Lighthouse/WebPageTest) em produção. Crítico para Sobrecarregado." },
 ];
 
 const SESSIONS = [
   { num: "01", title: "Tokens primeiro · pré-Figma · resolver os 3 críticos", who: "AtomSix + Eng WeCann · 60 min", body: "Antes de qualquer Figma: corrigir <code>--primary</code> → navy, <code>--background</code> → cream, unificar família verde em <code>--color-athena</code>. Re-deploy. Verificar propagação em 13 telas com prints antes/depois.", deliv: "Entregável · 3 tokens corrigidos em produção · 13 telas com mood Pulse imediato" },
-  { num: "02", title: "Walkthrough do Design Mestre · alinhamento de arquitetura", who: "Patricia + AtomSix · 120 min", body: "Leitura conjunta da <strong>seção 13</strong> deste doc — as 6 decisões arquiteturais. AtomSix sai entendendo <em>por que</em> cada coisa existe e o custo de não trazer para a UI.", deliv: "Entregável · alinhamento arquitetural · perguntas resolvidas antes do design" },
+  { num: "02", title: "Walkthrough do Design Mestre · alinhamento de arquitetura", who: "Patricia + AtomSix · 120 min", body: "Leitura conjunta da <strong>seção 13</strong> deste doc: as 6 decisões arquiteturais. AtomSix sai entendendo <em>por que</em> cada coisa existe e o custo de não trazer para a UI.", deliv: "Entregável · alinhamento arquitetural · perguntas resolvidas antes do design" },
   { num: "03", title: "Caça aos gaps P0 · safety + credibilidade", who: "Patricia + AtomSix + Eng · 90 min", body: "EA Grau 3 em vermelho · markdown raw · variável <code>[Nome]</code> · token <code>--primary</code> · evidence drawer universal · snake_case. <strong>Bugs em produção a resolver antes do redesign visual.</strong>", deliv: "Entregável · 6 P0 fixados e validados em produção" },
   { num: "04", title: "Redesign sistêmico · P1 arquitetura central", who: "AtomSix sozinha · 2 × 90 min", body: "Patricia se afasta. AtomSix atravessa cada P1: bifacial chip · episódio como entidade · timepoints · catálogo cannabis 13 campos · estrelas universais · TCLE 2 camadas · submodelo pediátrico · dualidade C2/C3.", deliv: "Entregável · 8 P1 desenhados em alta fidelidade · prontos para revisão" },
   { num: "05", title: "Síntese · backlog priorizado · primeiro sprint", who: "Patricia + AtomSix · 60 min", body: "Consolidar tudo. Priorizar redesigns por ROI estratégico · custo técnico · impacto perceptual por persona. Sair com primeiro sprint AtomSix definido.", deliv: "Entregável · backlog priorizado · marco “Pulse v108 vivo” definido" },

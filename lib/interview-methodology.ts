@@ -25,7 +25,7 @@ export const INTERVIEW_FRAMEWORK: InterviewBlockDef[] = [
     title: "Rotina clínica",
     duration: "12 min",
     objective:
-      "Mapear o fluxo real de trabalho — ferramentas, volume e pré/durante/pós-consulta.",
+      "Mapear o fluxo real de trabalho: ferramentas, volume e pré/durante/pós-consulta.",
   },
   {
     num: "3",

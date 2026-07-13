@@ -7,6 +7,7 @@ import {
   Tag,
   Meeting,
 } from "../ui/primitives";
+import { StarBlock } from "../ui/evidence";
 import { INTERVIEW_FRAMEWORK } from "@/lib/interview-methodology";
 
 export default function Doc08Entrevistas() {
@@ -35,10 +36,25 @@ export default function Doc08Entrevistas() {
       >
         <p>
           Cada sessão é conduzida em <strong>seis blocos sequenciais</strong>.
-          O roteiro isola tipos de evidência — contexto, rotina, atrito,
-          tecnologia — para não misturar descrição factual com julgamento sobre
+          O roteiro isola tipos de evidência (contexto, rotina, atrito,
+          tecnologia) para não misturar descrição factual com julgamento sobre
           ferramentas. Duração total: ~55 min.
         </p>
+        <Callout variant="teal" label="Política de citação deste documento">
+          <p>
+            Frases entre aspas são <strong>verbatim</strong> das gravações, com
+            atribuição nominal ao entrevistado; sínteses e paráfrases aparecem
+            sem aspas. Nas personas do Doc 02, falas construídas (sem
+            entrevista correspondente) são sinalizadas com o selo{" "}
+            <em>voz síntese da persona</em>: a distinção entre o que ouvimos e
+            o que ilustramos é deliberada.
+          </p>
+          <p>
+            Este componente é a fonte de verdade das entrevistas no Discovery
+            Pack; os arquivos brutos de transcrição e notas são insumos de
+            pesquisa, não documentos de consulta.
+          </p>
+        </Callout>
         <div className="framework-grid">
           {INTERVIEW_FRAMEWORK.map((block) => (
             <div className="card framework-card" key={block.num}>
@@ -61,7 +77,7 @@ export default function Doc08Entrevistas() {
           Três perfis distintos de médicos prescritores, deliberadamente
           contrastantes, mais uma sessão de shadowing com a fundadora validando
           o protótipo no consultório real. A diversidade é intencional: confirma
-          que a plataforma precisa atender perfis radicalmente diferentes — e
+          que a plataforma precisa atender perfis radicalmente diferentes, e
           que o produto precisa funcionar além do perfil da própria Patricia.
         </p>
         <div className="stack cols-2">
@@ -147,7 +163,7 @@ export default function Doc08Entrevistas() {
                 recentes e um resumo do que busca na própria plataforma
                 (Doutoralia), para já ter acesso ao entrar. Reconhece o{" "}
                 <strong>TCLE</strong> como peça crítica para prescrição de
-                cannabis — mas que só faz sentido assinar{" "}
+                cannabis, mas que só faz sentido assinar{" "}
                 <em>no fim</em> da consulta, depois de explicado.
               </>,
               <>
@@ -183,7 +199,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Reconhecimento de voz falho:</strong> a IA do prontuário
-                não distingue quem está falando — confunde fala do médico, do
+                não distingue quem está falando: confunde fala do médico, do
                 paciente e citações de outros casos, podendo gerar registros
                 errados (idade que muda no meio do laudo).
               </>,
@@ -210,7 +226,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Perda de relatório:</strong> ao dar OK, às vezes o
-                relatório inteiro se perde — por isso anota tudo à mão em
+                relatório inteiro se perde; por isso anota tudo à mão em
                 paralelo.
               </>,
               <>
@@ -219,14 +235,14 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Prontuário editável após fechado:</strong> na Doutoralia
-                outro médico (via instituição) pode editar o atendimento dele —
+                outro médico (via instituição) pode editar o atendimento dele;
                 vê como falha legal grave; o laudo deveria ser{" "}
                 <strong>imutável</strong>, com retificação apenas em anexo
                 rastreável.
               </>,
               <>
                 <strong>Acessibilidade:</strong> grande parte do público (alunos
-                e pacientes 60+) tem muita dificuldade com tecnologia — pede
+                e pacientes 60+) tem muita dificuldade com tecnologia; pede
                 letras maiores e ampliação.
               </>,
               <>
@@ -259,7 +275,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Velocidade acima de tudo:</strong> &ldquo;o lance é o
-                tempo&rdquo; — receita rápida, assinada e enviada, documentos de
+                tempo&rdquo;: receita rápida, assinada e enviada, documentos de
                 ida e volta fáceis para o paciente.
               </>,
             ]}
@@ -277,7 +293,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Reforça a dor de fragmentação:</strong> Doutoralia +
-                Drive + WhatsApp + email + caderno à mão — mesma fragmentação
+                Drive + WhatsApp + email + caderno à mão: mesma fragmentação
                 vista na análise competitiva.
               </>,
               <>
@@ -287,10 +303,20 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Imutabilidade e LGPD</strong> aparecem como requisito de
-                confiança, não só feature — eco da honestidade clínica
+                confiança, não só feature: eco da honestidade clínica
                 (MSF).
               </>,
             ]}
+          />
+
+          <StarBlock
+            title="O que a sessão E1 respondeu"
+            situacao="Um médico de 62 anos, analógico por convicção: anota tudo à mão, arquiva em Drive e WhatsApp, desconfia de qualquer IA que não mostre a fonte."
+            tarefa="Descobrir o que faria o médico mais cético da amostra confiar num prontuário com IA."
+            acao="Entrevista de 58 minutos pelo roteiro de 6 blocos, com foco nos blocos de atrito e tecnologia."
+            resultado="Confiança tem três condições: fonte científica citada em toda sugestão, laudo imutável com retificação rastreável e acessibilidade real para o público 60+; insumos diretos das descobertas D-02, D-07 e D-09."
+            sources={["e1-tercio"]}
+            anchorOverrides={{ "e1-tercio": "ent-tercio" }}
           />
         </Meeting>
 
@@ -324,7 +350,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Durante:</strong> <strong>não digita na frente do
-                paciente</strong> — acha que prejudica o atendimento (&ldquo;fica
+                paciente</strong>; acha que prejudica o atendimento (&ldquo;fica
                 um extraterreno na frente do paciente&rdquo;). Foca na pessoa.
               </>,
               <>
@@ -334,7 +360,7 @@ export default function Doc08Entrevistas() {
                 de LGPD.
               </>,
               <>
-                <strong>Acompanhamento:</strong> reativo — combina retorno na
+                <strong>Acompanhamento:</strong> reativo: combina retorno na
                 consulta, deixa o paciente acionar por mensagem para ajustes
                 breves.
               </>,
@@ -345,7 +371,7 @@ export default function Doc08Entrevistas() {
           <BlockList
             items={[
               <>
-                <strong>Nunca pagou ferramenta de transcrição</strong> — todas
+                <strong>Nunca pagou ferramenta de transcrição</strong>: todas
                 são pagas e não compensam no início de carreira.
               </>,
               <>
@@ -365,7 +391,7 @@ export default function Doc08Entrevistas() {
             items={[
               <>
                 <strong>Excesso de abas:</strong> SOAP (subjetivo / objetivo /
-                impressão / conduta) que &ldquo;ninguém respeita&rdquo; — todos
+                impressão / conduta) que &ldquo;ninguém respeita&rdquo;; todos
                 escrevem tudo numa aba só para não perder tempo trocando.
               </>,
               <>
@@ -389,7 +415,7 @@ export default function Doc08Entrevistas() {
             items={[
               <>
                 <strong>Tela limpa</strong>, com espaço para digitar e poucos
-                botões — o oposto do BIPP.
+                botões, o oposto do BIPP.
               </>,
               <>
                 <strong>iClinic como referência positiva:</strong> receituário
@@ -409,7 +435,7 @@ export default function Doc08Entrevistas() {
               <>
                 <strong>Primeira voz pela simplicidade:</strong> a dor de
                 &ldquo;abas demais&rdquo; é direta contra a plataforma cheia de
-                campos — valida a busca por interface mínima (Apple ·
+                campos: valida a busca por interface mínima (Apple ·
                 complexidade invisível).
               </>,
               <>
@@ -418,17 +444,27 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>iClinic entra no radar competitivo</strong> com
-                personalização de receituário — cruzar com iClinic.
+                personalização de receituário: cruzar com iClinic.
               </>,
               <>
                 <strong>Insights do time na sessão:</strong> editor de consulta
                 tipo Notion / slash (tags que a Atena interpreta e organiza no
                 template), Atena que capta o áudio enquanto o médico foca na
-                pessoa, e a metáfora do &ldquo;olho&rdquo; — médico no lugar onde
+                pessoa, e a metáfora do &ldquo;olho&rdquo;: médico no lugar onde
                 sempre deveria estar, na frente do paciente. Alinha com a
                 tese da Atena como IA invisível.
               </>,
             ]}
+          />
+
+          <StarBlock
+            title="O que a sessão E2 respondeu"
+            situacao="Um residente de psiquiatria que não digita na frente do paciente, abandona as abas SOAP e só adota ferramentas com plano gratuito."
+            tarefa="Entender o que faz um médico em início de carreira adotar (ou descartar) um prontuário."
+            acao="Entrevista de 46 minutos pelo roteiro de 6 blocos, com ênfase em trajetória e ferramentas."
+            resultado="Tela limpa com espaço para digitar vira requisito da consulta (D-08); preço decide adoção antes da interface (D-06); IA é inevitável, desde que revisada (D-02)."
+            sources={["e2-marco"]}
+            anchorOverrides={{ "e2-marco": "ent-marco" }}
           />
         </Meeting>
 
@@ -448,7 +484,7 @@ export default function Doc08Entrevistas() {
             <strong>SOAP</strong>, valoriza histórico rico e a relação
             médico-paciente. Tem secretário (o marido) que cuida de agenda e
             financeiro. Usuária estruturada de IA, mas{" "}
-            <strong>desconfiada</strong> — lê tudo antes de usar. Match com as
+            <strong>desconfiada</strong>: lê tudo antes de usar. Match com as
             personas <Tag variant="rose">Humanista</Tag> e{" "}
             <Tag variant="teal">Pragmático</Tag>.
           </p>
@@ -474,7 +510,7 @@ export default function Doc08Entrevistas() {
                 foto e registra sem digitar.
               </>,
               <>
-                <strong>Acompanhamento:</strong> reativo — escreve na receita
+                <strong>Acompanhamento:</strong> reativo: escreve na receita
                 &ldquo;entrar em contato em 7–10 dias via WhatsApp&rdquo;. Se o
                 paciente não aciona, perde. Não dá conta de fazer
                 prospectivamente.
@@ -506,7 +542,7 @@ export default function Doc08Entrevistas() {
           <BlockList
             items={[
               <>
-                <strong>Fragmentação extrema — 6 ferramentas:</strong>{" "}
+                <strong>Fragmentação extrema, 6 ferramentas:</strong>{" "}
                 Comunique-Aire (prontuário), Doxy (teleconsulta), ChatGPT,
                 Mevo/Memed (receita), Google Sheets, WhatsApp, Contabilizei.
                 Muito trabalho para juntar tudo num formato que a atenda.
@@ -523,7 +559,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Busca no histórico inexistente:</strong> não consegue
-                buscar pacientes por conteúdo (ex.: todos com fibromialgia) — teria
+                buscar pacientes por conteúdo (ex.: todos com fibromialgia); teria
                 que baixar PDFs e jogar numa IA. Casuística travada.
               </>,
               <>
@@ -538,7 +574,7 @@ export default function Doc08Entrevistas() {
             items={[
               <>
                 <strong>Integração única:</strong> tudo num instrumento só, com
-                redução de burocracia — o mundo ideal dela.
+                redução de burocracia, o mundo ideal dela.
               </>,
               <>
                 <strong>Comunicação dentro do prontuário</strong> (sem depender
@@ -569,7 +605,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Olhar humano insubstituível com exemplo concreto:</strong>{" "}
-                paciente de 96 anos + 2 filhas com relatos contraditórios —
+                paciente de 96 anos + 2 filhas com relatos contraditórios:
                 &ldquo;como a IA vai interpretar isso?&rdquo;. Reforça a
                 Atena como apoio, nunca decisão.
               </>,
@@ -580,10 +616,20 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Concorrentes citados</strong> (Comunique-Aire, Amplimed,
-                Mevo, Memed, Doxy) — enriquecer a análise competitiva com
+                Mevo, Memed, Doxy): enriquecer a análise competitiva com
                 prontuários de nicho.
               </>,
             ]}
+          />
+
+          <StarBlock
+            title="O que a sessão E3 respondeu"
+            situacao="Uma médica detalhista que opera 6 ferramentas em paralelo, montou prompts próprios de IA e imprime a receita para o paciente não receber PDF cheio de pop-ups de farmácia."
+            tarefa="Validar se a fragmentação de ferramentas é a dor central que a plataforma única resolve."
+            acao="Entrevista de 42 minutos pelo roteiro de 6 blocos; a primeira sessão da rodada."
+            resultado="Fragmentação confirmada como dor número um (D-01); receita em PDF limpa e busca semântica na casuística viram requisitos de Documentos e Casuística."
+            sources={["e3-barbara"]}
+            anchorOverrides={{ "e3-barbara": "ent-barbara" }}
           />
         </Meeting>
 
@@ -612,9 +658,9 @@ export default function Doc08Entrevistas() {
             alta afinidade tecnológica. Contrasta com o perfil típico do mercado:
             1 monitor pequeno, sem secretária, pouca afinidade com tecnologia
             (alguns usam Word ou caderno). Pede explicitamente que o produto{" "}
-            <strong>não seja feito para ela</strong> — &ldquo;para meio milhão
+            <strong>não seja feito para ela</strong>: &ldquo;para meio milhão
             de médicos&rdquo;. Hipótese central: o prontuário é a tela que o
-            médico mais usa — mais do que qualquer rede social — e nenhum
+            médico mais usa, mais do que qualquer rede social, e nenhum
             concorrente pensou além do repositório de informações. Visão do
             prontuário como plataforma de educação contínua, pesquisa
             multicêntrica (RWE) e rede social médica. Match com a persona{" "}
@@ -633,7 +679,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Durante:</strong> agenda é o ponto de entrada principal
-                (hoje só nome + tipo de consulta — sem foto, diagnóstico ou
+                (hoje só nome + tipo de consulta: sem foto, diagnóstico ou
                 tempo de acompanhamento). Telemedicina: Mary (secretária) entra
                 no Meet antes com o paciente para testar câmera/microfone;
                 objetivo é aviso automático &ldquo;paciente entrou na sala&rdquo;
@@ -643,7 +689,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Pós-consulta:</strong> Kanban com classificação
-                automática das mensagens dos pacientes por tipo — renovação de
+                automática das mensagens dos pacientes por tipo: renovação de
                 receita, solicitação de encaixe, feedback de tratamento, dúvidas
                 sobre medicação, questões financeiras / nota fiscal. Nenhum
                 prontuário do mercado oferece isso de forma estruturada hoje.
@@ -651,7 +697,7 @@ export default function Doc08Entrevistas() {
               <>
                 <strong>Documentos entre consultas:</strong> tela dedicada para
                 emissão de receitas, solicitações de exames, atestados e laudos
-                fora do contexto de atendimento — mais prático do que entrar no
+                fora do contexto de atendimento, mais prático do que entrar no
                 prontuário do paciente para emitir uma receita avulsa.
               </>,
             ]}
@@ -663,7 +709,7 @@ export default function Doc08Entrevistas() {
               <>
                 <strong>Transcrição em tempo real:</strong> IA preenche os
                 campos corretos do prontuário automaticamente; médico faz apenas
-                revisão e validação — nunca determinístico, sempre sugestão com
+                revisão e validação: nunca determinístico, sempre sugestão com
                 check.
               </>,
               <>
@@ -675,9 +721,9 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Coluna Atena:</strong> alertas clínicos em vermelho
-                (interações, efeitos adversos, sobredosagem — não dispensáveis),
+                (interações, efeitos adversos, sobredosagem, não dispensáveis),
                 lembretes de escala por patologia e pílulas educacionais em
-                roxo (artigos, aulas WeCann). Cards empilhados — médico vê 1
+                roxo (artigos, aulas WeCann). Cards empilhados: médico vê 1
                 por vez, dá ok ou descarta.
               </>,
               <>
@@ -705,12 +751,12 @@ export default function Doc08Entrevistas() {
               <>
                 <strong>Prontuário não estruturado:</strong> quase 100% dos
                 médicos ignoram campos separados (queixa, histórico, conduta) e
-                escrevem tudo num campo aberto — dados pobres, sem valor
+                escrevem tudo num campo aberto: dados pobres, sem valor
                 analítico.
               </>,
               <>
                 <strong>Tela de consulta atual:</strong> múltiplas abas,
-                muitos cliques, sobrecarga visual — &ldquo;não tá legal&rdquo;.
+                muitos cliques, sobrecarga visual: &ldquo;não tá legal&rdquo;.
                 Risco de sobrecarga com vídeo + prontuário + alertas +
                 transcrição em monitores menores.
               </>,
@@ -724,7 +770,7 @@ export default function Doc08Entrevistas() {
               </>,
               <>
                 <strong>Laudos manuais:</strong> gerar laudos manualmente é
-                extremamente demorado — maior dor relatada na emissão de
+                extremamente demorado: maior dor relatada na emissão de
                 documentos.
               </>,
             ]}
@@ -736,7 +782,7 @@ export default function Doc08Entrevistas() {
               <>
                 <strong>MVP inegociável (7 telas):</strong> Home, Casuística,
                 Pré-consulta, Tela de consulta, Documentos, Pós-consulta e
-                Paciente 360. Agenda é commodity — inovação mais em branding do
+                Paciente 360. Agenda é commodity; inovação mais em branding do
                 que em UX.
               </>,
               <>
@@ -771,7 +817,7 @@ export default function Doc08Entrevistas() {
               <>
                 <strong>Confirma o padrão E1–E3:</strong> os três entrevistados
                 citaram excesso de cliques; Patricia valida ao vivo na tela de
-                consulta (&ldquo;não tá legal&rdquo;) — prontuários do mercado
+                consulta (&ldquo;não tá legal&rdquo;); prontuários do mercado
                 não estão ouvindo os usuários. Cruza com a dor do{" "}
                 <a href="#ent-marco">Marco (abas demais)</a> e da{" "}
                 <a href="#ent-barbara">Bárbara (fragmentação)</a>.
@@ -785,12 +831,12 @@ export default function Doc08Entrevistas() {
               <>
                 <strong>Priorização de produto explícita:</strong> as 7 telas do
                 MVP mapeiam diretamente para os módulos do User Flow e do
-                schema RWE — casuística, Paciente 360 e laudos por IA.
+                schema RWE: casuística, Paciente 360 e laudos por IA.
               </>,
               <>
                 <strong>Clínica nas Nuvens como baseline:</strong> fricções de
                 login, agenda pobre e prontuário não estruturado reforçam a
-                análise competitiva — o mercado entrega repositório, não
+                análise competitiva: o mercado entrega repositório, não
                 plataforma.
               </>,
               <>
@@ -802,12 +848,22 @@ export default function Doc08Entrevistas() {
               <>
                 <strong>Visão estratégica:</strong> queda nas vendas da
                 certificação médica como sinal de mudança de comportamento; o
-                prontuário como principal pilar de atualização clínica — alinha
+                prontuário como principal pilar de atualização clínica; alinha
                 com a tese da Atena invisível e com a referência Nike
                 (médico herói), desde que a interface não sobrecarregue o
                 perfil típico.
               </>,
             ]}
+          />
+
+          <StarBlock
+            title="O que a sessão E4 respondeu"
+            situacao="A fundadora, autodeclarada “exceção da exceção”, operando o consultório real: Clínica nas Nuvens, telemedicina com secretária dedicada e o protótipo WeCann lado a lado."
+            tarefa="Validar o MVP em contexto real e calibrar o produto para o médico típico, não para a power user que o idealizou."
+            acao="Shadowing presencial de 2h02 no consultório, com validação de telas do protótipo ao vivo."
+            resultado="Sete telas inegociáveis do MVP definidas, layout de 3 colunas validado na consulta e a regra que atravessa o design: toda tela funciona em um monitor pequeno, sem secretária (D-12)."
+            sources={["e4-shadowing"]}
+            anchorOverrides={{ "e4-shadowing": "ent-patricia" }}
           />
         </Meeting>
       </Section>
@@ -820,7 +876,11 @@ export default function Doc08Entrevistas() {
         <p>
           Síntese consolidada das quatro sessões (três entrevistas + shadowing),
           cruzando as dores observadas com as Personas, a Análise
-          Competitiva e o User Flow (pré / durante / pós-consulta).
+          Competitiva e o User Flow (pré / durante / pós-consulta). A versão
+          numerada destas descobertas (D-01 a D-12), narrada em formato STAR e
+          com selos de fonte, está no{" "}
+          <a href="#disc-descobertas">capítulo 5 do Discovery</a>; é aquela
+          numeração que os demais documentos citam.
         </p>
 
         <h3>Achados consolidados</h3>
@@ -832,14 +892,14 @@ export default function Doc08Entrevistas() {
               hospitalar + BIPP + ChatGPT + Google Docs), Bárbara (6
               ferramentas), Patricia (Clínica nas Nuvens + Meet + WhatsApp +
               ChatGPT para laudos). Todos gastam tempo &ldquo;juntando
-              tudo&rdquo; — é a validação mais forte da{" "}
+              tudo&rdquo;; é a validação mais forte da{" "}
               <strong>plataforma única</strong> como tese da WeCann.
             </>,
             <>
               <strong>IA já é rotina, mas com revisão humana inegociável.</strong>{" "}
               Os quatro leem e corrigem tudo, exigem fonte/evidência e desconfiam de
               saída automática. A régua não é &ldquo;automatizar&rdquo;, é{" "}
-              <strong>acelerar com controle</strong> — Patricia exige checks, mas
+              <strong>acelerar com controle</strong>; Patricia exige checks, mas
               alerta que 10+ validações seguidas cansa.
             </>,
             <>
@@ -860,7 +920,7 @@ export default function Doc08Entrevistas() {
               <strong>Excesso de cliques é consenso.</strong> Marco (abas SOAP),
               Bárbara (62 cliques no IJIA), Patricia ao vivo (&ldquo;não tá
               legal&rdquo; na tela de consulta). Nádia consolidou: os três
-              entrevistados + a fundadora apontam o mesmo padrão — prontuários
+              entrevistados + a fundadora apontam o mesmo padrão: prontuários
               cheios de campos que ninguém usa.
             </>,
           ]}
@@ -871,7 +931,7 @@ export default function Doc08Entrevistas() {
           items={[
             <>
               <strong>Barreira financeira no início de carreira</strong> (Marco):
-              preço decide adoção — implica modelo de negócio / aquisição.
+              preço decide adoção; implica modelo de negócio / aquisição.
             </>,
             <>
               <strong>Acessibilidade para idosos</strong> (Tércio): tipografia
@@ -879,7 +939,7 @@ export default function Doc08Entrevistas() {
             </>,
             <>
               <strong>Simplicidade vs. excesso de abas e botões</strong> (Marco,
-              Patricia): tela limpa e box único como diferencial — layout v107+.
+              Patricia): tela limpa e box único como diferencial, layout v107+.
             </>,
             <>
               <strong>LGPD, sigilo e imutabilidade do laudo</strong> (Tércio,
@@ -889,7 +949,7 @@ export default function Doc08Entrevistas() {
             <>
               <strong>Acompanhamento hoje é reativo</strong> (os três
               entrevistados): oportunidade clara de <strong>FUP proativo</strong>{" "}
-              (M1–M12 do User Flow) — Patricia valida o Kanban pós-consulta como
+              (M1–M12 do User Flow): Patricia valida o Kanban pós-consulta como
               diferencial inexistente no mercado.
             </>,
             <>
@@ -900,7 +960,7 @@ export default function Doc08Entrevistas() {
             <>
               <strong>Produto para o médico típico, não para a fundadora</strong>{" "}
               (Patricia): notebook + segunda tela ≠ 1 monitor pequeno sem
-              secretária — real estate e densidade de informação precisam
+              secretária: real estate e densidade de informação precisam
               escalar para o perfil médio.
             </>,
           ]}
@@ -940,7 +1000,7 @@ export default function Doc08Entrevistas() {
             <p>
               Busca semântica na casuística (Bárbara), CID automático, base
               científica confiável (Tércio), FUP proativo e Paciente 360
-              escalável (Patricia) — ligados ao schema RWE.
+              escalável (Patricia): ligados ao schema RWE.
             </p>
           </Card>
         </div>

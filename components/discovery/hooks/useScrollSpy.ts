@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const FALLBACK_OFFSET = 88;
 const BOTTOM_EPSILON = 4;
 
-/** Offset da linha de leitura — alinhado ao scroll-margin-top do conteúdo. */
+/** Offset da linha de leitura, alinhado ao scroll-margin-top do conteúdo. */
 export function getScrollOffset(): number {
   const topbar = document.querySelector<HTMLElement>(".topbar");
   return topbar ? topbar.getBoundingClientRect().height + 16 : FALLBACK_OFFSET;
@@ -16,7 +16,7 @@ export function getScrollOffset(): number {
  * devolve o id do último que já cruzou a linha de leitura (topo do viewport +
  * offset da topbar). Isso reproduz o comportamento clássico de scrollspy e
  * funciona mesmo quando um id "pai" (uma <Section> inteira) engloba ids
- * "filhos" (h3/h4 internos) — ao contrário de uma abordagem por
+ * "filhos" (h3/h4 internos), ao contrário de uma abordagem por
  * IntersectionObserver, que tende a favorecer o container maior porque ele
  * permanece "intersectando" a viewport por muito mais tempo que os filhos.
  *

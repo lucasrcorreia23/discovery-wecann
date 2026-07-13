@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { EvidenceId } from "./evidence";
 
 export type BrandRefPoint = {
   title: string;
@@ -16,36 +17,40 @@ export type BrandRef = {
   teaser: string;
   introLine: string;
   points: BrandRefPoint[];
+  /** Fonte de evidência da referência (selo no Doc 06). */
+  sourceId: EvidenceId;
 };
 
 export const BRAND_REFS: BrandRef[] = [
   {
     id: "ref-spacex",
     num: "01",
+    sourceId: "ws-posicionamento",
     name: "SpaceX",
     url: "https://www.spacex.com/",
     urlLabel: "spacex.com",
     quote:
       "Estamos criando um foguete, mas o painel do foguete não pode assustar.",
-    teaser: "Disruptivo com missão impossível — painel que não assusta.",
+    teaser: "Disruptivo com missão impossível; painel que não assusta.",
     introLine: "disruptivo com missão impossível; painel que não assusta",
     lead: "Admirar a força, a tecnologia, a ciência e a potência de um produto disruptivo decolando aos olhos do mundo.",
     points: [
       {
         title: "Missão impossível como combustível",
         body:
-          "“Tornar a humanidade multi-planetária” é absurdo — e por ser absurdo, atraiu os melhores engenheiros do mundo. A WeCann pode ter uma missão paradoxal como essa: “devolver a Medicina aos médicos”.",
+          "“Tornar a humanidade multi-planetária” é absurdo, e por ser absurdo, atraiu os melhores engenheiros do mundo. A WeCann pode ter uma missão paradoxal como essa: “devolver a Medicina aos médicos”.",
       },
       {
         title: "Engenheiros como heróis",
         body:
-          "A SpaceX inverteu a narrativa dos anos 80: tech ficou cool de novo. Por extensão: medicina pode ficar cool de novo — não no sentido superficial, mas no sentido de “essa profissão vale a melhor tecnologia do mundo”.",
+          "A SpaceX inverteu a narrativa dos anos 80: tech ficou cool de novo. Por extensão: medicina pode ficar cool de novo: não no sentido superficial, mas no sentido de “essa profissão vale a melhor tecnologia do mundo”.",
       },
     ],
   },
   {
     id: "ref-apple",
     num: "02",
+    sourceId: "ws-posicionamento",
     name: "Apple",
     url: "https://www.apple.com/br/ipad-air/",
     urlLabel: "apple.com · iPad Air",
@@ -66,12 +71,13 @@ export const BRAND_REFS: BrandRef[] = [
   {
     id: "ref-nike",
     num: "03",
+    sourceId: "ws-posicionamento",
     name: "Nike",
     url: "https://www.youtube.com/watch?v=RdJ9vKje2J4",
     urlLabel: "YouTube · Just Do It",
-    teaser: "Identidade e narrativa — o médico como herói.",
+    teaser: "Identidade e narrativa; o médico como herói.",
     introLine: "identidade; médico como herói",
-    lead: "A marca vende uma identidade, não um produto. Ninguém compra Nike por causa do tênis — compra para virar a pessoa que corre.",
+    lead: "A marca vende uma identidade, não um produto. Ninguém compra Nike por causa do tênis; compra para virar a pessoa que corre.",
     points: [
       {
         title: "Heróis humanos",
@@ -81,13 +87,14 @@ export const BRAND_REFS: BrandRef[] = [
       {
         title: "Just Do It",
         body:
-          "Três palavras, verbo no imperativo, posse do ato. “Você voltou ao centro da Medicina” tem essa mesma estrutura: sujeito + ação + posse — e pode ser tão forte quanto.",
+          "Três palavras, verbo no imperativo, posse do ato. “Você voltou ao centro da Medicina” tem essa mesma estrutura: sujeito + ação + posse, e pode ser tão forte quanto.",
       },
     ],
   },
   {
     id: "ref-msf",
     num: "04",
+    sourceId: "ws-posicionamento",
     name: "Médicos sem Fronteiras",
     url: "https://www.youtube.com/watch?v=ewumIaRa_GI",
     urlLabel: "YouTube · MSF",
@@ -103,7 +110,7 @@ export const BRAND_REFS: BrandRef[] = [
       {
         title: "Testemunho e honestidade clínica",
         body:
-          "Falam o que viram, mesmo quando é desconfortável — principalmente quando é. Quando a evidência é fraca, ou um produto não tem resultados positivos ou tem muitos efeitos colaterais, simplesmente dizem. Não embelezam, nem marketam os dados e os fatos.",
+          "Falam o que viram, mesmo quando é desconfortável, principalmente quando é. Quando a evidência é fraca, ou um produto não tem resultados positivos ou tem muitos efeitos colaterais, simplesmente dizem. Não embelezam, nem marketam os dados e os fatos.",
       },
     ],
   },
@@ -138,7 +145,7 @@ export const BRAND_REF_DESIGN = [
     eyebrow: "SpaceX",
     title: "Disruptivo sem assustar",
     body:
-      "Foguete com painel de Airbus — inovação visível, uso acessível ao médico conservador.",
+      "Foguete com painel de Airbus: inovação visível, uso acessível ao médico conservador.",
     border: "accent" as const,
   },
   {
@@ -154,7 +161,7 @@ export const BRAND_REF_DESIGN = [
     eyebrow: "Nike",
     title: "Médico herói",
     body:
-      "Atena apoia; nunca rouba a cena na consulta. O WeCann Care fica em segundo plano — sombra, não protagonista.",
+      "Atena apoia; nunca rouba a cena na consulta. O WeCann Care fica em segundo plano: sombra, não protagonista.",
     border: "accent" as const,
   },
   {

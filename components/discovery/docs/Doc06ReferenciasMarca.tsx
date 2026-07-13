@@ -1,4 +1,5 @@
 import { Hero, Section, Callout, Card, BlockList } from "../ui/primitives";
+import { SourceBadge, SourceRow } from "../ui/evidence";
 import {
   BRAND_REFS,
   BRAND_REF_SINTESE,
@@ -15,7 +16,7 @@ export default function Doc06ReferenciasMarca() {
             Referências de <em>marca e produto</em>
           </>
         }
-        lead="Empresas e narrativas que o cliente sente ressoar com o que imagina para a WeCann e a WeCann Care — para consulta em posicionamento, design e tom de voz."
+        lead="Empresas e narrativas que o cliente sente ressoar com o que imagina para a WeCann e a WeCann Care, para consulta em posicionamento, design e tom de voz."
         meta={[
           { dt: "Fonte", dd: "Cliente WeCann · envio direto" },
           { dt: "Uso", dd: "Marca · narrativa · critérios de UX" },
@@ -25,7 +26,7 @@ export default function Doc06ReferenciasMarca() {
       <Callout variant="teal" label="Nota de leitura">
         <p>
           Este documento preserva a visão do cliente em linguagem original. Não
-          prescreve identidade visual — traduz <strong>intenção de marca</strong>{" "}
+          prescreve identidade visual; traduz <strong>intenção de marca</strong>{" "}
           para orientar decisões de produto e design.
         </p>
       </Callout>
@@ -38,7 +39,7 @@ export default function Doc06ReferenciasMarca() {
         <p>
           Síntese do workshop de marca com os fundadores (Atomsix · junho/2026).
           A WeCann Care ocupa o vazio entre o <strong>disruptivo</strong> e o{" "}
-          <strong>clinicamente sério</strong> — território que nenhum concorrente
+          <strong>clinicamente sério</strong>, território que nenhum concorrente
           direto brasileiro assume por completo.
         </p>
 
@@ -49,16 +50,17 @@ export default function Doc06ReferenciasMarca() {
         <p>
           <strong>Princípio organizador:</strong> a identidade visual é
           tecnológica e disruptiva; a experiência e a narrativa do produto são
-          essencialmente humanas. Não é meio-termo — é divisão por camada.
+          essencialmente humanas. Não é meio-termo; é divisão por camada.{" "}
+          <SourceBadge id="ws-posicionamento" compact />
         </p>
 
         <Callout label="Declaração" variant="purple">
           <p>
             Para médicos prescritores que merecem mais do que registrar consultas,{" "}
             <strong>WeCann Care</strong> é o prontuário inteligente que{" "}
-            <strong>entende Medicina e contribui com a Medicina</strong> — com
+            <strong>entende Medicina e contribui com a Medicina</strong> (com
             superfície de precisão e engenharia, e experiência centrada no médico
-            e no encontro clínico — para que avance na fronteira da prática e se
+            e no encontro clínico) para que avance na fronteira da prática e se
             reencontre com o motivo pelo qual escolheu ser médico.
           </p>
         </Callout>
@@ -66,27 +68,26 @@ export default function Doc06ReferenciasMarca() {
         <BlockList
           items={[
             <>
-              <strong>Autoridade</strong> — rigor técnico-jurídico, protocolos
+              <strong>Autoridade</strong>: rigor técnico-jurídico, protocolos
               internacionais e validação por pares: médicos de prestígio que
               escolhem a marca como espelho de credibilidade.
             </>,
             <>
-              <strong>Emoção</strong> — atravessar uma fronteira desconhecida na
+              <strong>Emoção</strong>: atravessar uma fronteira desconhecida na
               Medicina e, ao mesmo tempo, reconectar-se com a vocação original;
               pertencimento que evolui de respeito para admiração.
             </>,
             <>
-              <strong>Prova</strong> — casuística, dados e ciência em escala; a
+              <strong>Prova</strong>: casuística, dados e ciência em escala; a
               régua definitiva: o médico que, depois de usar o produto, percebe
               que se tornou clinicamente melhor.
             </>,
           ]}
         />
 
-        <p>
-          Fonte: workshop de posicionamento com os fundadores · Atomsix
-          Studio · junho/2026.
-        </p>
+        <SourceRow>
+          <SourceBadge id="ws-posicionamento" />
+        </SourceRow>
       </Section>
 
       <Section
@@ -98,10 +99,21 @@ export default function Doc06ReferenciasMarca() {
           Segue a lista de empresas que o cliente sente ter algo forte que ressoa
           com o que imagina e deseja para o produto e a marca WeCann / WeCann Care.
         </p>
+        <p>
+          As referências foram trazidas pelos fundadores na imersão de
+          01/06/2026, quando Daniel já pedia uma paleta longe do
+          verde/azul/rosa padrão de prontuário (&ldquo;cara de foguete, painel
+          de Airbus&rdquo;), e consolidadas no workshop de posicionamento de
+          17/06/2026.
+        </p>
+        <SourceRow>
+          <SourceBadge id="im-interna" compact />
+          <SourceBadge id="ws-posicionamento" compact />
+        </SourceRow>
         <BlockList
           items={BRAND_REFS.map((ref) => (
             <>
-              <strong>{ref.name}</strong> — {ref.introLine}
+              <strong>{ref.name}</strong>: {ref.introLine}
             </>
           ))}
         />
@@ -129,6 +141,9 @@ export default function Doc06ReferenciasMarca() {
               <p>{pt.body}</p>
             </Card>
           ))}
+          <SourceRow>
+            <SourceBadge id={ref.sourceId} compact />
+          </SourceRow>
         </Section>
       ))}
 
@@ -139,7 +154,7 @@ export default function Doc06ReferenciasMarca() {
       >
         <p>
           Cada uma dessas empresas exigiu do seu setor um padrão que o setor não
-          estava entregando — sob o argumento de que{" "}
+          estava entregando: sob o argumento de que{" "}
           <strong>as pessoas merecem mais</strong>.
         </p>
         <div className="table-frame">
@@ -169,7 +184,7 @@ export default function Doc06ReferenciasMarca() {
         <p>
           Olha o médico digitando às cegas e às pressas no prontuário, enquanto
           o paciente fala e tenta se encontrar em uma confusão de papéis de
-          exames e caixas de medicamentos — e diz:
+          exames e caixas de medicamentos, e diz:
         </p>
         <div className="verdict">
           <div className="eyebrow">Tese de marca · cliente</div>
@@ -181,6 +196,11 @@ export default function Doc06ReferenciasMarca() {
             Não mais um prontuário que apenas registre a Medicina.
           </p>
         </div>
+        <p>
+          Essa tese não fica no papel: desdobra-se na{" "}
+          <a href="#disc-posicionamento">palavra de posicionamento</a> e chega
+          ao produto pelos <a href="#disc-produto">contratos de design</a>.
+        </p>
       </Section>
 
       <Section
@@ -188,6 +208,13 @@ export default function Doc06ReferenciasMarca() {
         num="07 · IMPLICAÇÕES"
         title="Para design e produto (AtomSix)"
       >
+        <p>
+          Cada referência vira diretriz de trabalho: estas implicações se
+          desdobram nos <a href="#disc-produto">contratos de design</a> e
+          sustentam a decisão por camada registrada no{" "}
+          <a href="#disc-posicionamento">posicionamento</a>.{" "}
+          <SourceBadge id="ws-posicionamento" compact />
+        </p>
         <div className="grid-2">
           {BRAND_REF_DESIGN.map((card) => (
             <Card

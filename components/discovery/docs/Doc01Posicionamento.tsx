@@ -1,4 +1,5 @@
 import { Hero, Section, Callout } from "../ui/primitives";
+import { SourceBadge, SourceRow, StarBlock } from "../ui/evidence";
 
 export default function Doc01Posicionamento() {
   return (
@@ -12,7 +13,7 @@ export default function Doc01Posicionamento() {
             da WeCann Care
           </>
         }
-        lead="Quem é a WeCann, por que estamos construindo a WeCann Care e o que torna esse prontuário inteligente uma categoria nova — não um EHR a mais com nome diferente."
+        lead="Quem é a WeCann, por que a WeCann Care existe e o que, na visão do cliente, torna esse prontuário inteligente uma categoria nova, não um EHR a mais com nome diferente. Este doc consolida a visão estratégica trazida pela WeCann no brief e no workshop de posicionamento; agora amarrada, ponto a ponto, às descobertas da pesquisa."
         meta={[
           { dt: "Cliente", dd: "WeCann Academy" },
           { dt: "Produto", dd: "WeCann Care · Prontuário Inteligente" },
@@ -21,20 +22,25 @@ export default function Doc01Posicionamento() {
         ]}
       />
 
-      {/* 00 — QUEM SOMOS */}
-      <Section id="pos-wecann" num="00 — QUEM SOMOS" title="A WeCann antes da WeCann Care">
+      {/* 00 · QUEM SOMOS */}
+      <Section id="pos-wecann" num="00 · QUEM SOMOS" title="A WeCann antes da WeCann Care">
         <p>
-          Para entender por que estamos construindo a WeCann Care, é preciso
-          entender quem a constrói. A WeCann Academy não nasceu como uma
+          Para entender por que a WeCann Care está sendo construída, é preciso
+          entender quem a constrói; e este capítulo é o retrato que o próprio
+          cliente traz. Na formulação da WeCann: a Academy não nasceu como uma
           healthtech. Nasceu como a maior instituição de educação médica
-          continuada do mundo em medicina endocanabinoide — e a WeCann Care é o
+          continuada do mundo em medicina endocanabinoide, e a WeCann Care é o
           braço clínico desse projeto, não um startup separado.
         </p>
+        <SourceRow>
+          <SourceBadge id="brief-wecann" />
+        </SourceRow>
 
-        <h3>Propósito</h3>
+        <h3>Propósito declarado</h3>
         <p>
-          Formar médicos capazes de aplicar, com segurança e rigor, novas
-          terapêuticas que melhoram a vida de pacientes refratários — começando
+          O propósito, na formulação do cliente, é formar médicos capazes de
+          aplicar, com segurança e rigor, novas
+          terapêuticas que melhoram a vida de pacientes refratários: começando
           pela <strong>medicina endocanabinoide</strong> e expandindo para
           outras fronteiras clínicas como medicina psicodélica, regenerativa e
           longevidade.
@@ -42,11 +48,12 @@ export default function Doc01Posicionamento() {
 
         <h3>Tese central</h3>
         <p>
-          A prática médica está incompleta sem a compreensão de um sistema
-          biológico essencial: o{" "}
+          A tese que o cliente traz: a prática médica está incompleta sem a
+          compreensão de um sistema biológico essencial, o{" "}
           <strong>Sistema Endocanabinoide (SEC)</strong>. Formar médicos nesse
-          domínio repara uma lacuna histórica da graduação e transforma
-          resultados clínicos em doenças crônicas, refratárias e incapacitantes.
+          domínio, segue o argumento, repara uma lacuna histórica da graduação
+          e transforma resultados clínicos em doenças crônicas, refratárias e
+          incapacitantes.
         </p>
 
         <div className="pull">
@@ -87,7 +94,7 @@ export default function Doc01Posicionamento() {
         <h3>O ecossistema de produtos</h3>
         <p>
           A WeCann opera um portfólio integrado de produtos que se reforçam
-          mutuamente. Cada um é referência mundial em sua categoria — e a WeCann
+          mutuamente. Cada um é referência mundial em sua categoria, e a WeCann
           Care nasce conectada a todos eles desde o dia zero.
         </p>
 
@@ -135,7 +142,7 @@ export default function Doc01Posicionamento() {
             <h5>WeCann Care · Prontuário Inteligente</h5>
             <p>
               Prontuário inteligente movido pela IA clínica <em>Atena</em>,
-              treinada no <em>corpus</em> exclusivo WeCann — Tratado, aulas dos
+              treinada no <em>corpus</em> exclusivo WeCann: Tratado, aulas dos
               experts, casos do fórum, normas regulatórias. Materializa em código
               clínico tudo que a Academy ensina há anos.
             </p>
@@ -191,7 +198,7 @@ export default function Doc01Posicionamento() {
 
         <h3>O paradoxo da medicina moderna que a WeCann endereça</h3>
         <p>
-          Em 20 anos avançamos mais do que nos 200 anteriores — anticorpos
+          Em 20 anos avançamos mais do que nos 200 anteriores: anticorpos
           monoclonais, edição genética, IA diagnóstica com 94% de acurácia. E
           ainda assim:{" "}
           <strong>
@@ -203,7 +210,7 @@ export default function Doc01Posicionamento() {
         </p>
         <p>
           Mais ainda: o médico termina a semana exausto. Não por falta de
-          dedicação — mas porque o sistema que deveria apoiá-lo está minando sua
+          dedicação, mas porque o sistema que deveria apoiá-lo está minando sua
           capacidade de ser bom médico.{" "}
           <strong>
             71% não pratica atividade física. 65% não dorme 6-8h. 70% já teve
@@ -212,14 +219,14 @@ export default function Doc01Posicionamento() {
         </p>
         <p>
           A WeCann existe para devolver ao médico a soberania clínica. A WeCann
-          Care existe para devolver ao médico o tempo, a clareza e a evidência —
+          Care existe para devolver ao médico o tempo, a clareza e a evidência:
           em tempo real, durante a consulta, sem aumentar a carga burocrática.
         </p>
 
         <Callout label="Onde a WeCann Care entra no projeto WeCann">
           <p>
             Por anos a WeCann ensinou medicina endocanabinoide para 4.000+
-            médicos. Eles voltavam ao consultório armados de evidência — e batiam
+            médicos. Eles voltavam ao consultório armados de evidência, e batiam
             num prontuário burocrático que não sabia nada de cannabis. O
             conhecimento ensinado pela Academy não atravessava o portal da
             prática diária.
@@ -227,17 +234,17 @@ export default function Doc01Posicionamento() {
           <p>
             <strong>A WeCann Care fecha esse loop.</strong> É o primeiro EHR do
             mundo que <em>nasce</em> dentro da maior escola de medicina endocanabinoide
-            do planeta. Não é um prontuário com módulo de cannabis — é o
+            do planeta. Não é um prontuário com módulo de cannabis; é o
             prontuário onde a cannabis é nativa, com o Tratado, as aulas, as
             normas e os casos do fórum carregados na IA por padrão.
           </p>
         </Callout>
       </Section>
 
-      {/* 01 — A TESE */}
+      {/* 01 · A TESE */}
       <Section
         id="pos-tese"
-        num="01 — A TESE DA WECANN CARE"
+        num="01 · A TESE DA WECANN CARE"
         title={
           <>
             Não é um prontuário. É o &ldquo;Flatiron da cannabis&rdquo;.
@@ -247,7 +254,7 @@ export default function Doc01Posicionamento() {
         <p>
           A WeCann Care tem uma tese focada e recusa explícita ao
           &ldquo;one-stop-shop&rdquo;. Cada médico prescritor brasileiro tem hoje
-          uma base de centenas a milhares de casos com desfecho real — e nenhuma
+          uma base de centenas a milhares de casos com desfecho real, e nenhuma
           forma estruturada de transformar isso em evidência. Prontuários
           genéricos guardam texto livre. A WeCann Care captura dado pesquisável.
         </p>
@@ -258,15 +265,15 @@ export default function Doc01Posicionamento() {
           <strong>
             Plataforma de Real-World Evidence (RWE) da medicina endocanabinoide
           </strong>{" "}
-          — cobrindo 27+ condições clínicas em 13 áreas e 33 especialidades.
+          (cobrindo 27+ condições clínicas em 13 áreas e 33 especialidades).
         </p>
         <div className="pull">
           &ldquo;O ouro da WeCann não é o prontuário. São os dados que nascem
-          estruturados a partir dele — em tempo real, com consentimento granular,
+          estruturados a partir dele: em tempo real, com consentimento granular,
           em padrão OMOP CDM e FHIR R4.&rdquo;
         </div>
         <p>
-          Esse foco — e a recusa de virar contabilidade/banco/marketplace — é o
+          Esse foco (e a recusa de virar contabilidade/banco/marketplace) é o
           que garante que cada decisão de UX e produto precisa amplificar. A
           AtomSix está desenhando um produto cuja diferenciação só fica visível
           quando a interface deixa o trabalho científico transparecer sem assustar
@@ -274,23 +281,23 @@ export default function Doc01Posicionamento() {
         </p>
       </Section>
 
-      {/* 02 — A ATENA */}
+      {/* 02 · A ATENA */}
       <Section
         id="pos-atena"
-        num="02 — A ATENA"
+        num="02 · A ATENA"
         title="Quem é Atena, dentro do produto"
       >
         <p>
           Atena é a IA que mora dentro do WeCann Care. A forma como ela se
           apresenta é tão deliberada quanto a forma como uma colega médica
-          entraria na sala de consulta: presente, útil, com voz própria — e nunca
+          entraria na sala de consulta: presente, útil, com voz própria, e nunca
           tentando passar a perna do médico.
         </p>
         <Callout label="Posicionamento da agente" variant="purple">
           <p>
             <strong>Atena não é co-autora.</strong> Ela é assistente clínica. Em
-            nenhum documento gerado pelo sistema — receita, atestado, laudo,
-            encaminhamento — Atena assina. Sua participação aparece apenas em
+            nenhum documento gerado pelo sistema (receita, atestado, laudo,
+            encaminhamento), Atena assina. Sua participação aparece apenas em
             rodapés de auditoria/agradecimento, sempre rastreável. O médico
             assume a autoria. Esta é uma escolha ética, regulatória e de
             confiança.
@@ -307,7 +314,7 @@ export default function Doc01Posicionamento() {
             efeitos adversos).
           </li>
           <li>
-            Aprende com cada médico — não é uma IA genérica. Tem{" "}
+            Aprende com cada médico, não é uma IA genérica. Tem{" "}
             <strong>5 tipos de memória persistente</strong>: preferências,
             protocolos pessoais, padrões clínicos, notas de interação e gerais.
           </li>
@@ -325,20 +332,20 @@ export default function Doc01Posicionamento() {
         <p>
           A Atena é a materialização clínica de tudo que a WeCann ensina. Quando
           um médico formado pela Certificação Internacional acessa o WeCann Care, ele
-          encontra a mesma voz, o mesmo rigor e a mesma base científica das aulas
-          — com a Atena ao lado, ao vivo, na consulta.
+          encontra a mesma voz, o mesmo rigor e a mesma base científica das aulas:
+          com a Atena ao lado, ao vivo, na consulta.
         </p>
       </Section>
 
-      {/* 03 — PRINCÍPIOS */}
+      {/* 03 · PRINCÍPIOS */}
       <Section
         id="pos-principios"
-        num="03 — OS PRINCÍPIOS"
+        num="03 · OS PRINCÍPIOS"
         title="4 princípios fundadores · Inegociáveis"
       >
         <p>
           Esses quatro princípios estão na espinha dorsal da arquitetura e devem
-          ser visíveis na experiência. Não são decorativos — qualquer decisão de
+          ser visíveis na experiência. Não são decorativos; qualquer decisão de
           UX que os enfraqueça é uma decisão errada.
         </p>
         <div className="principles">
@@ -358,7 +365,7 @@ export default function Doc01Posicionamento() {
             <h5>Pack universal de cannabis</h5>
             <p>
               O núcleo de coleta cannabis (exposição CBD/THC, terpenos,
-              formulação, via, dose) é universal — atende qualquer especialidade.
+              formulação, via, dose) é universal; atende qualquer especialidade.
               Módulos específicos (Pediatria, Neuro, Psiquiatria, Dor) se ativam
               por cima do núcleo, nunca duplicando-o.
             </p>
@@ -378,22 +385,22 @@ export default function Doc01Posicionamento() {
             <h5>★★ por padrão</h5>
             <p>
               O sistema empurra qualidade metodológica nível 2 (publicável){" "}
-              <em>por defeito</em> — sem pedir permissão. O médico só precisa
+              <em>por defeito</em>, sem pedir permissão. O médico só precisa
               optar por descer. Qualidade é gravidade, não opção.
             </p>
           </div>
         </div>
       </Section>
 
-      {/* 04 — ENTREGÁVEIS */}
+      {/* 04 · ENTREGÁVEIS */}
       <Section
         id="pos-entregaveis"
-        num="04 — ENTREGÁVEIS DIFERENCIADOS"
+        num="04 · ENTREGÁVEIS DIFERENCIADOS"
         title="Sete coisas que a WeCann Care entrega e nenhum prontuário do mercado entrega"
       >
         <p>
           Quando o time UX olhar para os fluxos, esses são os sete diferenciais
-          que precisam estar amplificados — visualmente legíveis, emocionalmente
+          que precisam estar amplificados: visualmente legíveis, emocionalmente
           memoráveis, funcionalmente fáceis. São os &ldquo;wow moments&rdquo; que
           justificam a categoria.
         </p>
@@ -410,10 +417,10 @@ export default function Doc01Posicionamento() {
         ))}
       </Section>
 
-      {/* 05 — A DIFERENÇA EM DETALHE */}
+      {/* 05 · A DIFERENÇA EM DETALHE */}
       <Section
         id="pos-diferenca"
-        num="05 — A DIFERENÇA, EM DETALHE"
+        num="05 · A DIFERENÇA, EM DETALHE"
         title="WeCann Care vs prontuários genéricos · dimensão por dimensão"
       >
         <p>
@@ -467,7 +474,7 @@ export default function Doc01Posicionamento() {
           para transcrever. A Atena é uma colega de trabalho inteligente que
           conhece seus pacientes, lê exames, prepara a consulta antes do paciente
           chegar, preenche o prontuário em tempo real, sugere diagnósticos com
-          evidências, acompanha o paciente depois — e transforma sua casuística em
+          evidências, acompanha o paciente depois, e transforma sua casuística em
           ciência publicável. Tudo isso personalizado para o seu jeito de
           trabalhar.&rdquo;
         </div>
@@ -485,22 +492,22 @@ export default function Doc01Posicionamento() {
         </Callout>
       </Section>
 
-      {/* 06 — TOM */}
+      {/* 06 · TOM */}
       <Section
         id="pos-tom"
-        num="06 — TOM DE VOZ"
+        num="06 · TOM DE VOZ"
         title="Como a Atena fala · como a WeCann fala"
       >
         <p>
           A microcopy não é decorativa. É clínica. Cada palavra escolhida
-          transmite (ou trai) a posição da Atena como colega — não como mágica,
+          transmite (ou trai) a posição da Atena como colega, não como mágica,
           não como burocracia, não como brinquedo.
         </p>
         <div className="card">
           {VOICE_RULES.map((v, i) => (
             <div className="voice-rule" key={i}>
               <span className={`icon${v.negative ? " no" : ""}`}>
-                {v.negative ? "—" : "+"}
+                {v.negative ? "-" : "+"}
               </span>
               <span
                 className="text"
@@ -511,15 +518,15 @@ export default function Doc01Posicionamento() {
         </div>
       </Section>
 
-      {/* 07 — AUDIÊNCIA */}
+      {/* 07 · AUDIÊNCIA */}
       <Section
         id="pos-paraquem"
-        num="07 — PARA QUEM DESENHAMOS"
+        num="07 · PARA QUEM DESENHAMOS"
         title="O médico que precisa amar a WeCann Care em 5 minutos"
       >
         <p>
           A AtomSix vai trabalhar com 5 personas detalhadas mais adiante no
-          material de pesquisa — mas há um denominador comum que vale fixar
+          material de pesquisa, mas há um denominador comum que vale fixar
           desde já.
         </p>
         <p>
@@ -552,10 +559,10 @@ export default function Doc01Posicionamento() {
         </Callout>
       </Section>
 
-      {/* 08 — NÃO É */}
+      {/* 08 · NÃO É */}
       <Section
         id="pos-naoe"
-        num="08 — O QUE A WECANN CARE NÃO É"
+        num="08 · O QUE A WECANN CARE NÃO É"
         title="Linhas vermelhas estratégicas"
       >
         <p>
@@ -567,7 +574,7 @@ export default function Doc01Posicionamento() {
             <strong>Não é um one-stop-shop.</strong> Não é banco, contabilidade,
             marketplace de medicamento, telessaúde standalone. Cada expansão
             dessas dilui a tese de RWE. A integração existe (TISS/TUSS, financeiro
-            operacional) — mas como serviço auxiliar, não como categoria.
+            operacional), mas como serviço auxiliar, não como categoria.
           </li>
           <li>
             <strong>Não é um agregador de IAs.</strong> A Atena é uma identidade
@@ -576,7 +583,7 @@ export default function Doc01Posicionamento() {
           </li>
           <li>
             <strong>Não é um produto &ldquo;cannabis-only&rdquo;.</strong> A
-            WeCann atende 27 condições em 13 áreas — neurologia, psiquiatria,
+            WeCann atende 27 condições em 13 áreas: neurologia, psiquiatria,
             oncologia, dor, pediatria, geriatria. A imagem do produto não deve
             carregar clichês visuais de cannabis (folhas, gradientes naturais,
             estética hippie-chic). É um produto clínico que <em>por acaso</em> tem
@@ -590,7 +597,7 @@ export default function Doc01Posicionamento() {
           <li>
             <strong>Não é &ldquo;experimental&rdquo;.</strong> Está em produção,
             com pacientes reais, em clínicas reais. A percepção precisa carregar
-            essa maturidade — nada de &ldquo;beta&rdquo;, &ldquo;early
+            essa maturidade: nada de &ldquo;beta&rdquo;, &ldquo;early
             access&rdquo;, &ldquo;alpha&rdquo; no rodapé.
           </li>
         </ul>
@@ -604,12 +611,12 @@ export default function Doc01Posicionamento() {
         </h3>
         <p>
           Atenta sem ser intrusiva. Inteligente sem ser arrogante. Rápida sem ser
-          superficial. Séria sem ser fria. Transparente sobre o que sabe — e sobre
+          superficial. Séria sem ser fria. Transparente sobre o que sabe, e sobre
           o que não sabe.{" "}
           <strong>
             Vocês não estão desenhando um software médico. Vocês estão desenhando
             a versão digital da colega que todo médico gostaria de ter ao lado em
-            toda consulta — armada com o Tratado, com 4.000+ pares globais, com
+            toda consulta, armada com o Tratado, com 4.000+ pares globais, com
             30+ experts e com a maior comunidade científica de medicina
             endocanabinoide do mundo.
           </strong>
@@ -643,7 +650,7 @@ const DELIVERABLES = [
     num: "03",
     title: "Copiloto clínico com evidência citada",
     sub: "Hipóteses com CID-10, alertas de interação, sempre rastreáveis",
-    body: "Sugere diagnósticos, prescrições, exames — com a evidência exata (trecho da transcrição, artigo, folheto ANVISA, aula da certificação) clicável ao lado. O médico decide. Nunca há sugestão “porque a IA acha”; sempre há “porque a IA leu X em Y”.",
+    body: "Sugere diagnósticos, prescrições, exames: com a evidência exata (trecho da transcrição, artigo, folheto ANVISA, aula da certificação) clicável ao lado. O médico decide. Nunca há sugestão “porque a IA acha”; sempre há “porque a IA leu X em Y”.",
     hint: "UX hint · Cada sugestão precisa de evidence drawer expansível",
   },
   {
@@ -651,27 +658,27 @@ const DELIVERABLES = [
     title: "DNA do médico · memória de longo prazo",
     sub: "Atena aprende como você prescreve · cinco tipos de memória",
     body: "Preferências (“Dra. sempre começa CBD com 10mg/dia”), protocolos pessoais (“titulação em 4 semanas para epilepsia”), padrões clínicos (“Parkinson responde melhor a full-spectrum”), notas de interação e gerais. Tudo ordenado por relevância e injetado no contexto de cada consulta. A Atena de cada médico é diferente.",
-    hint: "UX hint · Tela de “Meu DNA Atena” precisa existir e ser cuidada — é onde o vínculo se aprofunda",
+    hint: "UX hint · Tela de “Meu DNA Atena” precisa existir e ser cuidada; é onde o vínculo se aprofunda",
   },
   {
     num: "05",
     title: "Inteligência farmacológica brasileira",
     sub: "SUS, RENAME, interações, ANVISA · dado real, não achismo",
-    body: "Ontologia Brasileira de Medicamentos (MS), RENAME (Básico/Especializado/Estratégico), base internacional de interações, bulas FDA para medicamentos sem equivalente brasileiro, produtos cannabis ANVISA com mg/gota determinístico. “Tem genérico?”, “Está no SUS?”, “Interage com clonazepam?” — resposta com fonte oficial citada.",
+    body: "Ontologia Brasileira de Medicamentos (MS), RENAME (Básico/Especializado/Estratégico), base internacional de interações, bulas FDA para medicamentos sem equivalente brasileiro, produtos cannabis ANVISA com mg/gota determinístico. “Tem genérico?”, “Está no SUS?”, “Interage com clonazepam?”: resposta com fonte oficial citada.",
     hint: "UX hint · Dados farmacológicos precisam carregar selo de fonte oficial visível",
   },
   {
     num: "06",
     title: "Pós-consulta longitudinal",
     sub: "Atena acompanha o paciente em M1, M2, M3, M6, M12",
-    body: "Envia escalas validadas (PHQ-9, GAD-7, ISI, PRO-CTCAE, MDS-UPDRS etc.) no timing certo via WhatsApp. Paciente manda foto do medicamento — Atena identifica. Efeito adverso aparece — Atena já estrutura o relato em terminologia MedDRA. O médico só age sobre alertas. Loop clínico fechado sem trabalho extra.",
+    body: "Envia escalas validadas (PHQ-9, GAD-7, ISI, PRO-CTCAE, MDS-UPDRS etc.) no timing certo via WhatsApp. Paciente manda foto do medicamento; Atena identifica. Efeito adverso aparece; Atena já estrutura o relato em terminologia MedDRA. O médico só age sobre alertas. Loop clínico fechado sem trabalho extra.",
     hint: "UX hint · Dashboard de “Pulso do Dia” precisa hierarquizar alertas reais vs ruído",
   },
   {
     num: "07",
     title: "Casuística que vira ciência sozinha",
     sub: "Pesquisa é subproduto do atendimento · zero esforço extra",
-    body: "Enquanto o médico atende normal, os dados fluem para o schema RWE: episódios terapêuticos, exposições, outcomes, escalas, farmacovigilância, consentimento em camadas. Quando o médico abre a tela de Casuística, vê a sua coorte já pronta para publicação — com qualidade ★★ garantida pela arquitetura. É o momento “uau” silencioso.",
+    body: "Enquanto o médico atende normal, os dados fluem para o schema RWE: episódios terapêuticos, exposições, outcomes, escalas, farmacovigilância, consentimento em camadas. Quando o médico abre a tela de Casuística, vê a sua coorte já pronta para publicação, com qualidade ★★ garantida pela arquitetura. É o momento “uau” silencioso.",
     hint: "UX hint · A tela de Casuística é o momento de revelação · ela merece tratamento de “santuário”",
   },
 ];
@@ -775,7 +782,7 @@ const DIMENSIONS: Dimension[] = [
       "<strong>Produtos cannabis ANVISA</strong> · concentração, gotas/mL, mg/gota determinísticos por folheto oficial.",
     ],
     usOutro:
-      "“Tem genérico?”, “está no SUS?”, “interage com clonazepam?” — Atena responde com <strong>dado oficial citado</strong>, não achismo.",
+      "“Tem genérico?”, “está no SUS?”, “interage com clonazepam?”; Atena responde com <strong>dado oficial citado</strong>, não achismo.",
   },
   {
     id: "D6 · Especialização em cannabis medicinal",
@@ -867,11 +874,11 @@ const DIMENSIONS: Dimension[] = [
 const VOICE_RULES = [
   {
     negative: false,
-    text: "<strong>Concisão clínica.</strong> Atena escreve como médico escreve: frases curtas, terminologia precisa, sem floreios. “Sugiro CID G40.3” — não “Pensei que talvez pudesse ser interessante considerar a possibilidade de…”.",
+    text: "<strong>Concisão clínica.</strong> Atena escreve como médico escreve: frases curtas, terminologia precisa, sem floreios. “Sugiro CID G40.3”, não “Pensei que talvez pudesse ser interessante considerar a possibilidade de…”.",
   },
   {
     negative: false,
-    text: "<strong>Sempre com evidência.</strong> Toda sugestão clínica vem acompanhada da fonte — trecho de transcrição, artigo, folheto, aula. “Sugiro tentar full-spectrum porque o paciente respondeu parcialmente a isolado em M3 (vide nota da consulta de 12/03).”",
+    text: "<strong>Sempre com evidência.</strong> Toda sugestão clínica vem acompanhada da fonte: trecho de transcrição, artigo, folheto, aula. “Sugiro tentar full-spectrum porque o paciente respondeu parcialmente a isolado em M3 (vide nota da consulta de 12/03).”",
   },
   {
     negative: false,

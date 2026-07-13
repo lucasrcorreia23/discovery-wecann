@@ -1,5 +1,8 @@
-import { Hero, Section } from "../ui/primitives";
+import type { ReactNode } from "react";
+import { Hero, Section, TableFrame } from "../ui/primitives";
+import { SourceBadge, SourceRow, StarBlock } from "../ui/evidence";
 import { PERSONA_INDEX } from "@/lib/personas-index";
+import type { EvidenceId } from "@/lib/evidence";
 
 export default function Doc02Personas() {
   return (
@@ -13,7 +16,7 @@ export default function Doc02Personas() {
             da WeCann Care
           </>
         }
-        lead="Quem são os médicos que vão abrir a WeCann Care pela primeira vez — e o que cada um precisa sentir nos primeiros 5 minutos para ficar."
+        lead="Quem são os médicos que vão abrir a WeCann Care pela primeira vez, e o que cada um precisa sentir nos primeiros 5 minutos para ficar."
         meta={[
           { dt: "Fonte primária", dd: "WeCann Marketing Playbook · item 3" },
           { dt: "Lente aplicada", dd: "UX · design · produto" },
@@ -27,7 +30,7 @@ export default function Doc02Personas() {
           <p>
             O doc tem três camadas.{" "}
             <strong>Camada 1 · Exposição estratégica</strong> (seção 01) traz o
-            playbook de marketing das 5 personas como referência canônica —
+            playbook de marketing das 5 personas como referência canônica:
             demografia, psicografia, dores, desejos, objeções, mensagem-chave,
             gatilhos, conteúdo vencedor e headlines. Use como dicionário rápido.{" "}
             <strong>Camada 2 · Deep dive UX por persona</strong> (seções 02-06)
@@ -52,9 +55,79 @@ export default function Doc02Personas() {
             </div>
           ))}
         </div>
+
+        <div className="intro-block">
+          <h3>Como as personas foram validadas</h3>
+          <p>
+            As 5 personas não nasceram desta pesquisa: vieram prontas do{" "}
+            <strong>Marketing Playbook</strong> da WeCann e foram descritas pela
+            fundadora Patricia na imersão de 01/06. Chegaram ao discovery como
+            hipótese do cliente; boa hipótese, mas hipótese.
+          </p>
+          <SourceRow>
+            <SourceBadge id="mkt-playbook" compact />
+            <SourceBadge id="im-interna" compact detail="fundadora descreveu as 5 personas" />
+          </SourceRow>
+          <p>
+            Ao longo de junho, testamos essa hipótese contra{" "}
+            <strong>4 sessões reais de pesquisa</strong>: 3 entrevistas em
+            profundidade e 1 shadowing com a fundadora. Cada persona ganhou um
+            entrevistado-âncora: a pessoa real cujas falas e comportamentos
+            sustentam (ou tensionam) o retrato do playbook. A tabela abaixo
+            mostra a amarração; e mostra também, de propósito, o que ainda{" "}
+            <strong>não</strong> foi validado nesta rodada. Honestidade de
+            pesquisa vale mais que um catálogo sem lacunas.
+          </p>
+          <TableFrame
+            head={["Persona", "Entrevistado-âncora", "Fonte"]}
+            rows={[
+              [
+                "Especialista Pragmático",
+                "Dra. Patricia (fundadora, shadowing) e Dra. Bárbara",
+                <SourceRow key="src">
+                  <SourceBadge id="e4-shadowing" compact />
+                  <SourceBadge id="e3-barbara" compact />
+                </SourceRow>,
+              ],
+              [
+                "Clínico Sobrecarregado",
+                <span key="txt">
+                  Sem entrevistado-âncora nesta rodada; validação indireta (
+                  <a href="#disc-descobertas">D-01</a>,{" "}
+                  <a href="#disc-descobertas">D-04</a>)
+                </span>,
+                <SourceRow key="src">
+                  <SourceBadge id="voz-sintese" compact />
+                </SourceRow>,
+              ],
+              [
+                "Sênior Explorador",
+                "Dr. Tércio",
+                <SourceRow key="src">
+                  <SourceBadge id="e1-tercio" compact />
+                </SourceRow>,
+              ],
+              [
+                "Humanista Empático",
+                "Dr. Tércio e Dra. Bárbara",
+                <SourceRow key="src">
+                  <SourceBadge id="e1-tercio" compact />
+                  <SourceBadge id="e3-barbara" compact />
+                </SourceRow>,
+              ],
+              [
+                "Recém-formado",
+                "Dr. Marco Antônio",
+                <SourceRow key="src">
+                  <SourceBadge id="e2-marco" compact />
+                </SourceRow>,
+              ],
+            ]}
+          />
+        </div>
       </div>
 
-      {/* 01 — PLAYBOOK */}
+      {/* 01 · PLAYBOOK */}
       <Section
         id="per-playbook"
         num="01 · EXPOSIÇÃO ESTRATÉGICA · PLAYBOOK DE MARKETING"
@@ -62,10 +135,14 @@ export default function Doc02Personas() {
       >
         <p>
           Antes de qualquer decisão visual, o time precisa ter na cabeça a versão
-          canônica dessas 5 personas — a que a WeCann usa para marketing, copy,
+          canônica dessas 5 personas, a que a WeCann usa para marketing, copy,
           vendas e estratégia. É a base psicográfica do produto. As diretivas UX
           que vêm depois aterrissam esta exposição em decisões de interface.
         </p>
+        <SourceRow>
+          <SourceBadge id="mkt-playbook" />
+          <SourceBadge id="im-interna" detail="fundadora descreveu as 5 personas" />
+        </SourceRow>
         {PLAYBOOK.map((p) => (
           <div className="playbook-persona" id={p.anchor} key={p.anchor}>
             <div className="pb-head">
@@ -78,6 +155,11 @@ export default function Doc02Personas() {
                 <div className={`pb-field${f.full ? " full" : ""}`} key={i}>
                   <div className="lbl">{f.lbl}</div>
                   <p dangerouslySetInnerHTML={{ __html: f.text }} />
+                  {f.src && (
+                    <SourceRow>
+                      <SourceBadge id={f.src} compact />
+                    </SourceRow>
+                  )}
                 </div>
               ))}
             </div>
@@ -97,7 +179,7 @@ export default function Doc02Personas() {
         ))}
       </Section>
 
-      {/* 02-06 — DEEP DIVES */}
+      {/* 02-06 · DEEP DIVES */}
       {DEEP_DIVES.map((d) => (
         <Section id={d.anchor} num={`0${d.num} · DEEP DIVE UX`} key={d.anchor}>
           <div className="persona-header">
@@ -106,6 +188,9 @@ export default function Doc02Personas() {
               <div className="persona-title">{d.role}</div>
               <h3 className="persona-name">{d.name}</h3>
               <p className="persona-snapshot">{d.snapshot}</p>
+              <SourceRow>
+                <SourceBadge id="voz-sintese" compact />
+              </SourceRow>
             </div>
           </div>
 
@@ -134,6 +219,13 @@ export default function Doc02Personas() {
                   <li key={i} dangerouslySetInnerHTML={{ __html: t }} />
                 ))}
               </ul>
+              {d.painsSources && (
+                <SourceRow>
+                  {d.painsSources.map((s) => (
+                    <SourceBadge id={s} compact key={s} />
+                  ))}
+                </SourceRow>
+              )}
             </div>
           </div>
 
@@ -219,20 +311,35 @@ export default function Doc02Personas() {
             <div>
               <div className="label">Mensagem-chave (playbook)</div>
               <div className="copy">{d.keyMessage}</div>
+              <SourceRow>
+                <SourceBadge id="mkt-playbook" compact />
+              </SourceRow>
             </div>
             <div>
               <div className="label">{d.realLabel}</div>
               <div className="quote">{d.realPhrase}</div>
+              <SourceRow>
+                <SourceBadge id="mkt-playbook" compact />
+              </SourceRow>
             </div>
           </div>
+
+          <StarBlock
+            title="O que observamos neste perfil → o que decidimos na tela"
+            situacao={d.star.situacao}
+            tarefa={d.star.tarefa}
+            acao={d.star.acao}
+            resultado={d.star.resultado}
+            sources={d.star.sources}
+          />
         </Section>
       ))}
 
-      {/* 07 — SÍNTESE */}
+      {/* 07 · SÍNTESE */}
       <Section
         id="per-sintese"
         num="07 · SÍNTESE TRANSVERSAL"
-        title="O que une todas as 5 — e o que separa"
+        title="O que une todas as 5, e o que separa"
       >
         <p>
           As cinco personas convivem no produto. A boa notícia: 70% das decisões
@@ -296,8 +403,8 @@ export default function Doc02Personas() {
           <strong>tem peso e profundidade</strong>. O Humanista, que{" "}
           <strong>a pessoa importa</strong>. O Recém-formado, que{" "}
           <strong>tem caminho</strong>. Quando uma persona entra na WeCann Care e pensa
-          &ldquo;isso aqui foi feito pra mim&rdquo; — sem perceber que para as
-          outras 4 também foi — a AtomSix acertou.
+          &ldquo;isso aqui foi feito pra mim&rdquo;, sem perceber que para as
+          outras 4 também foi, a AtomSix acertou.
         </p>
       </div>
 
@@ -309,7 +416,7 @@ export default function Doc02Personas() {
   );
 }
 
-type PbField = { lbl: string; text: string; full?: boolean };
+type PbField = { lbl: string; text: string; full?: boolean; src?: EvidenceId };
 type Playbook = {
   anchor: string;
   persona: string;
@@ -343,6 +450,7 @@ const PLAYBOOK: Playbook[] = [
       {
         lbl: "Dores",
         text: "Falta de guias práticos · risco jurídico · medo de erro público. Frustração com a refratariedade: <strong>20–60% dos pacientes psiquiátricos são refratários</strong> e <strong>40% dos portadores de dor crônica</strong> estão insatisfeitos com o tratamento atual.",
+        src: "mkt-playbook",
       },
       {
         lbl: "Desejos",
@@ -410,13 +518,13 @@ const PLAYBOOK: Playbook[] = [
     message:
       "“Soluções práticas para recuperar controle clínico e qualidade de vida.”",
     headlines: [
-      "Maior eficiência clínica, menos horas de frustração — protocolos que funcionam.",
+      "Maior eficiência clínica, menos horas de frustração: protocolos que funcionam.",
     ],
   },
   {
     anchor: "per-senior",
     persona: "Persona 03",
-    name: "O Sênior Explorador — O Mentor que Quer Legado",
+    name: "O Sênior Explorador · O Mentor que Quer Legado",
     tagline:
       "Estabilizado · em busca de propósito e autorrealização. Quer voltar a liderar.",
     fields: [
@@ -456,6 +564,7 @@ const PLAYBOOK: Playbook[] = [
         lbl: "Prova de conexão (WeCann)",
         full: true,
         text: "Dr. José Augusto (87 anos · 57 de medicina) expressando entusiasmo com o novo desafio. Dr. Oscar Peixoto (51 anos de medicina) vendo algo “totalmente novo”. Essa prova social de pares com décadas de carreira é o que faz o Sênior aceitar olhar o produto.",
+        src: "mkt-playbook",
       },
       {
         lbl: "Conteúdo vencedor",
@@ -469,7 +578,7 @@ const PLAYBOOK: Playbook[] = [
     message:
       "“Volte a liderar: ciência profunda, ferramentas práticas e comunidade de pares.”",
     headlines: [
-      "Redescubra a medicina — torne-se referência em Medicina Endocanabinoide.",
+      "Redescubra a medicina; torne-se referência em Medicina Endocanabinoide.",
       "Para médicos que lideram gerações: ciência profunda, prática segura.",
     ],
   },
@@ -494,7 +603,7 @@ const PLAYBOOK: Playbook[] = [
       },
       {
         lbl: "Dores",
-        text: "Frustração ao ver pacientes sem opções · polifarmácia excessiva · burnout moral. <strong>“Dor Moral”</strong> — saber que o paciente sofre, mas não ter ferramentas gentis para ajudá-lo sem causar excesso de efeitos colaterais.",
+        text: "Frustração ao ver pacientes sem opções · polifarmácia excessiva · burnout moral. <strong>“Dor Moral”</strong>: saber que o paciente sofre, mas não ter ferramentas gentis para ajudá-lo sem causar excesso de efeitos colaterais.",
       },
       {
         lbl: "Desejos",
@@ -512,6 +621,7 @@ const PLAYBOOK: Playbook[] = [
         lbl: "Prova de conexão (WeCann)",
         full: true,
         text: "Depoimento de Fatima Poubel sobre tratar o indivíduo como um todo. Dra. Sandra Magali vendo pacientes específicos a cada nova orientação. O produto precisa fazer ela <em>sentir</em> que está cuidando, não apenas administrando.",
+        src: "mkt-playbook",
       },
       {
         lbl: "Conteúdo vencedor",
@@ -522,7 +632,7 @@ const PLAYBOOK: Playbook[] = [
         text: "Persona-líder de Paciente 360 e Pós-Consulta. Microcopy <em>cuidadosa</em> · qualidade de vida em destaque · “voz do paciente” preservada · alertas de polifarmácia gentis.",
       },
     ],
-    message: "“Tratamentos que respeitam a pessoa — ciência e compaixão.”",
+    message: "“Tratamentos que respeitam a pessoa: ciência e compaixão.”",
     headlines: ["Uma abordagem gentil e clínica que devolve qualidade de vida."],
   },
   {
@@ -543,6 +653,7 @@ const PLAYBOOK: Playbook[] = [
       {
         lbl: "Nível de awareness",
         text: "Curioso · busca soluções de mercado. Ainda inconsciente do potencial: o Brasil registrou <strong>aumento de 86% nas prescrições</strong> de cannabis medicinal no último ano.",
+        src: "mkt-playbook",
       },
       {
         lbl: "Dores",
@@ -559,6 +670,7 @@ const PLAYBOOK: Playbook[] = [
       {
         lbl: "Gatilhos dominantes",
         text: "<strong>FOMO (medo de ficar para trás) e Prova Social</strong>. Pertencer à <em>maior comunidade médica especializada do mundo</em> · ver outros jovens que decolaram.",
+        src: "mkt-playbook",
       },
       {
         lbl: "Conteúdo vencedor",
@@ -596,6 +708,14 @@ type DeepDive = {
   keyMessage: string;
   realLabel: string;
   realPhrase: string;
+  painsSources?: EvidenceId[];
+  star: {
+    situacao: ReactNode;
+    tarefa: ReactNode;
+    acao: ReactNode;
+    resultado: ReactNode;
+    sources: EvidenceId[];
+  };
 };
 
 const DEEP_DIVES: DeepDive[] = [
@@ -731,6 +851,17 @@ const DEEP_DIVES: DeepDive[] = [
     realLabel: "Frase real",
     realPhrase:
       "Diretrizes e segurança clínica: como aplicar terapias de fronteira com evidência.",
+    star: {
+      situacao:
+        "Tércio, Bárbara e Patricia condicionam a adoção à defensabilidade: querem ver a evidência, a diretriz e como se justificam se forem questionados. No shadowing, Patricia lê e corrige toda saída de IA antes de assinar.",
+      tarefa:
+        "Confirmar se a persona de maior peso na decisão de compra compra confiança, não automação; e o que a tela precisa expor para conquistar essa confiança.",
+      acao:
+        "Bloco de confiança e uso de IA nas entrevistas E1/E3 e observação direta da revisão de laudos no shadowing de Patricia.",
+      resultado:
+        "Evidence drawer universal (fonte · trecho · DOI · grau A/B/C) e audit trail em 1 clique; nenhuma sugestão da Atena aparece sem origem rastreável.",
+      sources: ["e4-shadowing", "e3-barbara", "e1-tercio"],
+    },
   },
   {
     anchor: "per-dd-sobrecarregado",
@@ -862,7 +993,18 @@ const DEEP_DIVES: DeepDive[] = [
       "Soluções práticas para recuperar controle clínico e qualidade de vida.",
     realLabel: "Frase real",
     realPhrase:
-      "Maior eficiência clínica, menos horas de frustração — protocolos que funcionam.",
+      "Maior eficiência clínica, menos horas de frustração: protocolos que funcionam.",
+    star: {
+      situacao:
+        "Nenhum entrevistado encarnou este perfil isoladamente; ele é a síntese da pressão de tempo que atravessou todas as sessões. Patricia opera em janelas de ~12 minutos e alerta que 10+ validações seguidas cansam; o brief do cliente aponta 7 em 10 médicos em burnout.",
+      tarefa:
+        "Testar se a plataforma sobrevive ao pior cenário de carga cognitiva, mesmo sem um entrevistado dedicado a este perfil.",
+      acao:
+        "Cruzamos a fadiga observada no shadowing com o dado de burnout do brief e adotamos o Sobrecarregado como lente transversal de usabilidade, não como persona validada em campo.",
+      resultado:
+        "Pulso do Dia curado (3-5 itens reais, não 20 cards) e atalhos de teclado em toda ação frequente; perfil que segue marcado como hipótese a validar em pesquisa futura.",
+      sources: ["e4-shadowing", "brief-wecann"],
+    },
   },
   {
     anchor: "per-dd-senior",
@@ -880,7 +1022,7 @@ const DEEP_DIVES: DeepDive[] = [
     ],
     cognitive: [
       "<strong>Leitor lento e profundo.</strong> Lê tudo. Não escaneia.",
-      "<strong>Presbiopia.</strong> Tamanho mínimo de fonte importa — 15px é piso.",
+      "<strong>Presbiopia.</strong> Tamanho mínimo de fonte importa: 15px é piso.",
       "<strong>Reluta com gestos modernos.</strong> Swipe, long press, atalhos não óbvios.",
       "<strong>Confia em hierarquia visual clara.</strong> Quer saber onde está sempre.",
       "<strong>Aprecia o ritual.</strong> Fazer prontuário é cerimônia · não tarefa.",
@@ -976,7 +1118,7 @@ const DEEP_DIVES: DeepDive[] = [
     antipatterns: [
       "Ícones flat sem rótulo",
       "Microinteração jovem (confetes, easter eggs)",
-      "Estética “growth” — gradient, neon, dark mode agressivo",
+      "Estética “growth”: gradient, neon, dark mode agressivo",
       "Linguagem informal (“Bora!”, “Vamos lá!”)",
       "Esconder funcionalidade atrás de hamburger menu",
       "Notificações push frequentes",
@@ -995,6 +1137,17 @@ const DEEP_DIVES: DeepDive[] = [
     realLabel: "Prova real (playbook)",
     realPhrase:
       "Dr. José Augusto, 87 anos e 57 de medicina, expressa entusiasmo com o novo desafio.",
+    star: {
+      situacao:
+        "Tércio, médico experiente, recusa “interface bonita” sem profundidade e valoriza rastreabilidade e rigor; o playbook reforça o arquétipo com Dr. José Augusto.",
+      tarefa:
+        "Entender o que sinaliza “produto sério” para quem tem décadas de prática e trata a reputação como ativo frágil.",
+      acao:
+        "Bloco de percepção de qualidade e confiança em E1, cruzado com o posicionamento de prestígio descrito no playbook.",
+      resultado:
+        "Hierarquia tipográfica com autoridade, corpo generoso (15–16px, line-height 1.6+) e casos exportáveis para apresentação entre pares.",
+      sources: ["e1-tercio", "mkt-playbook"],
+    },
   },
   {
     anchor: "per-dd-humanista",
@@ -1125,9 +1278,20 @@ const DEEP_DIVES: DeepDive[] = [
       "Sentir que está fazendo medicina com alma",
       "“Tempo de consulta protegido” como métrica",
     ],
-    keyMessage: "Tratamentos que respeitam a pessoa — ciência e compaixão.",
+    keyMessage: "Tratamentos que respeitam a pessoa: ciência e compaixão.",
     realLabel: "Frase real (playbook)",
     realPhrase: "Uma abordagem gentil e clínica que devolve qualidade de vida.",
+    star: {
+      situacao:
+        "Tércio descreve o paciente pela história, não pelo CID, e sofre com a polifarmácia que se acumula consulta a consulta; a dor aqui é moral, não operacional.",
+      tarefa:
+        "Decidir se a ficha clínica deve ser lista de dados ou narrativa da pessoa.",
+      acao:
+        "Bloco de vínculo médico-paciente em E1, cruzado com os desejos de qualidade de vida mapeados no playbook.",
+      resultado:
+        "Paciente 360 como narrativa (timeline terapêutica em arco) e qualidade de vida em destaque (EQ-5D, PHQ-9, PROMIS Global) acima dos números frios.",
+      sources: ["e1-tercio"],
+    },
   },
   {
     anchor: "per-dd-recemformado",
@@ -1261,6 +1425,17 @@ const DEEP_DIVES: DeepDive[] = [
     realLabel: "Frase real (playbook)",
     realPhrase:
       "Destaque no seu primeiro ano: autoridade clínica em medicina de fronteira.",
+    star: {
+      situacao:
+        "Marco, recém-formado, chega ansioso por se destacar sem os 5 anos de reputação e teme ficar para trás; é o único perfil que já entra disposto a explorar a ferramenta.",
+      tarefa:
+        "Definir como acelerar a competência de quem tem insegurança técnica sem infantilizar quem tem experiência.",
+      acao:
+        "Bloco de trajetória e ambição em E2, contrastado com a resistência a onboarding das personas seniores.",
+      resultado:
+        "Onboarding com scaffolding rico e “aprende com a Atena” (explicação sob demanda em cada sugestão); tour guiado curto, com “pular” sempre visível.",
+      sources: ["e2-marco"],
+    },
   },
 ];
 

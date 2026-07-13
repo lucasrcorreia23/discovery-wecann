@@ -1,4 +1,6 @@
 import React from "react";
+import { type EvidenceId } from "@/lib/evidence";
+import { SourceBadge } from "./evidence";
 
 /* ---------- HERO ---------- */
 export function Hero({
@@ -400,13 +402,20 @@ export function Persona({
   name,
   role,
   quote,
+  quoteSource,
+  quoteKind,
   children,
 }: {
   name: React.ReactNode;
   role: React.ReactNode;
   quote?: React.ReactNode;
+  /** Fonte da citação quando real (entrevista/shadowing). */
+  quoteSource?: EvidenceId;
+  /** "real" = verbatim de pesquisa; "sintese" = fala construída, sinalizada. */
+  quoteKind?: "real" | "sintese";
   children: React.ReactNode;
 }) {
+  const badgeId = quoteKind === "sintese" ? "voz-sintese" : quoteSource;
   return (
     <div className="persona">
       <div className="persona-head">
@@ -414,6 +423,11 @@ export function Persona({
         <span className="persona-role">{role}</span>
       </div>
       {quote && <div className="persona-quote">{quote}</div>}
+      {quote && badgeId && (
+        <div className="persona-quote-src">
+          <SourceBadge id={badgeId} />
+        </div>
+      )}
       {children}
     </div>
   );

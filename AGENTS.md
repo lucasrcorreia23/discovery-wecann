@@ -27,3 +27,15 @@ This version has breaking changes — APIs, conventions, and file structure may 
 **Line-height**: `--lh-tight` (display/h2/h3), `--lh-snug` (h4/card titles), `--lh-normal` (body-sm, dense card text), `--lh-relaxed` (body-lg, running paragraphs).
 
 The only values allowed to stay literal (not tokenized) are the 30px/800-weight "big stat numeral" pattern above, decorative glyph tracking (`.star-level .stars`, `.star-display`), and relative `em` sizing on `code`/inline elements that must scale with their parent's font-size.
+
+# Pontuação (conteúdo em português)
+
+O conteúdo em português deste projeto (texto de UI dentro de `components/discovery/` e `lib/`, incluindo comentários) não usa travessão (—) como pontuação. Isso já foi corrigido em todo o conteúdo existente; ao escrever texto novo, troque o travessão por, em ordem de preferência:
+
+1. **Ponto e vírgula (;)**, primeira opção: liga duas orações independentes e relacionadas. Exemplo: "A Atena não é um transcritor; é copiloto clínico com corpus proprietário."
+2. **Vírgula**, para incisos curtos ou apostos que não formam oração completa.
+3. **Dois-pontos (:)**, quando o trecho seguinte explica, exemplifica ou introduz uma lista.
+4. **Ponto médio (·)**, para separadores de rótulo/título curtos que não são frases (o padrão já usado em breadcrumbs e tags, ex.: "Parte A · 01-10", "35-55 anos · neurologistas").
+5. Reescrever a frase, quando nenhuma pontuação acima resolve sem soar estranho.
+
+Isso não se aplica ao meia-risca (–) usado em intervalos numéricos, faixas etárias, códigos ou IDs (por exemplo "35–55 anos", "DC1–DC5", "11–18/06"); esse uso é válido, é distinto do travessão e deve ser mantido.

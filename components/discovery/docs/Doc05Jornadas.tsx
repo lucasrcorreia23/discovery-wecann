@@ -12,6 +12,7 @@ import {
   SwimlaneLegend,
   type SwimLane,
 } from "../ui/primitives";
+import { ScreenWhy, StarBlock } from "../ui/evidence";
 import Doc05Userflow from "./Doc05Userflow";
 
 const CURRENT_FLOW_PHASES = [
@@ -249,7 +250,7 @@ export default function Doc05Jornadas() {
             As 3 jornadas da <em>WeCann Care</em>.
           </>
         }
-        lead="Uma visão global e sistemática do WeCann Care, organizada em três tempos clínicos — pré-consulta, consulta e pós-consulta. Cada tela detalhada por blocos, subcomponentes, papel da Atena e impacto sobre cada uma das cinco personas médicas."
+        lead="Uma visão global e sistemática do WeCann Care, organizada em três tempos clínicos: pré-consulta, consulta e pós-consulta. Cada tela detalhada por blocos, subcomponentes, papel da Atena e impacto sobre cada uma das cinco personas médicas."
         meta={[
           {
             dt: "Escopo",
@@ -268,8 +269,8 @@ export default function Doc05Jornadas() {
 
       <Callout variant="teal" label="Nota de leitura">
         <p>
-          Este documento descreve <strong>arquitetura de jornadas e funções</strong>
-          {" "}— não prescreve paleta, tipografia, hierarquia visual ou padrões de
+          Este documento descreve <strong>arquitetura de jornadas e funções</strong>;
+          {" "}não prescreve paleta, tipografia, hierarquia visual ou padrões de
           interação. Toda decisão de design visual, microinteração, motion,
           ilustração e identidade gráfica fica com a AtomSix. Nosso papel aqui é
           entregar o <em>mapa do território</em>, não a estética.
@@ -296,8 +297,8 @@ export default function Doc05Jornadas() {
         <p className="intro">
           Antes da leitura de arquitetura, o fluxo real do produto hoje, em
           raias. Baseado no <strong>User Flow - Jornada do Médico & Secretário</strong>:
-          duas raias (médico e secretário) ao longo de quatro fases —
-          onboarding, pré-consulta, consulta e pós-consulta — com as telas/rotas
+          duas raias (médico e secretário) ao longo de quatro fases
+          (onboarding, pré-consulta, consulta e pós-consulta) com as telas/rotas
           reais do app, pontos de decisão e os handoffs entre os dois papéis.
         </p>
         <p>
@@ -312,7 +313,7 @@ export default function Doc05Jornadas() {
         <Callout variant="teal" label="Insights do fluxo">
           <p>
             <strong>Onboarding do médico</strong> deve ser didático, mas
-            demonstrar a proposta de valor rápido — sem passar a percepção de
+            demonstrar a proposta de valor rápido, sem passar a percepção de
             ser "mais um software de ponto eletrônico".
           </p>
           <p>
@@ -325,7 +326,7 @@ export default function Doc05Jornadas() {
         <Callout label="Premissas (assumptions)">
           <p>
             Assume-se que o secretário recebe acesso depois que o médico cadastra
-            o usuário dele — mas ele poderia ser o primeiro usuário e depois
+            o usuário dele, mas ele poderia ser o primeiro usuário e depois
             convidar o médico com tudo já configurado.
           </p>
           <p>
@@ -340,7 +341,7 @@ export default function Doc05Jornadas() {
             items={[
               "Quais as possibilidades de intervenção do médico na ferramenta durante a consulta?",
               "Como é o output da transcrição ao vivo da Atena?",
-              "Como o pós-consulta se conecta ao FUP — a integração agenda/FUP é direta na plataforma?",
+              "Como o pós-consulta se conecta ao FUP: a integração agenda/FUP é direta na plataforma?",
             ]}
           />
         </Callout>
@@ -354,7 +355,7 @@ export default function Doc05Jornadas() {
         <p className="intro">
           A organização em <strong>pré-consulta · consulta · pós-consulta</strong>{" "}
           não é uma divisão de produto. É a estrutura natural do encontro
-          médico-paciente — antes, durante, depois — traduzida em arquitetura de
+          médico-paciente (antes, durante, depois) traduzida em arquitetura de
           informação.
         </p>
         <p>
@@ -362,13 +363,13 @@ export default function Doc05Jornadas() {
           clínico. A pré-consulta concentra preparação e contexto. A consulta
           concentra decisão e registro estruturado. A pós-consulta concentra
           entrega, acompanhamento e legado de dados (casuística). É uma visão
-          global e sistemática — não um fluxo linear único.
+          global e sistemática; não um fluxo linear único.
         </p>
         <p>
           Um médico pode entrar pela casuística, pular para a agenda, voltar para
           uma consulta passada e nunca seguir a sequência em ordem. As telas
-          <strong> meta</strong> — Home da Atena, Modelos, Configurações,
-          Suporte — atravessam as três jornadas.
+          <strong> meta</strong> (Home da Atena, Modelos, Configurações,
+          Suporte) atravessam as três jornadas.
         </p>
         <h3>Por que essa estrutura importa para a Atom</h3>
         <p>
@@ -407,7 +408,7 @@ export default function Doc05Jornadas() {
         <ScreenCard id="T-01" title="Agenda" state="live">
           <p>
             O painel diário e semanal de consultas. Ponto de entrada mais
-            frequente do médico no sistema — é a primeira tela que ele abre de
+            frequente do médico no sistema: é a primeira tela que ele abre de
             manhã e a última que ele fecha à noite.
           </p>
           <h4>Subtelas e estados</h4>
@@ -489,6 +490,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-01", "D-04"]} sources={["e4-shadowing", "e1-tercio"]}>
+            A agenda é a porta diária do médico: concentra numa só tela o que hoje se espalha entre Doctoralia, WhatsApp e caderno.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-02" title="Cadastro de paciente" state="live">
@@ -564,6 +568,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-01"]} sources={["e3-barbara", "e4-shadowing"]}>
+            Centralizar o cadastro elimina a redigitação entre as seis ferramentas que Bárbara opera em paralelo.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-03" title="Cadastro de agendamento" state="live">
@@ -634,6 +641,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-05", "D-04"]} sources={["e2-marco", "e4-shadowing"]}>
+            Agendar em poucos toques responde ao consenso de que excesso de cliques trava a rotina.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-04" title="Mensagens · pré-consulta" state="live">
@@ -693,6 +703,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-10", "D-01"]} sources={["e1-tercio", "e3-barbara"]}>
+            Trazer a conversa pré-consulta para dentro da plataforma ataca o acompanhamento hoje reativo e disperso no WhatsApp.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard
@@ -795,6 +808,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-04", "D-10"]} sources={["e4-shadowing", "e1-tercio"]}>
+            Coletar dados antes do encontro devolve tempo ao médico, a moeda mais escassa da consulta.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-06" title="Paciente 360 · visão integrada" state="partial">
@@ -871,6 +887,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-03", "D-01"]} sources={["e1-tercio", "e4-shadowing"]}>
+            Reunir a história do paciente numa só visão sustenta o olhar humano que os médicos consideram insubstituível.
+          </ScreenWhy>
         </ScreenCard>
       </Section>
 
@@ -945,6 +964,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-08", "D-04"]} sources={["e2-marco", "e4-shadowing"]}>
+            Contexto persistente evita reabrir abas para lembrar quem é o paciente; responde direto à queixa de excesso de abas.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard
@@ -1029,6 +1051,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-08", "D-03"]} sources={["e4-shadowing"]}>
+            O box estruturado convive com a nota livre porque o shadowing mostrou que campos rígidos, sozinhos, são ignorados.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard
@@ -1077,6 +1102,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-12", "D-03"]} sources={["e4-shadowing"]}>
+            O shadowing revelou que o médico real escreve em texto livre; a nota livre é inegociável, não um extra.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-10" title="Exames complementares" state="partial">
@@ -1123,6 +1151,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-10"]} sources={["e1-tercio", "e4-shadowing"]}>
+            Anexar e acompanhar exames dá continuidade ao cuidado que hoje é reativo e fragmentado.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-11" title="Gerar documentos · 10 tipos" state="partial">
@@ -1187,6 +1218,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-09", "D-05"]} sources={["e3-barbara", "e1-tercio"]}>
+            Gerar documentos limpos, sem os pop-ups que travam Bárbara, e com o laudo íntegro que Tércio exige.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-12" title="Atendimentos prévios" state="live">
@@ -1227,6 +1261,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-10"]} sources={["e1-tercio", "e4-shadowing"]}>
+            Ver os atendimentos prévios num toque sustenta o acompanhamento longitudinal do paciente.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard
@@ -1288,6 +1325,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-02"]} sources={["e4-shadowing", "ws-posicionamento", "im-externa"]}>
+            A coluna da Atena materializa a IA como copiloto revisável; o shadowing e o workshop confirmaram o layout de três colunas e a conferência humana de cada sugestão.
+          </ScreenWhy>
         </ScreenCard>
       </Section>
 
@@ -1343,6 +1383,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-10"]} sources={["e1-tercio", "e3-barbara"]}>
+            A mensagem pós-consulta na plataforma transforma o acompanhamento reativo em contínuo.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard
@@ -1391,6 +1434,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-09"]} sources={["e1-tercio", "e4-shadowing"]}>
+            A biblioteca de documentos por paciente preserva o laudo íntegro e rastreável, sem versões soltas no Drive.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-16" title="Casuística · legado de prática" state="live">
@@ -1449,6 +1495,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-10", "D-12"]} sources={["e1-tercio", "e4-shadowing"]}>
+            Transformar a prática em casuística navegável dá ao médico um legado que hoje se perde entre planilhas.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-17" title="Gestão de pacientes" state="live">
@@ -1495,6 +1544,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-10"]} sources={["e4-shadowing"]}>
+            A gestão em kanban nasceu do shadowing: Patricia organiza o pós-consulta em colunas de status.
+          </ScreenWhy>
         </ScreenCard>
       </Section>
 
@@ -1545,6 +1597,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-04", "D-08"]} sources={["im-interna", "demo-v107"]}>
+            O Pulso do Dia curado nasceu da imersão (o sistema vivo de Daniel e Eduardo) e do protótipo v107.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-19" title="Modelos · extensão da personalização" state="live">
@@ -1588,6 +1643,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-11"]} sources={["e1-tercio", "e4-shadowing"]}>
+            Modelos reutilizáveis atendem à personalização que todos os entrevistados exigem como regra.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-20" title="Configurações · dados, integrações, equipe" state="live">
@@ -1633,6 +1691,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-09", "D-11"]} sources={["e1-tercio", "e4-shadowing"]}>
+            Configurações de dados e equipe respondem à exigência de LGPD e ao trabalho com secretária observado no shadowing.
+          </ScreenWhy>
         </ScreenCard>
 
         <ScreenCard id="T-21" title="Suporte" state="planned">
@@ -1678,6 +1739,9 @@ export default function Doc05Jornadas() {
               },
             ]}
           />
+          <ScreenWhy discoveries={["D-07", "D-06"]} sources={["e1-tercio", "e2-marco"]}>
+            Suporte acessível cobre desde o médico sênior (acessibilidade) até o recém-formado inseguro.
+          </ScreenWhy>
         </ScreenCard>
       </Section>
 
@@ -1804,6 +1868,24 @@ export default function Doc05Jornadas() {
           A consulta é a tela mais complexa, mais densa e de maior exigência de
           redesenho. É onde o sistema será julgado.
         </p>
+        <StarBlock
+          title="Por que a consulta concentra o maior risco do redesenho"
+          situacao="A consulta reúne histórico clínico, exame, decisão terapêutica, prescrição, documentos e recomendações, enquanto o médico precisa manter o vínculo humano com o paciente. É a superfície mais densa do produto."
+          tarefa="Precisávamos entender por que a consulta é o ponto de maior risco do redesenho e o que ela não pode perder para não quebrar a rotina real do consultório."
+          acao="Cruzamos o shadowing de Patricia (texto livre predominante, campos estruturados praticamente ignorados) com a demanda recorrente dos entrevistados por tempo e por revisão humana de tudo que a IA produz."
+          resultado={
+            <>
+              A consulta é a tela onde o produto será julgado: prontuário
+              generativo com estruturação adaptativa por especialidade, revisão
+              rápida, reversibilidade total das sugestões da Atena e o território
+              das notas livres preservado.{" "}
+              <a href="#disc-descobertas">D-02</a> ·{" "}
+              <a href="#disc-descobertas">D-03</a> ·{" "}
+              <a href="#disc-descobertas">D-08</a>
+            </>
+          }
+          sources={["e4-shadowing", "e1-tercio", "im-externa"]}
+        />
         <h3>Por que é a tela mais complexa</h3>
         <p>
           Concentra histórico clínico, exame, decisão terapêutica, prescrição,

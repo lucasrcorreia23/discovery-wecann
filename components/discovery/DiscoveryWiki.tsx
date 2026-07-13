@@ -186,7 +186,7 @@ export default function DiscoveryWiki() {
       setMenuOpen(false);
       setActiveTab(target.tabId);
 
-      // Registra uma entrada de histórico só ao trocar de documento — evita que
+      // Registra uma entrada de histórico só ao trocar de documento; evita que
       // o botão Voltar do navegador saia do app ao sair de uma aba oculta
       // (personas, competitiva, posicionamento…) alcançada por link cruzado.
       if (updateHistory && tabChanged && typeof history !== "undefined") {
@@ -235,7 +235,7 @@ export default function DiscoveryWiki() {
   }, []);
 
   // Voltar/Avançar do navegador (e edições manuais da URL) já atualizam
-  // location.hash sozinhos — aqui só sincronizamos o estado, sem empilhar
+  // location.hash sozinhos; aqui só sincronizamos o estado, sem empilhar
   // uma nova entrada de histórico por cima.
   useEffect(() => {
     const onHashChange = () => {
@@ -244,7 +244,7 @@ export default function DiscoveryWiki() {
         navigateToHash(hash, "auto", false);
         return;
       }
-      // Voltou até a entrada inicial (sem hash) — trata como "home".
+      // Voltou até a entrada inicial (sem hash); trata como "home".
       clearPinTimer();
       setPinnedSection(null);
       setSearchInput("");

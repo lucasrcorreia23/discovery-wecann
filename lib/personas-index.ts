@@ -20,7 +20,7 @@ export const PERSONA_INDEX: PersonaIndexEntry[] = [
     tagline:
       "Cético, orientado a evidência, busca segurança jurídica e diretrizes claras.",
     insight:
-      "Exige evidência citável em toda sugestão da Atena — valida a régua “acelerar com controle”.",
+      "Exige evidência citável em toda sugestão da Atena; valida a régua “acelerar com controle”.",
   },
   {
     num: "02",
@@ -32,7 +32,7 @@ export const PERSONA_INDEX: PersonaIndexEntry[] = [
     tagline:
       "Opera no limite da capacidade; quer menos cliques e mais tempo com o paciente.",
     insight:
-      "Fragmentação de ferramentas e excesso de cliques — reforça tese de plataforma única.",
+      "Fragmentação de ferramentas e excesso de cliques; reforça tese de plataforma única.",
   },
   {
     num: "03",
@@ -55,7 +55,7 @@ export const PERSONA_INDEX: PersonaIndexEntry[] = [
     tagline:
       "Coloca o encontro humano no centro; tecnologia só quando preserva a relação.",
     insight:
-      "Olhar humano insubstituível — Atena como sombra, médico como herói.",
+      "Olhar humano insubstituível: Atena como sombra, médico como herói.",
   },
   {
     num: "05",

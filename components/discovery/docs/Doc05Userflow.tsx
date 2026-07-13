@@ -6,45 +6,55 @@ import {
   PersonaRow,
   Card,
 } from "../ui/primitives";
+import { SourceBadge, SourceRow } from "../ui/evidence";
+import { type EvidenceId } from "@/lib/evidence";
 
-const INPUT_SOURCES = [
-  { label: "Doc 05", desc: "21 telas · 3 jornadas sistêmicas" },
-  { label: "Imersão interna", desc: "Visão produto · prioridades · 12 telas AtomSix" },
-  { label: "Imersão externa", desc: "Briefing AtomSix · prontuário que ensina" },
-  { label: "Demo v107", desc: "Pulso do dia · kanban pré-consulta" },
-  { label: "Referências de marca", desc: "Layout 3 colunas · 8 especialidades" },
-  { label: "Arquitetura de dados", desc: "Gaps MVP · episódios · timepoints" },
+const INPUT_SOURCES: {
+  label: string;
+  desc: string;
+  sourceIds: EvidenceId[];
+}[] = [
+  { label: "Doc 05", desc: "21 telas · 3 jornadas sistêmicas", sourceIds: ["brief-wecann"] },
+  { label: "Imersão interna", desc: "Visão produto · prioridades · 12 telas AtomSix", sourceIds: ["im-interna"] },
+  { label: "Imersão externa", desc: "Briefing AtomSix · prontuário que ensina", sourceIds: ["im-externa"] },
+  { label: "Demo v107", desc: "Pulso do dia · kanban pré-consulta", sourceIds: ["demo-v107"] },
+  { label: "Referências de marca", desc: "Layout 3 colunas · 8 especialidades", sourceIds: ["brief-wecann"] },
+  { label: "Arquitetura de dados", desc: "Gaps MVP · episódios · timepoints", sourceIds: ["design-mestre"] },
 ];
 
-const DECISIONS = [
+const DECISIONS: {
+  tema: string;
+  sourceIds: EvidenceId[];
+  impacto: string;
+}[] = [
   {
     tema: "Pulso do dia",
-    fonte: "Imersão + demo v107",
-    impacto: "J1 começa antes da agenda — pílula educacional + chat casuística",
+    sourceIds: ["im-interna", "demo-v107"],
+    impacto: "J1 começa antes da agenda: pílula educacional + chat casuística",
   },
   {
     tema: "Kanban pré-consulta 4×4",
-    fonte: "demo v107",
+    sourceIds: ["demo-v107"],
     impacto: "J1 tem visão operacional além do inbox linear de mensagens",
   },
   {
     tema: "Conferência humano × IA",
-    fonte: "Briefing AtomSix",
+    sourceIds: ["im-externa"],
     impacto: "Passo explícito ao encerrar a consulta",
   },
   {
     tema: "Layout 3 colunas",
-    fonte: "Referências de marca",
-    impacto: "J2 = Anamnese/EF | Notas | Atena — composição fixa",
+    sourceIds: ["brief-wecann", "e4-shadowing"],
+    impacto: "J2 = Anamnese/EF | Notas | Atena: composição fixa",
   },
   {
     tema: "Episódio > consulta",
-    fonte: "Arquitetura de dados (gap)",
+    sourceIds: ["design-mestre"],
     impacto: "Norte de evolução: timepoints M1/M3/M6/M12",
   },
   {
     tema: "Financeiro",
-    fonte: "Doc 05 · Fase 2",
+    sourceIds: ["brief-wecann"],
     impacto: "Fora do userflow AtomSix desta fase",
   },
 ];
@@ -67,13 +77,17 @@ export default function Doc05Userflow() {
           quadradinhos de processo. A divisão pré / durante / pós organiza o
           produto; o protótipo valida <em>jornadas processuais ponta a ponta</em>.
         </p>
+        <p>
+          (Daniel Montagner, na imersão com os fundadores.){" "}
+          <SourceBadge id="im-interna" />
+        </p>
       </Callout>
 
       <h3>Duas lentes complementares</h3>
       <div className="grid-2" style={{ marginBottom: "1.25rem" }}>
         <Card eyebrow="Sistêmica · Doc 05" title="Arquitetura de informação" border="teal">
           <p>
-            J1 · J2 · J3 + telas meta T-18–T-21. Mapa do território — 21 telas.
+            J1 · J2 · J3 + telas meta T-18–T-21. Mapa do território: 21 telas.
           </p>
         </Card>
         <Card eyebrow="Processual · imersão" title="Protótipo AtomSix (~12 telas)" border="accent">
@@ -88,7 +102,10 @@ export default function Doc05Userflow() {
       <ul className="block-list">
         {INPUT_SOURCES.map((s) => (
           <li key={s.label}>
-            <strong>{s.label}</strong> — {s.desc}
+            <strong>{s.label}</strong>: {s.desc}{" "}
+            {s.sourceIds.map((id) => (
+              <SourceBadge id={id} compact key={id} />
+            ))}
           </li>
         ))}
       </ul>
@@ -146,7 +163,7 @@ export default function Doc05Userflow() {
       <ProcJourney
         num={3}
         title="Jornada C · Estudo / Casuística"
-        subtitle="Médico não atende — explora dados"
+        subtitle="Médico não atende; explora dados"
         flow={[
           "Casuística",
           "Filtros · cortes",
@@ -156,7 +173,7 @@ export default function Doc05Userflow() {
       >
         <p>
           Pragmático e Sênior entram por aqui. A arquitetura de dados
-          antecipa episódios e timepoints M1/M3/M6 — gap no MVP, norte do
+          antecipa episódios e timepoints M1/M3/M6: gap no MVP, norte do
           desenho.
         </p>
       </ProcJourney>
@@ -185,7 +202,8 @@ export default function Doc05Userflow() {
         <p>
           Login → Agenda → Paciente → Play → [Pré-anamnese ou Paciente 360] →
           Consulta 3 colunas → Gerar documento → Conferência IA → Mensagem
-          pós-consulta. Critério “nova tela”: modificação visual &gt; 70%.
+          pós-consulta. Critério “nova tela”: modificação visual &gt; 70%,
+          definido na imersão. <SourceBadge id="im-interna" compact />
         </p>
       </Callout>
 
@@ -206,10 +224,11 @@ export default function Doc05Userflow() {
         items={[
           <>
             Produto <strong>vivo</strong>: CID, escalas e alertas aparecem sem
-            input do médico (Eduardo, imersão).
+            input do médico, como Eduardo descreveu na imersão.{" "}
+            <SourceBadge id="im-interna" compact />
           </>,
           <>
-            Equilíbrio disruptivo: inovador sem assustar o conservador — liberar
+            Equilíbrio disruptivo: inovador sem assustar o conservador; liberar
             em camadas, não chat-only na consulta.
           </>,
           <>
@@ -261,7 +280,13 @@ export default function Doc05Userflow() {
                 <td>
                   <strong>{d.tema}</strong>
                 </td>
-                <td>{d.fonte}</td>
+                <td>
+                  <SourceRow>
+                    {d.sourceIds.map((id) => (
+                      <SourceBadge id={id} compact key={id} />
+                    ))}
+                  </SourceRow>
+                </td>
                 <td>{d.impacto}</td>
               </tr>
             ))}
@@ -276,6 +301,10 @@ export default function Doc05Userflow() {
           este userflow = por onde cortar o protótipo. Consulta primeiro; pré
           operacional depois; pós e legado em seguida.
         </p>
+        <SourceRow>
+          <SourceBadge id="im-interna" compact />
+          <SourceBadge id="e4-shadowing" compact />
+        </SourceRow>
       </Callout>
 
       <h3>Próximos passos</h3>

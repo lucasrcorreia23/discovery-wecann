@@ -1,7 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { DocPaper, PhoneFrame } from "../ui/DocMockup";
+import { Callout } from "../ui/primitives";
+import { SourceBadge, StarBlock } from "../ui/evidence";
 
 type Rule = { label: string; value: string };
 
@@ -620,6 +622,50 @@ const PANELS: Panel[] = [
   },
 ];
 
+/* Mini-STARs de pesquisa: amarram o painel à evidência que originou a decisão. */
+const PANEL_STARS: Partial<Record<string, ReactNode>> = {
+  simples: (
+    <StarBlock
+      num="Pesquisa"
+      title="Receita digital sem ruído comercial"
+      situacao="O paciente da Dra. Bárbara recebia a receita digital cheia de pop-ups de venda de farmácia; por isso ela imprimia o documento e o enviava manualmente, para chegar limpo."
+      tarefa="Como entregar a receita digital sem ruído comercial no caminho até o paciente."
+      acao="Entrevista E3 e benchmark dos emissores de receita do mercado."
+      resultado="Receita em PDF limpo, assinada digitalmente, enviada por WhatsApp ou e-mail sem anúncios."
+      sources={["e3-barbara"]}
+    />
+  ),
+  laudo: (
+    <StarBlock
+      num="Pesquisa"
+      title="Velocidade no laudo sem perder valor legal"
+      situacao="O Dr. Tércio viu atendimento editável por terceiros e pediu laudo imutável; no shadowing, os laudos manuais apareceram como a maior dor de emissão da fundadora."
+      tarefa="Como o laudo ganha velocidade sem perder valor legal."
+      acao="Entrevista E1 e shadowing E4."
+      resultado={
+        <>
+          Laudo gerado por IA dentro do compliance: documento fechado imutável,
+          com retificação apenas por anexo datado e rastreável (descobertas{" "}
+          <a href="#disc-descobertas">D-09</a> e{" "}
+          <a href="#disc-descobertas">D-04</a>).
+        </>
+      }
+      sources={["e1-tercio", "e4-shadowing"]}
+    />
+  ),
+  tcle: (
+    <StarBlock
+      num="Pesquisa"
+      title="TCLE assinado no fim da consulta"
+      situacao="O Dr. Tércio explica que o TCLE de cannabis só faz sentido assinar no fim da consulta, depois de o tratamento ser explicado ao paciente."
+      tarefa="Onde o TCLE entra no fluxo sem virar burocracia de entrada."
+      acao="Entrevista E1 e regras da ANVISA."
+      resultado="TCLE gerado no fechamento da consulta, junto do lote de documentos, com assinatura digital."
+      sources={["e1-tercio", "normas"]}
+    />
+  ),
+};
+
 function InfoPersona({ panel }: { panel: Panel }) {
   const initials = useMemo(
     () =>
@@ -714,6 +760,14 @@ export default function Doc07Tabs() {
           </button>
         ))}
       </div>
+
+      <Callout label="Exemplos ilustrativos">
+        <p>
+          Os pacientes e médicos citados nos painéis a seguir são personas
+          fictícias, criadas apenas para ilustrar cada documento; não são os
+          profissionais entrevistados na pesquisa.
+        </p>
+      </Callout>
 
       {PANELS.map((panel) => (
         <div
