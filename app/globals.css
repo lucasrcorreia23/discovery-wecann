@@ -4033,62 +4033,6 @@ a.src-badge:hover {
   }
 }
 
-/* tags de audiência: quais áreas uma seção atende */
-.aud-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 8px 0;
-}
-.aud-tag {
-  font-size: var(--fs-label);
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  background: var(--panel-2);
-  border-radius: 999px;
-  padding: 3px 10px;
-}
-
-/* trilhas de leitura por área */
-.trail-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin: 24px 0;
-}
-.trail-card {
-  border: 1px solid var(--line);
-  background: var(--panel);
-  border-radius: 12px;
-  padding: 20px;
-}
-.trail-card .trail-intro {
-  font-size: var(--fs-body-sm);
-  line-height: var(--lh-normal);
-  color: var(--ink-mute);
-  margin: 0 0 12px;
-}
-.trail-card .trail-stops {
-  margin: 0;
-  padding-left: 18px;
-  font-size: var(--fs-body-sm);
-  line-height: var(--lh-normal);
-  color: var(--ink-soft);
-}
-.trail-card .trail-stops li {
-  margin-bottom: 6px;
-}
-.trail-card .trail-stops a {
-  color: var(--ink);
-  font-weight: var(--fw-semibold);
-}
-@media (max-width: 760px) {
-  .trail-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* modal dos contratos de design: requisitos do cliente desde o começo */
 .cm-overlay {
   display: none;

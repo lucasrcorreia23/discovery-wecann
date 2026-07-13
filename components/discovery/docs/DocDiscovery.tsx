@@ -12,7 +12,6 @@
   Tag,
 } from "../ui/primitives";
 import {
-  ReadingTrails,
   SourceBadge,
   SourceRow,
   StarBlock,
@@ -495,14 +494,6 @@ export default function DocDiscovery() {
             em blocos STAR: o que observamos, o que precisávamos responder, o
             que fizemos e o que decidimos na tela.
           </p>
-
-          <h3 id="disc-trilhas">Trilhas por área</h3>
-          <p>
-            Este pacote é um documento de consulta para times diferentes. Cada
-            trilha abaixo indica por onde a sua área entra e o que cada parada
-            responde.
-          </p>
-          <ReadingTrails />
         </div>
       </Section>
 

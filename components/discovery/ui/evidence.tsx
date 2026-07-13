@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import { ev, type EvidenceId } from "@/lib/evidence";
-import { AUDIENCES, READING_TRAILS, type AudienceId } from "@/lib/audiences";
 
 /* ---------- SOURCE BADGE (selo visível de fonte) ---------- */
 export function SourceBadge({
@@ -134,40 +133,6 @@ export function StarBlock({
           </SourceRow>
         </div>
       )}
-    </div>
-  );
-}
-
-/* ---------- AUDIENCE TAGS (áreas atendidas por uma seção) ---------- */
-export function AudienceTags({ areas }: { areas: AudienceId[] }) {
-  return (
-    <div className="aud-tags">
-      {areas.map((a) => (
-        <span className="aud-tag" key={a}>
-          {AUDIENCES[a].label}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-/* ---------- READING TRAILS (trilhas de leitura por área) ---------- */
-export function ReadingTrails() {
-  return (
-    <div className="trail-grid">
-      {READING_TRAILS.map((t) => (
-        <div className="trail-card" key={t.audience}>
-          <div className="eyebrow">{AUDIENCES[t.audience].label}</div>
-          <p className="trail-intro">{t.intro}</p>
-          <ol className="trail-stops">
-            {t.stops.map((s) => (
-              <li key={s.anchor}>
-                <a href={`#${s.anchor}`}>{s.label}</a>: {s.why}
-              </li>
-            ))}
-          </ol>
-        </div>
-      ))}
     </div>
   );
 }

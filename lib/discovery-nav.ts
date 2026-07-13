@@ -20,7 +20,6 @@ export const TABS: DocTab[] = [
     navLabel: "Sumário",
     sections: [
       { id: "disc-como-usar", label: "1 · Introdução" },
-      { id: "disc-trilhas", label: "Trilhas por área", sub: true },
       { id: "disc-empresa", label: "2 · A Empresa" },
       { id: "disc-empresa-quem", label: "Quem é a WeCann", sub: true },
       { id: "disc-empresa-momento", label: "O momento", sub: true },
