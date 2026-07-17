@@ -1,0 +1,730 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
+
+  :root {
+    /* Fundo */
+    --paper: #f6f6f6;
+    --paper-raised: #ffffff;
+    --bg-subtle: #f2f2f1;
+
+    /* Texto */
+    --ink: #18181a;
+    --ink-soft: #676867;
+    --ink-faint: #a6a6ab;
+
+    /* Bordas / dividers */
+    --line: #ededed;
+    --line-strong: #d9d9d9;
+    --line-subtle: #f2f2f1;
+
+    /* Marca / acentos */
+    --accent: #8f73b4;
+    --accent-ink: #6f5691;
+    --accent-soft: #f0ebf6;
+    --warm: #f36350;
+    --warm-soft: #fdeae7;
+    --mint: #40a59f;
+    --mint-soft: #e4f2f1;
+    --brand-gradient: linear-gradient(90deg,#588DFF 0%,#94B8F0 28%,#F36350 55%,#F3AC50 90%,#FCD757 100%);
+
+    /* Código */
+    --code-bg: #18181a;
+    --code-ink: #e8e7f0;
+    --code-comment: #7e7b9a;
+    --code-num: #f3ac50;
+    --code-key: #6ea8f5;
+
+    --shadow-none: none;
+
+    /* Raio */
+    --radius-card: 12px;
+    --radius-pill: 999px;
+
+    --font-display: 'Crimson Pro', Georgia, "Times New Roman", serif;
+    --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'Roboto Mono', ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace;
+
+    --fs-caption: 0.75rem;
+    --fs-small: 0.875rem;
+    --fs-body: 0.9375rem;
+    --fs-lede: 1rem;
+    --fs-h3: 1.25rem;
+    --fs-h2: 2rem;
+    --fs-h1: 2.75rem;
+
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink-soft);
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-ink); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible, .rail a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; text-wrap: balance; color: var(--ink); }
+  h2 { font-size: var(--fs-h2); margin: 0 0 .35em; letter-spacing: -0.3px; line-height: 1.25; }
+  h3 { font-size: var(--fs-h3); margin: 2.2em 0 .6em; letter-spacing: -0.005em; line-height: 1.4; }
+  h3:first-child { margin-top: 0; }
+  p { margin: 0 0 1.05em; max-width: 68ch; }
+  p.wide { max-width: 78ch; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-caption);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  code, .mono { font-family: var(--font-mono); }
+  tt { font-family: var(--font-mono); font-size: 0.9em; background: var(--bg-subtle); color: var(--ink); padding: .1em .4em; border-radius: 4px; }
+
+  .page {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    background: var(--paper-raised);
+  }
+
+  /* Marca no topo da rail */
+  .brand { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .brand svg { flex-shrink: 0; }
+  .brand-sub {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+  }
+  .brand-rule { width: 48px; height: 3px; border-radius: 2px; background: var(--brand-gradient); margin: -24px 0 36px; }
+
+  .rail {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 40px 28px;
+    border-right: 1px solid var(--line);
+    background: var(--paper-raised);
+  }
+  .rail .nav-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+  }
+  .rail a {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 7px 0;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+  .rail a:hover { color: var(--ink); }
+  .rail a .n { font-family: var(--font-mono); font-size: .75rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+  main { min-width: 0; padding: 0 56px 96px; }
+
+  .hero {
+    position: relative;
+    padding: 56px 0 60px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+    overflow: hidden;
+  }
+  h1.title { font-size: var(--fs-h1); line-height: 1.08; margin: 0 auto .4em; max-width: 20ch; letter-spacing: -1px; }
+  .lede { font-size: var(--fs-lede); color: var(--ink-soft); max-width: 62ch; margin: 0 auto; line-height: 1.6; }
+  .hero-detail { text-align: left; max-width: 820px; margin: 32px auto 0; }
+
+  /* Orbe do hero (SVG oficial) */
+  .orb {
+    width: min(520px, 92vw);
+    margin: -48px auto -24px;
+    line-height: 0;
+  }
+  .orb svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    animation: orb-float 7s ease-in-out infinite;
+  }
+  @keyframes orb-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  section {
+    padding: 56px 0 60px;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 24px;
+  }
+  section:last-of-type { border-bottom: none; }
+  section:target { animation: hilite 1.6s ease-out; }
+  @keyframes hilite {
+    0% { background: var(--accent-soft); }
+    100% { background: transparent; }
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    letter-spacing: 1.2px;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-none);
+  }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 720px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  .stat {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--paper-raised);
+  }
+  .stat .k { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-faint); }
+  .stat .v { font-family: var(--font-mono); font-size: 1.05rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat .v.accent { color: var(--accent-ink); }
+
+  table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line-subtle); vertical-align: top; }
+  th { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--ink-faint); font-weight: 400; border-bottom: 1px solid var(--line-strong); }
+  tbody tr:hover td { background: var(--paper); }
+  td.mono, td .mono { font-family: var(--font-mono); font-size: .85em; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-card); }
+  .table-wrap table { min-width: 560px; }
+  .table-wrap th:first-child, .table-wrap td:first-child { padding-left: 20px; }
+
+  .swatch { display: inline-block; width: 13px; height: 13px; border-radius: 4px; border: 1px solid rgba(0,0,0,.12); margin-right: 7px; vertical-align: -1px; }
+
+  pre {
+    background: var(--code-bg);
+    color: var(--code-ink);
+    border-radius: var(--radius-card);
+    padding: 22px 24px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    line-height: 1.7;
+    border: none;
+  }
+  pre .c { color: var(--code-comment); }
+  pre .n { color: var(--code-num); }
+  pre .k { color: var(--code-key); }
+  figure { margin: 0 0 1.4em; }
+  figcaption { font-size: .8rem; color: var(--ink-faint); margin-top: 8px; }
+
+  .ramp-figure { display: flex; gap: 22px; align-items: stretch; }
+  .ramp-bar {
+    width: 60px;
+    border-radius: 30px;
+    border: 1px solid var(--line-strong);
+    background: linear-gradient(to top,
+      #f9dfa0 0%, #f9dfa0 6%,
+      #f6a392 30%,
+      #aeb9ef 60%,
+      #8ab0ff 96%, #8ab0ff 100%);
+  }
+  .ramp-legend { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .ramp-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: .86rem; }
+  .ramp-row .t { font-family: var(--font-mono); color: var(--ink-faint); font-size: .78rem; width: 6ch; }
+  .ramp-row .name { flex: 1; }
+  .ramp-row .hex { font-family: var(--font-mono); color: var(--ink-faint); font-size: .78rem; }
+
+  .req-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (max-width: 720px) { .req-grid { grid-template-columns: 1fr; } }
+  .req { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; background: var(--paper-raised); }
+  .req .label { font-weight: 600; font-size: .9rem; margin-bottom: 4px; color: var(--ink); }
+  .req .desc { font-size: .85rem; color: var(--ink-soft); line-height: 1.5; }
+
+  .mermaid { background: var(--paper-raised); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 20px; }
+
+  .rail-mobile-note { display: none; }
+
+  footer { margin-top: 0; padding: 40px 0 0; border-top: 1px solid var(--line); color: var(--ink-faint); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .6px; text-transform: uppercase; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .orb svg, section:target { animation: none; }
+  }
+
+  @media (max-width: 900px) {
+    .page { grid-template-columns: 1fr; }
+    .rail {
+      position: static;
+      height: auto;
+      overflow-x: auto;
+      padding: 20px 24px;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+    }
+    .rail nav { display: flex; flex-wrap: wrap; gap: 2px 16px; }
+    .rail .nav-label { width: 100%; }
+    .rail a { white-space: nowrap; }
+    main { padding: 0 24px 64px; }
+    section { padding: 40px 0 44px; }
+    h1.title { font-size: 2.1rem; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<!-- Definições da marca (logo oficial WeCann) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="wg" x1="0" y1="11.5" x2="25.549" y2="11.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#588DFF"/>
+      <stop offset="0.28" stop-color="#94B8F0"/>
+      <stop offset="0.55" stop-color="#F36350"/>
+      <stop offset="0.9" stop-color="#F3AC50"/>
+      <stop offset="1" stop-color="#FCD757"/>
+    </linearGradient>
+    <g id="wc-mark">
+      <path d="M13.2014 15.882C15.739 16.4357 16.3926 19.4521 14.3377 20.8568C13.717 21.2808 12.9963 21.3992 12.2587 21.2761C11.1263 21.0778 10.4653 20.1483 9.47108 19.6623C9.13304 19.4971 8.64274 19.7369 8.35242 19.9932C6.29712 21.8071 5.23077 23.7474 2.09073 22.6671C0.209501 21.6956 -0.556002 19.2941 0.434883 17.4455C0.909172 16.5453 1.46113 16.016 2.43639 15.7157C4.16863 15.2013 5.58641 16.1289 7.07674 16.9626C10.137 18.4962 9.81845 15.3576 13.2014 15.882Z" fill="url(#wg)"/>
+      <path d="M9.58396 1.81108C10.681 0.0143683 12.9763 -0.54185 14.7636 0.580049C16.7033 1.80096 16.9781 4.05992 16.1255 5.64389C14.7739 7.83637 12.285 8.60162 12.2587 11.1708C12.2496 12.0604 12.1772 12.9901 11.4801 14.0058C11.0792 14.59 10.461 14.9911 9.76262 15.1213C9.0198 15.2661 8.24898 15.111 7.6218 14.689C6.39704 13.8513 6.04469 12.0977 6.89626 10.8753C7.53273 9.96201 8.84875 9.65895 9.73708 9.03117C10.2554 8.66487 10.2026 7.67238 10.15 7.38281C9.75155 5.1902 8.23297 4.02384 9.58396 1.81108Z" fill="url(#wg)"/>
+      <path d="M19.1136 12.4326C19.1136 13.9733 17.8431 15.2224 16.276 15.2224C14.4064 15.2338 13.4384 14.373 13.4384 12.4326C13.4384 10.8918 14.7088 9.64269 16.276 9.64269C17.8431 9.64269 19.1136 10.9661 19.1136 12.4326Z" fill="url(#wg)"/>
+      <path d="M25.2561 17.5938C26.1015 19.5621 25.0292 21.9013 23.1619 22.6912C21.1599 23.5381 19.0865 22.5721 18.0063 20.6607C16.9444 18.7818 17.6699 16.5915 20.1006 15.5633C22.1026 14.7164 24.4108 15.6255 25.2561 17.5938Z" fill="url(#wg)"/>
+    </g>
+    <g id="wc-wordmark" fill="currentColor">
+      <path d="M39.843 16.0784L36.5719 8.28584L35.5432 7.95945L35.5844 7.16387H39.7401L39.7813 7.95945L38.7115 8.28584L41.0157 14.0996L40.4808 14.12L42.8672 8.28584L41.7974 7.95945L41.8386 7.16387H45.1302L45.1714 7.95945L44.2045 8.28584L40.563 16.0784H39.843ZM33.6917 16.0784L30.256 8.28584L29.2891 7.95945L29.3302 7.16387H33.5065L33.5477 7.95945L32.519 8.28584L34.9672 14.0996L34.3294 14.12L36.9628 8.16344L37.58 9.4486L34.4117 16.0784H33.6917Z"/>
+      <path d="M50.0472 16.16C49.2243 16.16 48.4836 15.9764 47.8253 15.6092C47.167 15.242 46.6458 14.7252 46.2618 14.0588C45.8914 13.3925 45.7063 12.6173 45.7063 11.7333C45.7063 10.7813 45.912 9.95178 46.3235 9.2446C46.7349 8.52383 47.2698 7.96625 47.9282 7.57186C48.5865 7.17747 49.2997 6.98708 50.0678 7.00068C51.1924 7.01428 52.0565 7.38147 52.66 8.10224C53.2771 8.80942 53.5857 9.77498 53.5857 10.9989V11.4069H47.3933V10.4482H52.0428L51.7753 10.7949V10.285C51.7753 9.55059 51.6039 8.97941 51.261 8.57143C50.9318 8.14984 50.4792 7.93905 49.9032 7.93905C49.5329 7.93905 49.1763 8.04784 48.8334 8.26544C48.5042 8.48303 48.2368 8.80942 48.031 9.2446C47.839 9.67979 47.743 10.2238 47.743 10.8765V11.1825C47.743 12.2433 48.0105 13.0797 48.5454 13.6916C49.094 14.3036 49.8072 14.6096 50.6849 14.6096C51.165 14.6096 51.5902 14.5212 51.9605 14.3444C52.3445 14.154 52.7217 13.848 53.092 13.4265L53.6475 13.9364C53.2634 14.6844 52.756 15.242 52.1251 15.6092C51.5079 15.9764 50.8152 16.16 50.0472 16.16Z"/>
+      <path d="M59.4696 16.16C58.6604 16.16 57.9266 15.9832 57.2683 15.6296C56.61 15.276 56.0819 14.766 55.6842 14.0996C55.3001 13.4333 55.1081 12.6581 55.1081 11.7741C55.1081 10.8901 55.3139 10.0878 55.7253 9.367C56.1368 8.64622 56.706 8.07504 57.4329 7.65346C58.1598 7.21827 58.9827 7.00068 59.9016 7.00068C60.5051 7.00068 61.0194 7.08228 61.4446 7.24547C61.8835 7.39507 62.2195 7.59906 62.4527 7.85745C62.6858 8.11584 62.8024 8.38783 62.8024 8.67342C62.8024 8.93181 62.7201 9.14261 62.5555 9.3058C62.4047 9.4554 62.1989 9.53019 61.9384 9.53019C61.7052 9.53019 61.4995 9.48939 61.3212 9.4078C61.1429 9.3126 60.9371 9.14941 60.704 8.91821L59.5107 7.77585L60.3337 8.00025C59.8399 7.89145 59.353 7.94585 58.873 8.16344C58.4067 8.38103 58.0226 8.75502 57.7209 9.2854C57.4192 9.80218 57.2683 10.4686 57.2683 11.2845C57.2683 12.3589 57.5357 13.1817 58.0706 13.7528C58.6193 14.324 59.2982 14.6096 60.1074 14.6096C60.5874 14.6096 61.0126 14.5212 61.3829 14.3444C61.7669 14.154 62.1372 13.848 62.4938 13.4265L63.0699 13.916C62.6858 14.664 62.1784 15.2284 61.5475 15.6092C60.9303 15.9764 60.2377 16.16 59.4696 16.16Z"/>
+      <path d="M67.2256 16.16C66.6496 16.16 66.1421 16.0444 65.7032 15.8132C65.2643 15.5684 64.9283 15.2692 64.6951 14.9156C64.462 14.562 64.3454 14.2084 64.3454 13.8548C64.3454 13.3925 64.4963 13.0049 64.798 12.6921C65.0997 12.3793 65.5866 12.1209 66.2587 11.9169L69.4269 10.8969V9.95858C69.4269 9.63219 69.3241 9.3398 69.1183 9.08141C68.9263 8.80942 68.6657 8.59183 68.3366 8.42863C68.0074 8.26544 67.6439 8.18384 67.2462 8.18384C66.9307 8.18384 66.7181 8.25184 66.6084 8.38783C66.4987 8.51023 66.4301 8.76182 66.4027 9.14261L66.341 10.1218C65.7924 10.2442 65.326 10.2306 64.942 10.081C64.5717 9.91778 64.3865 9.65259 64.3865 9.2854C64.3865 9.05421 64.4963 8.81622 64.7157 8.57143C64.9489 8.32663 65.2369 8.09544 65.5798 7.87785C65.9364 7.66026 66.3135 7.47666 66.7113 7.32707C67.109 7.16387 67.4862 7.05508 67.8428 7.00068C68.9263 7.00068 69.7835 7.27267 70.4144 7.81665C71.059 8.34703 71.3882 9.05421 71.4019 9.93818L71.3608 13.1817C71.3608 13.4673 71.3676 13.7324 71.3814 13.9772C71.4088 14.2084 71.4431 14.3852 71.4842 14.5076L72.8215 14.7524V15.4664L71.7105 15.8948C71.5048 15.9764 71.3128 16.0376 71.1345 16.0784C70.9562 16.1328 70.7985 16.16 70.6613 16.16C70.2087 16.16 69.9001 15.9152 69.7355 15.4256L69.4681 14.5688L69.8178 14.6096C69.3789 15.1128 68.9469 15.5004 68.5217 15.7724C68.0965 16.0308 67.6645 16.16 67.2256 16.16ZM67.9457 14.7524C68.22 14.7524 68.4806 14.6912 68.7274 14.5688C68.9743 14.4464 69.2075 14.2628 69.4269 14.018V11.9169L67.4108 12.4065C67.0816 12.4881 66.8416 12.6173 66.6907 12.7941C66.5536 12.9573 66.485 13.1749 66.485 13.4469C66.485 13.7868 66.629 14.0928 66.917 14.3648C67.205 14.6232 67.5479 14.7524 67.9457 14.7524Z"/>
+      <path d="M73.7061 15.9968L73.6444 15.2012L74.9199 14.8748C74.9336 14.8068 74.9473 14.6912 74.961 14.528C74.9748 14.3512 74.9885 14.12 75.0022 13.8344C75.0159 13.5489 75.0228 13.1885 75.0228 12.7533L75.0433 11.1825C75.0433 10.7474 75.0228 10.3326 74.9816 9.93818C74.9542 9.53019 74.913 9.1834 74.8582 8.89781L73.5415 8.61222V7.85745L76.5863 7.04148L76.9978 7.38827L76.8949 8.48983L76.9566 8.51023C77.4092 7.99345 77.8756 7.61266 78.3556 7.36787C78.8493 7.12308 79.3705 7.00068 79.9191 7.00068C80.454 7.00068 80.9478 7.13668 81.4004 7.40867C81.853 7.66706 82.2164 8.06144 82.4908 8.59183C82.7788 9.12221 82.9228 9.78178 82.9228 10.5706V12.7737C82.9228 13.2497 82.9296 13.6916 82.9434 14.0996C82.9571 14.494 82.9845 14.7524 83.0257 14.8748L84.3012 15.2012L84.2395 15.9968H79.7751L79.734 15.2012L80.9272 14.8748C80.9409 14.766 80.9546 14.6232 80.9684 14.4464C80.9821 14.256 80.9889 14.0316 80.9889 13.7732C81.0026 13.5149 81.0095 13.2157 81.0095 12.8757V10.8357C81.0095 10.2646 80.9135 9.80898 80.7215 9.46899C80.5295 9.11541 80.2826 8.86382 79.9809 8.71422C79.6928 8.55103 79.3842 8.46943 79.0551 8.46943C78.6299 8.46943 78.2322 8.57143 77.8618 8.77542C77.5052 8.96581 77.1966 9.2378 76.9361 9.59139V12.6309C76.9361 13.2157 76.9429 13.7052 76.9566 14.0996C76.9841 14.494 77.0183 14.7524 77.0595 14.8748L78.335 15.2012L78.2733 15.9968H73.7061Z"/>
+      <path d="M85.2475 15.9968L85.1858 15.2012L86.4613 14.8748C86.475 14.8068 86.4888 14.6912 86.5025 14.528C86.5162 14.3512 86.5299 14.12 86.5436 13.8344C86.5573 13.5489 86.5642 13.1885 86.5642 12.7533L86.5848 11.1825C86.5848 10.7474 86.5642 10.3326 86.5231 9.93818C86.4956 9.53019 86.4545 9.1834 86.3996 8.89781L85.0829 8.61222V7.85745L88.1277 7.04148L88.5392 7.38827L88.4363 8.48983L88.4981 8.51023C88.9507 7.99345 89.417 7.61266 89.897 7.36787C90.3908 7.12308 90.912 7.00068 91.4606 7.00068C91.9955 7.00068 92.4892 7.13668 92.9418 7.40867C93.3944 7.66706 93.7579 8.06144 94.0322 8.59183C94.3202 9.12221 94.4642 9.78178 94.4642 10.5706V12.7737C94.4642 13.2497 94.4711 13.6916 94.4848 14.0996C94.4985 14.494 94.5259 14.7524 94.5671 14.8748L95.8426 15.2012L95.7809 15.9968H91.3166L91.2754 15.2012L92.4686 14.8748C92.4824 14.766 92.4961 14.6232 92.5098 14.4464C92.5235 14.256 92.5304 14.0316 92.5304 13.7732C92.5441 13.5149 92.5509 13.2157 92.5509 12.8757V10.8357C92.5509 10.2646 92.4549 9.80898 92.2629 9.46899C92.0709 9.11541 91.824 8.86382 91.5223 8.71422C91.2343 8.55103 90.9257 8.46943 90.5965 8.46943C90.1713 8.46943 89.7736 8.57143 89.4033 8.77542C89.0467 8.96581 88.7381 9.2378 88.4775 9.59139V12.6309C88.4775 13.2157 88.4843 13.7052 88.4981 14.0996C88.5255 14.494 88.5598 14.7524 88.6009 14.8748L89.8764 15.2012L89.8147 15.9968H85.2475Z"/>
+      <path d="M98.8051 16.2008C98.3937 16.2008 98.0439 16.0648 97.7559 15.7928C97.4679 15.5072 97.3239 15.1672 97.3239 14.7728C97.3239 14.4872 97.3856 14.2424 97.509 14.0384C97.6325 13.8208 97.8039 13.6509 98.0233 13.5285C98.2565 13.3925 98.5171 13.3245 98.8051 13.3245C99.2303 13.3245 99.5869 13.4605 99.8749 13.7324C100.163 14.0044 100.307 14.3444 100.307 14.7524C100.307 15.174 100.163 15.5208 99.8749 15.7928C99.5869 16.0648 99.2303 16.2008 98.8051 16.2008Z"/>
+      <path d="M106.253 16.16C105.443 16.16 104.71 15.9832 104.051 15.6296C103.393 15.276 102.865 14.766 102.467 14.0996C102.083 13.4333 101.891 12.6581 101.891 11.7741C101.891 10.8901 102.097 10.0878 102.508 9.367C102.92 8.64622 103.489 8.07504 104.216 7.65346C104.943 7.21827 105.766 7.00068 106.685 7.00068C107.288 7.00068 107.802 7.08228 108.228 7.24547C108.666 7.39507 109.002 7.59906 109.236 7.85745C109.469 8.11584 109.585 8.38783 109.585 8.67342C109.585 8.93181 109.503 9.14261 109.338 9.3058C109.188 9.4554 108.982 9.53019 108.721 9.53019C108.488 9.53019 108.282 9.48939 108.104 9.4078C107.926 9.3126 107.72 9.14941 107.487 8.91821L106.294 7.77585L107.117 8.00025C106.623 7.89145 106.136 7.94585 105.656 8.16344C105.19 8.38103 104.806 8.75502 104.504 9.2854C104.202 9.80218 104.051 10.4686 104.051 11.2845C104.051 12.3589 104.319 13.1817 104.854 13.7528C105.402 14.324 106.081 14.6096 106.89 14.6096C107.37 14.6096 107.796 14.5212 108.166 14.3444C108.55 14.154 108.92 13.848 109.277 13.4265L109.853 13.916C109.469 14.664 108.961 15.2284 108.33 15.6092C107.713 15.9764 107.021 16.16 106.253 16.16Z"/>
+      <path d="M114.009 16.16C113.432 16.16 112.925 16.0444 112.486 15.8132C112.047 15.5684 111.711 15.2692 111.478 14.9156C111.245 14.562 111.128 14.2084 111.128 13.8548C111.128 13.3925 111.279 13.0049 111.581 12.6921C111.883 12.3793 112.37 12.1209 113.042 11.9169L116.21 10.8969V9.95858C116.21 9.63219 116.107 9.3398 115.901 9.08141C115.709 8.80942 115.449 8.59183 115.119 8.42863C114.79 8.26544 114.427 8.18384 114.029 8.18384C113.714 8.18384 113.501 8.25184 113.391 8.38783C113.282 8.51023 113.213 8.76182 113.186 9.14261L113.124 10.1218C112.575 10.2442 112.109 10.2306 111.725 10.081C111.355 9.91778 111.169 9.65259 111.169 9.2854C111.169 9.05421 111.279 8.81622 111.499 8.57143C111.732 8.32663 112.02 8.09544 112.363 7.87785C112.719 7.66026 113.096 7.47666 113.494 7.32707C113.892 7.16387 114.269 7.05508 114.626 7.00068C115.709 7.00068 116.566 7.27267 117.197 7.81665C117.842 8.34703 118.171 9.05421 118.185 9.93818L118.144 13.1817C118.144 13.4673 118.151 13.7324 118.164 13.9772C118.192 14.2084 118.226 14.3852 118.267 14.5076L119.604 14.7524V15.4664L118.493 15.8948C118.288 15.9764 118.096 16.0376 117.917 16.0784C117.739 16.1328 117.581 16.16 117.444 16.16C116.992 16.16 116.683 15.9152 116.518 15.4256L116.251 14.5688L116.601 14.6096C116.162 15.1128 115.73 15.5004 115.305 15.7724C114.879 16.0308 114.447 16.16 114.009 16.16ZM114.729 14.7524C115.003 14.7524 115.263 14.6912 115.51 14.5688C115.757 14.4464 115.99 14.2628 116.21 14.018V11.9169L114.194 12.4065C113.865 12.4881 113.625 12.6173 113.474 12.7941C113.336 12.9573 113.268 13.1749 113.268 13.4469C113.268 13.7868 113.412 14.0928 113.7 14.3648C113.988 14.6232 114.331 14.7524 114.729 14.7524Z"/>
+      <path d="M120.51 15.9968L120.448 15.2012L121.723 14.8748C121.737 14.8204 121.751 14.7048 121.765 14.528C121.778 14.3512 121.792 14.1132 121.806 13.814C121.819 13.5149 121.826 13.1613 121.826 12.7533L121.847 11.1825C121.847 10.7338 121.826 10.3122 121.785 9.91778C121.758 9.52339 121.717 9.1834 121.662 8.89781L120.345 8.61222V7.85745L123.369 7.04148L123.74 7.34747L123.657 9.02021L123.719 9.04061C124.117 8.26544 124.521 7.74185 124.933 7.46986C125.358 7.19787 125.769 7.06188 126.167 7.06188C126.496 7.06188 126.777 7.15027 127.011 7.32707C127.244 7.49026 127.36 7.74865 127.36 8.10224C127.36 8.45583 127.237 8.72782 126.99 8.91821C126.743 9.10861 126.435 9.2038 126.064 9.2038C125.79 9.2038 125.536 9.14941 125.303 9.04061C125.07 8.93181 124.837 8.76862 124.604 8.55103L125.015 8.65302C124.782 8.81622 124.556 9.03381 124.336 9.3058C124.117 9.57779 123.918 9.91098 123.74 10.3054L123.76 12.1005C123.774 12.4949 123.788 12.8825 123.801 13.2633C123.815 13.6305 123.829 13.9568 123.842 14.2424C123.856 14.528 123.87 14.7388 123.884 14.8748L125.673 15.1604L125.612 15.9968H120.51Z"/>
+      <path d="M132.401 16.16C131.578 16.16 130.837 15.9764 130.179 15.6092C129.521 15.242 128.999 14.7252 128.615 14.0588C128.245 13.3925 128.06 12.6173 128.06 11.7333C128.06 10.7813 128.266 9.95178 128.677 9.2446C129.089 8.52383 129.623 7.96625 130.282 7.57186C130.94 7.17747 131.653 6.98708 132.421 7.00068C133.546 7.01428 134.41 7.38147 135.014 8.10224C135.631 8.80942 135.939 9.77498 135.939 10.9989V11.4069H129.747V10.4482H134.396L134.129 10.7949V10.285C134.129 9.55059 133.957 8.97941 133.615 8.57143C133.285 8.14984 132.833 7.93905 132.257 7.93905C131.886 7.93905 131.53 8.04784 131.187 8.26544C130.858 8.48303 130.59 8.80942 130.385 9.2446C130.193 9.67979 130.097 10.2238 130.097 10.8765V11.1825C130.097 12.2433 130.364 13.0797 130.899 13.6916C131.448 14.3036 132.161 14.6096 133.039 14.6096C133.519 14.6096 133.944 14.5212 134.314 14.3444C134.698 14.154 135.075 13.848 135.446 13.4265L136.001 13.9364C135.617 14.6844 135.11 15.242 134.479 15.6092C133.861 15.9764 133.169 16.16 132.401 16.16Z"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="page">
+  <aside class="rail" aria-label="Sumário">
+    <div class="brand">
+      <svg width="140" height="24" viewBox="0 0 136 23" fill="none" style="color:var(--ink)" aria-label="wecann.care">
+        <use href="#wc-mark"/><use href="#wc-wordmark"/>
+      </svg>
+    </div>
+    <div class="brand-sub">Esfera de abertura · v1.0</div>
+    <div class="brand-rule"></div>
+    <nav aria-label="Seções">
+      <div class="nav-label">Seções</div>
+      <a href="#introducao"><span class="n">01</span>Introdução</a>
+      <a href="#tecnologias"><span class="n">02</span>Tecnologias</a>
+      <a href="#requisitos"><span class="n">03</span>Requisitos do globo</a>
+      <a href="#estilo"><span class="n">04</span>Estilo &amp; movimento</a>
+      <a href="#gradientes"><span class="n">05</span>Gradientes</a>
+    </nav>
+  </aside>
+
+  <main>
+    <header class="hero" id="introducao">
+      <div class="orb" aria-hidden="true">
+        <svg width="828" height="820" viewBox="0 0 828 820" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g opacity="0.58" filter="url(#filter0_f_6817_7767)">
+            <ellipse cx="413.871" cy="409.871" rx="286" ry="290" transform="rotate(-90 413.871 409.871)" fill="url(#paint0_linear_6817_7767)" fill-opacity="0.29"/>
+          </g>
+          <g filter="url(#filter1_d_6817_7767)">
+            <circle cx="413.988" cy="410.376" r="109.996" fill="white" fill-opacity="0.79"/>
+            <g opacity="0.4" filter="url(#filter2_f_6817_7767)">
+              <circle cx="413.988" cy="410.376" r="109.996" fill="url(#paint1_linear_6817_7767)"/>
+            </g>
+            <g opacity="0.49" style="mix-blend-mode:soft-light">
+              <circle cx="413.988" cy="410.376" r="109.996" fill="url(#paint2_radial_6817_7767)"/>
+            </g>
+            <g opacity="0.87" style="mix-blend-mode:overlay">
+              <circle cx="413.988" cy="410.376" r="109.996" fill="url(#paint3_radial_6817_7767)"/>
+            </g>
+            <mask id="mask0_6817_7767" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="303" y="300" width="221" height="221">
+              <circle cx="413.754" cy="410.367" r="109.996" fill="white"/>
+            </mask>
+            <g mask="url(#mask0_6817_7767)">
+              <g opacity="0.5" filter="url(#filter3_f_6817_7767)" style="mix-blend-mode:overlay">
+                <path d="M436.881 250.617L343.686 265.338L404.351 291.892L477.325 326.528L531.249 386.853L561.142 444.868L568.469 394.934L527.439 291.892L436.881 250.617Z" fill="white"/>
+              </g>
+            </g>
+          </g>
+          <defs>
+            <filter id="filter0_f_6817_7767" x="0.000137329" y="0.000137329" width="827.742" height="819.742" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+              <feGaussianBlur stdDeviation="61.9355" result="effect1_foregroundBlur_6817_7767"/>
+            </filter>
+            <filter id="filter1_d_6817_7767" x="242.592" y="250.463" width="346.076" height="346.084" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+              <feOffset dx="1.64172" dy="13.1338"/>
+              <feGaussianBlur stdDeviation="31.5211"/>
+              <feComposite in2="hardAlpha" operator="out"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0"/>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6817_7767"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6817_7767" result="shape"/>
+            </filter>
+            <filter id="filter2_f_6817_7767" x="279.541" y="275.93" width="268.894" height="268.893" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+              <feGaussianBlur stdDeviation="12.2256" result="effect1_foregroundBlur_6817_7767"/>
+            </filter>
+            <filter id="filter3_f_6817_7767" x="338.684" y="245.616" width="234.786" height="204.253" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+              <feGaussianBlur stdDeviation="2.5007" result="effect1_foregroundBlur_6817_7767"/>
+            </filter>
+            <linearGradient id="paint0_linear_6817_7767" x1="225.35" y1="439.137" x2="618.025" y2="439.137" gradientUnits="userSpaceOnUse">
+              <stop offset="0.0384616" stop-color="#F3AC50"/>
+              <stop offset="0.418269" stop-color="#F36350"/>
+              <stop offset="0.735577" stop-color="#96ADFF"/>
+              <stop offset="0.899038" stop-color="#588DFF"/>
+            </linearGradient>
+            <linearGradient id="paint1_linear_6817_7767" x1="413.988" y1="300.381" x2="413.988" y2="520.372" gradientUnits="userSpaceOnUse">
+              <stop offset="0.0865385" stop-color="#76A3F8"/>
+              <stop offset="0.158654" stop-color="#588DFF"/>
+              <stop offset="0.278846" stop-color="#94B8F0"/>
+              <stop offset="0.552885" stop-color="#F36350"/>
+              <stop offset="1" stop-color="#FCD757"/>
+            </linearGradient>
+            <radialGradient id="paint2_radial_6817_7767" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(427.517 352.438) rotate(106.205) scale(169.676 167.462)">
+              <stop stop-color="white"/>
+              <stop offset="0.674665" stop-color="white" stop-opacity="0.1"/>
+              <stop offset="0.855039" stop-color="white" stop-opacity="0.1"/>
+            </radialGradient>
+            <radialGradient id="paint3_radial_6817_7767" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(441.89 353.099) rotate(99.4699) scale(169.584)">
+              <stop stop-color="white"/>
+              <stop offset="1" stop-color="#D9D9D9" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1 class="title">Esfera ambiente de abertura: especificação técnica</h1>
+      <p class="lede">Uma esfera 3D de gradiente suave, com brilho de borda e leve movimento orgânico, que nasce encoberta por névoa, recua até assentar no lugar, e permanece presente, sempre voltada para quem observa, como elemento central da abertura da interface.</p>
+
+      <div class="hero-detail">
+        <p class="wide">Este documento especifica, com detalhe suficiente para implementação direta: as tecnologias compatíveis (§02), os requisitos técnicos específicos da esfera (§03), o estilo visual e o sistema de movimentação, incluindo a sequência de abertura (§04), e a especificação exata dos gradientes de cor (§05). O efeito não depende de luzes de cena, texturas de imagem externas ou bibliotecas de pós-processamento: toda a linguagem visual é resolvida com shaders customizados e texturas geradas em tempo de execução.</p>
+
+        <div class="table-wrap" style="margin-top:22px;">
+          <table>
+            <thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td>Raio da esfera</td><td class="mono">2.1 u</td></tr>
+              <tr><td>Distância de repouso à câmera</td><td class="mono">7 u</td></tr>
+              <tr><td>Offset de nascimento (entrada)</td><td class="mono">−5 (nasce a 2u, ≈3.5× o tamanho final)</td></tr>
+              <tr><td>Escala da casca de brilho (rim)</td><td class="mono">1.12×</td></tr>
+              <tr><td>Amplitude do tremor de borda</td><td class="mono">≈2% do raio</td></tr>
+              <tr><td>Respiração de escala</td><td class="mono">±1.2% a ≈0.9 rad/s</td></tr>
+              <tr><td>Campo de visão da câmera</td><td class="mono">45°, fixo</td></tr>
+              <tr><td>Duração total até repouso</td><td class="mono">≈5.6 s (failsafe em 7 s)</td></tr>
+              <tr><td>Densidade de pixel</td><td class="mono">1×–2×</td></tr>
+              <tr><td>Corte para alternativa 2D</td><td class="mono">&lt; ≈768px de largura</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </header>
+
+    <section id="tecnologias">
+      <div class="section-head"><span class="section-num">02</span><h2>Tecnologias compatíveis</h2></div>
+
+      <h3>Requisitos mínimos de engine</h3>
+      <div class="req-grid">
+        <div class="req"><div class="label">Shaders customizados</div><div class="desc">Vertex + fragment (ou shader graph equivalente), com uniform de tempo por material.</div></div>
+        <div class="req"><div class="label">Mistura aditiva</div><div class="desc">Com escrita de profundidade desativável, para a casca de brilho e os decalques.</div></div>
+        <div class="req"><div class="label">Sprites billboard</div><div class="desc">Planos sempre de frente para a câmera, para halo e sombra de contato.</div></div>
+        <div class="req"><div class="label">Névoa de cena</div><div class="desc">Fog com near/far ajustáveis em tempo real; mecanismo central da abertura.</div></div>
+        <div class="req"><div class="label">Câmera perspectiva</div><div class="desc">FOV configurável (referência: 45°); parada durante toda a abertura.</div></div>
+        <div class="req"><div class="label">Projeção NDC → mundo</div><div class="desc">Posicionar um objeto a partir de coordenadas normalizadas de tela.</div></div>
+        <div class="req"><div class="label">Billboard-to-camera</div><div class="desc">Travar a rotação de um objeto para sempre encarar a câmera.</div></div>
+        <div class="req"><div class="label">Timeline com callbacks</div><div class="desc">Sequenciamento de tweens com pontos de disparo de evento.</div></div>
+        <div class="req"><div class="label">Lerp amortecido por dt</div><div class="desc">Suavização exponencial independente de taxa de quadros para o movimento contínuo.</div></div>
+        <div class="req"><div class="label">Preferência de movimento reduzido</div><div class="desc">Leitura da preferência do sistema operacional, com estado final instantâneo.</div></div>
+      </div>
+      <p style="margin-top:4px;">Não é necessário: pós-processamento (bloom), biblioteca de ruído, mapeamento de sombras, ou texturas de imagem externas.</p>
+
+      <h3>Stack recomendada para web</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Camada</th><th>Biblioteca</th><th>Papel</th><th>Referência</th></tr></thead>
+          <tbody>
+            <tr><td>Motor 3D</td><td class="mono">three.js</td><td>Motor WebGL open source, controle total sobre shaders GLSL customizados.</td><td class="mono">threejs.org</td></tr>
+            <tr><td>Integração React</td><td class="mono">@react-three/fiber</td><td>Declara a cena 3D como componentes React, com loop de render integrado.</td><td class="mono">github.com/pmndrs/react-three-fiber</td></tr>
+            <tr><td>Helpers de cena</td><td class="mono">@react-three/drei</td><td>Utilitários prontos (ambiente/HDRI, painéis de luz, controles).</td><td class="mono">github.com/pmndrs/drei</td></tr>
+            <tr><td>Animação/timeline</td><td class="mono">GSAP + SplitText + CustomEase</td><td>Sequenciamento de tweens com callbacks para orquestrar a abertura.</td><td class="mono">gsap.com</td></tr>
+            <tr><td>Estado (se React)</td><td class="mono">zustand</td><td>Estado leve para a máquina de estados de fases.</td><td class="mono">github.com/pmndrs/zustand</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Se o front-end não for baseado em React, three.js puro atende igualmente bem; a camada React é conveniência de integração, não requisito do efeito em si.</p>
+
+      <h3>Alternativas por plataforma</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Plataforma</th><th>Caminho recomendado</th></tr></thead>
+          <tbody>
+            <tr><td>Web (alternativa)</td><td>Babylon.js: engine WebGL com Node Material (shader gráfico visual nativo).</td></tr>
+            <tr><td>Unity</td><td>Shader Graph ou HLSL customizado; DOTween ou Timeline nativo para orquestração.</td></tr>
+            <tr><td>Unreal Engine</td><td>Material Editor para o material; Niagara para partículas; Sequencer para a timeline.</td></tr>
+            <tr><td>Nativo (Metal/Vulkan)</td><td>Viável, mas exige pipeline de shader manual; recomendado só se já em uso por outros motivos.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="requisitos">
+      <div class="section-head"><span class="section-num">03</span><h2>Requisitos específicos do globo</h2></div>
+
+      <h3>Geometria</h3>
+      <div class="grid-3">
+        <div class="stat"><span class="k">Forma</span><span class="v">Esfera geodésica</span></div>
+        <div class="stat"><span class="k">Raio</span><span class="v accent">2.1 u</span></div>
+        <div class="stat"><span class="k">Subdivisão</span><span class="v accent">nível 5 (≈32)</span></div>
+      </div>
+      <p style="margin-top:14px;">Subdivisão alta o suficiente para a superfície ler como perfeitamente lisa, sem facetas visíveis. Uma UV-sphere de resolução equivalente (≥64 segmentos) produz o mesmo resultado.</p>
+
+      <h3>Construção em duas camadas</h3>
+      <div class="grid-2">
+        <div class="card"><strong>Núcleo</strong><p style="margin-top:6px;">Escala 1×. Carrega o gradiente (§05) e toda a leitura de volume (§04.1–04.2).</p></div>
+        <div class="card"><strong>Casca de brilho (rim)</strong><p style="margin-top:6px;">Mesma geometria, escala <span class="mono">1.12×</span>, face interna renderizada, mistura aditiva, sem escrita de profundidade. Produz o anel de luz colado à silhueta.</p></div>
+      </div>
+
+      <h3>Material</h3>
+      <p class="wide">Sem material PBR e sem nenhuma luz de cena incidindo sobre a esfera; nenhuma luz direcional, pontual ou de área deve afetá-la. Toda a leitura de brilho, volume e translucidez é resolvida dentro do próprio shader (unlit customizado), detalhado em §04.</p>
+
+      <h3>Decalques</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Decalque</th><th>Posição</th><th>Escala (relativa ao raio)</th><th>Origem</th></tr></thead>
+          <tbody>
+            <tr><td>Halo</td><td>Atrás do núcleo</td><td class="mono">≈7×</td><td>Textura gerada em runtime (canvas 2D)</td></tr>
+            <tr><td>Sombra de contato</td><td>Abaixo da esfera</td><td class="mono">≈3.4× × 0.9×</td><td>Textura gerada em runtime (canvas 2D)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Nenhum dos dois depende de arquivo de imagem; geráveis uma única vez, em memória, na inicialização (ver §05.3–05.4 para os gradientes exatos).</p>
+
+      <h3>Câmera</h3>
+      <p class="wide">Projeção perspectiva, campo de visão fixo de <strong>45°</strong>, planos de corte de referência 0.1/400 unidades. Durante toda a sequência de abertura, a câmera permanece <strong>parada</strong>; o movimento percebido de aproximação/recuo vem inteiramente da esfera, não de uma animação de câmera.</p>
+
+      <h3>Performance</h3>
+      <p class="wide">2 malhas com shader simples + 2 sprites: leve o suficiente para renderização contínua a 60fps sem exigir renderização sob demanda. Sem mapeamento de sombras. Densidade de pixel limitada entre 1× e 2×, mesmo em telas de altíssima densidade.</p>
+
+      <h3>Acessibilidade e responsividade</h3>
+      <div class="req-grid">
+        <div class="req"><div class="label">Movimento reduzido</div><div class="desc">Esfera nasce já em repouso, opaca, sem tremor/respiração/trajetória de entrada; resolve instantaneamente.</div></div>
+        <div class="req"><div class="label">Corte para telas pequenas</div><div class="desc">Abaixo de ≈768px, usar alternativa 2D sem renderizar o mundo 3D.</div></div>
+        <div class="req"><div class="label">Rede de segurança</div><div class="desc">Temporizador (recomendado: 7s) força o estado de repouso caso algum evento da timeline falhe.</div></div>
+      </div>
+    </section>
+
+    <section id="estilo">
+      <div class="section-head"><span class="section-num">04</span><h2>Estilo e movimentação</h2></div>
+
+      <h3>Efeito de borda (fresnel procedural)</h3>
+      <p class="wide">Sem luz real incidindo sobre a esfera, o brilho de borda é inteiramente matemático:</p>
+      <pre><code>facing  = clamp(normal_z_em_espaço_de_câmera, <span class="n">0</span>, <span class="n">1</span>)
+fresnel = <span class="n">1</span> − facing</code></pre>
+      <div class="req-grid">
+        <div class="req"><div class="label">Saturação de borda</div><div class="desc">Perto da silhueta, realce de contraste em torno do tom médio (fator ≈1.55) + acréscimo aditivo da própria cor da rampa; luz "vazando" pela lateral.</div></div>
+        <div class="req"><div class="label">Fade longo na borda</div><div class="desc">Alpha cai suavemente a partir de ≈68% de fresnel até a silhueta; a esfera se dissolve no halo, sem contorno duro.</div></div>
+        <div class="req"><div class="label">Anel de brilho (rim)</div><div class="desc">Segunda malha (§03), intensidade ∝ (1−facing)^2.5, mistura aditiva; anel de luz colado à silhueta, nas cores locais do gradiente.</div></div>
+        <div class="req"><div class="label">Fórmula "vivid"</div><div class="desc">Ver §05.5 para a fórmula exata de realce de contraste aplicada na borda.</div></div>
+      </div>
+
+      <h3>Miolo e sombreamento de volume</h3>
+      <div class="grid-2">
+        <div class="card"><strong>Miolo leitoso</strong><p style="margin-top:6px;">Onde a superfície encara a câmera de frente, mistura-se branco puro, concentrado por um expoente alto (facing³ × 0.6); brilho central discreto, não um véu geral.</p></div>
+        <div class="card"><strong>Sombreamento de volume</strong><p style="margin-top:6px;">Leve escurecimento (≈5%) na calota inferior reforça a leitura tridimensional sem luz direcional. Nas laterais, uma tonalidade azul-clara fria é misturada (ver §05.2); sensação de "vidro" de perfil.</p></div>
+      </div>
+
+      <h3>Vida em repouso</h3>
+      <div class="grid-2">
+        <div class="card"><strong>Tremor de borda</strong><p style="margin-top:6px;">Cada vértice se desloca ao longo da própria normal (~2% do raio), somando três ondas senoidais com frequências/fases deliberadamente diferentes; silhueta viva, sem parecer gelatinosa.</p></div>
+        <div class="card"><strong>Respiração de escala</strong><p style="margin-top:6px;">Escala inteira oscila ±1.2% numa onda lenta (~0.9 rad/s, período ≈7s); quase imperceptível, mas comunica algo vivo. Ambos desligados sob movimento reduzido.</p></div>
+      </div>
+
+      <h3>Ambientação da cena</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Elemento</th><th>Papel</th><th>Especificação</th></tr></thead>
+          <tbody>
+            <tr><td>Névoa</td><td>Profundidade + mecanismo da abertura</td><td>Branca; densa na abertura, relaxa para bem mais aberta em repouso</td></tr>
+            <tr><td>Ambiente/HDRI + painéis de luz</td><td>Mood ambiente, reflexos sutis</td><td>HDRI neutro de estúdio + 2–3 painéis retangulares saturados (ciano/magenta/dourado)</td></tr>
+            <tr><td>Campo de partículas</td><td>Profundidade num espaço amplo</td><td>Centenas de pontos, cor neutra, bem translúcidos, rotação muito lenta</td></tr>
+            <tr><td>Faixas de "wash"</td><td>Reforço de profundidade</td><td>Sprites radiais nos tons pastel do globo, distribuídos ao longo do eixo de profundidade</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Tone mapping</h3>
+      <p class="wide">Mapeamento tonal do tipo <strong>neutro</strong> (preserva saturação), não o tipo "cinematográfico" (ex.: ACES) comum como padrão em motores 3D, que lava as cores e faz o gradiente perder saturação. Afeta apenas o canvas 3D; camadas de interface 2D sobrepostas não passam por tone mapping.</p>
+
+      <h3>Sistema de posicionamento</h3>
+      <p class="wide">A esfera não tem posição fixa no mundo 3D: a cada quadro é recalculada como um ponto a distância fixa na frente da câmera, sempre rotacionada para encará-la (billboard). A posição <em>na tela</em> é definida em coordenadas normalizadas (NDC) + escala relativa, através de âncoras nomeadas por contexto:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Âncora (exemplo)</th><th>Contexto</th><th>X (NDC)</th><th>Y (NDC)</th><th>Escala</th></tr></thead>
+          <tbody>
+            <tr><td>Repouso</td><td>Estado padrão</td><td class="mono">ajustado ao layout</td><td class="mono">0.18</td><td class="mono">0.30</td></tr>
+            <tr><td>Centralizada</td><td>Foco total na esfera</td><td class="mono">0.0</td><td class="mono">0.20</td><td class="mono">1.05</td></tr>
+            <tr><td>Ancorada a um canto</td><td>Demais telas</td><td class="mono">0.6</td><td class="mono">0.42</td><td class="mono">0.44</td></tr>
+            <tr><td>Acompanhando elemento ativo</td><td>Contexto dinâmico</td><td class="mono">medido ao vivo</td><td class="mono">idem</td><td class="mono">0.09</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A âncora de repouso padrão deve derivar das réguas de layout do restante da interface, para alinhamento pixel a pixel mesmo com a janela redimensionada.</p>
+
+      <h3>Interpolação (easing harmônico)</h3>
+      <p class="wide">Toda transição contínua (fora da timeline discreta da abertura) usa lerp exponencial independente de taxa de quadros:</p>
+      <pre><code>k = <span class="n">1</span> − base^dt
+valor_atual = lerp(valor_atual, valor_alvo, k)</code></pre>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Transição</th><th>Base</th><th>Tempo até assentar (~95%)</th></tr></thead>
+          <tbody>
+            <tr><td>Deslize entre âncoras</td><td class="mono">0.0009</td><td>bem lento e suave</td></tr>
+            <tr><td>Recuo da entrada</td><td class="mono">0.18</td><td>≈1.8 s</td></tr>
+            <tr><td>Aparecer (fade-in)</td><td class="mono">0.1</td><td>≈0.5 s</td></tr>
+            <tr><td>Névoa se dissipando</td><td class="mono">0.35</td><td>≈0.95 s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Sequência de abertura</h3>
+      <pre class="mermaid">stateDiagram-v2
+    [*] --> Texto
+    Texto --> Emergindo : título revelado, texto some (~0.7s)
+    Emergindo --> Revelando : +1.5s (esfera já assentada)
+    Revelando --> Repouso : +0.9s
+    Repouso --> [*]</pre>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Fase</th><th>Início aprox.</th><th>O que acontece</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">Texto</td><td class="mono">0.00s</td><td>Elemento de texto entra (fade-in ≈0.6s); título revela linha a linha em cascata (≈0.95s). Esfera existe, mas gigante e invisível, perto da câmera.</td></tr>
+            <tr><td class="mono">→ transição</td><td class="mono">≈1.65s</td><td>Segura a leitura, depois o texto se apaga (≈0.7s, atraso de ≈0.9s antes).</td></tr>
+            <tr><td class="mono">Emergindo</td><td class="mono">≈3.25s</td><td>Esfera recua da posição próxima até a distância de repouso, com arco de trajetória. Névoa se dissipa em paralelo.</td></tr>
+            <tr><td class="mono">Revelando</td><td class="mono">≈4.75s</td><td>Restante da interface entra em cascata (stagger ≈0.12s).</td></tr>
+            <tr><td class="mono">Repouso</td><td class="mono">≈5.65s</td><td>Estado final; interação normal liberada.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="wide"><strong>Trajetória de entrada:</strong> na fase Emergindo, o desvio horizontal começa devagar (∝ progresso²) e o percurso ganha um arco vertical suave; sobe ≈0.05 NDC no meio do caminho e retorna a zero na chegada.</p>
+      <p class="wide"><strong>Névoa como cortina:</strong> a cena nasce com névoa densa (é o que faz a esfera "emergir"); ao sair das duas primeiras fases, relaxa para uma forma bem mais aberta em ≈0.95s.</p>
+
+      <h3>Offset de nascimento e comportamento pós-abertura</h3>
+      <p class="wide">Na fase Texto, a esfera nasce a um offset negativo (ex.: −5 sobre uma distância de repouso de 7 → nasce a 2u da câmera, ≈3.5× maior aparentemente). Ao entrar em Emergindo, o offset anima até 0 com o easing de recuo (base 0.18, ≈1.8s). Depois de concluída a abertura, o mesmo objeto permanece ativo e troca de âncora conforme o contexto:</p>
+      <div class="grid-2">
+        <div class="card"><strong>Modo padrão</strong><p style="margin-top:6px;">Pequena, alinhada ao layout de repouso; pode subir levemente com rolagem de conteúdo, se aplicável.</p></div>
+        <div class="card"><strong>Modo "acompanhando elemento ativo"</strong><p style="margin-top:6px;">Desliza (mesmo lerp harmônico) até uma posição pequena junto a um elemento dinâmico (ex.: item ativo), encolhendo para ≈0.09× de escala. Posição medida ao vivo; dissolve se o elemento sai de vista.</p></div>
+      </div>
+    </section>
+
+    <section id="gradientes">
+      <div class="section-head"><span class="section-num">05</span><h2>Gradientes</h2></div>
+
+      <h3>Rampa principal da esfera</h3>
+      <p class="wide">A rampa é o <strong>Main Gradient da marca</strong> (azul → azul claro → coral → amarelo), aplicado na esfera de forma <strong>pastelizada</strong>; cada uma das 4 cores é suavizada (lavada com branco) para manter a delicadeza do material, sem a saturação plena da versão de interface. Orientação vertical: <strong>amarelo na base → azul no topo</strong>.</p>
+      <p class="wide">A cor de cada ponto vem de uma única variável <span class="mono">t</span>: a componente vertical da normal <strong>em espaço de câmera</strong> (não de objeto ou de mundo), remapeada de <span class="mono">[-1,1]</span> para <span class="mono">[0,1]</span>: <span class="mono">t = normal.y * 0.5 + 0.5</span>. Calcular em espaço de câmera garante que o gradiente fique sempre "em pé", independente do ângulo de visão (a esfera billboarda para a câmera).</p>
+
+      <figure class="ramp-figure">
+        <div class="ramp-bar" role="img" aria-label="Rampa de cores da esfera, de amarelo na base a azul no topo"></div>
+        <div class="ramp-legend">
+          <div class="ramp-row"><span class="t">0.95–1.00</span><span class="name"><span class="swatch" style="background:#8ab0ff"></span>Azul (topo)</span><span class="hex">#8AB0FF</span></div>
+          <div class="ramp-row"><span class="t">0.62–0.66</span><span class="name">transição →</span><span class="hex"></span></div>
+          <div class="ramp-row"><span class="t">0.38–0.62</span><span class="name"><span class="swatch" style="background:#aeb9ef"></span>Azul claro (periwinkle)</span><span class="hex">#AEB9EF</span></div>
+          <div class="ramp-row"><span class="t">0.08–0.38</span><span class="name"><span class="swatch" style="background:#f6a392"></span>Coral suave</span><span class="hex">#F6A392</span></div>
+          <div class="ramp-row"><span class="t">0.00–0.08</span><span class="name"><span class="swatch" style="background:#f9dfa0"></span>Amarelo cream (base)</span><span class="hex">#F9DFA0</span></div>
+        </div>
+      </figure>
+
+      <p class="wide">As 4 cores derivam diretamente do Main Gradient da marca (<span class="mono">#588DFF</span>, <span class="mono">#94B8F0</span>, <span class="mono">#F36350</span>, <span class="mono">#FCD757</span>), cada uma suavizada em direção ao branco:</p>
+
+      <pre><code>vec3 ramp(float t) {
+  <span class="c">// Main Gradient da marca pastelizado; quente na base, frio no topo.</span>
+  vec3 gold  = vec3(<span class="n">0.976</span>, <span class="n">0.875</span>, <span class="n">0.627</span>); <span class="c">// #f9dfa0  (marca #fcd757)</span>
+  vec3 coral = vec3(<span class="n">0.965</span>, <span class="n">0.639</span>, <span class="n">0.573</span>); <span class="c">// #f6a392  (marca #f36350)</span>
+  vec3 sky   = vec3(<span class="n">0.682</span>, <span class="n">0.725</span>, <span class="n">0.937</span>); <span class="c">// #aeb9ef  (marca #94b8f0, periwinkle)</span>
+  vec3 blue  = vec3(<span class="n">0.541</span>, <span class="n">0.690</span>, <span class="n">1.000</span>); <span class="c">// #8ab0ff  (marca #588dff)</span>
+  vec3 c = gold;
+  c = mix(c, coral, smoothstep(<span class="n">0.08</span>, <span class="n">0.34</span>, t));
+  c = mix(c, sky,   smoothstep(<span class="n">0.38</span>, <span class="n">0.62</span>, t));
+  c = mix(c, blue,  smoothstep(<span class="n">0.66</span>, <span class="n">0.95</span>, t));
+  return c;
+}</code></pre>
+
+      <h3>Tonalidade lateral</h3>
+      <p class="wide">Nas laterais (longe dos polos), a cor recebe uma segunda mistura leve em direção ao periwinkle da marca <span class="mono">rgb(174, 185, 239)</span>; <span class="mono">#AEB9EF</span>, com peso baixo (≈0.15) proporcional à distância dos polos, dando um leve efeito de "vidro" quando a esfera é vista de perfil.</p>
+
+      <h3>Gradiente do halo</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Posição (raio)</th><th>Cor</th></tr></thead>
+          <tbody>
+            <tr><td>0% (centro)</td><td class="mono"><span class="swatch" style="background:#fcd787"></span>rgba(252,215,135,.36)</td></tr>
+            <tr><td>40%</td><td class="mono"><span class="swatch" style="background:#f37864"></span>rgba(243,120,100,.16)</td></tr>
+            <tr><td>72%</td><td class="mono"><span class="swatch" style="background:#8ab0ff"></span>rgba(138,176,255,.10)</td></tr>
+            <tr><td>100% (borda)</td><td class="mono">transparente</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Gradiente da sombra de contato</h3>
+      <p class="wide">Linear horizontal, mascarado por um gradiente radial (bordas dissolvem em elipse). Funciona como reflexo de luz colorida no chão, não sombra em escala de cinza. Renderizado a 30% da opacidade da esfera.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Posição</th><th>Cor</th></tr></thead>
+          <tbody>
+            <tr><td>0%</td><td class="mono"><span class="swatch" style="background:#588dff"></span>#588DFF</td></tr>
+            <tr><td>28%</td><td class="mono"><span class="swatch" style="background:#94b8f0"></span>#94B8F0</td></tr>
+            <tr><td>55%</td><td class="mono"><span class="swatch" style="background:#f36350"></span>#F36350</td></tr>
+            <tr><td>100%</td><td class="mono"><span class="swatch" style="background:#fcd757"></span>#FCD757</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Fórmula de saturação de borda ("vivid")</h3>
+      <pre><code>vivid     = clamp((cor_base − <span class="n">0.5</span>) * <span class="n">1.55</span> + <span class="n">0.5</span>, <span class="n">0</span>, <span class="n">1</span>)
+cor_final = mix(cor_base, vivid, smoothstep(<span class="n">0.2</span>, <span class="n">0.9</span>, fresnel))
+cor_final = cor_final + ramp(t) * fresnel² * <span class="n">0.4</span></code></pre>
+      <p>Expande o contraste em torno do tom médio por um fator de 1.55, e soma um acréscimo aditivo proporcional ao quadrado do fresnel; concentrado bem perto da borda, sem afetar o miolo.</p>
+    </section>
+
+    <footer>
+      <span>Especificação técnica · esfera ambiente de abertura</span>
+      <span>v1.0</span>
+    </footer>
+  </main>
+</div>
