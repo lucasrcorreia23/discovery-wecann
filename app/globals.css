@@ -579,10 +579,11 @@ main {
 .content {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 72px 160px 144px;
+  padding: 72px 112px 144px;
 }
 .content.wide {
   max-width: 1180px;
+
 }
 
 /* ---------- HERO ---------- */
