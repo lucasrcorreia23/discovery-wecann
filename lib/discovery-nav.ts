@@ -57,6 +57,8 @@ export const TABS: DocTab[] = [
       { id: "disc-personas", label: "As 5 personas", sub: true },
       { id: "disc-sitemap", label: "8 · Sitemap" },
       { id: "disc-userflow", label: "9 · Jornada do usuário" },
+      { id: "disc-userflow-cjm", label: "Mapa da jornada", sub: true },
+      { id: "disc-userflow-momentos", label: "Momentos críticos", sub: true },
       { id: "disc-decisoes", label: "10 · A entrega · Telas finais" },
       { id: "disc-dec-telas", label: "Os 7 fluxos", sub: true },
       { id: "disc-dec-sistema", label: "O sistema visual", sub: true },

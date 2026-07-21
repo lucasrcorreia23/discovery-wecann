@@ -12,8 +12,10 @@
   Tag,
   Swimlane,
   SwimlaneLegend,
+  JourneyMap,
+  Directives,
 } from "../ui/primitives";
-import type { SwimLane } from "../ui/primitives";
+import type { SwimLane, JourneyStage } from "../ui/primitives";
 import {
   SourceBadge,
   SourceRow,
@@ -574,6 +576,261 @@ const USERFLOW_LANES: SwimLane[] = [
           route: "acionado quando falta documento complementar",
         },
       ],
+    ],
+  },
+];
+
+/**
+ * User Journey Map · persona composta "médico prescritor" ao longo do ciclo
+ * de adoção da WeCann Care. Conteúdo extraído do Discovery (personas, 21
+ * telas, descobertas D-01…D-12 e entrevistas E1–E4). Dores e soluções
+ * carregam selo de fonte para manter a rastreabilidade da pesquisa.
+ */
+const JOURNEY_MAP: JourneyStage[] = [
+  {
+    id: "cjm-descoberta",
+    phase: "01 · Descoberta",
+    title: "Descobre a WeCann Care",
+    emotion: 0,
+    emotionLabel: "Curioso",
+    touchpoints: [
+      "WeCann Academy e formação IACM",
+      "Indicação de pares e comunidade médica",
+      "Conteúdo e posicionamento público",
+    ],
+    actions: [
+      "Ouve de colegas sobre o prontuário inteligente",
+      "Associa o nome à maior escola de medicina endocanabinoide",
+      "Tenta entender o que a Atena faz",
+    ],
+    thoughts: [
+      <em key="t1">“Mais um sistema? Já troquei de prontuário e me cansei.”</em>,
+      <em key="t2">“Isso vem da WeCann que eu conheço ou é outra startup?”</em>,
+    ],
+    pains: [
+      "Ceticismo de quem já trocou de prontuário ao menos uma vez",
+      "Confunde a Academy (escola) com uma healthtech qualquer",
+    ],
+    solutions: [
+      <>
+        Ancorar na autoridade da Academy: 4.000+ médicos, 15 países, base do
+        Tratado <SourceBadge id="ws-posicionamento" compact />
+      </>,
+      "Narrativa de devolver a Medicina aos médicos, não de vender mais um software",
+    ],
+  },
+  {
+    id: "cjm-consideracao",
+    phase: "02 · Consideração",
+    title: "Avalia e compara",
+    emotion: -1,
+    emotionLabel: "Cético",
+    touchpoints: [
+      "Demo navegável da consulta",
+      "Conversa com o time e com os fundadores",
+      "Comparação com o prontuário atual",
+    ],
+    actions: [
+      "Questiona evidência, segurança jurídica e LGPD",
+      "Compara custo com as ferramentas que já usa",
+      "Testa se a IA realmente entende Medicina",
+    ],
+    thoughts: [
+      <em key="t1">
+        “Me mostra a evidência e a diretriz; como eu defendo isso se for
+        questionado?”
+      </em>,
+      <em key="t2">“Meus dados e os do paciente ficam seguros?”</em>,
+    ],
+    pains: [
+      <>
+        Exige evidência citável em toda sugestão da IA{" "}
+        <SourceBadge id="e4-shadowing" compact />
+      </>,
+      "Barreira financeira, sobretudo no início de carreira",
+      <>
+        Receio com LGPD e acesso institucional ao prontuário{" "}
+        <SourceBadge id="e1-tercio" compact />
+      </>,
+    ],
+    solutions: [
+      "Toda sugestão da Atena com fonte e check humano (D-02)",
+      "Plano de entrada que destrava o Recém-formado (D-06)",
+      "Documento fechado imutável e consentimento granular (D-09)",
+    ],
+  },
+  {
+    id: "cjm-ativacao",
+    phase: "03 · Ativação",
+    title: "Ativa a conta (onboarding)",
+    emotion: 1,
+    emotionLabel: "Esperançoso",
+    touchpoints: [
+      "Convite e primeiro acesso",
+      "Configuração em 6 passos",
+      "Migração de dados e packs por especialidade",
+    ],
+    actions: [
+      "Configura perfil, CRM e nível de proatividade da Atena",
+      "Importa a base e escolhe modelos por especialidade",
+      "Vê a própria casuística montada pela primeira vez",
+    ],
+    thoughts: [
+      <em key="t1">“Quanto trabalho até isto começar a me servir?”</em>,
+      <em key="t2">“Opa; já aparece com os meus casos organizados.”</em>,
+    ],
+    pains: [
+      <>
+        Quase todos ignoram campos separados; os dados chegam sem estrutura{" "}
+        <SourceBadge id="e4-shadowing" compact />
+      </>,
+      "O onboarding não pode custar 30 minutos de tutorial",
+    ],
+    solutions: [
+      "Onboarding com packs de templates por especialidade (D-11)",
+      "Primeiro momento uau na casuística, sem esforço",
+      "Defaults inteligentes e migração assistida",
+    ],
+  },
+  {
+    id: "cjm-primeira",
+    phase: "04 · Primeira consulta",
+    title: "Primeira consulta com a Atena",
+    emotion: 1,
+    emotionLabel: "Aliviado",
+    touchpoints: [
+      "Tela de consulta, presencial ou online",
+      "Transcrição em segundo plano",
+      "Conferência e geração de documentos",
+    ],
+    actions: [
+      "Conduz a consulta olhando para o paciente",
+      "Revisa o que a Atena registrou nos bastidores",
+      "Gera e assina a primeira receita ou laudo",
+    ],
+    thoughts: [
+      <em key="t1">
+        “Se eu digitar, viro um extraterreno na frente do paciente.”
+      </em>,
+      <em key="t2">“A tela precisa funcionar sem eu olhar para ela.”</em>,
+    ],
+    pains: [
+      <>
+        Digitar na frente do paciente quebra o vínculo{" "}
+        <SourceBadge id="e2-marco" compact />
+      </>,
+      <>
+        Excesso de cliques e validações cansativas, 10+ checks{" "}
+        <SourceBadge id="e4-shadowing" compact />
+      </>,
+    ],
+    solutions: [
+      "Atena invisível: escuta e registra, o médico valida (D-03)",
+      "Box único, sem abas; validação em lote (D-05, D-08)",
+      "Receita, laudo e documentos em segundos (D-04)",
+    ],
+  },
+  {
+    id: "cjm-rotina",
+    phase: "05 · Rotina",
+    title: "Dia de atendimentos",
+    emotion: 2,
+    emotionLabel: "No controle",
+    touchpoints: [
+      "Pulso do Dia e Agenda",
+      "Ciclo pré, consulta, documentos e pós",
+      "Paciente 360 e mensagens",
+    ],
+    actions: [
+      "Abre o dia pelo Pulso e pela Agenda enriquecida",
+      "Percorre o fluxo do login à casuística (ver swimlane acima)",
+      "Fecha documentos e mensagens em lote",
+    ],
+    thoughts: [
+      <em key="t1">
+        “Tenho 12 minutos por paciente e 24 na fila; 2 cliques e eu fecho a
+        tela.”
+      </em>,
+      <em key="t2">“O lance é o tempo.”</em>,
+    ],
+    pains: [
+      <>
+        Travamento no pico da tarde quebra o fluxo{" "}
+        <SourceBadge id="e1-tercio" compact />
+      </>,
+      <>
+        Pop-ups de venda na receita forçam exportar PDF à mão{" "}
+        <SourceBadge id="e3-barbara" compact />
+      </>,
+      "Fragmentação entre seis ferramentas",
+    ],
+    solutions: [
+      "Plataforma única: consulta, documentos, mensagens e casuística (D-01)",
+      "Receita em PDF limpa, sem pop-ups (D-04)",
+      "Tudo em um monitor, sem depender de secretária (D-12)",
+    ],
+  },
+  {
+    id: "cjm-retencao",
+    phase: "06 · Retenção",
+    title: "Acompanhar e capitalizar",
+    emotion: 2,
+    emotionLabel: "Recompensado",
+    touchpoints: [
+      "Pós-consulta longitudinal (M1–M12)",
+      "Casuística e Paciente 360",
+      "Kanban de follow-up",
+    ],
+    actions: [
+      "Acompanha desfechos pela régua M1–M12",
+      "Explora a própria casuística por cortes e filtros",
+      "Transforma atendimentos em insight e artigo",
+    ],
+    thoughts: [
+      <em key="t1">“Isto foi feito por gente que entende o meu trabalho.”</em>,
+      <em key="t2">“Não consigo mais voltar ao que eu usava.”</em>,
+    ],
+    pains: [
+      "O follow-up hoje é reativo; o paciente some",
+      <>
+        Busca no histórico e casuística travadas nas ferramentas atuais{" "}
+        <SourceBadge id="e3-barbara" compact />
+      </>,
+    ],
+    solutions: [
+      "Kanban pós-consulta com régua de FUP M1–M12 (D-10)",
+      "Casuística vira ciência sozinha; export anonimizado",
+      "Busca semântica e CID automático (D-01, D-04)",
+    ],
+  },
+  {
+    id: "cjm-advocacia",
+    phase: "07 · Advocacia",
+    title: "Advocacia e legado",
+    emotion: 2,
+    emotionLabel: "Orgulhoso",
+    touchpoints: [
+      "Comunidade WeCann e pares",
+      "Export de casos e apresentações",
+      "Indicação a colegas",
+    ],
+    actions: [
+      "Recomenda a WeCann Care a colegas",
+      "Exporta casos para aula, congresso e legado",
+      "Alimenta a base de evidência do mundo real (RWE)",
+    ],
+    thoughts: [
+      <em key="t1">“Décadas de prática, enfim registradas e reconhecidas.”</em>,
+      <em key="t2">“Quero que a próxima geração veja isto.”</em>,
+    ],
+    pains: [
+      "Anos de prática sem registro estruturado",
+      "Medo de obsolescência frente às novas gerações",
+    ],
+    solutions: [
+      "Legado documentado e casos exportáveis (persona Sênior)",
+      "Comunidade de pares e reconhecimento institucional",
+      "Cada consulta alimenta a evidência endocanabinoide (RWE)",
     ],
   },
 ];
@@ -3030,6 +3287,110 @@ export default function DocDiscovery() {
           Agenda › Dia/Hoje · Agendados · Confirmados). O marcador Atena
           indica os passos em que a IA age e aguarda validação humana.
         </p>
+
+        <h3 id="disc-userflow-cjm">Mapa da jornada do usuário</h3>
+        <p>
+          Um mapa de jornada mostra quem é o nosso público e o caminho completo
+          que ele percorre: das dores que motivam a busca por uma solução,
+          passando pelos pontos de contato e por cada passo de interação, até se
+          sentir recompensado pelo produto. Enquanto o fluxo acima detalha as
+          tarefas de um dia de uso, o mapa abaixo cobre a experiência de ponta a
+          ponta, da descoberta à advocacia.
+        </p>
+        <p>
+          O que ele faz, pensa e sente em cada estágio, com as dores e as
+          soluções propostas, é destilado de toda a pesquisa deste Discovery:
+          as <a href="#disc-personas">5 personas</a>, as{" "}
+          <a href="#disc-jornadas">jornadas mapeadas</a>, as{" "}
+          <a href="#disc-descobertas">descobertas D-01 a D-12</a> e as{" "}
+          <a href="#disc-pesquisa-entrevistas">entrevistas</a>.
+        </p>
+        <Card
+          eyebrow="Persona da jornada"
+          title="Médico prescritor · composição das 5 personas"
+        >
+          <FactGrid
+            cols={3}
+            items={[
+              {
+                dt: "Quem",
+                dd: "Médico brasileiro, 38–55 anos, presbiopia incipiente; já trocou de prontuário ao menos uma vez.",
+              },
+              {
+                dt: "Contexto",
+                dd: "Atende 8–24 pacientes por dia; sem 30 minutos para tutorial; muitas vezes sem secretária.",
+              },
+              {
+                dt: "Job-to-be-done",
+                dd: "Recuperar tempo, clareza e evidência durante a consulta, sem aumentar a carga burocrática.",
+              },
+            ]}
+          />
+          <p>
+            <em>
+              “Se a tela me pede mais de 2 cliques para abrir, eu fecho; o lance
+              é o tempo.”
+            </em>
+          </p>
+          <SourceRow>
+            <SourceBadge id="e1-tercio" compact />
+            <SourceBadge id="e4-shadowing" compact />
+          </SourceRow>
+        </Card>
+
+        <JourneyMap stages={JOURNEY_MAP} />
+        <p className="flow-note">
+          A linha de emoção lê-se pela geometria: mais alta significa
+          satisfação, mais baixa significa fricção. As dores e as soluções
+          trazem selo de fonte, rastreável à pesquisa.
+        </p>
+
+        <h3 id="disc-userflow-momentos">Momentos críticos</h3>
+        <Callout variant="ok" label="Momento aha">
+          <p>
+            Ver a própria casuística montada no onboarding e a caixa de contexto
+            pronta na pré-consulta (a Dra. Patricia chamou de “metade do jogo
+            ganho”); receita e laudo saindo em segundos.
+          </p>
+          <SourceRow>
+            <SourceBadge id="e4-shadowing" compact />
+          </SourceRow>
+        </Callout>
+        <Callout variant="teal" label="Momentos da verdade">
+          <p>
+            Decidir migrar do prontuário atual; aceitar ou rejeitar a primeira
+            sugestão da Atena com a fonte à vista; assinar o primeiro documento
+            com validade ICP-Brasil.
+          </p>
+        </Callout>
+        <Callout variant="warn" label="Gatilhos de abandono">
+          <p>
+            Fricção de login e 2FA; travamento no pico da tarde; excesso de
+            cliques; pop-up de venda na receita; exigir digitação na frente do
+            paciente.
+          </p>
+          <SourceRow>
+            <SourceBadge id="e1-tercio" compact />
+            <SourceBadge id="e2-marco" compact />
+            <SourceBadge id="e3-barbara" compact />
+            <SourceBadge id="e4-shadowing" compact />
+          </SourceRow>
+        </Callout>
+
+        <Directives label="Recomendações priorizadas">
+          <p>
+            <strong>Ganhos rápidos:</strong> receita em PDF limpa, sem pop-ups
+            (D-04); validação da Atena em lote, não item a item (D-02);
+            tipografia ampliável e ações reversíveis (D-07); tela única, sem
+            abas (D-05, D-08).
+          </p>
+          <p>
+            <strong>Apostas estruturais:</strong> plataforma única que reúne
+            consulta, documentos, mensagens e casuística (D-01); Kanban de
+            pós-consulta com régua M1–M12 (D-10); onboarding com packs por
+            especialidade (D-11); casuística que vira evidência do mundo real.
+          </p>
+        </Directives>
       </Section>
 
       {/* 10 · A ENTREGA · TELAS FINAIS */}

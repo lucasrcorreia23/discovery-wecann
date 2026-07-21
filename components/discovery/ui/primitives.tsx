@@ -674,3 +674,130 @@ export function SwimlaneLegend({
     </div>
   );
 }
+
+/* ---------- JOURNEY MAP (user journey mapping · doc discovery) ---------- */
+export type JourneyStage = {
+  id: string;
+  /** eyebrow em caixa alta, ex.: "01 · DESCOBERTA". */
+  phase: string;
+  title: React.ReactNode;
+  /** valência -2..2; alimenta a curva de emoção (geometria, sem matiz). */
+  emotion: number;
+  emotionLabel: string;
+  touchpoints: React.ReactNode[];
+  actions: React.ReactNode[];
+  thoughts: React.ReactNode[];
+  pains: React.ReactNode[];
+  solutions: React.ReactNode[];
+};
+
+/** valência (-2..2) para posição vertical na faixa da curva (0% topo, 100% base). */
+function emotionTop(emotion: number): number {
+  return 50 - emotion * 17.5;
+}
+
+function CjmRow({
+  label,
+  stages,
+  field,
+}: {
+  label: string;
+  stages: JourneyStage[];
+  field: "touchpoints" | "actions" | "thoughts" | "pains" | "solutions";
+}) {
+  return (
+    <>
+      <div className="cjm-rowlabel">{label}</div>
+      {stages.map((s) => (
+        <div className="cjm-cell" key={s.id}>
+          <ul className="cjm-list">
+            {s[field].map((it, i) => (
+              <li key={i}>{it}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </>
+  );
+}
+
+export function JourneyMap({ stages }: { stages: JourneyStage[] }) {
+  const n = stages.length;
+  const points = stages
+    .map((s, i) => `${(i + 0.5) * 100},${emotionTop(s.emotion)}`)
+    .join(" ");
+  return (
+    <div className="cjm-wrap">
+      <div
+        className="cjm"
+        style={{
+          gridTemplateColumns: `var(--cjm-label) repeat(${n}, minmax(200px, 1fr))`,
+        }}
+      >
+        <div className="cjm-corner" aria-hidden />
+        {stages.map((s) => (
+          <div className="cjm-stage" key={s.id}>
+            <div className="cjm-stage-phase">{s.phase}</div>
+            <div className="cjm-stage-title">{s.title}</div>
+          </div>
+        ))}
+
+        <CjmRow label="Pontos de contato" stages={stages} field="touchpoints" />
+        <CjmRow label="Ações" stages={stages} field="actions" />
+        <CjmRow label="Pensamentos" stages={stages} field="thoughts" />
+
+        <div className="cjm-rowlabel">Emoção</div>
+        <div className="cjm-emo" style={{ gridColumn: "2 / -1" }}>
+          <div className="cjm-emo-plot">
+            <svg
+              className="cjm-emo-svg"
+              viewBox={`0 0 ${n * 100} 100`}
+              preserveAspectRatio="none"
+              aria-hidden
+            >
+              <line
+                className="cjm-emo-base"
+                x1={0}
+                y1={50}
+                x2={n * 100}
+                y2={50}
+                vectorEffect="non-scaling-stroke"
+              />
+              <polyline
+                className="cjm-emo-line"
+                points={points}
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+            <div
+              className="cjm-emo-dots"
+              style={{ gridTemplateColumns: `repeat(${n}, 1fr)` }}
+            >
+              {stages.map((s) => (
+                <span className="cjm-emo-col" key={s.id}>
+                  <span
+                    className="cjm-emo-dot"
+                    style={{ top: `${emotionTop(s.emotion)}%` }}
+                  />
+                </span>
+              ))}
+            </div>
+          </div>
+          <div
+            className="cjm-emo-labels"
+            style={{ gridTemplateColumns: `repeat(${n}, 1fr)` }}
+          >
+            {stages.map((s) => (
+              <span className="cjm-emo-label" key={s.id}>
+                {s.emotionLabel}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <CjmRow label="Dores" stages={stages} field="pains" />
+        <CjmRow label="Soluções" stages={stages} field="solutions" />
+      </div>
+    </div>
+  );
+}

@@ -3254,6 +3254,164 @@ code {
   border-color: var(--teal);
 }
 
+/* ============ JOURNEY MAP (user journey mapping · seção 9) ============ */
+.cjm-wrap {
+  margin: 24px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  overflow-x: auto;
+}
+.cjm {
+  --cjm-label: 150px;
+  display: grid;
+  min-width: 900px;
+}
+.cjm-corner {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+}
+.cjm-stage {
+  padding: 12px 16px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.cjm-stage-phase {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.cjm-stage-title {
+  margin-top: 4px;
+  font-size: var(--fs-h4-heading);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  color: var(--ink);
+}
+.cjm-rowlabel {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+}
+.cjm-cell {
+  padding: 16px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.cjm-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cjm-list > li {
+  position: relative;
+  padding-left: 14px;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-normal);
+  color: var(--ink-soft);
+}
+.cjm-list > li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+.cjm-list em {
+  font-style: italic;
+  color: var(--ink);
+}
+.cjm-list strong {
+  font-weight: var(--fw-semibold);
+  color: var(--ink);
+}
+.cjm-list .src-badge {
+  margin-top: 4px;
+}
+/* faixa de emoção: curva por geometria (mais alta = satisfação, mais baixa = fricção) */
+.cjm-emo {
+  padding: 14px 16px 10px;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.cjm-emo-plot {
+  position: relative;
+  height: 56px;
+}
+.cjm-emo-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.cjm-emo-base {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+.cjm-emo-line {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.cjm-emo-dots {
+  position: absolute;
+  inset: 0;
+  display: grid;
+}
+.cjm-emo-col {
+  position: relative;
+}
+.cjm-emo-dot {
+  position: absolute;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  transform: translate(-50%, -50%);
+}
+.cjm-emo-labels {
+  display: grid;
+  margin-top: 8px;
+}
+.cjm-emo-label {
+  padding: 0 6px;
+  text-align: center;
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
 .footer {
   margin-top: 40px;
   padding-top: 24px;
