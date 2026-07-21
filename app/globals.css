@@ -665,11 +665,10 @@ h2 {
   letter-spacing: var(--ls-tight);
   margin-bottom: 16px;
 }
-.sec-rule {
-  width: 56px;
-  height: 2px;
-  background: var(--accent);
-  margin-bottom: 32px;
+/* o respiro após o título de seção vinha do antigo .sec-rule (barra de 56×2px,
+   removida); agora vive no próprio h2, preservando o mesmo ritmo vertical. */
+section > h2 {
+  margin-bottom: 48px;
 }
 h3 {
   font-family: var(--font-sans);
@@ -1240,7 +1239,7 @@ td strong {
   border-bottom: none;
 }
 
-/* site tree (doc discovery · sitemap as-is) */
+/* site tree (doc discovery · novo sitemap · to-be) */
 .site-tree {
   list-style: none;
   margin: 8px 0 0;
@@ -1259,6 +1258,26 @@ td strong {
   font-size: var(--fs-body);
   line-height: var(--lh-normal);
   color: var(--ink-soft);
+}
+.site-ref {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--panel);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  line-height: var(--lh-snug);
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+.site-from {
+  margin: 0;
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  line-height: var(--lh-snug);
+  color: var(--ink-faint);
 }
 
 /* journey header (cor por jornada) */
@@ -3128,6 +3147,31 @@ code {
 .flow-step.handoff .flow-step-label {
   color: var(--teal);
 }
+.flow-step.parallel {
+  background: var(--amber-soft);
+  border-style: dashed;
+  border-color: var(--amber);
+}
+.flow-atena {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 0 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background: var(--bg);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  vertical-align: 1px;
+}
+.flow-note {
+  margin-top: 10px;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-normal);
+  color: var(--ink-mute);
+}
 .flow-branches {
   margin-top: 8px;
   display: flex;
@@ -3195,6 +3239,11 @@ code {
 .legend-swatch.terminal {
   background: var(--accent-soft);
   border-color: var(--accent);
+}
+.legend-swatch.parallel {
+  background: var(--amber-soft);
+  border-style: dashed;
+  border-color: var(--amber);
 }
 .legend-swatch.medico {
   background: var(--accent);
@@ -4153,4 +4202,196 @@ td .src-row {
 }
 .screen-why-refs a:hover {
   border-color: var(--accent);
+}
+
+/* ---------- SEÇÃO 10 · DECISÕES DE INTERFACE ---------- */
+
+/* chip de heurística: fundamento, não evidência.
+   Deliberadamente distinto do .src-badge (canto reto contra pílula) para que
+   o leitor não confunda "o que observamos" com "por que se sustenta". */
+.heur-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: var(--fs-micro);
+  line-height: var(--lh-normal);
+  color: var(--ink-soft);
+  background: var(--bg-soft);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 2px 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: help;
+}
+/* os ids de Nielsen já vêm em caixa alta; "Hick"/"Jakob" são nomes próprios
+   e não devem ser maiusculizados, por isso não há text-transform aqui. */
+.heur-chip .heur-num {
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-label);
+  color: var(--ink);
+}
+/* leis de interação: mesmo peso, origem distinta da lista de Nielsen */
+.heur-chip.heur-lei {
+  border-style: dotted;
+}
+
+/* decisão: a unidade atômica da seção */
+.decision {
+  border-left: 2px solid var(--line-strong);
+  padding: 2px 0 2px 16px;
+  margin: 18px 0;
+}
+.decision .dec-text {
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--ink);
+  margin: 0;
+}
+.decision .dec-detail {
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-normal);
+  color: var(--ink-mute);
+  margin-top: 6px;
+}
+.decision .dec-basis {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.decision .src-row {
+  margin-top: 6px;
+}
+
+/* referência a descoberta: traço cheio = achado, vazado = sinal */
+.dec-disc,
+.dec-princ {
+  display: inline-flex;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  line-height: var(--lh-normal);
+  color: var(--accent);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 1px 7px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.dec-disc:hover,
+.dec-princ:hover {
+  border-color: var(--accent);
+}
+.dec-disc.dec-achado {
+  border-color: var(--ink-faint);
+  background: var(--panel-2);
+}
+.dec-disc.dec-sinal {
+  border-style: dashed;
+  color: var(--ink-mute);
+}
+.dec-princ {
+  background: var(--bg-soft);
+  font-style: italic;
+}
+
+/* bloco de tela: conceito + suas decisões */
+.screen-dec {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 28px 0;
+}
+.screen-dec .sd-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.screen-dec .sd-num {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+.screen-dec h4.sd-title {
+  font-size: var(--fs-h4-heading);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-normal);
+  text-transform: none;
+  color: var(--ink);
+  margin: 0;
+}
+/* o que a tela entrega: lead com peso de corpo, não de nota de rodapé */
+.screen-dec .sd-lead {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--ink-soft);
+  margin: 18px 0 0;
+}
+/* a justificativa apoia o entregável; entra sob divisor próprio */
+.screen-dec .sd-why {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line-strong);
+}
+.screen-dec .sd-why-label {
+  display: block;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 4px;
+}
+.screen-dec .sd-decisions {
+  margin-top: 8px;
+}
+
+/* conceito de UI: a imagem entregue, sem moldura decorativa */
+.concept-shot {
+  margin: 0;
+}
+.concept-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--bg);
+}
+.concept-shot figcaption {
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-normal);
+  color: var(--ink-mute);
+  margin-top: 8px;
+}
+
+/* matriz de cobertura: gerada a partir das decisões, roda em scroll próprio */
+.coverage-matrix {
+  margin: 16px 0;
+}
+.coverage-matrix .table-frame {
+  overflow-x: auto;
+}
+.coverage-matrix td:not(:first-child),
+.coverage-matrix th:not(:first-child) {
+  text-align: center;
+  white-space: nowrap;
+}
+.coverage-matrix .cov-on {
+  color: var(--ink);
+}
+.coverage-matrix .cov-off {
+  color: var(--ink-faint);
 }

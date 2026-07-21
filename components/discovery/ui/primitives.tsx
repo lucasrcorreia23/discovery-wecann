@@ -49,7 +49,6 @@ export function Section({
     <section id={id}>
       {num && <div className="sec-num">{num}</div>}
       {title && <h2>{title}</h2>}
-      {title && <div className="sec-rule" />}
       {children}
     </section>
   );
@@ -568,9 +567,11 @@ export function InfoRules({
 
 /* ---------- SWIMLANE (visão atual · doc 05) ---------- */
 export type FlowStep = {
-  kind?: "action" | "decision" | "terminal" | "handoff";
+  kind?: "action" | "decision" | "terminal" | "handoff" | "parallel";
   label: React.ReactNode;
   route?: React.ReactNode;
+  /** Passo em que a Atena age e aguarda validação humana. */
+  atena?: boolean;
   branches?: { label: string; to: React.ReactNode }[];
 };
 
@@ -586,7 +587,14 @@ function FlowStepView({ step }: { step: FlowStep }) {
   const kind = step.kind ?? "action";
   return (
     <div className={`flow-step ${kind}`}>
-      <div className="flow-step-label">{step.label}</div>
+      <div className="flow-step-label">
+        {step.atena && (
+          <span className="flow-atena" title="Uso da Atena">
+            Atena
+          </span>
+        )}
+        {step.label}
+      </div>
       {step.route && <div className="flow-route">{step.route}</div>}
       {step.branches && step.branches.length > 0 && (
         <div className="flow-branches">

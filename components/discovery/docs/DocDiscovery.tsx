@@ -10,12 +10,27 @@
   Meeting,
   JourneyHeader,
   Tag,
+  Swimlane,
+  SwimlaneLegend,
 } from "../ui/primitives";
+import type { SwimLane } from "../ui/primitives";
 import {
   SourceBadge,
   SourceRow,
   StarBlock,
 } from "../ui/evidence";
+import {
+  ConceptShot,
+  DecisionRow,
+  HeuristicChip,
+  ScreenDecisions,
+} from "../ui/decisions";
+import {
+  PRINCIPLE_HEURISTICS,
+  type HeuristicId,
+  type PrincipleId,
+} from "@/lib/heuristics";
+import { type EvidenceId } from "@/lib/evidence";
 import DiscoveryContracts from "./DiscoveryContracts";
 import { INTERVIEW_FRAMEWORK } from "@/lib/interview-methodology";
 import {
@@ -68,33 +83,38 @@ const STEAL: [string, string][] = [
   ["SOUL MV", "Auditabilidade de ações em ambiente regulado → todo rastro da Atena é auditável."],
 ];
 
-type SiteNode = { label: string; children?: SiteNode[] };
+type SiteNode = { label: string; ref?: string; children?: SiteNode[] };
 
-/** Auditoria de navegação do MVP vivo (menu lateral) · Julho/2026 · inventário "as-is". */
-const SITEMAP_ASIS: { module: string; nodes: SiteNode[] }[] = [
+/** Arquitetura de informação proposta na frente de Design UX · "Novo Sitemap" · 2026 (to-be). */
+const SITEMAP_NOVO: { module: string; nodes: SiteNode[] }[] = [
   {
-    module: "IA Atena",
+    module: "Início",
     nodes: [
-      { label: "🤖 Chatbot" },
-      { label: "Histórico de Conversas" },
+      {
+        label: "IA Conversacional",
+        children: [
+          { label: "Conversa contextual" },
+          { label: "Discutir um caso (Selecionar um Paciente)" },
+          { label: "Perguntar" },
+        ],
+      },
+      { label: "Sessões Recentes" },
+      { label: "Pilulas de conhecimento" },
+      { label: "Agenda de hoje" },
     ],
   },
   {
     module: "Casuística",
     nodes: [
       { label: "Barra de Ações Científicas" },
-      {
-        label: "Resumo da Casuística",
-        children: [
-          { label: "Indicadores Gerais" },
-          { label: "Perfil da Coorte" },
-          { label: "Distribuições" },
-        ],
-      },
+      { label: "Resumo da Casuística" },
+      { label: "Indicadores Gerais" },
+      { label: "Perfil da Coorte" },
+      { label: "Distribuições" },
       { label: "Insights Atena" },
       { label: "Qualidade da Casuística" },
-      { label: "Marcos Científicos" },
       { label: "Coparticipação Científica" },
+      { label: "Resposta ao Tratamento" },
     ],
   },
   {
@@ -103,125 +123,53 @@ const SITEMAP_ASIS: { module: string; nodes: SiteNode[] }[] = [
       {
         label: "Barra de Ações",
         children: [
-          { label: "Novo Agendamento" },
-          { label: "Cadastrar Paciente" },
-          { label: "Pacientes" },
+          {
+            label: "Novo Agendamento",
+            ref: "Pacientes",
+            children: [{ label: "Cadastrar Paciente", ref: "Pacientes" }],
+          },
         ],
       },
-      { label: "Resumo Operacional" },
-      { label: "Calendário", children: [{ label: "Navegação Temporal" }] },
+      {
+        label: "Tipos de visualizações",
+        children: [
+          { label: "Consulta" },
+          { label: "Dia" },
+          { label: "Semana" },
+          { label: "Mês" },
+        ],
+      },
+      { label: "Filtros" },
+      { label: "Calendário" },
       {
         label: "Lista de Atendimentos",
-        children: [
-          { label: "Alertas da Agenda" },
-          {
-            label: "Ações do Atendimento",
-            children: [
-              { label: "Pacientes/Prontuário" },
-              { label: "Pré-Consulta" },
-            ],
-          },
-        ],
+        children: [{ label: "Ações do Atendimento", ref: "Paciente 360" }],
       },
+      { label: "Alertas da Agenda" },
+      { label: "Numerados gerais" },
+      { label: "Seleção de médicos" },
     ],
   },
   {
-    module: "CRM",
+    module: "Acompanhamento",
     nodes: [
-      { label: "Barra de Ações" },
       {
-        label: "Indicadores Gerais",
+        label: "Filtros",
         children: [
-          { label: "Mensagens Novas" },
-          { label: "Dúvidas de Atendimento" },
-          { label: "Agendamentos" },
-          { label: "Questionários Pré-Consulta" },
+          { label: "Tudo" },
+          { label: "Pré-consulta" },
+          { label: "Pós-consulta" },
         ],
       },
-      {
-        label: "Chat do Paciente",
-        children: [{ label: "Ver prontuário → Pacientes/Prontuário" }],
-      },
-    ],
-  },
-  {
-    module: "Consulta",
-    nodes: [
       { label: "Busca de paciente" },
+      { label: "Novos Pacientes" },
+      { label: "Dúvidas" },
+      { label: "Agendamentos" },
+      { label: "Documentação" },
+      { label: "Questionários" },
       {
-        label: "Anamnese e exame físico",
-        children: [
-          {
-            label: "Primeira Consulta",
-            children: [
-              { label: "Anamnese" },
-              { label: "Comorbidades & Medicamentos" },
-              { label: "Exame Físico & Mental" },
-              { label: "Escalas para Avaliar" },
-              { label: "Conduta & Plano Terapêutico" },
-            ],
-          },
-          {
-            label: "Seguimento",
-            children: [
-              { label: "Seguimento" },
-              { label: "Resultado de Exames" },
-              { label: "Comorbidades" },
-              { label: "Escalas para Avaliar" },
-              { label: "Conduta" },
-            ],
-          },
-          {
-            label: "Evento",
-            children: [
-              { label: "Evento Adverso" },
-              { label: "Intercorrência" },
-              { label: "Internação" },
-              {
-                label: "Outro",
-                children: [
-                  { label: "O evento" },
-                  { label: "Causalidade e gravidade" },
-                  { label: "Conduta" },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Exames Complementares",
-        children: [{ label: "Solicitar" }, { label: "Baixar" }],
-      },
-      {
-        label: "Gerador de Documentos",
-        children: [
-          { label: "Prescrições" },
-          { label: "Exames" },
-          { label: "Atestado" },
-          { label: "Laudo" },
-          { label: "Encaminhamento" },
-          { label: "Cirurgia & OPME" },
-          { label: "Sumário Clínico" },
-          { label: "Orientações" },
-          { label: "Busca Contextual" },
-          { label: "Sugestão da Atena" },
-        ],
-      },
-      { label: "Atendimentos prévios" },
-      { label: "Documentos gerados" },
-      {
-        label: "🤖 Atena Copiloto",
-        children: [
-          {
-            label: "Botão Adicionar",
-            children: [
-              { label: "Nova Consulta" },
-              { label: "Adicionar medicação" },
-              { label: "Solicitar exame" },
-            ],
-          },
-        ],
+        label: "Card do paciente",
+        children: [{ label: "Ver prontuário", ref: "Paciente 360" }],
       },
     ],
   },
@@ -229,7 +177,7 @@ const SITEMAP_ASIS: { module: string; nodes: SiteNode[] }[] = [
     module: "Documentos",
     nodes: [
       { label: "Busca de paciente" },
-      { label: "Resumo Clínico do Paciente" },
+      { label: "Informações do paciente" },
       {
         label: "Gerador de Documentos",
         children: [
@@ -243,88 +191,14 @@ const SITEMAP_ASIS: { module: string; nodes: SiteNode[] }[] = [
           { label: "Sumário Clínico" },
           { label: "Orientações" },
           { label: "TCLE" },
-          { label: "Busca Contextual" },
-          { label: "Sugestão da Atena" },
         ],
       },
-      {
-        label: "Ações do Documento",
-        children: [
-          { label: "Status do Documento" },
-          { label: "Documentos Gerados" },
-        ],
-      },
-    ],
-  },
-  {
-    module: "Pós-Consulta",
-    nodes: [
-      {
-        label: "Barra de Ações",
-        children: [{ label: "Busca de paciente" }, { label: "Chat WhatsApp" }],
-      },
-      {
-        label: "Indicadores Gerais",
-        children: [
-          { label: "Mensagens Novas" },
-          { label: "Efeitos Adversos" },
-          { label: "Renovação de receitas" },
-          { label: "Documentos pendentes" },
-          { label: "Questionários pós" },
-        ],
-      },
-      {
-        label: "Escolher Paciente",
-        children: [{ label: "Pacientes/Prontuário" }],
-      },
+      { label: "Documentos gerados" },
+      { label: "Análise da Atena" },
     ],
   },
   {
     module: "Paciente 360",
-    nodes: [
-      {
-        label: "Busca de paciente",
-        children: [{ label: "Pacientes/Prontuário" }],
-      },
-    ],
-  },
-  {
-    module: "Pacientes",
-    nodes: [
-      {
-        label: "Barra de Ações",
-        children: [
-          { label: "Cadastrar paciente" },
-          {
-            label: "Novo agendamento",
-            children: [
-              { label: "Novo cadastro de paciente" },
-              { label: "Agenda" },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Modelos Narrativa Financeira",
-        children: [
-          { label: "Busca de Packs" },
-          { label: "Categorias" },
-          { label: "Tabela de Packs" },
-          { label: "Packs Cards" },
-        ],
-      },
-      {
-        label: "Busca e Filtros Avançados",
-        children: [{ label: "Filtros Operacionais" }],
-      },
-      {
-        label: "Tabela de Pacientes",
-        children: [{ label: "Prontuário →" }],
-      },
-    ],
-  },
-  {
-    module: "Prontuário",
     nodes: [
       { label: "Voltar para pacientes" },
       {
@@ -334,8 +208,8 @@ const SITEMAP_ASIS: { module: string; nodes: SiteNode[] }[] = [
       {
         label: "Ações Rápidas",
         children: [
-          { label: "Iniciar atendimento → Consulta/Live" },
-          { label: "Agendar → Agenda" },
+          { label: "Iniciar atendimento", ref: "Consulta" },
+          { label: "Agendar", ref: "Agenda" },
           { label: "Gerar documentos" },
           { label: "Enviar documento" },
           { label: "Mensagens WhatsApp" },
@@ -353,8 +227,10 @@ const SITEMAP_ASIS: { module: string; nodes: SiteNode[] }[] = [
       {
         label: "Escalas Clínicas",
         children: [
-          { label: "Validar Escala · Cards" },
-          { label: "Modal de Validação" },
+          {
+            label: "Validar Escala Cards",
+            children: [{ label: "Modal de Validação" }],
+          },
         ],
       },
       { label: "Comorbidades Ativas" },
@@ -364,11 +240,10 @@ const SITEMAP_ASIS: { module: string; nodes: SiteNode[] }[] = [
         label: "Documentos gerados",
         children: [{ label: "Gerar Atestado Médico" }],
       },
-      { label: "Atendimentos prévios" },
       {
-        label: "Prescrições",
+        label: "Atendimentos prévios",
         children: [
-          { label: "Classificar Medicamentos" },
+          { label: "Prescrições - Classificar Medicamentos" },
           { label: "Gerar Atestados" },
           { label: "Gerar Laudo" },
         ],
@@ -383,21 +258,323 @@ const SITEMAP_ASIS: { module: string; nodes: SiteNode[] }[] = [
           },
         ],
       },
-      { label: "🤖 Atena Copiloto" },
-      { label: "Cards de Notificação" },
+      {
+        label: "🤖 Atena Copiloto",
+        children: [{ label: "Cards de Notificação" }],
+      },
     ],
   },
   {
-    module: "Contabilidade",
-    nodes: [{ label: "Em construção" }],
+    module: "Pacientes 360",
+    nodes: [
+      {
+        label: "Barra de Ações",
+        children: [
+          {
+            label: "Cadastrar paciente",
+            children: [
+              {
+                label: "Novo cadastro de paciente",
+                children: [
+                  { label: "Identificação" },
+                  { label: "Contato" },
+                  { label: "Convênio" },
+                  { label: "Perfil clínico" },
+                  { label: "Origem & tags" },
+                ],
+              },
+            ],
+          },
+          { label: "Novo agendamento", ref: "Agenda" },
+        ],
+      },
+      { label: "Busca e Filtros Avançados" },
+      {
+        label: "Filtros Operacionais",
+        children: [
+          { label: "Janela operacional" },
+          { label: "Risco de abandono" },
+          { label: "Compliance & FUP" },
+          { label: "Perfil clínico" },
+        ],
+      },
+      {
+        label: "Tabela de Pacientes",
+        children: [{ label: "Prontuário", ref: "Paciente 360" }],
+      },
+    ],
+  },
+];
+
+/** Nós alcançados por link cruzado, fora da barra de navegação de topo. */
+const SITEMAP_REFERENCIADOS: {
+  module: string;
+  from: string;
+  nodes: SiteNode[];
+}[] = [
+  {
+    module: "Consulta",
+    from: "Paciente 360 › Ações Rápidas › Iniciar atendimento",
+    nodes: [
+      { label: "Dados do paciente" },
+      { label: "Resumo clínico e evolução" },
+      {
+        label: "Episódio terapêutico",
+        children: [{ label: "Escalas" }],
+      },
+      {
+        label: "Diagnóstico",
+        children: [{ label: "Comorbidades" }, { label: "Medicações" }],
+      },
+      {
+        label: "Medicamentos em Uso",
+        children: [
+          { label: "Sugestão de exame" },
+          { label: "Exame físico" },
+          { label: "Exame mental" },
+        ],
+      },
+      {
+        label: "Exames Complementares",
+        children: [
+          { label: "Conduta e plano terapêutico" },
+          { label: "Prescrição" },
+          { label: "CID sugerido" },
+        ],
+      },
+      {
+        label: "Documentos Gerados",
+        children: [
+          { label: "Nota clínica (SOAP)" },
+          { label: "Atestado e laudo" },
+          { label: "Solicitação de exames" },
+          { label: "Questionário (PROM)" },
+        ],
+      },
+      { label: "Notas clínicas" },
+      { label: "Patient Global Impression of Change" },
+      {
+        label: "Ações",
+        children: [
+          { label: "Ver Transcrição" },
+          { label: "Descartar" },
+          { label: "Encerrar e Revisar", ref: "Conferência" },
+          {
+            label: "Gerar documento",
+            children: [
+              { label: "Tipo de documento" },
+              { label: "Edição do documento" },
+              { label: "Validação Atena" },
+              { label: "Documentos gerados" },
+              { label: "Contexto clínico" },
+              {
+                label: "Ações",
+                children: [
+                  { label: "Deletar" },
+                  { label: "Enviar por mensagem" },
+                  { label: "Imprimir" },
+                  { label: "Assinar" },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
-    module: "Configurações",
-    nodes: [],
+    module: "Conferência",
+    from: "Consulta › Ações › Encerrar e Revisar",
+    nodes: [
+      { label: "Resumo Clínico e Evolução" },
+      { label: "Alertas Clínicos (5)" },
+      { label: "Encaminhamentos" },
+      {
+        label: "Prontuário da Consulta",
+        children: [
+          { label: "Anamnese" },
+          { label: "Comorbidades & Medicamentos" },
+          { label: "Exame físico & mental" },
+          { label: "Conduta & Plano" },
+          { label: "Documentos" },
+          { label: "Retorno" },
+        ],
+      },
+      { label: "Informações do paciente" },
+      {
+        label: "Ações",
+        children: [
+          { label: "Ver Transcrição" },
+          { label: "Descartar" },
+          { label: "Encerrar e Revisar" },
+          { label: "Gerar documento" },
+        ],
+      },
+    ],
+  },
+];
+
+const USERFLOW_PHASES = ["Pré-consulta", "Consulta", "Pós-consulta"];
+
+/** Entregável de Design UX · "User Flow · Jornada do Médico" · 2026. */
+const USERFLOW_LANES: SwimLane[] = [
+  {
+    id: "medico",
+    name: "Médico",
+    accent: "accent",
+    cells: [
+      [
+        { kind: "terminal", label: "Faz login" },
+        { label: "Acessa Home" },
+        { label: "Pergunta/consulta a Atena", atena: true },
+        {
+          kind: "decision",
+          label: "Selecionou um paciente?",
+          branches: [
+            { label: "Não", to: "Faz perguntas gerais" },
+            { label: "Sim", to: "Consulta contextual sobre o paciente" },
+            { label: "Sim", to: "Consulta sobre o paciente" },
+          ],
+        },
+        {
+          label: "Verifica agenda do dia",
+          route: "Agenda › Dia/Hoje · Agendados · Confirmados",
+        },
+        { label: "Abre modal de preview do cliente" },
+        { label: "Acessa Paciente 360 (Perfil do Paciente)" },
+        { label: "Verifica e resgata informações relevantes para a consulta" },
+        {
+          label: "Consulta Modelos e sugestões",
+          route: "Modelos & Packs · Sugestão Atena",
+        },
+        { label: "Clica em Iniciar Consulta" },
+      ],
+      [
+        {
+          kind: "decision",
+          label: "Consulta é presencial?",
+          route:
+            "Consulta › Gerar link teleconsulta / presencial · Transcrição ao vivo",
+          branches: [
+            { label: "Não", to: "Ajusta câmera e posição" },
+            { label: "Sim", to: "Inicia transcrição" },
+          ],
+        },
+        { label: "Ajusta câmera e posição" },
+        { label: "Gera link e envia ao paciente" },
+        { label: "Atende paciente por vídeo chamada" },
+        {
+          label: "Atena hidrata e preenche",
+          atena: true,
+          route:
+            "Hidrata comorbidades, medicações, escalas e exames · médico aprova, rejeita ou edita",
+        },
+        {
+          label: "Alertas surgem na Atena se algo crítico for detectado",
+          atena: true,
+        },
+        { label: "Preenche prontuário" },
+        { label: "Sinaliza paciente na consulta", atena: true },
+        { label: "Escreve anotações dentro dos tópicos clínicos" },
+        { label: "Inicia transcrição", atena: true },
+        { label: "Atena escuta e preenche o prontuário", atena: true },
+        { label: "Encerra consulta" },
+        { label: "Encerrar e Revisar" },
+      ],
+      [
+        { label: "Acessa Página de Conferência" },
+        { label: "Analisa resumo clínico e evolução", atena: true },
+        { label: "Analisa alertas clínicos" },
+        { label: "Verifica próximos passos", atena: true },
+        {
+          kind: "decision",
+          label: "Aceita sugestão e próximos passos?",
+          branches: [
+            {
+              label: "Sim",
+              to: "Atena preenche prontuário final com próximos passos",
+            },
+            {
+              label: "Não",
+              to: "Confere e edita manualmente sugestões da Atena no prontuário",
+            },
+          ],
+        },
+        {
+          label: "Atena preenche prontuário final com próximos passos",
+          atena: true,
+        },
+        { label: "Documentos são gerados", atena: true },
+        {
+          label:
+            "Confere e edita manualmente sugestões da Atena no prontuário se necessário",
+          atena: true,
+        },
+        {
+          kind: "decision",
+          label: "Precisa gerar documento complementar?",
+          branches: [
+            { label: "Sim", to: "Gerar documentos" },
+            { label: "Não", to: "Necessita retorno?" },
+          ],
+        },
+        {
+          kind: "decision",
+          label: "Necessita retorno?",
+          route: "Define FUP (M1–M12)",
+          branches: [
+            { label: "Não", to: "Finaliza consulta" },
+            { label: "Sim", to: "Acompanha Casuística e Outcomes" },
+          ],
+        },
+        { kind: "terminal", label: "Finaliza consulta" },
+        {
+          kind: "terminal",
+          label: "Acompanha Casuística e Outcomes",
+          route: "Casuística · Outcomes · Efeitos adversos · FUP",
+        },
+      ],
+    ],
   },
   {
-    module: "Suporte",
-    nodes: [{ label: "Chat WhatsApp" }],
+    id: "paralelo",
+    name: "Fluxos paralelos & referências",
+    accent: "teal",
+    cells: [
+      [
+        { kind: "handoff", label: "Acessa Agenda" },
+        { kind: "handoff", label: "Acessa acompanhamentos" },
+        { kind: "parallel", label: "Abre pilula de conhecimento", atena: true },
+        {
+          kind: "parallel",
+          label: "Navega em pilulas e conteúdos relacionadas",
+        },
+        { kind: "terminal", label: "Acessa o blog/site da WeCann" },
+      ],
+      [
+        {
+          kind: "handoff",
+          label: "Gerar documentos",
+          route: "Consulta em modo player",
+        },
+        { label: "Acessa Documentos" },
+        { label: "Paciente selecionado automaticamente", atena: true },
+        { label: "Seleciona o tipo de documento" },
+        {
+          label: "Utiliza sugestão da Atena para preencher automaticamente",
+          atena: true,
+        },
+        { label: "Revisa e assina" },
+        { label: "Encaminha por mensagem" },
+      ],
+      [
+        {
+          kind: "handoff",
+          label: "Gerar documentos",
+          route: "acionado quando falta documento complementar",
+        },
+      ],
+    ],
   },
 ];
 
@@ -408,6 +585,7 @@ function SiteTree({ nodes }: { nodes: SiteNode[] }) {
       {nodes.map((n, i) => (
         <li key={i}>
           <span className="site-node">{n.label}</span>
+          {n.ref && <span className="site-ref">→ {n.ref}</span>}
           {n.children && n.children.length > 0 && (
             <SiteTree nodes={n.children} />
           )}
@@ -416,6 +594,627 @@ function SiteTree({ nodes }: { nodes: SiteNode[] }) {
     </ul>
   );
 }
+
+/** Conceitos de UI entregues na frente de Design UX · julho/2026 (public/ui-final). */
+type ScreenDecision = {
+  text: React.ReactNode;
+  heuristics: HeuristicId[];
+  discoveries?: string[];
+  principles?: PrincipleId[];
+  sources?: EvidenceId[];
+  detail?: React.ReactNode;
+};
+
+type ConceptScreen = {
+  num: string;
+  title: string;
+  file: string;
+  width: number;
+  height: number;
+  alt: string;
+  /** Rótulo curto para a matriz de cobertura. */
+  shortTitle: string;
+  lead: React.ReactNode;
+  decisions: ScreenDecision[];
+};
+
+const CONCEPT_SCREENS: ConceptScreen[] = [
+  {
+    num: "C-01",
+    title: "Home · Início",
+    shortTitle: "Home",
+    file: "home-inicio.png",
+    width: 1440,
+    height: 812,
+    alt: "Tela inicial do WeCann Care com a esfera da Atena ao centro, campo de pergunta e trilho lateral com pílulas de conhecimento e agenda do dia",
+    lead: (
+      <>
+        Ponto de entrada do produto: uma superfície única de conversa com a
+        Atena, com repertório de comandos à mão e o contexto do dia num trilho
+        lateral. Não é um painel de indicadores; é o lugar onde se fala com ela.
+      </>
+    ),
+    decisions: [
+      {
+        text: (
+          <>
+            <strong>Um campo único ao centro</strong> concentra pergunta,
+            comando e busca, em vez de distribuir a entrada em widgets.
+          </>
+        ),
+        heuristics: ["h8", "hick"],
+        discoveries: ["D-05", "D-08"],
+        principles: ["P2"],
+        sources: ["e2-marco", "reuniao-2606"],
+        detail: (
+          <>
+            Responde ao pedido literal do Dr. Marco por “tela limpa, com espaço
+            para digitar e poucos botões”.
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <strong>Chips de ação rápida nomeiam o que a Atena faz</strong>{" "}
+            (Discutir Caso, Buscar Evidência, Gerar Documento, Explorar Minha
+            Casuística), com “E mais” guardando o resto.
+          </>
+        ),
+        heuristics: ["h6", "hick"],
+        discoveries: ["D-11"],
+        principles: ["P2"],
+        sources: ["reuniao-0307"],
+        detail: (
+          <>
+            Um campo de texto vazio transfere ao médico o custo de descobrir o
+            que pedir; os chips devolvem esse repertório sem obrigá-lo a
+            memorizar comandos.
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <strong>O trilho da direita carrega o contexto do dia</strong>{" "}
+            (Agenda de Hoje, Pílulas de Conhecimento, Sessões Recentes) em
+            blocos colapsáveis que não competem com o centro.
+          </>
+        ),
+        heuristics: ["h1", "h8"],
+        discoveries: ["D-01"],
+        principles: ["P2"],
+        sources: ["e4-shadowing"],
+      },
+      {
+        text: (
+          <>
+            <strong>A Atena aparece como esfera, não como avatar humano</strong>
+            , e a saudação marca data e hora sem simular conversa social.
+          </>
+        ),
+        heuristics: ["h2"],
+        discoveries: ["D-03"],
+        sources: ["orb-spec", "im-interna"],
+        detail: (
+          <>
+            É a regra de tom de voz aplicada à forma: “Pulso do Dia”, não “Bom
+            dia, doutor!”. A Atena trabalha, não encanta.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    num: "C-02",
+    title: "Agenda · Dia",
+    shortTitle: "Agenda",
+    file: "agenda-dia.png",
+    width: 1440,
+    height: 1222,
+    alt: "Agenda em visão dia, com quatro indicadores no topo, timeline vertical de consultas, mini-calendário e alertas da agenda na coluna esquerda",
+    lead: (
+      <>
+        Visão dia da agenda: o estado do expediente resolvido em quatro números,
+        timeline anotada por modalidade e preparo, e uma coluna de alertas com o
+        que exige ação hoje.
+      </>
+    ),
+    decisions: [
+      {
+        text: (
+          <>
+            <strong>Quatro números abrem a tela</strong> (agendados,
+            confirmados, sem confirmação, slots livres); o estado do dia se lê
+            antes de qualquer linha da timeline.
+          </>
+        ),
+        heuristics: ["h1"],
+        discoveries: ["D-04", "D-12"],
+        principles: ["P1"],
+        sources: ["e4-shadowing"],
+      },
+      {
+        text: (
+          <>
+            <strong>
+              Cada bloco mostra modalidade e percentual de pré-consulta
+            </strong>{" "}
+            (100%, 50%, 30%); o que falta aparece antes de o paciente chegar.
+          </>
+        ),
+        heuristics: ["h1", "h6"],
+        discoveries: ["D-01", "D-10"],
+        principles: ["P1"],
+        sources: ["e4-shadowing", "e3-barbara"],
+      },
+      {
+        text: (
+          <>
+            <strong>Alertas da agenda em texto, não em badge numérico</strong>:
+            pendências do dia, links de telemedicina a conferir e seguimentos
+            em atraso, cada um dizendo o que é e o que fazer.
+          </>
+        ),
+        heuristics: ["h9"],
+        discoveries: ["D-10"],
+        principles: ["P1"],
+        sources: ["e3-barbara"],
+      },
+      {
+        text: (
+          <>
+            <strong>Convenções de calendário preservadas</strong>: timeline
+            vertical, mini-calendário com marcadores, seletor Dia/Semana/Mês.
+          </>
+        ),
+        heuristics: ["jakob", "h7"],
+        discoveries: ["D-12"],
+        sources: ["e4-shadowing", "bench-sites"],
+        detail: (
+          <>
+            O benchmark isolou a agenda do iClinic como “clara e previsível” e a
+            familiaridade da Clínica nas Nuvens como facilitador de migração;
+            inovar aqui custaria mais do que renderia.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    num: "C-03",
+    title: "Paciente 360 · Lista",
+    shortTitle: "P360 lista",
+    file: "paciente-360-lista.png",
+    width: 1440,
+    height: 1008,
+    alt: "Lista de pacientes cadastrados com filtros rápidos à esquerda, colunas de diagnóstico, último contato e status de follow-up com barra de progresso",
+    lead: (
+      <>
+        Base de pacientes filtrável por janela operacional, perfil clínico,
+        compliance e risco de abandono, com o estágio de follow-up visível em
+        cada linha. Responde a uma pergunta que hoje ninguém consegue fazer:
+        quais pacientes estão saindo da mão.
+      </>
+    ),
+    decisions: [
+      {
+        text: (
+          <>
+            <strong>Filtros rápidos trazem a contagem junto do rótulo</strong>{" "}
+            (Agendados hoje 12, TCLE pendente 11, Sem consulta +12m 31); o
+            filtro informa antes de ser aplicado.
+          </>
+        ),
+        heuristics: ["h1", "h6"],
+        discoveries: ["D-10"],
+        principles: ["P1"],
+        sources: ["e4-shadowing"],
+      },
+      {
+        text: (
+          <>
+            <strong>Uma coluna Status FUP com fase, barra e estado</strong> (M1,
+            M3, M6 · Atrasado, Em espera, Em andamento, Completo, sem FUP), com
+            a mesma escala de cor usada nos alertas clínicos.
+          </>
+        ),
+        heuristics: ["h1", "h4"],
+        discoveries: ["D-10"],
+        principles: ["P1"],
+        sources: ["e3-barbara", "e4-shadowing"],
+      },
+      {
+        text: (
+          <>
+            <strong>“Risco de abandono” vira grupo de filtro</strong>: sem
+            consulta +12m, receita vencida +7d, NPS abaixo de 60, pré-consulta
+            incompleta, FUP atrasado.
+          </>
+        ),
+        heuristics: ["h6"],
+        discoveries: ["D-10"],
+        sources: ["e3-barbara"],
+        detail: (
+          <>
+            A Dra. Bárbara admitiu que, se o paciente não aciona, o caso se
+            perde; o filtro transforma essa perda silenciosa em lista.
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <strong>A tabela não zebra nem usa borda vertical</strong>;
+            separação por divider de 1px, conforme o sistema visual.
+          </>
+        ),
+        heuristics: ["h8"],
+        sources: ["styleguide-v2"],
+      },
+    ],
+  },
+  {
+    num: "C-04",
+    title: "Paciente 360 · Detalhe",
+    shortTitle: "P360 detalhe",
+    file: "paciente-360-detalhe.png",
+    width: 1440,
+    height: 812,
+    alt: "Ficha do paciente com resumo clínico em prosa, painel de alertas clínicos em três níveis, régua de acompanhamento de TCLE a M12 e blocos de diagnóstico e tratamento",
+    lead: (
+      <>
+        Ficha do paciente consolidada: resumo clínico em prosa, alertas em três
+        níveis, régua de acompanhamento de TCLE a M12 e o par
+        diagnóstico/tratamento com posologia. Síntese primeiro, estrutura
+        depois.
+      </>
+    ),
+    decisions: [
+      {
+        text: (
+          <>
+            <strong>Alertas clínicos em três níveis nomeados</strong> (Crítico,
+            Atenção, Escala), com a mesma cor em toda a plataforma e intensidade
+            proporcional à criticidade real.
+          </>
+        ),
+        heuristics: ["h4", "h1"],
+        discoveries: ["D-02"],
+        principles: ["P1"],
+        sources: ["e4-shadowing", "reuniao-0307"],
+      },
+      {
+        text: (
+          <>
+            <strong>A Régua de Acompanhamento em uma linha só</strong>: TCLE,
+            Pré-consulta, Basal, M1, M3, M6, M12, com o marco atual destacado e
+            os concluídos com check.
+          </>
+        ),
+        heuristics: ["h1", "h2"],
+        discoveries: ["D-10"],
+        principles: ["P4"],
+        sources: ["e4-shadowing"],
+        detail: (
+          <>
+            A régua é o componente que não tem equivalente no benchmark; usa o
+            vocabulário de protocolo que o médico já emprega, não uma metáfora
+            de software.
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <strong>O resumo em prosa vem antes do dado estruturado</strong>;
+            diagnóstico, tratamento e comorbidades ficam abaixo e expandem sob
+            demanda.
+          </>
+        ),
+        heuristics: ["h8"],
+        discoveries: ["D-05", "D-08"],
+        principles: ["P2"],
+        sources: ["e4-shadowing"],
+      },
+      {
+        text: (
+          <>
+            <strong>Uma única ação primária no cabeçalho</strong> (Iniciar
+            consulta); Documentos, Mensagens, Ver perfil e Agendar ficam em pill
+            de contorno.
+          </>
+        ),
+        heuristics: ["h8", "h4"],
+        sources: ["styleguide-v2"],
+      },
+    ],
+  },
+  {
+    num: "C-05",
+    title: "Consulta presencial · Estado inicial",
+    shortTitle: "Consulta",
+    file: "consulta-estado-inicial.png",
+    width: 1440,
+    height: 812,
+    alt: "Tela de consulta em duas colunas, com prontuário em estrutura SOAP à esquerda, blocos clínicos fechados à direita, pílula de transcrição em curso e barra de notas flutuante",
+    lead: (
+      <>
+        Ambiente de registro da consulta: prontuário SOAP contínuo, transcrição
+        correndo ao fundo, blocos clínicos a um clique na coluna direita e
+        campo de notas livres sempre ao alcance. É o centro do redesenho.
+      </>
+    ),
+    decisions: [
+      {
+        text: (
+          <>
+            <strong>A transcrição corre nos bastidores</strong> e se anuncia por
+            uma pílula discreta (Transcrevendo · 00:45); o médico não digita
+            para o sistema funcionar.
+          </>
+        ),
+        heuristics: ["h1", "h8"],
+        discoveries: ["D-03"],
+        principles: ["P2"],
+        sources: ["e2-marco", "e4-shadowing"],
+        detail: (
+          <>
+            O Dr. Marco não digita na frente do paciente porque “fica um
+            extraterreno na frente do paciente”. A tela precisa funcionar sem
+            que ele olhe para ela.
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <strong>SOAP como estrutura do texto, não como abas</strong>:
+            Subjetivo, Objetivo, Avaliação e Plano visíveis ao mesmo tempo, num
+            box único e contínuo.
+          </>
+        ),
+        heuristics: ["h2", "h8"],
+        discoveries: ["D-05", "D-08"],
+        sources: ["e2-marco", "demo-v107"],
+        detail: (
+          <>
+            O Dr. Marco abandonou as abas SOAP do prontuário atual porque
+            “ninguém respeita”; todos escrevem tudo numa aba só. O conceito
+            aceita o comportamento real em vez de insistir contra ele.
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <strong>Sete blocos clínicos fechados na coluna direita</strong>{" "}
+            (Episódio Terapêutico, Diagnósticos, Medicamentos, Exames,
+            Documentos, Atendimentos Prévios) abrem no lugar, sem reorganizar a
+            tela.
+          </>
+        ),
+        heuristics: ["h8", "h6"],
+        discoveries: ["D-08"],
+        principles: ["P2", "P4"],
+        sources: ["reuniao-2606"],
+      },
+      {
+        text: (
+          <>
+            <strong>A barra de notas flutua ancorada ao rodapé</strong>;
+            anotação livre não obriga a sair do prontuário nem a escolher um
+            campo antes de escrever.
+          </>
+        ),
+        heuristics: ["h7"],
+        discoveries: ["D-05"],
+        sources: ["e4-shadowing"],
+        detail: (
+          <>
+            O shadowing mediu que praticamente todos os médicos ignoram campos
+            separados, o que produz dado não estruturado; o desenho separa o
+            ato de escrever da tarefa de estruturar.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    num: "C-06",
+    title: "Consulta presencial · Conferência",
+    shortTitle: "Conferência",
+    file: "consulta-conferencia.png",
+    width: 1440,
+    height: 1007,
+    alt: "Tela de conferência da consulta com resumo gerado, alertas clínicos, lista de encaminhamentos e prontuário SOAP com botões de aceitar e rejeitar no cabeçalho",
+    lead: (
+      <>
+        Ponto de convergência dos dois ramos da consulta, presencial e remota:
+        tudo o que a Atena produziu (resumo, prontuário, encaminhamentos) chega
+        aqui para aceite ou rejeição antes de virar registro.
+      </>
+    ),
+    decisions: [
+      {
+        text: (
+          <>
+            <strong>Aceitar e rejeitar no cabeçalho do bloco</strong>: o
+            prontuário gerado chega com ✓ e ✗ visíveis, nunca já salvo.
+          </>
+        ),
+        heuristics: ["h3", "h5"],
+        discoveries: ["D-02"],
+        principles: ["P3"],
+        sources: ["e1-tercio", "e2-marco", "e4-shadowing"],
+        detail: (
+          <>
+            Os quatro entrevistados leem e corrigem tudo o que a IA produz. A
+            régua do produto é acelerar com controle, não automatizar.
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <strong>A validação é por bloco, não por item</strong>; um aceite
+            cobre o conjunto revisado.
+          </>
+        ),
+        heuristics: ["h7", "h5"],
+        discoveries: ["D-02"],
+        principles: ["P3"],
+        sources: ["e4-shadowing"],
+        detail: (
+          <>
+            A Dra. Patricia exige os checks, mas alertou que dez ou mais
+            validações seguidas cansam; granularidade demais destrói a própria
+            revisão que deveria proteger.
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <strong>Encaminhamentos como checklist em linguagem clínica</strong>{" "}
+            (Manter L-dopa + Pramipexol, Fisio + Fono, Retorno em 2 meses), não
+            como códigos ou campos de formulário.
+          </>
+        ),
+        heuristics: ["h2", "h6"],
+        discoveries: ["D-04"],
+        sources: ["e4-shadowing"],
+      },
+      {
+        text: (
+          <>
+            <strong>Descartar e Finalizar Consulta ficam separados</strong>: um
+            é pill de contorno com ×, o outro é o único botão sólido da tela.
+          </>
+        ),
+        heuristics: ["h5", "h3"],
+        discoveries: ["D-07", "D-09"],
+        principles: ["P3"],
+        sources: ["e1-tercio"],
+        detail: (
+          <>
+            O medo relatado na E1 de “apertar um botão e perder tudo” é o que
+            torna a distância visual entre as duas ações um requisito, não um
+            detalhe estético.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    num: "C-07",
+    title: "Consulta presencial · Gerar Documentos",
+    shortTitle: "Documentos",
+    file: "consulta-gerar-documentos.png",
+    width: 1440,
+    height: 1257,
+    alt: "Tela de geração de documentos com abas por tipo, busca de medicamento, preview da notificação de receita B em duas vias e painel de validação da Atena com alertas de dose e duplicidade",
+    lead: (
+      <>
+        Geração de documentos com onze tipos em abas, busca de medicamento,
+        preview fiel do impresso, validação clínica antes da assinatura e
+        rastreio de estado por documento. É a única tela do conjunto em que a
+        Atena bloqueia, em vez de sugerir.
+      </>
+    ),
+    decisions: [
+      {
+        text: (
+          <>
+            <strong>O painel Validação Athena barra antes da assinatura</strong>
+            : dose crítica, duplicidade terapêutica, fracionamento inviável e
+            confirmação de dados, cada alerta expansível.
+          </>
+        ),
+        heuristics: ["h5", "h9"],
+        discoveries: ["D-02", "D-09"],
+        principles: ["P3"],
+        sources: ["e4-shadowing", "normas"],
+      },
+      {
+        text: (
+          <>
+            <strong>O preview reproduz o documento como ele é impresso</strong>,
+            com 1ª e 2ª via lado a lado; o médico confere a receita, não uma
+            representação dela.
+          </>
+        ),
+        heuristics: ["h2", "h1"],
+        discoveries: ["D-04", "D-09"],
+        sources: ["normas", "e3-barbara"],
+      },
+      {
+        text: (
+          <>
+            <strong>Onze tipos de documento em abas nomeadas</strong>{" "}
+            (Prescrição, Exames, Atestado, Laudo, Encaminhamento, Cirurgia,
+            OPME, Sumário, Orientações, TCLE), sem submenu.
+          </>
+        ),
+        heuristics: ["h6"],
+        discoveries: ["D-01", "D-04"],
+        sources: ["e3-barbara"],
+      },
+      {
+        text: (
+          <>
+            <strong>Documentos Gerados mostra estado por documento</strong> (Em
+            Aberto, Assinado, Enviado); assinar e enviar são ações distintas e
+            rastreáveis.
+          </>
+        ),
+        heuristics: ["h1", "h4"],
+        discoveries: ["D-09"],
+        principles: ["P3"],
+        sources: ["e1-tercio", "normas"],
+        detail: (
+          <>
+            O Dr. Tércio viu um atendimento seu editável por terceiros na
+            plataforma da instituição; estado explícito é o que torna a
+            imutabilidade legível na interface.
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <strong>Saída em PDF limpo, sem pop-up de venda</strong>; imprimir,
+            enviar e assinar ficam na mesma barra, ao pé do preview.
+          </>
+        ),
+        heuristics: ["h8"],
+        discoveries: ["D-04"],
+        sources: ["e3-barbara"],
+        detail: (
+          <>
+            Hoje a Dra. Bárbara imprime, salva em PDF e envia manualmente só
+            para escapar dos anúncios do receituário que usa.
+          </>
+        ),
+      },
+    ],
+  },
+];
+
+/** Heurísticas efetivamente citadas, na ordem do registro, para a matriz. */
+const COVERAGE_HEURISTICS: HeuristicId[] = [
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "h7",
+  "h8",
+  "h9",
+  "hick",
+  "jakob",
+];
 
 export default function DocDiscovery() {
   return (
@@ -2118,62 +2917,412 @@ export default function DocDiscovery() {
       <Section
         id="disc-sitemap"
         num="8 · SITEMAP"
-        title="O mapa do site atual (as-is)"
+        title="O novo mapa do site"
       >
         <p>
-          O último resultado deste pacote é o chão sobre o qual a próxima fase
-          constrói. Antes de desenhar a nova arquitetura de informação (o{" "}
+          Aqui o Discovery deixa de descrever e passa a propor. O{" "}
           <a href="#disc-projeto-escopo">
-            mapa do site previsto na fase de Design UX
-          </a>
-          ), a AtomSix levantou o que já existe: o inventário completo do menu
-          lateral e das telas do MVP vivo, módulo por módulo, tal como um
-          médico encontra hoje ao entrar em app.wecann.clinic.
+            mapa do site previsto na frente de Design UX
+          </a>{" "}
+          está desenhado: uma arquitetura de informação de{" "}
+          <strong>sete módulos</strong> que substitui os treze do menu lateral
+          auditado no MVP vivo. A consolidação responde diretamente à
+          descoberta <a href="#disc-descobertas">D-01</a>: consulta,
+          documentos, mensagens e casuística deixam de ser destinos separados
+          e passam a conviver na mesma plataforma.
         </p>
         <Callout variant="teal" label="Fonte & escopo">
           <p>
-            Auditoria de navegação do produto em produção · julho/2026. Este
-            é um <strong>inventário descritivo</strong>, não uma proposta:
-            é o ponto de partida sobre o qual a nova arquitetura de
-            informação será construída na fase de Design UX, priorizada pelas
-            descobertas do <a href="#disc-descobertas">capítulo 5</a> (a
-            plataforma única de D-01 e as 7 telas inegociáveis apontadas no
-            shadowing). <SourceBadge id="e4-shadowing" compact />
+            Entregável de Design UX · Novo Sitemap · 2026. Este é uma{" "}
+            <strong>proposta de arquitetura</strong>, não um inventário: é o
+            desenho para onde o produto vai, priorizado pelas descobertas do{" "}
+            <a href="#disc-descobertas">capítulo 5</a> (a plataforma única de
+            D-01 e as 7 telas inegociáveis apontadas no shadowing). A jornada
+            que percorre este mapa está na{" "}
+            <a href="#disc-userflow">seção 9</a>.{" "}
+            <SourceBadge id="e4-shadowing" compact />
           </p>
         </Callout>
         <FactGrid
           cols={3}
           items={[
-            { dt: "13", dd: "módulos de primeiro nível no menu lateral" },
+            { dt: "7", dd: "módulos de primeiro nível na barra de navegação" },
             {
-              dt: "4 níveis",
-              dd: "profundidade máxima (ex.: Consulta → Anamnese e exame físico → Primeira Consulta → bloco)",
+              dt: "5 níveis",
+              dd: "profundidade máxima (ex.: Pacientes 360 → Barra de Ações → Cadastrar paciente → Novo cadastro → Identificação)",
             },
             {
-              dt: "As-is",
-              dd: "reflete o produto vivo hoje, não o redesenho da AtomSix",
+              dt: "2",
+              dd: "nós alcançados por link cruzado, fora da barra de topo: Consulta e Conferência",
             },
           ]}
         />
         <div className="carousel" style={{ marginTop: "1.25rem" }}>
-          {SITEMAP_ASIS.map((m) => (
+          {SITEMAP_NOVO.map((m) => (
             <Card key={m.module} title={m.module}>
-              {m.nodes.length > 0 ? (
-                <SiteTree nodes={m.nodes} />
-              ) : (
-                <p
-                  style={{
-                    color: "var(--ink-faint)",
-                    fontSize: "var(--fs-body)",
-                    margin: 0,
-                  }}
-                >
-                  Sem submenu mapeado nesta auditoria.
-                </p>
-              )}
+              <SiteTree nodes={m.nodes} />
             </Card>
           ))}
         </div>
+
+        <h3>Nós referenciados</h3>
+        <p>
+          Duas telas centrais não moram na barra de navegação: chega-se a elas
+          por dentro do fluxo, no momento em que fazem sentido. É o que
+          mantém a consulta como um ambiente contínuo, sem obrigar o médico a
+          voltar ao menu no meio do atendimento.
+        </p>
+        <div className="carousel" style={{ marginTop: "1.25rem" }}>
+          {SITEMAP_REFERENCIADOS.map((m) => (
+            <Card key={m.module} title={m.module}>
+              <p className="site-from">{m.from}</p>
+              <SiteTree nodes={m.nodes} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      {/* 9 · JORNADA DO USUÁRIO */}
+      <Section
+        id="disc-userflow"
+        num="9 · JORNADA DO USUÁRIO"
+        title="O fluxo do médico, do login à casuística"
+      >
+        <p>
+          O <a href="#disc-sitemap">mapa do site</a> diz onde as telas moram;
+          a jornada diz em que ordem o médico as percorre num dia real de
+          consultório. O fluxo abaixo é o segundo entregável de Design UX:
+          ele atravessa as mesmas três fases descritas em prosa na{" "}
+          <a href="#disc-jornadas">seção 7</a>, agora no nível da tela e da
+          decisão, com as rotas reais do produto anotadas em cinza sob cada
+          passo.
+        </p>
+        <p>
+          Duas leituras importam mais que as outras. A primeira: a Atena
+          aparece marcada em cada ponto onde age, e em todos eles o médico
+          aprova, rejeita ou edita; nunca há preenchimento silencioso, o que
+          responde às descobertas D-02 e D-03. A segunda: a fase de consulta
+          se bifurca logo no primeiro nó (presencial ou remota) e só volta a
+          convergir em <em>Encerrar e Revisar</em>, o que torna essa tela o
+          ponto de estrangulamento do produto inteiro.
+        </p>
+        <Callout variant="teal" label="Fonte & escopo">
+          <p>
+            Entregável de Design UX · User Flow · Jornada do Médico · 2026.
+            Cobre o médico como ator principal; o papel do secretário está
+            mapeado na proposta comparada da{" "}
+            <a href="#disc-jornadas-completo">seção 7</a>.{" "}
+            <SourceBadge id="e4-shadowing" compact />
+          </p>
+        </Callout>
+        <SwimlaneLegend
+          items={[
+            { kind: "action", label: "Ação do médico" },
+            { kind: "decision", label: "Decisão (Sim / Não)" },
+            { kind: "handoff", label: "Referência de fluxo" },
+            { kind: "parallel", label: "Fluxo paralelo" },
+            { kind: "terminal", label: "Fim" },
+          ]}
+        />
+        <Swimlane phases={USERFLOW_PHASES} lanes={USERFLOW_LANES} />
+        <p className="flow-note">
+          Texto cinza sob o passo = sub-ação e rota real do produto (ex.:
+          Agenda › Dia/Hoje · Agendados · Confirmados). O marcador Atena
+          indica os passos em que a IA age e aguarda validação humana.
+        </p>
+      </Section>
+
+      {/* 10 · A ENTREGA · TELAS FINAIS */}
+      <Section
+        id="disc-decisoes"
+        num="10 · A ENTREGA"
+        title="Os 7 fluxos finais"
+      >
+        <p>
+          Este é o entregável. O <a href="#disc-sitemap">mapa do site</a> disse
+          onde as telas moram, a <a href="#disc-userflow">jornada</a> disse em
+          que ordem o médico as percorre, e os 7 fluxos a seguir são o produto
+          disso: a interface do WeCann Care desenhada em alta fidelidade, pronta
+          para virar especificação.
+        </p>
+        <p>
+          Cada tela vem acompanhada da justificativa do que se vê nela. Não é
+          comentário estético: toda escolha aponta para a heurística de
+          usabilidade que a sustenta, a descoberta da pesquisa que a originou e,
+          quando existe, o princípio de interface que já a formalizou. É o que
+          permite discutir a tela pelo mérito do argumento, e não por
+          preferência.
+        </p>
+        <Callout variant="teal" label="Fonte & escopo">
+          <p>
+            Entregável de Design UX · conceitos de UI · julho/2026. São{" "}
+            <strong>telas conceito</strong>, não especificação de
+            implementação: definem hierarquia, densidade e comportamento
+            esperado, e ainda não passaram por teste de usabilidade com médicos;
+            ver <a href="#disc-dec-proximos">próximos passos</a>. O inventário
+            de componentes por tela está nos{" "}
+            <a href="#disc-produto">contratos de design</a> e o detalhamento de
+            estados em <a href="#jor-meta">Telas meta</a>.{" "}
+            <SourceBadge id="styleguide-v2" compact />
+          </p>
+        </Callout>
+
+        <h4>Como ler a justificativa</h4>
+        <p>
+          Sob cada tela, as escolhas aparecem seguidas de uma linha de
+          fundamentos. São três tipos de selo, com pesos e propósitos distintos:
+        </p>
+        <BlockList
+          items={[
+            <>
+              <HeuristicChip id="h5" /> <strong>Heurística</strong> · o que a
+              literatura de usabilidade prescreve, independentemente deste
+              projeto. As de Nielsen aparecem como H1 a H9; as leis de
+              interação, pelo nome.
+            </>,
+            <>
+              <a className="dec-disc dec-achado" href="#disc-descobertas">
+                D-02
+              </a>{" "}
+              <strong>Descoberta</strong> · o que a nossa pesquisa observou. O
+              traço cheio marca <strong>Achado</strong> (padrão forte,
+              multi-sessão); o traço vazado marca{" "}
+              <a className="dec-disc dec-sinal" href="#disc-descobertas">
+                Sinal
+              </a>{" "}
+              (indicação clara, base mais estreita). Uma decisão apoiada só em
+              sinais é candidata prioritária a validação.
+            </>,
+            <>
+              <a className="dec-princ" href="#princ-ux">
+                P3
+              </a>{" "}
+              <strong>Princípio</strong> · a regra de interface já acordada,
+              com origem própria rastreada.
+            </>,
+            <>
+              <SourceBadge id="e4-shadowing" compact /> <strong>Fonte</strong> ·
+              a sessão de pesquisa que sustenta a afirmação, clicável até o
+              registro. Selo tracejado continua marcando material não auditado.
+            </>,
+          ]}
+        />
+
+        <h4>Os princípios do projeto já eram heurísticas</h4>
+        <p>
+          Uma observação sobre a autoridade dos selos de heurística. Os
+          princípios P1 a P4 não saíram de uma lista canônica: nasceram da
+          pesquisa, cada um com origem rastreada. A leitura posterior mostra que
+          coincidem com o que a literatura de usabilidade já prescrevia. O
+          projeto chegou por observação onde a teoria já estava, e é isso que
+          torna as duas referências convergentes, não sobrepostas.
+        </p>
+        <TableFrame
+          head={[
+            "Princípio do projeto",
+            "De onde veio na pesquisa",
+            "Heurística correspondente",
+          ]}
+          rows={(Object.keys(PRINCIPLE_HEURISTICS) as PrincipleId[]).map(
+            (p) => {
+              const match = PRINCIPLE_HEURISTICS[p];
+              return [
+                <>
+                  <a href="#princ-ux">
+                    <strong>{p}</strong>
+                  </a>{" "}
+                  · {match.title}
+                </>,
+                match.origin,
+                <>
+                  {match.heuristics.map((h) => (
+                    <HeuristicChip id={h} key={h} />
+                  ))}
+                </>,
+              ];
+            },
+          )}
+        />
+
+        <h3 id="disc-dec-telas">Os 7 fluxos</h3>
+        <p>
+          A entrega cobre a porta de entrada do produto e as três fases da
+          jornada: Home e Agenda na pré-consulta, Paciente 360 como camada de
+          contexto em dois níveis (lista e ficha), e a consulta em três estados
+          (registro, conferência e documentos). São os fluxos que o{" "}
+          <a href="#disc-ent-patricia">shadowing</a> apontou como inegociáveis
+          para o MVP, com a agenda incluída por ser a porta diária do médico.
+        </p>
+        {CONCEPT_SCREENS.map((screen) => (
+          <ScreenDecisions
+            key={screen.num}
+            num={screen.num}
+            title={screen.title}
+            lead={screen.lead}
+            shot={
+              <ConceptShot
+                src={screen.file}
+                alt={screen.alt}
+                width={screen.width}
+                height={screen.height}
+              />
+            }
+          >
+            {screen.decisions.map((d, i) => (
+              <DecisionRow
+                key={i}
+                decision={d.text}
+                heuristics={d.heuristics}
+                discoveries={d.discoveries}
+                principles={d.principles}
+                sources={d.sources}
+              >
+                {d.detail}
+              </DecisionRow>
+            ))}
+          </ScreenDecisions>
+        ))}
+
+        <h3 id="disc-dec-sistema">O sistema visual</h3>
+        <p>
+          As decisões acima tratam de hierarquia e comportamento. Falta a camada
+          que as transforma em pixel: o design system consolidado em julho, que
+          se resume numa frase. A interface se comporta como uma boa publicação
+          médica: a hierarquia nasce da tipografia, não de caixas, sombras ou
+          cores fortes; a cor fica reservada ao que é clínico.
+        </p>
+        <FactGrid
+          cols={2}
+          items={[
+            {
+              dt: "Divider antes de caixa",
+              dd: "Conteúdos separados por linhas de 1px, nunca por sombra; profundidade se cria com contraste de fundo.",
+            },
+            {
+              dt: "Zero shadow",
+              dd: "Nenhum elemento usa box-shadow, nem no hover. Destaque se faz com borda de 1px ou mudança de fundo.",
+            },
+            {
+              dt: "Três vozes tipográficas",
+              dd: "Serifa dá o tom editorial aos títulos, sans carrega corpo e controles, mono marca rótulos, códigos e dados.",
+            },
+            {
+              dt: "Pill para ação, reta para conteúdo",
+              dd: "Tudo interativo e pontual é totalmente arredondado; tudo que é conteúdo vive em linhas retas com dividers.",
+            },
+          ]}
+        />
+        <p>
+          A consequência prática é uma ordem de decisão ao desenhar tela nova,
+          que também funciona como critério de revisão: primeiro o fundo, depois
+          a estrutura em dividers, depois a hierarquia resolvida na tipografia
+          e, só então, a cor, e apenas onde há status ou ação. A regra de ouro
+          fecha o sistema: acento sólido só em status crítico e na marca; para
+          fundo de selo, o mesmo acento a 25% de opacidade.
+        </p>
+        <Callout variant="teal" label="Onde isso aparece nos 7 fluxos">
+          <p>
+            A ausência de sombra e a separação por divider são visíveis em todas
+            as telas; as três vozes tipográficas aparecem com mais clareza no
+            Paciente 360, onde título serifado, corpo sans e rótulo mono
+            convivem na mesma ficha. O gradiente da marca fica restrito ao
+            símbolo, à faixa do botão primário e ao indicador de navegação, e a
+            nada além disso; é por isso que existe um único botão sólido por
+            tela.
+          </p>
+          <SourceRow>
+            <SourceBadge id="styleguide-v2" compact />
+            <SourceBadge id="orb-spec" compact />
+          </SourceRow>
+        </Callout>
+
+        <h3 id="disc-dec-proximos">Próximos passos</h3>
+        <p>
+          Antes do plano, uma leitura do conjunto. A matriz abaixo é gerada a
+          partir das justificativas desta seção, não escrita à parte: mostra em
+          quais telas cada heurística foi efetivamente acionada. Serve para ler
+          a entrega como sistema, não para pontuá-la.
+        </p>
+        <div className="coverage-matrix">
+          <TableFrame
+            head={[
+              "Heurística",
+              ...CONCEPT_SCREENS.map((s) => s.shortTitle),
+            ]}
+            rows={COVERAGE_HEURISTICS.map((h) => [
+              <HeuristicChip id={h} key={h} />,
+              ...CONCEPT_SCREENS.map((s) =>
+                s.decisions.some((d) => d.heuristics.includes(h)) ? (
+                  <span className="cov-on" aria-label="acionada" key={s.num}>
+                    ●
+                  </span>
+                ) : (
+                  <span
+                    className="cov-off"
+                    aria-label="não acionada"
+                    key={s.num}
+                  >
+                    ·
+                  </span>
+                ),
+              ),
+            ])}
+          />
+        </div>
+        <p>
+          A leitura por coluna é mais informativa que a por linha. Consulta e
+          Conferência concentram controle e prevenção de erro; Agenda e Paciente
+          360 concentram visibilidade de estado. Documentos é a única tela em
+          que prevenção de erro e recuperação aparecem juntas, o que é coerente
+          com ser a única em que a Atena bloqueia. As colunas mais vazias
+          indicam onde a próxima rodada tem mais a ganhar.
+        </p>
+        <Callout variant="teal" label="O que fica para a próxima rodada">
+          <p>
+            Quatro frentes, em ordem de prioridade. As duas primeiras validam o
+            que já está desenhado; as duas últimas completam o conjunto.
+          </p>
+          <BlockList
+            items={[
+              <>
+                <strong>1 · Teste de usabilidade com médicos.</strong> Os 7
+                fluxos foram validados com as fundadoras nas reuniões de 26/06 e
+                03/07; falta a persona final. Roteiro sugerido: Consulta e
+                geração de documentos com as personas{" "}
+                <a href="#per-dd-senior">Sênior</a> e{" "}
+                <a href="#per-dd-sobrecarregado">Sobrecarregado</a>, por serem
+                as telas em que um erro de desenho custa mais caro.
+              </>,
+              <>
+                <strong>2 · Verificação de acessibilidade 60+.</strong> A
+                tipografia ampliável e o comportamento em zoom que{" "}
+                <a href="#disc-descobertas">D-07</a> exige estão previstos em{" "}
+                <a href="#princ-ux">P3</a>, mas não foram exercitados nestes
+                conceitos. Vale junto do item 1, com a persona Sênior.
+              </>,
+              <>
+                <strong>3 · Conceito de onboarding.</strong>{" "}
+                <a href="#disc-descobertas">D-11</a> (packs por especialidade e
+                modelos próprios) é interface e ainda não tem tela;{" "}
+                <a href="#jor-onboarding">a jornada já está mapeada</a> e serve
+                de ponto de partida.
+              </>,
+              <>
+                <strong>4 · Validação em monitor pequeno.</strong> A regra de{" "}
+                <a href="#disc-descobertas">D-12</a> organizou a densidade dos 7
+                fluxos, mas o desenho e a revisão aconteceram a 1440px.
+                Falta rodar o conjunto em viewport reduzido, sem secretária, que
+                é o cenário do médico típico.
+              </>,
+            ]}
+          />
+        </Callout>
+        <p>
+          Fora da frente de design, <a href="#disc-descobertas">D-06</a>{" "}
+          (barreira financeira no início de carreira) segue sem superfície nestas
+          telas por não ser problema de interface: é insumo de negócio, e define
+          se a persona Recém-formado sequer experimenta o produto.
+        </p>
       </Section>
 
       {/* REGISTRO DE REUNIÕES */}

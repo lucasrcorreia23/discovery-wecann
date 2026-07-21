@@ -132,6 +132,18 @@ export const EVIDENCE = {
     short: "Conformidade v107",
     anchor: "arq-triangulacao",
   },
+  "styleguide-v2": {
+    type: "doc-interno",
+    label: "Styleguide WeCann v2 · design system · julho/2026",
+    short: "Styleguide v2",
+    anchor: "disc-dec-sistema",
+  },
+  "orb-spec": {
+    type: "doc-interno",
+    label: "Intro WeCann Orb · especificação de movimento v1.0",
+    short: "Orb v1.0",
+    anchor: "disc-dec-sistema",
+  },
   "bench-sites": {
     type: "benchmark",
     label: "Benchmark · sites oficiais e demos · junho/2026",
