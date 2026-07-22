@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# arquivo de referência grande demais para versionar (mantido só localmente)
+inputs/Brandbook WEC.pdf

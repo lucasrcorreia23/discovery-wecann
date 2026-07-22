@@ -2,41 +2,19 @@
 
 import { TABS } from "@/lib/discovery-nav";
 import DocDiscovery from "./docs/DocDiscovery";
-import DocPrincipios from "./docs/DocPrincipios";
-import DocFuncionalidades from "./docs/DocFuncionalidades";
-import Doc01Posicionamento from "./docs/Doc01Posicionamento";
-import Doc06ReferenciasMarca from "./docs/Doc06ReferenciasMarca";
-import Doc02Personas from "./docs/Doc02Personas";
-import Doc03Competitiva from "./docs/Doc03Competitiva";
-import Doc04Arquitetura from "./docs/Doc04Arquitetura";
-import Doc05Jornadas from "./docs/Doc05Jornadas";
-import Doc07Documentos from "./docs/Doc07Documentos";
-import Doc08Entrevistas from "./docs/Doc08Entrevistas";
 
 const DOC_COMPONENTS: Record<string, React.ComponentType> = {
   discovery: DocDiscovery,
-  principios: DocPrincipios,
-  funcionalidades: DocFuncionalidades,
-  posicionamento: Doc01Posicionamento,
-  "referencias-marca": Doc06ReferenciasMarca,
-  personas: Doc02Personas,
-  competitiva: Doc03Competitiva,
-  arquitetura: Doc04Arquitetura,
-  jornadas: Doc05Jornadas,
-  documentos: Doc07Documentos,
-  entrevistas: Doc08Entrevistas,
 };
 
 type Props = {
   poolRef: React.RefObject<HTMLDivElement | null>;
 };
 
-const SEARCHABLE_HIDDEN_TABS = new Set(["personas", "referencias-marca"]);
-
 export default function SearchPool({ poolRef }: Props) {
   return (
     <div ref={poolRef} className="search-pool" aria-hidden="true">
-      {TABS.filter((tab) => !tab.hidden || SEARCHABLE_HIDDEN_TABS.has(tab.id)).map((tab) => {
+      {TABS.filter((tab) => !tab.hidden).map((tab) => {
         const Doc = DOC_COMPONENTS[tab.id];
         if (!Doc) return null;
         return (

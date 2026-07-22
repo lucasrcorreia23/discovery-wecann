@@ -27,9 +27,9 @@ export default function Sidebar({
       <div className="brand">
         <Image
           src="/logo.svg"
-          alt="Atomsix"
-          width={229}
-          height={64}
+          alt="WeCann Care"
+          width={392}
+          height={67}
           className="brand-logo"
           priority
         />

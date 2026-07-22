@@ -323,6 +323,8 @@
 
 :root {
   --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-crimson), Georgia, serif;
+  --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
 
   /*
    * escala tipográfica: única fonte da verdade para tamanho, peso,
@@ -355,47 +357,46 @@
   --lh-normal: 1.5; /* body-sm, texto denso em card */
   --lh-relaxed: 1.7; /* body-lg, parágrafos correntes */
 
-  /* base neutra: tema claro */
+  /* base neutra: escala de cinza do Styleguide WeCann v2 */
   --bg: #ffffff;
-  --bg-soft: #fafafa;
-  --panel: #f6f6f7;
-  --panel-2: #f0f0f1;
-  --ink: #17171a;
-  --ink-soft: #52525b;
-  --ink-mute: #71717a;
-  --ink-faint: #a1a1aa;
-  --line: #ececed;
-  --line-strong: #dcdce0;
+  --bg-soft: #f6f6f6;
+  --panel: #f2f2f1;
+  --panel-2: #ededed;
+  --ink: #18181a;
+  --ink-soft: #444441;
+  --ink-mute: #676867;
+  --ink-faint: #8a8a85;
+  --line: #ededed;
+  --line-strong: #d9d9d9;
 
   /*
-   * tokens semânticos herdados dos documentos, mantidos por nome para não
-   * precisar tocar cada chamada de variant=/border= nos componentes, mas
-   * remapeados para tons de cinza (sem matiz). O peso relativo entre eles
-   * (mais escuro = mais ênfase) é o que resta para diferenciar categorias.
+   * acentos semânticos do Styleguide WeCann v2: cor sólida reservada ao que
+   * tem significado clínico/crítico; fundo (soft) a baixa opacidade do
+   * mesmo acento, nunca um tom neutro.
    */
-  --accent: #17171a;
-  --accent-soft: var(--panel);
-  --warn: #27272a;
-  --warn-soft: var(--line);
-  --ok: #17171a;
-  --ok-soft: var(--panel);
-  --teal: #3f3f46;
-  --teal-soft: var(--bg-soft);
-  --purple: #52525b;
-  --purple-soft: var(--panel-2);
-  --rose: #71717a;
-  --rose-soft: var(--bg-soft);
-  --amber: #52525b;
-  --amber-soft: var(--panel-2);
-  --blue: #3f3f46;
-  --blue-soft: var(--panel-2);
-  --emerald: #3f3f46;
-  --emerald-soft: var(--panel);
+  --accent: #50a4f3;
+  --accent-soft: rgba(80, 164, 243, 0.14);
+  --warn: #f3ac50;
+  --warn-soft: rgba(243, 172, 80, 0.18);
+  --ok: #40a59f;
+  --ok-soft: rgba(64, 165, 159, 0.16);
+  --teal: #40a59f;
+  --teal-soft: rgba(64, 165, 159, 0.16);
+  --purple: #8f73b4;
+  --purple-soft: rgba(143, 115, 180, 0.14);
+  --rose: #f36350;
+  --rose-soft: rgba(243, 99, 80, 0.14);
+  --amber: #f3ac50;
+  --amber-soft: rgba(243, 172, 80, 0.18);
+  --blue: #50a4f3;
+  --blue-soft: rgba(80, 164, 243, 0.14);
+  --emerald: #40a59f;
+  --emerald-soft: rgba(64, 165, 159, 0.16);
 
-  /* trio de marca: reservado ao estado ativo da navegação da sidebar */
-  --brand-blue: #3d45aa;
-  --brand-orange: #e64f29;
-  --brand-yellow: #fcb53b;
+  /* trio de marca: gradiente oficial (azul → coral → amarelo), estado ativo da navegação */
+  --brand-blue: #588dff;
+  --brand-orange: #f36350;
+  --brand-yellow: #fcd757;
 
   --maxw: 820px;
 }
@@ -418,7 +419,7 @@ body {
 }
 code,
 pre {
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
 }
 
 /* ---------- LAYOUT ---------- */
@@ -456,9 +457,9 @@ pre {
   height: 22px;
   width: auto;
   display: block;
-  filter: invert(1);
 }
 .brand-tag {
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
@@ -498,6 +499,7 @@ pre {
 }
 
 .nav-label {
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
@@ -591,6 +593,7 @@ main {
   margin-bottom: 88px;
 }
 .hero .kicker {
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
@@ -598,8 +601,8 @@ main {
   margin-bottom: 24px;
 }
 .hero h1 {
-  font-family: var(--font-sans);
-  font-weight: var(--fw-bold);
+  font-family: var(--font-serif);
+  font-weight: var(--fw-medium);
   font-size: var(--fs-display);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
@@ -627,6 +630,7 @@ main {
   padding: 16px 24px 0 0;
 }
 .hero-meta dt {
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
@@ -651,7 +655,7 @@ section {
   scroll-margin-top: 88px;
 }
 .sec-num {
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
   color: var(--ink-faint);
   letter-spacing: var(--ls-label);
@@ -659,8 +663,8 @@ section {
   margin-bottom: 8px;
 }
 h2 {
-  font-family: var(--font-sans);
-  font-weight: var(--fw-bold);
+  font-family: var(--font-serif);
+  font-weight: var(--fw-medium);
   font-size: var(--fs-h2);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
@@ -672,8 +676,8 @@ section > h2 {
   margin-bottom: 48px;
 }
 h3 {
-  font-family: var(--font-sans);
-  font-weight: var(--fw-bold);
+  font-family: var(--font-serif);
+  font-weight: var(--fw-medium);
   font-size: var(--fs-h3);
   line-height: var(--lh-tight);
   margin: 40px 0 16px;
@@ -681,6 +685,7 @@ h3 {
   color: var(--ink);
 }
 h4 {
+  font-family: var(--font-mono);
   font-size: var(--fs-h4-label);
   line-height: var(--lh-snug);
   letter-spacing: var(--ls-label);
@@ -814,6 +819,7 @@ td {
   vertical-align: top;
 }
 th {
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
@@ -902,14 +908,15 @@ td strong {
   border-color: var(--line-strong);
 }
 .card-title {
-  font-family: var(--font-sans);
-  font-weight: var(--fw-bold);
+  font-family: var(--font-serif);
+  font-weight: var(--fw-medium);
   font-size: var(--fs-h4-heading);
   line-height: var(--lh-snug);
   color: var(--ink);
   margin-bottom: 8px;
 }
 .eyebrow {
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
@@ -990,7 +997,7 @@ td strong {
 
 /* helper para dados técnicos (tamanho reduzido) */
 .mono {
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: var(--fs-body-sm);
 }
 
@@ -3818,12 +3825,12 @@ code {
   border-radius: 8px;
   padding: 16px;
   cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 0.15s, background 0.15s;
 }
 
 .search-result-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  background: var(--bg);
 }
 
 .search-result-meta {
@@ -3903,6 +3910,7 @@ code {
   flex: none;
   align-self: flex-start;
   margin-top: 4px;
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-label);
@@ -3922,8 +3930,9 @@ code {
   min-width: 0;
 }
 .meeting .m-title {
+  font-family: var(--font-serif);
   font-size: var(--fs-h4-heading);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-medium);
   color: var(--ink);
   line-height: var(--lh-snug);
 }
