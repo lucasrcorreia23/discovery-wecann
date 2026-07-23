@@ -9,7 +9,6 @@ export default function DocDiscovery() {
   return (
     <div className="tab-view">
       <Hero
-        kicker="Relatório final de projeto"
         title={<>WeCann</>}
         lead="Documento final da auditoria de UX/UI e da construção da nova identidade de marca da WeCann Care, conduzidas pela Atomsix."
         meta={[

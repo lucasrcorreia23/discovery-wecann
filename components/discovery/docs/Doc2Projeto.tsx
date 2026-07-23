@@ -11,7 +11,7 @@ export default function Doc2Projeto() {
         produto e um guia de marca pronto para uso interno e externo.
       </p>
 
-      <h3 id="projeto-escopo">Escopo e entregáveis</h3>
+      <h3 id="projeto-escopo">Escopo e Entregáveis</h3>
       <p>
         O escopo contratado se divide em duas frentes complementares: uma
         voltada à experiência do produto, outra à identidade visual da marca.
@@ -50,6 +50,14 @@ export default function Doc2Projeto() {
             "UI",
             "Desenho visual final das telas presentes nos principais fluxos do aplicativo.",
           ],
+          [
+            "Contratos de Design",
+            "Documentação que definiu o contrato de entrega da camada de interface das telas desenhadas, estabelecendo o formato dos componentes, o contrato de dados (props) e os estados que cada componente deve cobrir.",
+          ],
+          [
+            "Styleguide",
+            "Documento de referência com os padrões de tipografia, cor, forma e componentes de interface do produto, garantindo consistência visual entre as telas.",
+          ],
         ]}
       />
 
@@ -72,6 +80,14 @@ export default function Doc2Projeto() {
           [
             "Brand book",
             "Documento final que consolida as diretrizes de marca e as telas do produto já aplicadas a essa identidade, para uso interno e externo.",
+          ],
+          [
+            "Logotipo",
+            "Exploração e criação do logotipo e da assinatura visual da marca.",
+          ],
+          [
+            "Naming",
+            "Exploração e apresentação de alternativas de naming para a marca e para o agente de inteligência artificial do produto.",
           ],
         ]}
       />

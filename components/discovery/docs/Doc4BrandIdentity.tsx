@@ -44,16 +44,16 @@ export default function Doc4BrandIdentity() {
         aplicados, consulte o Brandbook.
       </p>
 
-      <h3 id="brand-styleguide">Guia de Estilos do produto</h3>
+      <h3 id="brand-styleguide">Styleguide do produto</h3>
       <p>
-        O Guia de Estilos do produto traduz essa identidade para as telas da
+        O Styleguide do produto traduz essa identidade para as telas da
         WeCann Care, seguindo uma lógica editorial: hierarquia por
         tipografia, sem sombras, superfícies separadas por linhas finas, e
         uma regra simples de forma, elementos interativos totalmente
         arredondados e conteúdo em linhas retas. Ele também documenta a
         aplicação de cores, ícones e os componentes centrais do produto,
         como botões, badges, tabs e tabelas. Para o detalhamento completo de
-        cada componente, consulte o Guia de Estilos.
+        cada componente, consulte o Styleguide.
       </p>
     </Section>
   );

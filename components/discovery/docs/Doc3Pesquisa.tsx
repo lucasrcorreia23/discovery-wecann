@@ -251,6 +251,8 @@ export default function Doc3Pesquisa() {
         when="E1"
         title="Dr. Tércio"
         sub="Medicina de família e cannabis"
+        transcriptHref="/docs/entrevista-tercio.md"
+        transcriptName="Entrevista - Dr. Tercio.md"
       >
         <p>
           <em>
@@ -261,56 +263,68 @@ export default function Doc3Pesquisa() {
 
         <h4>Perfil e contexto</h4>
         <p>
-          Médico com longa trajetória, atuando em medicina de família com
-          foco em cannabis medicinal, majoritariamente por telemedicina,
-          entre atendimento social e particular. Perfil mais cauteloso e
-          analógico: prefere anotar tudo manualmente e desconfia de
-          ferramentas que não mostrem a fonte da informação.
+          Médico com 62 anos e quase quatro décadas de formado, ex-médico
+          militar e hoje atuando em medicina de família com foco em cannabis
+          medicinal, coordenação médica e mentorias. Atende sozinho,
+          majoritariamente por telemedicina, entre atendimento social
+          (associação, com muitos pacientes de baixa renda e idosos) e
+          particular. Define a própria prática pela visão do organismo
+          inteiro, não da doença isolada, e mantém uma postura cética quanto
+          à comercialização da medicina. Perfil mais cauteloso e analógico:
+          prefere anotar tudo manualmente, arquiva tudo por conta própria e
+          desconfia de qualquer ferramenta que não mostre a fonte da
+          informação.
         </p>
 
         <h4>Fluxo de trabalho atual</h4>
         <BlockList
           items={[
-            "Pré-consulta: pede que o paciente envie exames antes do atendimento.",
-            "Durante: na telemedicina, não consegue ver o prontuário e o paciente na mesma tela.",
-            "Pós-consulta: revisa e corrige manualmente tudo o que a IA organiza.",
-            "Acompanhamento: combinado diretamente com o paciente por mensagem.",
+            "Pré-consulta: pede que o paciente suba exames recentes e um resumo do que busca já na própria plataforma de agendamento, para chegar ao atendimento com contexto.",
+            "Durante: na telemedicina, não consegue abrir duas telas ao mesmo tempo; para conferir o prontuário durante a consulta, precisa sair da tela do paciente, perdendo o contato visual.",
+            "Pós-consulta: revisa e corrige manualmente tudo o que a IA organiza, nunca aceita o registro sem reler; gera receita digital a partir de um conjunto de produtos pré-salvos, recorrendo à receita manuscrita quando a conexão falha.",
+            "Acompanhamento: combina previamente que o paciente mande mensagem em cerca de duas semanas; arquiva tudo em nuvem pessoal e mensagens, com eventos relevantes registrados manualmente no prontuário.",
           ]}
         />
 
         <h4>Uso de IA</h4>
         <BlockList
           items={[
-            "Usa apenas versões gratuitas, por curiosidade.",
-            "Exige base científica citada para confiar em qualquer sugestão.",
+            "Usa apenas versões gratuitas de ferramentas de IA, por curiosidade, nunca como parte crítica do fluxo.",
+            "Exige base científica citada para confiar em qualquer sugestão: sem fonte, não considera a resposta.",
+            "Já percebeu falhas de reconhecimento de voz em prontuários com IA, que confundem quem está falando e podem gerar registros incorretos.",
+            "Reluta com a ideia de uma IA que responda de forma autônoma ao paciente, por temer decisões erradas pelas quais o médico responde legalmente.",
           ]}
         />
 
         <h4>Dores priorizadas</h4>
         <BlockList
           items={[
-            "Instabilidade de conexão nas plataformas atuais.",
-            "Impossibilidade de ver duas telas ao mesmo tempo.",
-            "Prontuário que pode ser editado por outro médico depois de fechado.",
-            "Falta de acessibilidade para o público mais velho.",
+            "Instabilidade de conexão nas plataformas atuais, um problema recorrente entre os colegas.",
+            "Impossibilidade de ver duas telas ao mesmo tempo durante a telemedicina.",
+            "Prontuário que pode ser editado por outro médico da mesma instituição depois de fechado, o que considera uma falha grave de confiança.",
+            "Falta de acessibilidade para o público mais velho, tanto pacientes quanto colegas médicos.",
+            "Dúvida sobre quem tem acesso aos prontuários quando a plataforma pertence à instituição, não ao médico.",
           ]}
         />
 
         <h4>Ideias e pedidos diretos</h4>
         <BlockList
           items={[
-            "Separar a voz do médico e do paciente na transcrição.",
-            "Laudo imutável, com retificação apenas por anexo rastreável.",
-            "Base científica confiável dentro do próprio sistema.",
-            "Interface acessível para o público 60+.",
+            "Separar a voz do médico e do paciente na transcrição, para a IA não confundir quem fala.",
+            "Laudo imutável depois de fechado, com qualquer retificação feita apenas por anexo datado e rastreável.",
+            "Base científica confiável disponível dentro do próprio sistema, não apenas links externos.",
+            "Interface acessível, com tipografia ampliável, pensada para quem tem medo de errar ao usar a tecnologia.",
+            "Velocidade como prioridade central: receita pronta, assinada e enviada, com o mínimo de troca de documentos com o paciente.",
           ]}
         />
 
         <h4>Leitura AtomSix</h4>
         <BlockList
           items={[
-            "A confiança do médico mais cético da amostra depende de três condições: fonte citada, laudo imutável e interface acessível.",
-            "Reforça a fragmentação como dor real: hoje ele soma plataforma, papel e mensagens para dar conta do próprio fluxo.",
+            "Valida a tese de uma IA que atua nos bastidores: o olhar humano, o tom de voz e os não ditos da consulta são insubstituíveis, e a tecnologia deve organizar e poupar tempo, não se interpor entre médico e paciente.",
+            "Reforça a fragmentação de ferramentas como dor real: ele soma plataforma de agendamento, armazenamento em nuvem e mensagens para dar conta do próprio fluxo.",
+            "Reforça tempo como a métrica central: toda a rotina de pós-consulta que descreve gira em torno de tornar a receita e os documentos mais rápidos.",
+            "Imutabilidade do registro aparece como requisito de confiança, não como recurso opcional: é condição para considerar adotar qualquer novo prontuário.",
           ]}
         />
 
@@ -328,55 +342,72 @@ export default function Doc3Pesquisa() {
         when="E2"
         title="Dr. Marco Antônio"
         sub="Residência em psiquiatria"
+        transcriptHref="/docs/entrevista-marco-antonio.md"
+        transcriptName="Entrevista - Dr. Marco Antonio.md"
       >
+        <p>
+          <em>
+            Nota: a pedido do entrevistado, o conteúdo desta sessão é de uso
+            interno da equipe WeCann e Atomsix.
+          </em>
+        </p>
+
         <h4>Perfil e contexto</h4>
         <p>
-          Médico residente em início de carreira, com pouca prática fora da
-          residência e orçamento limitado. Usa dois prontuários diferentes,
-          um hospitalar e outro particular.
+          Médico formado há poucos anos, cursando o segundo ano de
+          residência em psiquiatria, com carga horária elevada no hospital e
+          pouca prática fora dela. Trabalha com medicina baseada em
+          evidências e reproduz com espírito crítico o que aprende na
+          residência. Usa dois prontuários diferentes, um hospitalar e
+          outro particular, escolhido sobretudo pelo plano gratuito. Início
+          de carreira e orçamento limitado definem quase todas as suas
+          escolhas de ferramenta.
         </p>
 
         <h4>Fluxo de trabalho atual</h4>
         <BlockList
           items={[
-            "Pré-consulta: revisa o prontuário rapidamente para relembrar o caso.",
-            "Durante: evita digitar na frente do paciente.",
-            "Pós-consulta: faz os registros depois, muitas vezes à mão.",
-            "Acompanhamento: reativo, a critério do paciente.",
+            "Pré-consulta: revisa rapidamente o prontuário para relembrar medicações e conversas anteriores.",
+            "Durante: evita digitar na frente do paciente, por considerar que isso afasta a atenção do encontro clínico.",
+            "Pós-consulta: faz o registro depois, muitas vezes à mão, e mantém anotações pessoais sensíveis fora do prontuário oficial, o que reconhece como um problema de conformidade.",
+            "Acompanhamento: reativo, combinado na própria consulta, deixando o paciente acionar por mensagem quando precisa de um ajuste.",
           ]}
         />
 
         <h4>Uso de IA</h4>
         <BlockList
           items={[
-            "Nunca pagou por ferramenta de transcrição.",
-            "Usa assistentes de IA gratuitos para dúvidas clínicas rápidas.",
-            "Vê a IA como inevitável, desde que sempre revisada.",
+            "Nunca pagou por uma ferramenta de transcrição, já que as opções pagas não compensam no início de carreira.",
+            "Usa assistentes de IA gratuitos para dúvidas clínicas rápidas, como critérios diagnósticos e combinação de medicações.",
+            "Vê a IA como uma ferramenta inevitável, com maior valor em transcrição e organização de registro, desde que sempre revisada.",
           ]}
         />
 
         <h4>Dores priorizadas</h4>
         <BlockList
           items={[
-            "Excesso de abas e campos no prontuário atual.",
-            "Preço como barreira decisiva de adoção.",
-            "Ferramentas fragmentadas entre si.",
+            "Excesso de abas e campos no prontuário atual, que na prática ninguém preenche à risca.",
+            "Excesso de botões e opções pré-prontas, que poluem a tela em vez de simplificar.",
+            "Preço como barreira decisiva de adoção: não assina nenhuma ferramenta sem um plano gratuito.",
+            "Fragmentação entre ferramenta de IA, prontuário hospitalar, prontuário particular e anotações pessoais paralelas.",
           ]}
         />
 
         <h4>Ideias e pedidos diretos</h4>
         <BlockList
           items={[
-            "Tela limpa, com poucos botões e espaço para digitar.",
-            "Espaço para anotações privadas fora do prontuário do paciente.",
+            "Tela limpa, com espaço para digitar e poucos botões visíveis.",
+            "Receituário personalizável, com envio digital e aviso automático de consulta.",
+            "Espaço para anotações privadas que não entrem no prontuário oficial do paciente.",
           ]}
         />
 
         <h4>Leitura AtomSix</h4>
         <BlockList
           items={[
-            "A busca por uma tela mais limpa é o sinal mais direto contra prontuários cheios de campos.",
-            "O preço, mais do que a interface, decide se um médico em início de carreira sequer testa o produto.",
+            "Primeira voz pela simplicidade da amostra: a queixa de excesso de abas reforça a busca por uma interface mínima, com complexidade escondida do usuário.",
+            "A barreira de preço no início de carreira é um sinal de modelo de negócio e de aquisição, não só de produto.",
+            "Reforça a ideia de uma IA que capta a consulta em segundo plano, enquanto o médico mantém atenção total ao paciente.",
           ]}
         />
 
@@ -394,57 +425,74 @@ export default function Doc3Pesquisa() {
         when="E3"
         title="Dra. Bárbara"
         sub="Medicina de família e cannabis"
+        transcriptHref="/docs/entrevista-barbara.md"
+        transcriptName="Entrevista - Dra. Barbara.md"
       >
+        <p>
+          <em>
+            Nota: a pedido do entrevistado, o conteúdo desta sessão é de uso
+            interno da equipe WeCann e Atomsix.
+          </em>
+        </p>
+
         <h4>Perfil e contexto</h4>
         <p>
-          Médica de família e comunidade com longa trajetória, detalhista e
-          com forte base em evidências. Utiliza seis ferramentas diferentes
-          no dia a dia da prática.
+          Médica de família e comunidade há mais de vinte anos, com
+          mestrado e forte base em evidências. Divide a semana entre o
+          consultório próprio, com foco em cannabis medicinal, e um cargo
+          de gestão e ensino na prefeitura. Perfil detalhista: registra a
+          consulta em formato estruturado e valoriza um histórico clínico
+          rico. Conta com apoio administrativo para agenda e financeiro.
+          Usuária avançada de IA, mas criteriosa: lê tudo antes de aceitar
+          qualquer sugestão.
         </p>
 
         <h4>Fluxo de trabalho atual</h4>
         <BlockList
           items={[
-            "Pré-consulta: gera um resumo do histórico do paciente com IA própria.",
-            "Durante: segue uma rotina clínica estruturada.",
-            "Pós-consulta: emite receita e documentos ao final do atendimento.",
-            "Acompanhamento: reativo, combinado por mensagem.",
+            "Pré-consulta: gera um resumo do histórico do paciente a partir de um prompt próprio de IA, para relembrar sintomas, medicações e pendências antes do atendimento.",
+            "Durante: segue uma rotina clínica estruturada, com escuta, exame físico quando necessário e definição de conduta.",
+            "Pós-consulta: fecha o prontuário, emite receita digital e encaminha documentos; para casos novos, usa um prompt próprio que lê resultados de exames a partir de foto.",
+            "Acompanhamento: reativo, combinado por mensagem em cerca de uma semana; quando o paciente não retoma contato, o acompanhamento se perde.",
           ]}
         />
 
         <h4>Uso de IA</h4>
         <BlockList
           items={[
-            "Usuária avançada de IA, com prompts próprios para resumo e leitura de exames.",
-            "Sempre revisa e confere tudo antes de aceitar qualquer sugestão.",
+            "Utiliza um conjunto de prompts próprios de IA para resumo clínico, leitura de exames e apoio à redação de laudos.",
+            "Recorre a bases de evidência confiáveis para orientar condutas clínicas.",
+            "Mantém controle editorial rígido: nunca aceita um laudo de IA sem ler e revisar por completo, com receio de que outros profissionais deleguem o raciocínio clínico à ferramenta.",
           ]}
         />
 
         <h4>Dores priorizadas</h4>
         <BlockList
           items={[
-            "Fragmentação extrema de ferramentas.",
-            "Comunicação com o paciente sujeita a falhas humanas.",
-            "Receitas digitais com anúncios de farmácia.",
-            "Impossibilidade de buscar pacientes por tema no histórico.",
+            "Fragmentação extrema: seis ferramentas diferentes para prontuário, teleconsulta, IA, receita, planilhas e mensagens, com esforço grande para juntar tudo num formato único.",
+            "Comunicação com o paciente sujeita a falhas humanas, por depender de um canal de mensagens compartilhado com o apoio administrativo.",
+            "Receitas digitais que chegam ao paciente com anúncios de farmácia, o que a leva a gerar e enviar o documento manualmente para evitar isso.",
+            "Impossibilidade de buscar pacientes por tema no histórico clínico, o que trava o uso da própria casuística para estudo e prática.",
           ]}
         />
 
         <h4>Ideias e pedidos diretos</h4>
         <BlockList
           items={[
-            "Tudo integrado em um só sistema.",
-            "Comunicação com o paciente dentro do prontuário.",
-            "Busca por tema na própria casuística.",
-            "Receita limpa, sem publicidade.",
+            "Tudo integrado em um único sistema, reduzindo a burocracia que hoje consome boa parte do dia.",
+            "Comunicação com o paciente dentro do próprio prontuário, sem depender de um canal externo sujeito a erro humano.",
+            "Codificação clínica automática a partir do texto digitado.",
+            "Busca por tema na própria casuística, para localizar pacientes por assunto clínico.",
+            "Receita limpa, sem publicidade, pronta para envio direto ao paciente.",
           ]}
         />
 
         <h4>Leitura AtomSix</h4>
         <BlockList
           items={[
-            "A fragmentação de seis ferramentas confirma, na prática, a necessidade de uma plataforma única.",
-            "O cuidado ao revisar tudo antes de aceitar mostra que a IA precisa apoiar o julgamento clínico, nunca substituí-lo.",
+            "Valida diretamente a tese central da plataforma única: a fragmentação de seis ferramentas é exatamente o problema que a WeCann Care se propõe a resolver.",
+            "Reforça o olhar humano como insubstituível: casos com relatos contraditórios entre familiares mostram os limites do que uma IA consegue interpretar sozinha.",
+            "Conecta a busca por conteúdo na casuística a um possível módulo de histórico e pesquisa dentro do produto.",
           ]}
         />
 
@@ -462,56 +510,72 @@ export default function Doc3Pesquisa() {
         when="E4"
         title="Dra. Patricia Montagner"
         sub="Shadowing no consultório"
+        transcriptHref="/docs/entrevista-patricia-shadowing.md"
+        transcriptName="Entrevista - Dra. Patricia Montagner (shadowing).md"
       >
+        <p>
+          <em>
+            Nota: a pedido do entrevistado, o conteúdo desta sessão é de uso
+            interno da equipe WeCann e Atomsix.
+          </em>
+        </p>
+
         <h4>Perfil e contexto</h4>
         <p>
-          Médica e fundadora da WeCann. Sessão de acompanhamento no
-          consultório real, validando o protótipo em uso ao vivo. Se
-          descreve como um perfil de exceção tecnológica e pede que o
-          produto seja pensado para o médico típico, não para ela.
+          Médica e fundadora da WeCann. Sessão de shadowing no consultório
+          real, acompanhando o uso do prontuário atual lado a lado com a
+          validação ao vivo do protótipo WeCann. Se descreve como um perfil
+          de exceção tecnológica, com apoio de secretária dedicada e
+          múltiplas telas, e pede explicitamente que o produto seja pensado
+          para o médico típico do mercado, não para ela.
         </p>
 
         <h4>Fluxo de trabalho atual</h4>
         <BlockList
           items={[
-            "Pré-consulta: recebe contexto do paciente por mensagem antes do atendimento.",
-            "Durante: usa a agenda como porta de entrada do dia.",
-            "Pós-consulta: organiza as mensagens por tipo de demanda.",
+            "Pré-consulta: recebe contexto do paciente por mensagem antes do atendimento, o que já resolve boa parte do trabalho de preparação.",
+            "Durante: usa a agenda como porta de entrada do dia; na telemedicina, a equipe testa câmera e microfone com o paciente antes de iniciar, e o ideal seria a videoconsulta embutida na mesma tela do prontuário, sem precisar trocar de ambiente.",
+            "Pós-consulta: organiza as mensagens recebidas por tipo de demanda, como renovação de receita, encaixe, dúvida sobre medicação ou questão financeira, algo que nenhum prontuário do mercado hoje oferece de forma estruturada.",
+            "Documentos entre consultas: mantém uma rotina própria para emitir receitas, atestados e solicitações de exame fora do contexto de um atendimento, mais prático do que abrir o prontuário completo do paciente para isso.",
           ]}
         />
 
         <h4>Uso de IA</h4>
         <BlockList
           items={[
-            "Espera transcrição em tempo real com preenchimento automático do prontuário, sempre com revisão do médico.",
-            "Sugestão de prescrição com cálculo automático de dose, alertas clínicos e lembretes educativos.",
+            "Espera transcrição em tempo real, com preenchimento automático dos campos do prontuário e revisão do médico como etapa obrigatória, nunca uma decisão automática.",
+            "Vê valor em sugestão de prescrição com cálculo automático de dose e alertas clínicos relevantes, sempre como apoio, nunca substituindo o julgamento médico.",
+            "Descreve alertas e lembretes educativos organizados por prioridade, para o médico revisar um de cada vez, sem sobrecarregar a tela.",
+            "Destaca a geração de laudos por IA a partir do histórico completo do paciente como um dos maiores ganhos de tempo possíveis.",
           ]}
         />
 
         <h4>Dores priorizadas</h4>
         <BlockList
           items={[
-            "Login com atrito.",
-            "Prontuário sem estrutura, tudo escrito em um único campo aberto.",
-            "Tela de consulta com excesso de cliques.",
-            "Geração manual de laudos, a tarefa mais demorada do dia a dia.",
+            "Login com atrito, com atraso no envio de código de verificação e confusão sobre qual código usar.",
+            "Prontuário sem estrutura: a maior parte dos médicos escreve tudo em um único campo aberto, o que empobrece o dado clínico registrado.",
+            "Tela de consulta atual com excesso de cliques e abas, o que considera um risco real de sobrecarga visual em monitores menores.",
+            "Falta de consolidação do histórico do paciente, com atendimentos anteriores espalhados sem uma visão única.",
+            "Geração manual de laudos, hoje a tarefa mais demorada do dia a dia clínico.",
           ]}
         />
 
         <h4>Ideias e pedidos diretos</h4>
         <BlockList
           items={[
-            "Sete telas consideradas inegociáveis para a primeira versão do produto (Home, Casuística, Pré-consulta, Consulta, Documentos, Pós-consulta e Paciente 360).",
-            "Campos fechados e padronizados no lugar de texto livre.",
-            "Onboarding que já sugere modelos por especialidade.",
+            "Um conjunto de telas consideradas inegociáveis para a primeira versão do produto: Home, Casuística, Pré-consulta, Consulta, Documentos, Pós-consulta e Paciente 360.",
+            "Campos fechados e padronizados no lugar de texto livre, com um editor que estrutura o dado conforme o contexto da consulta.",
+            "Onboarding que já sugere modelos de atendimento por especialidade, priorizando o que é mais relevante para cada médico.",
           ]}
         />
 
         <h4>Leitura AtomSix</h4>
         <BlockList
           items={[
-            "A sessão confirma o padrão das demais entrevistas, como excesso de cliques e fragmentação.",
-            "Valida, com um usuário real, as sete telas consideradas prioritárias para a primeira versão do produto.",
+            "Confirma o padrão observado nas demais entrevistas: excesso de cliques e fragmentação aparecem também na validação ao vivo da tela de consulta.",
+            "Valida o fluxo completo proposto para o produto: contexto por mensagem antes da consulta, tela única com vídeo embutido durante o atendimento e organização automática de mensagens depois.",
+            "Reforça que toda tela do produto precisa funcionar bem num cenário mais simples, sem depender de equipamento ou apoio extra, já que o cenário dela é a exceção, não a regra do mercado.",
           ]}
         />
 

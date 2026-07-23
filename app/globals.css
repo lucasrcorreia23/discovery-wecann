@@ -3941,6 +3941,29 @@ code {
   font-size: var(--fs-body-sm);
   color: var(--ink-faint);
 }
+.meeting .m-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.meeting .m-download:hover {
+  background: var(--bg);
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
 .meeting .m-chev {
   flex: none;
   width: 16px;

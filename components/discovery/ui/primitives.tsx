@@ -9,14 +9,14 @@ export function Hero({
   lead,
   meta,
 }: {
-  kicker: string;
+  kicker?: string;
   title: React.ReactNode;
   lead: React.ReactNode;
   meta?: { dt: string; dd: React.ReactNode }[];
 }) {
   return (
     <header className="hero">
-      <div className="kicker">{kicker}</div>
+      {kicker && <div className="kicker">{kicker}</div>}
       <h1>{title}</h1>
       <p className="lead">{lead}</p>
       {meta && meta.length > 0 && (
@@ -513,6 +513,8 @@ export function Meeting({
   title,
   sub,
   open,
+  transcriptHref,
+  transcriptName,
   children,
 }: {
   id: string;
@@ -520,6 +522,8 @@ export function Meeting({
   title: React.ReactNode;
   sub: React.ReactNode;
   open?: boolean;
+  transcriptHref?: string;
+  transcriptName?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -530,6 +534,28 @@ export function Meeting({
           <span className="m-title">{title}</span>
           <span className="m-sub">{sub}</span>
         </span>
+        {transcriptHref && (
+          <a
+            className="m-download"
+            href={transcriptHref}
+            download={transcriptName ?? true}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <svg
+              width={14}
+              height={14}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path d="M12 3v12" />
+              <path d="M7 10l5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+            Transcript
+          </a>
+        )}
         <svg
           className="m-chev"
           width={16}
